@@ -12,8 +12,16 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       {/* Header: Dark Slate Background */}
       <header className="fixed w-full z-50 bg-tpp-dark/95 backdrop-blur border-b border-slate-800 text-white">
         <div className="container mx-auto px-4 h-20 flex items-center justify-between">
-          <div className="text-2xl font-bold tracking-tighter">
-            ZAB<span className="text-tpp-primary">TPP</span>
+          
+          {/* LOGO SECTION */}
+          <div className="flex items-center">
+             <Link to="/">
+                <img 
+                  src="images/logo-TPP-white.png" 
+                  alt="ТПП Забайкальского края" 
+                  className="h-12 w-auto" 
+                />
+             </Link>
           </div>
           
           {/* Desktop Nav */}
@@ -94,51 +102,4 @@ const HomePage = () => {
                 <Globe size={24} />
               </div>
               <h3 className="text-xl font-bold mb-3 text-slate-900">ВЭД и Китай</h3>
-              <p className="text-slate-600 mb-6">Поиск партнеров, организация бизнес-миссий и таможенное консультирование.</p>
-              <Link to="/services" className="text-tpp-secondary font-bold flex items-center gap-2 group-hover:text-cyan-700">
-                Подробнее <ArrowRight size={16} />
-              </Link>
-            </div>
-
-            {/* Card 2 - Highlighted (Cyber Style) */}
-            <div className="p-8 rounded-2xl bg-tpp-dark text-white shadow-2xl relative overflow-hidden">
-               <div className="absolute top-0 right-0 w-32 h-32 bg-tpp-primary/10 rounded-full blur-3xl"></div>
-              <div className="w-12 h-12 rounded-full bg-tpp-primary flex items-center justify-center mb-6 text-tpp-dark">
-                <Shield size={24} />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Сертификация</h3>
-              <p className="text-slate-300 mb-6">Экспертиза происхождения товаров, выдача сертификатов СТ-1.</p>
-              <Button variant="lime" className="w-full">Заказать услугу</Button>
-            </div>
-
-            {/* Card 3 */}
-            <div className="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-xl transition-all group">
-              <div className="w-12 h-12 rounded-full bg-cyan-100 flex items-center justify-center mb-6 text-cyan-600 group-hover:bg-tpp-primary group-hover:text-tpp-dark transition-colors">
-                <Award size={24} />
-              </div>
-              <h3 className="text-xl font-bold mb-3 text-slate-900">Защита бизнеса</h3>
-              <p className="text-slate-600 mb-6">Юридическая поддержка, медиация и арбитраж для членов палаты.</p>
-              <Link to="/services" className="text-tpp-secondary font-bold flex items-center gap-2 group-hover:text-cyan-700">
-                Подробнее <ArrowRight size={16} />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-    </>
-  );
-};
-
-function App() {
-  return (
-    <Layout>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/services" element={<div className="container mx-auto p-10"><h1 className="text-3xl font-bold">Раздел Услуг (В разработке)</h1></div>} />
-        <Route path="/news" element={<div className="container mx-auto p-10"><h1 className="text-3xl font-bold">Новости (В разработке)</h1></div>} />
-      </Routes>
-    </Layout>
-  );
-}
-
-export default App;
+              <p className="text-slate-600 mb-6">Поиск партнеров, организация бизнес-миссий и тамо
