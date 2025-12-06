@@ -143,16 +143,23 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 const HomePage = () => {
   return (
     <>
-      {/* HERO SECTION */}
-      <section className="relative bg-tpp-dark text-white min-h-[600px] flex items-center justify-center">
+      {/* HERO SECTION: Technology from Archive (Layered Background) */}
+      <section className="relative bg-tpp-dark text-white min-h-[600px] flex items-center justify-center overflow-hidden">
         
-        {/* ФОН + ЗАТЕМНЕНИЕ (Classic Black Overlay 0.7) */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop')"
-          }}
-        />
+        {/* BACKGROUND LAYERS (Слои фона) */}
+        <div className="absolute inset-0 z-0">
+            {/* 1. Базовый цвет задан в section (bg-tpp-dark) */}
+            
+            {/* 2. Картинка-текстура (Opacity 20%) */}
+            <img 
+              src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop" 
+              alt="Business Background" 
+              className="w-full h-full object-cover opacity-20"
+            />
+            
+            {/* 3. Градиентный оверлей (для глубины) */}
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-900/60"></div>
+        </div>
         
         {/* Контент по центру */}
         <div className="max-w-4xl mx-auto px-6 relative z-10 text-center flex flex-col items-center">
@@ -171,7 +178,7 @@ const HomePage = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-5 w-full sm:w-auto">
-            {/* Кнопки */}
+            {/* Кнопки - Строгие (!rounded-lg) */}
             <Button variant="lime" className="h-14 px-8 text-lg !rounded-lg shadow-[0_0_30px_rgba(216,251,83,0.3)]">
                Получить консультацию <ArrowRight size={20} className="ml-2"/>
             </Button>
