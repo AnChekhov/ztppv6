@@ -3,7 +3,6 @@ import { CheckCircle2 } from 'lucide-react';
 
 const CallToAction: React.FC = () => {
   return (
-    // Фон секции - Dark Slate 900
     <section className="bg-slate-900 pt-20 pb-24 relative overflow-hidden">
         
       {/* Декоративные пятна на фоне */}
@@ -24,24 +23,26 @@ const CallToAction: React.FC = () => {
             </p>
             
             <div className="space-y-4">
+              {/* Преимущество 1: Лаймовая галочка */}
               <div className="flex items-start gap-3">
-                <CheckCircle2 className="text-green-600 shrink-0 mt-1" size={20} />
+                <CheckCircle2 className="text-tpp-primary shrink-0 mt-1" size={20} />
                 <span className="text-slate-700 font-medium">Защита и продвижение интересов вашего бизнеса</span>
               </div>
+              {/* Преимущество 2: Лаймовая галочка */}
               <div className="flex items-start gap-3">
-                <CheckCircle2 className="text-green-600 shrink-0 mt-1" size={20} />
+                <CheckCircle2 className="text-tpp-primary shrink-0 mt-1" size={20} />
                 <span className="text-slate-700 font-medium">Скидки до 20% на услуги сертификации и экспертизы</span>
               </div>
+              {/* Преимущество 3: Лаймовая галочка */}
               <div className="flex items-start gap-3">
-                <CheckCircle2 className="text-green-600 shrink-0 mt-1" size={20} />
+                <CheckCircle2 className="text-tpp-primary shrink-0 mt-1" size={20} />
                 <span className="text-slate-700 font-medium">Участие в международных бизнес-миссиях</span>
               </div>
             </div>
           </div>
           
           <div className="flex flex-col gap-4 w-full lg:w-auto min-w-[320px]">
-            {/* Кнопка Лайм */}
-            <button className="bg-tpp-primary hover:bg-yellow-400 text-slate-900 font-bold py-4 px-8 rounded-lg shadow-lg text-center text-lg transition-all transform hover:-translate-y-1">
+            <button className="bg-yellow-500 hover:bg-yellow-400 text-slate-900 font-bold py-4 px-8 rounded-lg shadow-lg text-center text-lg transition-all transform hover:-translate-y-1">
               Подать заявку онлайн
             </button>
             <button className="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-4 px-8 rounded-lg text-center text-lg transition-colors">
