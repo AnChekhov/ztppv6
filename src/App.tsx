@@ -164,7 +164,7 @@ const HomePage = () => {
         
         {/* Darker Overlay & Image */}
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center">
-             {/* Увеличили затемнение до 90% для контраста */}
+             {/* Затемнение 90% */}
              <div className="absolute inset-0 bg-slate-900/90"></div>
         </div>
         
@@ -176,16 +176,16 @@ const HomePage = () => {
           </span>
           
           <h1 className="text-4xl md:text-6xl font-extrabold mb-8 leading-tight">
-            Надежный фундамент для <br className="hidden md:block"/>
-            <span className="text-tpp-primary">сильного и устойчивого</span> бизнеса
+            Укрепляем позиции Вашего бизнеса. <br className="hidden md:block"/>
+            <span className="text-tpp-primary">Гарантируем поддержку.</span>
           </h1>
           
           <p className="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Создаем условия для стабильного роста: от выхода на международные рынки до защиты интересов на государственном уровне.
+            Помогаем предпринимателям выходить на рынок Китая, оформляем сертификаты происхождения и защищаем ваши интересы на государственном уровне.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-5 w-full sm:w-auto">
-            {/* Кнопки "Таблетки" с увеличенным паддингом */}
+            {/* Кнопки "Таблетки" с увеличенным паддингом (rounded-full) */}
             <Button variant="lime" className="h-16 px-10 text-lg rounded-full shadow-[0_0_30px_rgba(216,251,83,0.3)]">
                Получить консультацию <ArrowRight size={20} className="ml-2"/>
             </Button>
