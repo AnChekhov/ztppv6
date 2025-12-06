@@ -14,7 +14,8 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       
       {/* HEADER: Light Authority Style */}
       <header className="fixed w-full z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
-        <div className="container mx-auto px-4 h-24 flex items-center justify-between">
+        {/* Изменен контейнер: max-w-6xl и увеличены отступы px-6 md:px-12 */}
+        <div className="max-w-6xl mx-auto px-6 md:px-12 h-24 flex items-center justify-between">
           
           {/* ЛОГОТИП И НАЗВАНИЕ */}
           <Link to="/" className="flex items-center gap-4 group">
@@ -77,9 +78,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         {children}
       </main>
 
-      {/* Footer (Оставляем темным для контраста) */}
+      {/* Footer */}
       <footer className="bg-tpp-dark text-white py-16 border-t border-slate-800">
-        <div className="container mx-auto px-4 grid md:grid-cols-4 gap-12">
+        <div className="max-w-6xl mx-auto px-6 md:px-12 grid md:grid-cols-4 gap-12">
           <div>
             <div className="flex items-center gap-3 mb-6">
                 <img src="images/logo-TPP-white.png" alt="Logo" className="h-10 w-auto opacity-90" />
@@ -141,7 +142,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
              </ul>
           </div>
         </div>
-        <div className="container mx-auto px-4 mt-16 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between text-xs text-slate-500">
+        <div className="max-w-6xl mx-auto px-6 md:px-12 mt-16 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between text-xs text-slate-500">
             <p>© 2025 Союз «Торгово-промышленная палата Забайкальского края».</p>
             <div className="flex gap-4 mt-4 md:mt-0">
                 <a href="#" className="hover:text-white">Политика конфиденциальности</a>
@@ -166,7 +167,7 @@ const HomePage = () => {
              <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-900/50"></div>
         </div>
         
-        <div className="container mx-auto px-4 relative z-10 grid md:grid-cols-2 gap-12 pt-10">
+        <div className="max-w-6xl mx-auto px-6 md:px-12 relative z-10 grid md:grid-cols-2 gap-12 pt-10">
           <div>
               <span className="inline-block px-3 py-1 rounded border border-slate-600 bg-slate-800/50 text-slate-300 text-xs font-bold mb-6 uppercase tracking-wider">
                 Официальный представитель бизнеса
@@ -195,7 +196,7 @@ const HomePage = () => {
 
       {/* TRUST METRICS (Сразу после Hero для авторитета) */}
       <section className="py-12 bg-white border-b border-slate-100">
-          <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto px-6 md:px-12">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-slate-100">
                   <div>
                       <div className="text-4xl font-black text-slate-900 mb-1">30+</div>
@@ -219,7 +220,7 @@ const HomePage = () => {
 
       {/* KEY SERVICES (Воронка продаж) */}
       <section className="py-24 bg-slate-50">
-        <div className="container mx-auto px-4">
+        <div className="max-w-6xl mx-auto px-6 md:px-12">
           <div className="text-center mb-16">
              <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">Комплексная поддержка вашего бизнеса</h2>
              <p className="text-slate-600 max-w-2xl mx-auto">Мы предоставляем более 40 видов услуг для экспортеров, производителей и предпринимателей региона. Наша экспертиза признана на международном уровне.</p>
@@ -295,14 +296,14 @@ const HomePage = () => {
       
       {/* MEMBERSHIP CTA */}
       <section className="py-20 bg-white">
-         <div className="container mx-auto px-4">
+         <div className="max-w-6xl mx-auto px-6 md:px-12">
              <div className="bg-slate-900 rounded-3xl p-10 md:p-16 relative overflow-hidden">
                  {/* Background decoration */}
                  <div className="absolute top-0 right-0 w-1/2 h-full bg-slate-800 skew-x-12 translate-x-20"></div>
                  
                  <div className="relative z-10 grid md:grid-cols-2 gap-12 items-center">
                      <div>
-                         <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-6">Станьте членом Союза «ТТП Забайкальского края»</h2>
+                         <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-6">Станьте членом Союза «ТПП Забайкальского края»</h2>
                          <p className="text-slate-300 mb-8 text-lg">Присоединяйтесь к сообществу из 450+ успешных компаний. Получите доступ к закрытым мероприятиям, прямой диалог с властью и скидки на услуги палаты.</p>
                          
                          <ul className="space-y-4 mb-10">
@@ -332,7 +333,7 @@ const HomePage = () => {
 
       {/* NEWS PREVIEW */}
       <section className="py-24 bg-slate-50">
-        <div className="container mx-auto px-4">
+        <div className="max-w-6xl mx-auto px-6 md:px-12">
             <div className="flex justify-between items-end mb-12">
                 <div>
                     <h2 className="text-3xl font-extrabold text-slate-900 mb-2">Новости и События</h2>
@@ -393,11 +394,11 @@ function App() {
     <Layout>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/services" element={<div className="container mx-auto p-10"><h1 className="text-3xl font-bold">Раздел Услуг (В разработке)</h1></div>} />
-        <Route path="/news" element={<div className="container mx-auto p-10"><h1 className="text-3xl font-bold">Новости (В разработке)</h1></div>} />
-        <Route path="/join" element={<div className="container mx-auto p-10"><h1 className="text-3xl font-bold">Вступление в палату (В разработке)</h1></div>} />
-        <Route path="/ved" element={<div className="container mx-auto p-10"><h1 className="text-3xl font-bold">ВЭД (В разработке)</h1></div>} />
-        <Route path="/membership" element={<div className="container mx-auto p-10"><h1 className="text-3xl font-bold">Членство (В разработке)</h1></div>} />
+        <Route path="/services" element={<div className="max-w-6xl mx-auto p-10"><h1 className="text-3xl font-bold">Раздел Услуг (В разработке)</h1></div>} />
+        <Route path="/news" element={<div className="max-w-6xl mx-auto p-10"><h1 className="text-3xl font-bold">Новости (В разработке)</h1></div>} />
+        <Route path="/join" element={<div className="max-w-6xl mx-auto p-10"><h1 className="text-3xl font-bold">Вступление в палату (В разработке)</h1></div>} />
+        <Route path="/ved" element={<div className="max-w-6xl mx-auto p-10"><h1 className="text-3xl font-bold">ВЭД (В разработке)</h1></div>} />
+        <Route path="/membership" element={<div className="max-w-6xl mx-auto p-10"><h1 className="text-3xl font-bold">Членство (В разработке)</h1></div>} />
       </Routes>
     </Layout>
   );
