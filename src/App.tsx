@@ -146,11 +146,11 @@ const HomePage = () => {
       {/* HERO SECTION */}
       <section className="relative bg-tpp-dark text-white min-h-[600px] flex items-center justify-center">
         
-        {/* ФОН + ЗАТЕМНЕНИЕ (Реализовано через inline-style для точного контроля градиента поверх картинки) */}
+        {/* ФОН + ЗАТЕМНЕНИЕ (Classic Black Overlay 0.7) */}
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop')"
+            backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop')"
           }}
         />
         
