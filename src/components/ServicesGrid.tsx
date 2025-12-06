@@ -14,8 +14,9 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon: Icon, title, descriptio
       ? 'bg-slate-900 text-white border-slate-900 shadow-xl' 
       : 'bg-white border-slate-100 hover:border-slate-200 hover:shadow-lg'
   }`}>
+    {/* Иконка: теперь Лаймовая на темном фоне */}
     <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-transform group-hover:scale-105 ${
-      highlight ? 'bg-white/10 text-yellow-400' : 'bg-blue-50 text-blue-900'
+      highlight ? 'bg-white/10 text-tpp-primary' : 'bg-blue-50 text-blue-900'
     }`}>
       <Icon size={28} strokeWidth={1.5} />
     </div>
@@ -28,8 +29,9 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon: Icon, title, descriptio
       {description}
     </p>
     
+    {/* Ссылка: теперь Лаймовая на темном фоне */}
     <a href="#" className={`inline-flex items-center font-bold text-sm mt-auto transition-colors ${
-      highlight ? 'text-yellow-400 hover:text-yellow-300' : 'text-blue-700 hover:text-blue-900'
+      highlight ? 'text-tpp-primary hover:text-white/90' : 'text-blue-700 hover:text-blue-900'
     }`}>
       Подробнее <ChevronRight size={16} className="ml-1 transition-transform group-hover:translate-x-1" />
     </a>
@@ -39,7 +41,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon: Icon, title, descriptio
 const ServicesGrid: React.FC = () => {
   return (
     <section className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 md:px-8">
         <div className="text-center mb-16 max-w-3xl mx-auto">
           <h2 className="text-blue-900 font-bold tracking-widest uppercase text-xs mb-4">Направления деятельности</h2>
           <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Комплексная поддержка вашего бизнеса</h3>
