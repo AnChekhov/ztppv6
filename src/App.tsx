@@ -12,21 +12,19 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="min-h-screen flex flex-col font-sans bg-slate-50 text-slate-900">
       
-      {/* HEADER: Исправленная структура по UI/UX аудиту */}
+      {/* HEADER */}
       <header className="fixed w-full z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 md:px-8 h-24 flex items-center justify-between">
           
-          {/* 1. ЛОГОТИП И НАЗВАНИЕ (Выровнено, возвращен "СОЮЗ") */}
+          {/* 1. ЛОГОТИП И НАЗВАНИЕ (Без "СОЮЗ") */}
           <Link to="/" className="flex items-center gap-4 group shrink-0">
              <img 
                src="images/logo-TPP-indigo.png" 
                alt="ТПП Забайкальского края" 
                className="h-14 w-auto object-contain" 
              />
-             <div className="hidden md:flex flex-col justify-center border-l border-slate-300 pl-4 h-12">
-               <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest leading-none mb-1">
-                 Союз
-               </span>
+             {/* Убран border-l и слово Союз */}
+             <div className="hidden md:flex flex-col justify-center ml-2">
                <span className="text-sm font-extrabold text-tpp-dark leading-tight max-w-[220px] uppercase">
                  Торгово-промышленная палата <br/>
                  <span className="text-tpp-secondary">Забайкальского края</span>
@@ -44,7 +42,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             
           {/* 3. КОНТАКТЫ И КНОПКА (Правый блок) */}
           <div className="hidden lg:flex items-center gap-8">
-            {/* Блок контактов: Иконка слева, текст выровнен */}
+            {/* Блок контактов */}
             <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-tpp-secondary shrink-0">
                     <Phone size={20} strokeWidth={2.5} />
@@ -55,7 +53,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 </div>
             </div>
 
-            {/* Кнопка: Прямоугольная (!rounded-lg) */}
+            {/* Кнопка */}
             <Button variant="lime" to="/join" className="!rounded-lg shadow-md px-6 py-2.5 text-sm">
                 Вступить в палату
             </Button>
@@ -148,12 +146,13 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 const HomePage = () => {
   return (
     <>
-      {/* HERO SECTION: Строгие формы кнопок (!rounded-lg) */}
+      {/* HERO SECTION */}
       <section className="relative bg-tpp-dark text-white min-h-[600px] flex items-center justify-center">
         
-        {/* Darker Overlay & Image */}
+        {/* Background Image & RADIAL Gradient Overlay */}
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center">
-             <div className="absolute inset-0 bg-slate-900/90"></div>
+             {/* Радиальный градиент: центр светлее, края уходят в почти черный */}
+             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-slate-900/60 via-slate-900/95 to-slate-950"></div>
         </div>
         
         {/* Контент по центру */}
@@ -163,9 +162,9 @@ const HomePage = () => {
             Официальный представитель бизнеса
           </span>
           
-          <h1 className="text-4xl md:text-6xl font-extrabold mb-8 leading-tight">
-            Укрепляем позиции Вашего бизнеса. <br className="hidden md:block"/>
-            <span className="text-tpp-primary">Гарантируем поддержку.</span>
+          {/* Сокращенный заголовок */}
+          <h1 className="text-4xl md:text-6xl font-extrabold mb-8 leading-tight text-white">
+            Укрепляем позиции Вашего бизнеса.
           </h1>
           
           <p className="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
@@ -173,7 +172,7 @@ const HomePage = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-5 w-full sm:w-auto">
-            {/* Кнопки - Прямоугольные со скруглением (!rounded-lg) */}
+            {/* Кнопки */}
             <Button variant="lime" className="h-14 px-8 text-lg !rounded-lg shadow-[0_0_30px_rgba(216,251,83,0.3)]">
                Получить консультацию <ArrowRight size={20} className="ml-2"/>
             </Button>
