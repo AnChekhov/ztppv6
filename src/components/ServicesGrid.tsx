@@ -14,14 +14,16 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon: Icon, title, descriptio
       ? 'bg-slate-900 text-white border-slate-900 shadow-xl' 
       : 'bg-white border-slate-100 hover:border-slate-200 hover:shadow-lg'
   }`}>
-    {/* Иконка: теперь Лаймовая на темном фоне */}
     <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-transform group-hover:scale-105 ${
       highlight ? 'bg-white/10 text-tpp-primary' : 'bg-blue-50 text-blue-900'
     }`}>
       <Icon size={28} strokeWidth={1.5} />
     </div>
     
-    <h3 className={`text-xl font-bold mb-3 ${highlight ? 'text-white' : 'text-slate-900'}`}>
+    {/* ЗАГОЛОВОК С ЛАЙМОВЫМ КРУЖКОМ */}
+    <h3 className={`text-xl font-bold mb-3 ${highlight ? 'text-white' : 'text-slate-900'} flex items-center`}>
+      {/* Кружок перед заголовком */}
+      <div className={`w-2 h-2 rounded-full mr-3 ${highlight ? 'bg-white' : 'bg-tpp-primary'} shrink-0`}></div>
       {title}
     </h3>
     
@@ -29,7 +31,6 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon: Icon, title, descriptio
       {description}
     </p>
     
-    {/* Ссылка: теперь Лаймовая на темном фоне */}
     <a href="#" className={`inline-flex items-center font-bold text-sm mt-auto transition-colors ${
       highlight ? 'text-tpp-primary hover:text-white/90' : 'text-blue-700 hover:text-blue-900'
     }`}>
