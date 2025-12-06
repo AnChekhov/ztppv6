@@ -14,7 +14,6 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       
       {/* HEADER: Light Authority Style */}
       <header className="fixed w-full z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
-        {/* Изменен контейнер: max-w-6xl и увеличены отступы px-6 md:px-12 */}
         <div className="max-w-6xl mx-auto px-6 md:px-12 h-24 flex items-center justify-between">
           
           {/* ЛОГОТИП И НАЗВАНИЕ */}
@@ -53,7 +52,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 <span className="text-xs text-slate-500">пн-пт 9:00 - 18:00</span>
             </div>
 
-            <Button variant="lime" to="/join" className="shadow-lg shadow-lime-200/50">Вступить в палату</Button>
+            <Button variant="lime" to="/join" className="shadow-lg shadow-lime-200/50 rounded-full px-8">Вступить</Button>
           </div>
 
           {/* Мобильное меню (Кнопка) */}
@@ -68,7 +67,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             <Link to="/" className="text-lg font-semibold py-2">Услуги</Link>
             <Link to="/membership" className="text-lg font-semibold py-2">Членство</Link>
             <Link to="/ved" className="text-lg font-semibold py-2">ВЭД и Китай</Link>
-            <Button variant="lime" className="w-full justify-center">Вступить в палату</Button>
+            <Button variant="lime" className="w-full justify-center rounded-full">Вступить в палату</Button>
           </div>
         )}
       </header>
@@ -160,36 +159,46 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 const HomePage = () => {
   return (
     <>
-      {/* HERO SECTION: Business Focus */}
-      <section className="relative bg-tpp-dark text-white min-h-[600px] flex items-center">
-        {/* Dark Overlay & Image */}
+      {/* HERO SECTION: Center Layout, Dark Overlay, Stability Focus */}
+      <section className="relative bg-tpp-dark text-white min-h-[600px] flex items-center justify-center">
+        
+        {/* Darker Overlay & Image */}
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center">
-             <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-900/50"></div>
+             {/* Увеличили затемнение до 90% для контраста */}
+             <div className="absolute inset-0 bg-slate-900/90"></div>
         </div>
         
-        <div className="max-w-6xl mx-auto px-6 md:px-12 relative z-10 grid md:grid-cols-2 gap-12 pt-10">
-          <div>
-              <span className="inline-block px-3 py-1 rounded border border-slate-600 bg-slate-800/50 text-slate-300 text-xs font-bold mb-6 uppercase tracking-wider">
-                Официальный представитель бизнеса
-              </span>
-              <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
-                Открываем <span className="text-tpp-primary">новые рынки</span> для бизнеса Забайкалья
-              </h1>
-              <p className="text-lg text-slate-300 mb-8 max-w-xl leading-relaxed">
-                Помогаем предпринимателям выходить на рынок Китая, оформляем сертификаты происхождения и защищаем ваши интересы на государственном уровне.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button variant="lime" className="h-14 px-8 text-lg">Получить консультацию <ArrowRight size={20}/></Button>
-                <Button variant="outline" className="h-14 px-8 text-lg border-slate-500 text-white hover:bg-white hover:text-slate-900">Стать партнером</Button>
-              </div>
+        {/* Контент по центру */}
+        <div className="max-w-4xl mx-auto px-6 relative z-10 text-center flex flex-col items-center">
+          
+          <span className="inline-block px-4 py-1.5 rounded-full border border-slate-600 bg-slate-800/50 text-slate-300 text-xs font-bold mb-8 uppercase tracking-wider backdrop-blur-sm">
+            Официальный представитель бизнеса
+          </span>
+          
+          <h1 className="text-4xl md:text-6xl font-extrabold mb-8 leading-tight">
+            Надежный фундамент для <br className="hidden md:block"/>
+            <span className="text-tpp-primary">сильного и устойчивого</span> бизнеса
+          </h1>
+          
+          <p className="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+            Создаем условия для стабильного роста: от выхода на международные рынки до защиты интересов на государственном уровне.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-5 w-full sm:w-auto">
+            {/* Кнопки "Таблетки" с увеличенным паддингом */}
+            <Button variant="lime" className="h-16 px-10 text-lg rounded-full shadow-[0_0_30px_rgba(216,251,83,0.3)]">
+               Получить консультацию <ArrowRight size={20} className="ml-2"/>
+            </Button>
+            <Button variant="outline" className="h-16 px-10 text-lg rounded-full border-slate-500 text-white hover:bg-white hover:text-slate-900 hover:border-white">
+               Стать партнером
+            </Button>
+          </div>
 
-              <div className="mt-10 flex gap-6 text-sm text-slate-400">
-                  <span className="flex items-center gap-2"><span className="w-1 h-1 bg-tpp-primary rounded-full"></span>Частые запросы:</span>
-                  <a href="#" className="hover:text-white underline decoration-slate-600 underline-offset-4">Сертификат СТ-1</a>
-                  <a href="#" className="hover:text-white underline decoration-slate-600 underline-offset-4">Поиск партнеров в КНР</a>
-                  <a href="#" className="hover:text-white underline decoration-slate-600 underline-offset-4">Экспертиза товаров</a>
-              </div>
+          <div className="mt-12 flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm text-slate-400">
+              <span className="font-semibold text-slate-500">Популярное:</span>
+              <a href="#" className="hover:text-tpp-primary transition-colors border-b border-transparent hover:border-tpp-primary">Сертификат СТ-1</a>
+              <a href="#" className="hover:text-tpp-primary transition-colors border-b border-transparent hover:border-tpp-primary">Поиск партнеров в КНР</a>
+              <a href="#" className="hover:text-tpp-primary transition-colors border-b border-transparent hover:border-tpp-primary">Экспертиза товаров</a>
           </div>
         </div>
       </section>
@@ -229,12 +238,12 @@ const HomePage = () => {
           <div className="grid md:grid-cols-3 gap-8">
             
             {/* Card 1: China */}
-            <div className="bg-tpp-dark rounded-2xl p-8 text-white relative overflow-hidden group hover:shadow-2xl transition-all duration-300">
+            <div className="bg-tpp-dark rounded-3xl p-8 text-white relative overflow-hidden group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                 <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
                     <Globe size={100} />
                 </div>
-                <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mb-6 text-tpp-primary border border-white/10">
-                    <Globe size={28} />
+                <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6 text-tpp-primary border border-white/10">
+                    <Globe size={32} />
                 </div>
                 <h3 className="text-2xl font-bold mb-3">ВЭД и работа с Китаем</h3>
                 <p className="text-slate-300 mb-8 leading-relaxed">Поиск надежных партнеров в КНР, организация бизнес-миссий, проверка контрагентов и сопровождение экспортных контрактов под ключ.</p>
@@ -244,9 +253,9 @@ const HomePage = () => {
             </div>
 
             {/* Card 2: Certificates */}
-            <div className="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 group">
-                <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-6 text-blue-600 group-hover:scale-110 transition-transform">
-                    <FileCheck size={28} />
+            <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 group hover:-translate-y-1">
+                <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 text-blue-600 group-hover:scale-110 transition-transform">
+                    <FileCheck size={32} />
                 </div>
                 <h3 className="text-2xl font-bold text-slate-900 mb-3">Сертификация и Экспертиза</h3>
                 <p className="text-slate-600 mb-8 leading-relaxed">Выдача сертификатов происхождения товаров (СТ-1, форма А), удостоверение документов ВЭД, экспертиза качества и количества товаров.</p>
@@ -256,9 +265,9 @@ const HomePage = () => {
             </div>
 
             {/* Card 3: Law */}
-            <div className="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 group">
-                <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-6 text-blue-600 group-hover:scale-110 transition-transform">
-                    <Scale size={28} />
+            <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 group hover:-translate-y-1">
+                <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 text-blue-600 group-hover:scale-110 transition-transform">
+                    <Scale size={32} />
                 </div>
                 <h3 className="text-2xl font-bold text-slate-900 mb-3">Юридическая защита</h3>
                 <p className="text-slate-600 mb-8 leading-relaxed">Свидетельствование форс-мажора, международный коммерческий арбитраж, медиация и защита интересов бизнеса в органах власти.</p>
@@ -289,7 +298,7 @@ const HomePage = () => {
           </div>
           
           <div className="text-center mt-12">
-             <Button variant="outline" className="border-slate-300 text-slate-600 hover:border-tpp-secondary hover:text-tpp-secondary">Посмотреть полный каталог услуг</Button>
+             <Button variant="outline" className="border-slate-300 text-slate-600 hover:border-tpp-secondary hover:text-tpp-secondary rounded-full px-8">Посмотреть полный каталог услуг</Button>
           </div>
         </div>
       </section>
@@ -322,8 +331,8 @@ const HomePage = () => {
                          <div className="bg-white p-8 rounded-2xl shadow-xl max-w-sm w-full">
                              <h3 className="font-bold text-xl mb-2 text-slate-900">Подать заявку онлайн</h3>
                              <p className="text-slate-500 text-sm mb-6">Заполните простую форму, и мы свяжемся с вами.</p>
-                             <Button variant="lime" className="w-full justify-center text-lg h-12">Подать заявку</Button>
-                             <Button variant="ghost" className="w-full justify-center mt-2">Узнать условия членства</Button>
+                             <Button variant="lime" className="w-full justify-center text-lg h-12 rounded-full">Подать заявку</Button>
+                             <Button variant="ghost" className="w-full justify-center mt-2 rounded-full">Узнать условия членства</Button>
                          </div>
                      </div>
                  </div>
@@ -344,10 +353,10 @@ const HomePage = () => {
             
             <div className="grid md:grid-cols-3 gap-8">
                 {/* News 1 */}
-                <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition group">
+                <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition group">
                     <div className="h-48 bg-slate-200 relative">
                         <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=2000&auto=format&fit=crop" alt="News" className="w-full h-full object-cover"/>
-                        <span className="absolute top-4 left-4 bg-white px-3 py-1 rounded text-xs font-bold text-slate-900">Законодательство</span>
+                        <span className="absolute top-4 left-4 bg-white px-3 py-1 rounded-full text-xs font-bold text-slate-900">Законодательство</span>
                     </div>
                     <div className="p-6">
                         <div className="text-xs text-slate-400 mb-3">24 Окт 2025</div>
@@ -357,10 +366,10 @@ const HomePage = () => {
                 </div>
                 
                 {/* News 2 */}
-                <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition group">
+                <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition group">
                     <div className="h-48 bg-slate-200 relative">
                          <img src="https://images.unsplash.com/photo-1577962917302-cd874c4e3169?q=80&w=2000&auto=format&fit=crop" alt="News" className="w-full h-full object-cover"/>
-                        <span className="absolute top-4 left-4 bg-white px-3 py-1 rounded text-xs font-bold text-slate-900">Мероприятия</span>
+                        <span className="absolute top-4 left-4 bg-white px-3 py-1 rounded-full text-xs font-bold text-slate-900">Мероприятия</span>
                     </div>
                     <div className="p-6">
                         <div className="text-xs text-slate-400 mb-3">22 Окт 2025</div>
@@ -370,10 +379,10 @@ const HomePage = () => {
                 </div>
 
                 {/* News 3 */}
-                <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition group">
+                <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition group">
                     <div className="h-48 bg-slate-200 relative">
                         <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2000&auto=format&fit=crop" alt="News" className="w-full h-full object-cover"/>
-                        <span className="absolute top-4 left-4 bg-white px-3 py-1 rounded text-xs font-bold text-slate-900">Обучение</span>
+                        <span className="absolute top-4 left-4 bg-white px-3 py-1 rounded-full text-xs font-bold text-slate-900">Обучение</span>
                     </div>
                     <div className="p-6">
                         <div className="text-xs text-slate-400 mb-3">18 Окт 2025</div>
