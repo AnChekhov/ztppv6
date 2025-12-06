@@ -16,14 +16,13 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       <header className="fixed w-full z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 md:px-8 h-24 flex items-center justify-between">
           
-          {/* 1. ЛОГОТИП И НАЗВАНИЕ (Без "СОЮЗ") */}
+          {/* 1. ЛОГОТИП И НАЗВАНИЕ */}
           <Link to="/" className="flex items-center gap-4 group shrink-0">
              <img 
                src="images/logo-TPP-indigo.png" 
                alt="ТПП Забайкальского края" 
                className="h-14 w-auto object-contain" 
              />
-             {/* Убран border-l и слово Союз */}
              <div className="hidden md:flex flex-col justify-center ml-2">
                <span className="text-sm font-extrabold text-tpp-dark leading-tight max-w-[220px] uppercase">
                  Торгово-промышленная палата <br/>
@@ -32,7 +31,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
              </div>
           </Link>
           
-          {/* 2. НАВИГАЦИЯ (Центральный блок) */}
+          {/* 2. НАВИГАЦИЯ */}
           <nav className="hidden xl:flex items-center gap-6 text-sm font-bold text-slate-700">
               <Link to="/" className="hover:text-tpp-secondary transition-colors">Услуги</Link>
               <Link to="/membership" className="hover:text-tpp-secondary transition-colors">Членство</Link>
@@ -40,9 +39,8 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
               <Link to="/news" className="hover:text-tpp-secondary transition-colors">Пресс-центр</Link>
           </nav>
             
-          {/* 3. КОНТАКТЫ И КНОПКА (Правый блок) */}
+          {/* 3. КОНТАКТЫ И КНОПКА */}
           <div className="hidden lg:flex items-center gap-8">
-            {/* Блок контактов */}
             <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-tpp-secondary shrink-0">
                     <Phone size={20} strokeWidth={2.5} />
@@ -53,19 +51,18 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 </div>
             </div>
 
-            {/* Кнопка */}
             <Button variant="lime" to="/join" className="!rounded-lg shadow-md px-6 py-2.5 text-sm">
                 Вступить в палату
             </Button>
           </div>
 
-          {/* Мобильное меню (Кнопка) */}
+          {/* Мобильное меню */}
           <button className="lg:hidden text-tpp-dark" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
 
-        {/* Мобильное меню (Выпадашка) */}
+        {/* Выпадающее меню */}
         {isMobileMenuOpen && (
           <div className="lg:hidden absolute top-24 left-0 w-full bg-white border-b border-slate-200 p-6 flex flex-col gap-4 shadow-2xl">
             <Link to="/" className="text-lg font-semibold py-2">Услуги</Link>
@@ -149,11 +146,13 @@ const HomePage = () => {
       {/* HERO SECTION */}
       <section className="relative bg-tpp-dark text-white min-h-[600px] flex items-center justify-center">
         
-        {/* Background Image & RADIAL Gradient Overlay */}
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center">
-             {/* Радиальный градиент: центр светлее, края уходят в почти черный */}
-             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-slate-900/60 via-slate-900/95 to-slate-950"></div>
-        </div>
+        {/* ФОН + ЗАТЕМНЕНИЕ (Реализовано через inline-style для точного контроля градиента поверх картинки) */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: "linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop')"
+          }}
+        />
         
         {/* Контент по центру */}
         <div className="max-w-4xl mx-auto px-6 relative z-10 text-center flex flex-col items-center">
@@ -162,7 +161,7 @@ const HomePage = () => {
             Официальный представитель бизнеса
           </span>
           
-          {/* Сокращенный заголовок */}
+          {/* Заголовок */}
           <h1 className="text-4xl md:text-6xl font-extrabold mb-8 leading-tight text-white">
             Укрепляем позиции Вашего бизнеса.
           </h1>
