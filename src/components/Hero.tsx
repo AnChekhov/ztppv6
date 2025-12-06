@@ -10,7 +10,7 @@ export const Hero: React.FC = () => {
       <div className="absolute inset-0 z-0">
           {/* 1. Текстура */}
           <img 
-            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop" 
+            src="images/hero-background.jpg" // Заменил URL на локальный путь
             alt="Business Background" 
             className="w-full h-full object-cover opacity-20"
           />
@@ -25,8 +25,11 @@ export const Hero: React.FC = () => {
       {/* Content */}
       <div className="max-w-5xl mx-auto px-6 relative z-10 text-center flex flex-col items-center">
         
-        {/* Badge */}
-        <div className="inline-block mb-8 px-5 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm shadow-xl animate-in fade-in zoom-in duration-700">
+        {/* Badge: Добавлен лаймовый кружок и flex-контейнер */}
+        <div className="inline-flex items-center mb-8 px-5 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm shadow-xl animate-in fade-in zoom-in duration-700">
+          {/* Лаймовый кружок */}
+          <div className="w-2.5 h-2.5 rounded-full bg-tpp-primary mr-3 shadow-md shadow-tpp-primary/50"></div>
+          
           <span className="text-xs font-bold tracking-widest text-slate-300 uppercase">
             Официальный представитель бизнеса
           </span>
