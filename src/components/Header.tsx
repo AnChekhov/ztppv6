@@ -21,7 +21,7 @@ export const Header: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto px-6 md:px-8 flex items-center justify-between">
         
-        {/* Логотип */}
+        {/* 1. ЛОГОТИП И НАЗВАНИЕ */}
         <Link to="/" className="flex items-center gap-4 group shrink-0">
            <img 
              src="images/logo-TPP-indigo.png" 
@@ -36,7 +36,7 @@ export const Header: React.FC = () => {
            </div>
         </Link>
         
-        {/* Навигация */}
+        {/* 2. НАВИГАЦИЯ */}
         <nav className="hidden xl:flex items-center gap-8 text-sm font-bold text-slate-600">
             <Link to="/" className="hover:text-blue-700 transition-colors duration-200">Услуги</Link>
             <Link to="/membership" className="hover:text-blue-700 transition-colors duration-200">Членство</Link>
@@ -44,7 +44,7 @@ export const Header: React.FC = () => {
             <Link to="/news" className="hover:text-blue-700 transition-colors duration-200">Пресс-центр</Link>
         </nav>
           
-        {/* Контакты и Кнопка */}
+        {/* 3. КОНТАКТЫ И КНОПКА */}
         <div className="hidden lg:flex items-center gap-6">
           <div className="text-right hidden xl:block">
              <a href="tel:+73022123456" className="block text-sm font-bold text-slate-900 hover:text-blue-700 transition-colors">
@@ -53,7 +53,8 @@ export const Header: React.FC = () => {
              <span className="text-[10px] font-medium text-slate-500 uppercase tracking-wider">пн-пт 9:00 - 18:00</span>
           </div>
 
-          <Button variant="lime" className="!rounded-lg shadow-md px-6 py-2.5 text-sm font-bold bg-tpp-primary text-slate-900 hover:bg-yellow-400 hover:-translate-y-0.5 transition-all">
+          {/* Кнопка - Amber/Yellow Accent */}
+          <Button variant="lime" className="!rounded-lg shadow-md px-6 py-2.5 text-sm font-bold bg-yellow-500 text-slate-900 hover:bg-yellow-400 hover:-translate-y-0.5 transition-all">
               Вступить в палату
           </Button>
         </div>
