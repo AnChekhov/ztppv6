@@ -4,7 +4,7 @@ import { Button } from './ui/Button';
 
 export const Hero: React.FC = () => {
   return (
-    <section className="relative bg-slate-900 text-white min-h-[75vh] flex items-center justify-center overflow-hidden pt-20">
+    <section className="relative bg-slate-900 text-white min-h-[65vh] flex items-center justify-center overflow-hidden pt-20">
       
       {/* BACKGROUND LAYERS (Слой глубокого синего и градиент) */}
       <div className="absolute inset-0 z-0">
