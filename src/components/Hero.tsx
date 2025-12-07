@@ -1,23 +1,6 @@
 import React from 'react';
 // Импортируем только нужные иконки
 import { ArrowRight, FileText, Scale, Shield, MapPin, CheckSquare } from 'lucide-react'; 
-// Предполагаем, что этот компонент Button корректно импортируется
-import { Button } from './ui/Button'; 
-
-// Вспомогательный компонент для карточки услуги
-const ServiceCard: React.FC<{ icon: React.ReactNode, title: string, subtitle: string }> = ({ icon, title, subtitle }) => (
-    <div className="flex items-center p-5 bg-white rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer w-full border border-slate-200">
-        <div className="p-3 bg-blue-50 text-blue-600 rounded-lg mr-4 flex-shrink-0">
-            {icon}
-        </div>
-        <div className="flex-grow">
-            <p className="font-bold text-sm text-slate-900">{title}</p>
-            <p className="text-xs text-slate-500 mt-1">{subtitle}</p>
-        </div>
-        <ArrowRight size={16} className="text-slate-400 ml-4 flex-shrink-0" />
-    </div>
-);
-
 
 export const Hero: React.FC = () => {
   return (
@@ -26,13 +9,13 @@ export const Hero: React.FC = () => {
       
       {/* BACKGROUND LAYERS */}
       <div className="absolute inset-0 z-0">
-          {/* 1. Текстура (Для лучшего соответствия скриншоту, может быть, лучше использовать чисто синий фон) */}
+          {/* 1. Фоновый цвет/заливка */}
           <div className="w-full h-full bg-slate-900/90"></div> 
           
-          {/* 2. Градиент для глубины (Deep Blue) */}
+          {/* 2. Градиент для глубины */}
           <div className="absolute inset-0 bg-gradient-to-tr from-slate-900 to-blue-900/40"></div>
           
-          {/* 3. Синее свечение (Для эффекта, как на скриншоте) */}
+          {/* 3. Синее свечение */}
           <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-bl from-blue-900/30 to-transparent blur-3xl rounded-full translate-x-1/3 -translate-y-1/3"></div>
       </div>
       
@@ -51,7 +34,7 @@ export const Hero: React.FC = () => {
                         </span>
                     </div>
                     
-                    {/* Headline - Текст взят из Снимка экрана 21.09.04.jpg */}
+                    {/* Headline */}
                     <h1 className="text-5xl lg:text-6xl font-extrabold mb-4 leading-tight tracking-tight drop-shadow-lg max-w-xl">
                         Бизнес без границ <br />
                         и юридических рисков
@@ -72,14 +55,16 @@ export const Hero: React.FC = () => {
                         </div>
                     </div>
 
-                    {/* Buttons */}
+                    {/* Buttons - ИСПОЛЬЗУЕМ СТАНДАРТНЫЕ HTML-КНОПКИ */}
                     <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-                        <Button variant="lime" className="h-14 px-8 text-lg !rounded-lg shadow-lg shadow-yellow-500/20 bg-yellow-500 text-slate-900 hover:bg-yellow-400 hover:-translate-y-1 transition-transform duration-300">
+                        {/* Кнопка 1: Янтарная */}
+                        <button className="h-14 px-8 text-lg rounded-lg font-bold shadow-lg shadow-yellow-500/20 bg-yellow-500 text-slate-900 hover:bg-yellow-400 hover:-translate-y-1 transition-transform duration-300 flex items-center justify-center">
                             Получить консультацию <ArrowRight size={20} className="ml-2"/>
-                        </Button>
-                        <Button variant="outline" className="h-14 px-8 text-lg !rounded-lg border-2 border-white/20 text-white hover:bg-white/10 hover:text-white hover:border-white transition-all duration-300">
+                        </button>
+                        {/* Кнопка 2: Outline */}
+                        <button className="h-14 px-8 text-lg rounded-lg font-medium border-2 border-white/20 text-white hover:bg-white/10 hover:text-white hover:border-white transition-all duration-300 flex items-center justify-center">
                             Стать партнером <ArrowRight size={20} className="ml-2"/>
-                        </Button>
+                        </button>
                     </div>
 
                 </div>
@@ -91,21 +76,41 @@ export const Hero: React.FC = () => {
                     </p>
                     
                     <div className="space-y-4">
-                        <ServiceCard 
-                            icon={<FileText size={24} />} 
-                            title="Сертификаты происхождения (СТ-1)"
-                            subtitle="Для экспорта и госзакупок. Оформление за 1 день."
-                        />
-                        <ServiceCard 
-                            icon={<Scale size={24} />} 
-                            title="Товарная экспертиза"
-                            subtitle="Приказы по 44-ФЗ, оценка качества и ущерба."
-                        />
-                        <ServiceCard 
-                            icon={<Shield size={24} />} 
-                            title="Юридическая защита"
-                            subtitle="Форсмажор, арбитраж, проверка контрагентов."
-                        />
+                        {/* Card 1 */}
+                        <div className="flex items-center p-5 bg-white rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer w-full border border-slate-200">
+                            <div className="p-3 bg-blue-50 text-blue-600 rounded-lg mr-4 flex-shrink-0">
+                                <FileText size={24} />
+                            </div>
+                            <div className="flex-grow">
+                                <p className="font-bold text-sm text-slate-900">Сертификаты происхождения (СТ-1)</p>
+                                <p className="text-xs text-slate-500 mt-1">Для экспорта и госзакупок. Оформление за 1 день.</p>
+                            </div>
+                            <ArrowRight size={16} className="text-slate-400 ml-4 flex-shrink-0" />
+                        </div>
+                        
+                        {/* Card 2 */}
+                        <div className="flex items-center p-5 bg-white rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer w-full border border-slate-200">
+                            <div className="p-3 bg-blue-50 text-blue-600 rounded-lg mr-4 flex-shrink-0">
+                                <Scale size={24} />
+                            </div>
+                            <div className="flex-grow">
+                                <p className="font-bold text-sm text-slate-900">Товарная экспертиза</p>
+                                <p className="text-xs text-slate-500 mt-1">Приказы по 44-ФЗ, оценка качества и ущерба.</p>
+                            </div>
+                            <ArrowRight size={16} className="text-slate-400 ml-4 flex-shrink-0" />
+                        </div>
+
+                        {/* Card 3 */}
+                        <div className="flex items-center p-5 bg-white rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer w-full border border-slate-200">
+                            <div className="p-3 bg-blue-50 text-blue-600 rounded-lg mr-4 flex-shrink-0">
+                                <Shield size={24} />
+                            </div>
+                            <div className="flex-grow">
+                                <p className="font-bold text-sm text-slate-900">Юридическая защита</p>
+                                <p className="text-xs text-slate-500 mt-1">Форсмажор, арбитраж, проверка контрагентов.</p>
+                            </div>
+                            <ArrowRight size={16} className="text-slate-400 ml-4 flex-shrink-0" />
+                        </div>
                     </div>
                     
                     <div className="text-right mt-5">
