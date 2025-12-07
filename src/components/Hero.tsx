@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, FileText, Scale, Shield, MapPin, CheckSquare } from 'lucide-react'; // Добавлены новые иконки
+import { ArrowRight, FileText, Scale, Shield, MapPin, CheckSquare } from 'lucide-react'; 
 import { Button } from './ui/Button';
 
 // Компонент для карточки услуги
@@ -37,12 +37,12 @@ export const Hero: React.FC = () => {
           <div className="absolute top-0 right-0 w-2/3 h-full bg-gradient-to-bl from-blue-900/20 to-transparent blur-3xl rounded-full translate-x-1/4 -translate-y-1/4"></div>
       </div>
       
-      {/* Content Container (Используем flex для разделения контента и услуг) */}
+      {/* Content Container (Используем Grid Layout для точного разделения) */}
       <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
-            <div className="flex flex-col md:flex-row justify-between gap-16 md:gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16">
                 
-                {/* 1. Left Column: Headline and Buttons */}
-                <div className="max-w-xl text-left md:pt-0"> {/* Убрали text-center */}
+                {/* 1. Left Column: Headline and Buttons (md:col-span-7) */}
+                <div className="md:col-span-7 text-left">
                     
                     {/* Badge: Amber Accent */}
                     <div className="inline-flex items-center mb-6 px-5 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm shadow-xl animate-in fade-in zoom-in duration-700">
@@ -52,21 +52,21 @@ export const Hero: React.FC = () => {
                         </span>
                     </div>
                     
-                    {/* Headline - ВОЗВРАЩЕН ИСХОДНЫЙ ТЕКСТ */}
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight text-white tracking-tight drop-shadow-lg">
+                    {/* Headline - Увеличен размер (text-5xl lg:text-6xl) */}
+                    <h1 className="text-5xl lg:text-6xl font-extrabold mb-6 leading-tight text-white tracking-tight drop-shadow-lg max-w-xl">
                         Укрепляем позиции <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">
                             Вашего бизнеса
                         </span>
                     </h1>
                     
-                    {/* Paragraph - ВОЗВРАЩЕН ИСХОДНЫЙ ТЕКСТ */}
-                    <p className="text-lg md:text-xl text-slate-300 mb-8 leading-relaxed">
+                    {/* Paragraph - Увеличен размер (text-xl) */}
+                    <p className="text-xl text-slate-300 mb-8 max-w-2xl leading-relaxed">
                         Помогаем предпринимателям выходить на рынок Китая, оформляем сертификаты происхождения и защищаем ваши интересы на государственном уровне.
                     </p>
                     
-                    {/* Tags (Оставляем те, что были на скриншоте, для демонстрации) */}
-                    <div className="flex gap-4 mb-10">
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-4 mb-10">
                         <div className="inline-flex items-center px-4 py-2 rounded-full border border-white/20 bg-white/10 text-white text-sm font-semibold">
                             <CheckSquare size={16} className="mr-2 text-yellow-500" /> Гос. аккредитация
                         </div>
@@ -88,9 +88,9 @@ export const Hero: React.FC = () => {
 
                 </div>
                 
-                {/* 2. Right Column: Popular Services Block */}
-                <div className="md:w-[450px] w-full mt-10 md:mt-0 pt-0 md:pt-14 flex-shrink-0">
-                    <p className="text-sm font-semibold text-slate-400 mb-3 uppercase tracking-widest text-right md:text-left">
+                {/* 2. Right Column: Popular Services Block (md:col-span-5) */}
+                <div className="md:col-span-5 w-full mt-10 md:mt-0 pt-0 md:pt-14 flex-shrink-0">
+                    <p className="text-sm font-semibold text-slate-400 mb-4 uppercase tracking-widest text-right md:text-left">
                         Популярные услуги
                     </p>
                     
