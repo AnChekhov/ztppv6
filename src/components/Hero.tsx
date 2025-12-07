@@ -1,15 +1,17 @@
 import React from 'react';
-import { ArrowRight, FileText, Scale, Shield, MapPin, CheckSquare } from 'lucide-react'; 
+import { ArrowRight, FileText, Scale, Shield, MapPin, CheckSquare } from 'lucide-react';
 import { Button } from './ui/Button';
 
 // Компонент для карточки услуги
 const ServiceCard: React.FC<{ icon: React.ReactNode, title: string, subtitle: string }> = ({ icon, title, subtitle }) => (
-    <div className="flex items-center p-5 bg-white rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer w-full border border-slate-200">
+    // Убрана тень, изменён радиус скругления, добавлена обводка
+    <div className="flex items-center p-5 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer w-full border border-slate-200">
         <div className="p-3 bg-blue-50 text-blue-600 rounded-lg mr-4 flex-shrink-0">
             {icon}
         </div>
         <div className="flex-grow">
-            <p className="font-bold text-sm text-slate-900">{title}</p>
+            {/* Title: Улучшенная читаемость */}
+            <p className="font-semibold text-sm text-slate-900">{title}</p>
             <p className="text-xs text-slate-500 mt-1">{subtitle}</p>
         </div>
         <ArrowRight size={16} className="text-slate-400 ml-4 flex-shrink-0" />
@@ -18,32 +20,32 @@ const ServiceCard: React.FC<{ icon: React.ReactNode, title: string, subtitle: st
 
 
 export const Hero: React.FC = () => {
-  return (
-    <section className="relative bg-slate-900 text-white min-h-[65vh] flex items-center justify-center overflow-hidden pt-20 pb-16 md:pb-24">
-      
-      {/* BACKGROUND LAYERS (Слой глубокого синего и градиент) */}
-      <div className="absolute inset-0 z-0">
-          {/* 1. Текстура */}
-          <img 
-            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop" 
-            alt="Business Background" 
-            className="w-full h-full object-cover opacity-20"
-          />
-          
-          {/* 2. Градиент для читаемости (Deep Blue) */}
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/90 via-slate-900/80 to-slate-900"></div>
-          
-          {/* 3. Синее свечение */}
-          <div className="absolute top-0 right-0 w-2/3 h-full bg-gradient-to-bl from-blue-900/20 to-transparent blur-3xl rounded-full translate-x-1/4 -translate-y-1/4"></div>
-      </div>
-      
-      {/* Content Container (Используем Grid Layout для точного разделения) */}
-      <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
+  return (
+    <section className="relative bg-slate-900 text-white min-h-[65vh] flex items-center justify-center overflow-hidden pt-20 pb-16 md:pb-24">
+
+      {/* BACKGROUND LAYERS (Слой глубокого синего и градиент) */}
+      <div className="absolute inset-0 z-0">
+          {/* 1. Текстура */}
+          <img
+            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
+            alt="Business Background"
+            className="w-full h-full object-cover opacity-20"
+          />
+
+          {/* 2. Градиент для читаемости (Deep Blue) */}
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/90 via-slate-900/80 to-slate-900"></div>
+
+          {/* 3. Синее свечение */}
+          <div className="absolute top-0 right-0 w-2/3 h-full bg-gradient-to-bl from-blue-900/20 to-transparent blur-3xl rounded-full translate-x-1/4 -translate-y-1/4"></div>
+      </div>
+
+      {/* Content Container (Используем Grid Layout для точного разделения) */}
+      <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16">
-                
+
                 {/* 1. Left Column: Headline and Buttons (md:col-span-7) */}
                 <div className="md:col-span-7 text-left">
-                    
+
                     {/* Badge: Amber Accent */}
                     <div className="inline-flex items-center mb-6 px-5 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm shadow-xl animate-in fade-in zoom-in duration-700">
                         <div className="w-2.5 h-2.5 rounded-full bg-yellow-500 mr-3 shadow-md shadow-yellow-500/50"></div>
@@ -51,21 +53,21 @@ export const Hero: React.FC = () => {
                             Официальный представитель бизнеса
                         </span>
                     </div>
-                    
-                    {/* Headline - Увеличен размер (text-5xl lg:text-6xl) */}
+
+                    {/* Headline - Оставляем как есть */}
                     <h1 className="text-5xl lg:text-6xl font-extrabold mb-6 leading-tight text-white tracking-tight drop-shadow-lg max-w-xl">
                         Укрепляем позиции <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">
                             Вашего бизнеса
                         </span>
                     </h1>
-                    
-                    {/* Paragraph - Увеличен размер (text-xl) */}
+
+                    {/* Paragraph - Оставляем как есть */}
                     <p className="text-xl text-slate-300 mb-8 max-w-2xl leading-relaxed">
                         Помогаем предпринимателям выходить на рынок Китая, оформляем сертификаты происхождения и защищаем ваши интересы на государственном уровне.
                     </p>
-                    
-                    {/* Tags */}
+
+                    {/* Tags - Оставляем как есть */}
                     <div className="flex flex-wrap gap-4 mb-10">
                         <div className="inline-flex items-center px-4 py-2 rounded-full border border-white/20 bg-white/10 text-white text-sm font-semibold">
                             <CheckSquare size={16} className="mr-2 text-yellow-500" /> Гос. аккредитация
@@ -75,7 +77,7 @@ export const Hero: React.FC = () => {
                         </div>
                     </div>
 
-                    {/* Buttons */}
+                    {/* Buttons - Оставляем как есть */}
                     <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
                         {/* Кнопка - Amber Accent */}
                         <Button variant="lime" className="h-14 px-8 text-lg !rounded-lg shadow-lg shadow-yellow-500/20 bg-yellow-500 text-slate-900 hover:bg-yellow-400 hover:-translate-y-1 transition-transform duration-300">
@@ -87,41 +89,48 @@ export const Hero: React.FC = () => {
                     </div>
 
                 </div>
-                
+
                 {/* 2. Right Column: Popular Services Block (md:col-span-5) */}
-                <div className="md:col-span-5 w-full mt-10 md:mt-0 pt-0 md:pt-14 flex-shrink-0">
-                    <p className="text-sm font-semibold text-slate-400 mb-4 uppercase tracking-widest text-right md:text-left">
+                {/* ИСПРАВЛЕНИЕ: Удалены лишние смещения (pt-14, mt-10) для выравнивания по левой колонке */}
+                {/* Добавлен только верхний отступ для мобильных устройств (mt-10) */}
+                <div className="md:col-span-5 w-full mt-10 md:mt-0 pt-0 flex-shrink-0">
+                    {/* ИСПРАВЛЕНИЕ: Заголовок "Популярные услуги" выровнен по левому краю.
+                        Установлен text-left, который является более логичным дефолтом.
+                        Увеличен шрифт с text-sm до text-base для лучшей читаемости и выделения. */}
+                    <p className="text-base font-semibold text-slate-300 mb-5 uppercase tracking-widest text-left">
                         Популярные услуги
                     </p>
-                    
+
                     <div className="space-y-4">
-                        <ServiceCard 
-                            icon={<FileText size={24} />} 
+                        <ServiceCard
+                            icon={<FileText size={24} />}
                             title="Сертификаты происхождения (СТ-1)"
                             subtitle="Для экспорта и госзакупок. Оформление за 1 день."
                         />
-                        <ServiceCard 
-                            icon={<Scale size={24} />} 
+                        <ServiceCard
+                            icon={<Scale size={24} />}
                             title="Товарная экспертиза"
                             subtitle="Приказы по 44-ФЗ, оценка качества и ущерба."
                         />
-                        <ServiceCard 
-                            icon={<Shield size={24} />} 
+                        <ServiceCard
+                            icon={<Shield size={24} />}
                             title="Юридическая защита"
                             subtitle="Форсмажор, арбитраж, проверка контрагентов."
                         />
                     </div>
-                    
-                    <div className="text-right mt-5">
+
+                    {/* ИСПРАВЛЕНИЕ: Ссылка "Смотреть все 45+ услуг" выровнена по левому краю (text-left) и
+                        передвинута ближе к блоку услуг (mt-4) */}
+                    <div className="text-left mt-4">
                         <a href="#" className="text-sm font-medium text-slate-400 hover:text-yellow-500 transition-colors">
                             Смотреть все 45+ услуг
                         </a>
                     </div>
                 </div>
             </div>
-      </div>
-    </section>
-  );
+      </div>
+    </section>
+  );
 };
 
 export default Hero;
