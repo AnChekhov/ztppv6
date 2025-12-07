@@ -1,7 +1,6 @@
 import React from 'react';
-// Импортируем только нужные иконки для Hero-секции
 import { ArrowRight, FileText, Scale, Shield, MapPin, CheckSquare } from 'lucide-react'; 
-import { Button } from './ui/Button'; // Предполагаем, что компонент Button существует
+import { Button } from './ui/Button'; 
 
 // Компонент для карточки услуги
 const ServiceCard: React.FC<{ icon: React.ReactNode, title: string, subtitle: string }> = ({ icon, title, subtitle }) => (
@@ -11,7 +10,6 @@ const ServiceCard: React.FC<{ icon: React.ReactNode, title: string, subtitle: st
         </div>
         <div className="flex-grow">
             <p className="font-bold text-sm text-slate-900">{title}</p>
-            {/* Исправлен текст подзаголовка для соответствия скриншоту/детализации */}
             <p className="text-xs text-slate-500 mt-1">{subtitle}</p>
         </div>
         <ArrowRight size={16} className="text-slate-400 ml-4 flex-shrink-0" />
@@ -21,7 +19,8 @@ const ServiceCard: React.FC<{ icon: React.ReactNode, title: string, subtitle: st
 
 export const Hero: React.FC = () => {
   return (
-    <section className="relative bg-slate-900 text-white min-h-[65vh] flex items-center justify-center overflow-hidden pt-20 pb-16 md:pb-24">
+    {/* ИЗМЕНЕНИЕ: Убираем pt-20 и pb-16/pb-24. Добавляем items-center для вертикальной центровки. */}
+    <section className="relative bg-slate-900 text-white min-h-[65vh] flex items-center justify-center overflow-hidden">
       
       {/* BACKGROUND LAYERS */}
       <div className="absolute inset-0 z-0">
@@ -39,14 +38,15 @@ export const Hero: React.FC = () => {
           <div className="absolute top-0 right-0 w-2/3 h-full bg-gradient-to-bl from-blue-900/20 to-transparent blur-3xl rounded-full translate-x-1/4 -translate-y-1/4"></div>
       </div>
       
-      {/* Content Container (GRID 7/5) */}
-      <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
+      {/* Content Container (GRID 7/5) - ДОБАВЛЕНЫ pt-12 и pb-12 для минимального внутреннего отступа */}
+      <div className="max-w-7xl mx-auto px-6 relative z-10 w-full pt-12 pb-12">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16">
                 
                 {/* 1. Left Column: Headline and Buttons (md:col-span-7) */}
-                <div className="md:col-span-7 text-left pt-5">
+                {/* ИЗМЕНЕНИЕ: Убран pt-5, так как вертикальное выравнивание теперь контролирует родительский flexbox */}
+                <div className="md:col-span-7 text-left"> 
                     
-                    {/* Badge: Amber Accent - ТИПОГРАФИКА: text-sm, mb-6 */}
+                    {/* Badge: Amber Accent */}
                     <div className="inline-flex items-center mb-6 px-5 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm shadow-xl animate-in fade-in zoom-in duration-700">
                         <div className="w-2.5 h-2.5 rounded-full bg-yellow-500 mr-3 shadow-md shadow-yellow-500/50"></div>
                         <span className="text-sm font-bold tracking-widest text-slate-300 uppercase">
@@ -54,7 +54,7 @@ export const Hero: React.FC = () => {
                         </span>
                     </div>
                     
-                    {/* Headline - ТИПОГРАФИКА: mb-4, max-w-xl */}
+                    {/* Headline */}
                     <h1 className="text-5xl lg:text-6xl font-extrabold mb-4 leading-tight tracking-tight drop-shadow-lg max-w-xl">
                         Укрепляем позиции <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">
@@ -62,12 +62,12 @@ export const Hero: React.FC = () => {
                         </span>
                     </h1>
                     
-                    {/* Paragraph - ТИПОГРАФИКА: text-xl, mb-6, max-w-xl */}
+                    {/* Paragraph */}
                     <p className="text-xl text-slate-300 mb-6 max-w-xl leading-relaxed">
                         Помогаем предпринимателям выходить на рынок Китая, оформляем сертификаты происхождения и защищаем ваши интересы на государственном уровне.
                     </p>
                     
-                    {/* Tags - КОМПОНОВКА: mb-8 */}
+                    {/* Tags */}
                     <div className="flex flex-wrap gap-4 mb-8">
                         <div className="inline-flex items-center px-4 py-2 rounded-full border border-white/20 bg-white/10 text-white text-sm font-semibold">
                             <CheckSquare size={16} className="mr-2 text-yellow-500" /> Гос. аккредитация
@@ -91,7 +91,8 @@ export const Hero: React.FC = () => {
                 </div>
                 
                 {/* 2. Right Column: Popular Services Block (md:col-span-5) */}
-                <div className="md:col-span-5 w-full mt-10 md:mt-0 pt-0 md:pt-14 flex-shrink-0">
+                {/* ИЗМЕНЕНИЕ: Убран mt-10, pt-14, так как вертикальное выравнивание теперь контролирует родительский flexbox */}
+                <div className="md:col-span-5 w-full flex-shrink-0 self-center"> 
                     <p className="text-sm font-semibold text-slate-400 mb-4 uppercase tracking-widest text-right md:text-left">
                         Популярные услуги
                     </p>
