@@ -19,7 +19,8 @@ const ServiceCard: React.FC<{ icon: React.ReactNode, title: string, subtitle: st
 
 export const Hero: React.FC = () => {
   return (
-    {/* ИЗМЕНЕНИЕ 1: Добавлен items-center для центровки. Удалены pt-20 и pb-16/md:pb-24 */}
+    {/* КРАЙНИЙ РАБОЧИЙ КОД: Сохраняем все классы, кроме pt/pb, которые вызывают ошибки/нецентровку. */}
+    {/* Восстанавливаем items-center, но убираем pt/pb из секции */}
     <section className="relative bg-slate-900 text-white min-h-[65vh] flex items-center justify-center overflow-hidden">
       
       {/* BACKGROUND LAYERS (Слой глубокого синего и градиент) */}
@@ -39,7 +40,7 @@ export const Hero: React.FC = () => {
       </div>
       
       {/* Content Container (Используем Grid Layout для точного разделения) */}
-      {/* ИЗМЕНЕНИЕ 2: pt-20 и pb-12 добавлены сюда для компенсации и минимальных отступов */}
+      {/* ИЗМЕНЕНИЕ 1: Добавляем pt-20 и pb-12 для создания минимальных отступов */}
       <div className="max-w-7xl mx-auto px-6 relative z-10 w-full pt-20 pb-12">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16">
                 
