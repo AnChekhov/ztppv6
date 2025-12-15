@@ -1,7 +1,7 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 
-// Убедитесь, что файлы лежат именно по этому пути: src/components/ИмяФайла.tsx
+// Импорт компонентов главной страницы
 import Header from './components/Header';
 import Hero from './components/Hero';
 import ServicesGrid from './components/ServicesGrid';
@@ -9,31 +9,81 @@ import CallToAction from './components/CallToAction';
 import NewsSection from './components/NewsSection';
 import Footer from './components/Footer';
 
+// 1. КОМПОНЕНТ: Прокрутка наверх при переходе
+// Без этого при клике на ссылку в футере новая страница откроется в самом низу
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
+
+// 2. КОМПОНЕНТ: Универсальная страница-заглушка
+// Она позволяет сделать ссылки рабочими до того, как мы сверстаем реальный контент
+interface PlaceholderProps {
+  title: string;
+  description?: string;
+}
+
+const PagePlaceholder: React.FC<PlaceholderProps> = ({ title, description }) => (
+  <div className="pt-32 pb-24 px-6 max-w-4xl mx-auto min-h-[60vh]">
+    <div className="inline-block px-3 py-1 mb-6 text-xs font-bold tracking-wider text-blue-600 uppercase bg-blue-50 rounded-full">
+      Раздел в разработке
+    </div>
+    <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">
+      {title}
+    </h1>
+    <p className="text-xl text-slate-600 leading-relaxed border-l-4 border-yellow-500 pl-6">
+      {description || "Мы работаем над наполнением этого раздела. Актуальную информацию вы можете получить по телефону +7 (3022) 12-34-56."}
+    </p>
+  </div>
+);
+
+// 3. КОМПОНЕНТ: Главная страница (Сборка блоков)
 const HomePage = () => {
   return (
-    <div className="flex flex-col min-h-screen">
+    <>
       <Hero />
       <ServicesGrid />
       <CallToAction />
       <NewsSection />
-    </div>
+    </>
   );
 };
 
+// 4. ОСНОВНОЕ ПРИЛОЖЕНИЕ (Роутинг)
 const App: React.FC = () => {
   return (
-    <div className="min-h-screen bg-white text-slate-800 font-sans">
+    <div className="min-h-screen font-sans flex flex-col bg-tpp-surface text-slate-900">
+      <ScrollToTop />
       <Header />
-      <main>
+      
+      <main className="flex-grow">
         <Routes>
+          {/* ГЛАВНАЯ */}
           <Route path="/" element={<HomePage />} />
-          <Route path="/services" element={<div className="max-w-7xl mx-auto p-10 pt-32"><h1 className="text-3xl font-bold">Раздел Услуг</h1><p>В разработке...</p></div>} />
-          <Route path="/news" element={<div className="max-w-7xl mx-auto p-10 pt-32"><h1 className="text-3xl font-bold">Новости</h1><p>В разработке...</p></div>} />
-          <Route path="/join" element={<div className="max-w-7xl mx-auto p-10 pt-32"><h1 className="text-3xl font-bold">Вступление</h1><p>В разработке...</p></div>} />
-          <Route path="/ved" element={<div className="max-w-7xl mx-auto p-10 pt-32"><h1 className="text-3xl font-bold">ВЭД</h1><p>В разработке...</p></div>} />
-          <Route path="/membership" element={<div className="max-w-7xl mx-auto p-10 pt-32"><h1 className="text-3xl font-bold">Членство</h1><p>В разработке...</p></div>} />
+
+          {/* СТРАНИЦЫ ИЗ ХЕДЕРА */}
+          <Route path="/services" element={<PagePlaceholder title="Каталог услуг" description="Полный перечень услуг для бизнеса: от сертификации до переводов." />} />
+          <Route path="/membership" element={<PagePlaceholder title="Членство в Союзе" description="Как вступить в ТПП, преимущества и реестр членов." />} />
+          <Route path="/ved" element={<PagePlaceholder title="ВЭД и Китай" description="Поиск партнеров, бизнес-миссии и сопровождение контрактов." />} />
+          <Route path="/news" element={<PagePlaceholder title="Пресс-центр" description="Новости, анонсы мероприятий и отчеты о деятельности." />} />
+
+          {/* СТРАНИЦЫ ИЗ ФУТЕРА */}
+          <Route path="/about" element={<PagePlaceholder title="Об организации" description="История Палаты, руководство и документы." />} />
+          <Route path="/members" element={<PagePlaceholder title="Реестр членов" description="Список компаний, входящих в Союз «ТПП Забайкальского края»." />} />
+          <Route path="/committees" element={<PagePlaceholder title="Комитеты и комиссии" description="Отраслевые объединения для решения системных проблем бизнеса." />} />
+          
+          {/* Конкретные услуги */}
+          <Route path="/services/cert" element={<PagePlaceholder title="Сертификация" description="Выдача сертификатов происхождения товаров (СТ-1, Форма А и др)." />} />
+          <Route path="/services/expert" element={<PagePlaceholder title="Товарная экспертиза" description="Независимая оценка качества, количества и комплектности товаров." />} />
+          <Route path="/services/law" element={<PagePlaceholder title="Юридические услуги" description="Консультации, представительство в суде и свидетельствование форс-мажора." />} />
         </Routes>
       </main>
+
       <Footer />
     </div>
   );
