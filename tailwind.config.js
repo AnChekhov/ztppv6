@@ -8,13 +8,15 @@ export default {
     extend: {
       colors: {
         tpp: {
-          // МЕНЯЕМ ЛАЙМ НА ЗОЛОТОЙ (Yellow-500 из Tailwind)
+          // ИЗМЕНЕНО: Теперь это Золотой (Yellow-500), а не Лайм
           primary: '#EAB308',   
-          primaryHover: '#CA8A04', // Yellow-600 для ховера
           
-          dark: '#0F172A',      // Slate 900 (Основа)
+          // ИЗМЕНЕНО: Цвет при наведении (Yellow-600)
+          primaryHover: '#CA8A04',
+
+          dark: '#0F172A',      // Slate 900 (Основа - как в Hero)
           secondary: '#06B6D4', // Electric Cyan (Поддержка)
-          surface: '#F8FAFC',   // Slate 50 (Фон)
+          surface: '#F8FAFC',   // Slate 50 (Фон страниц)
         }
       },
       fontFamily: {
