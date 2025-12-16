@@ -8,7 +8,8 @@ import {
   UploadCloud, 
   Phone, 
   Mail, 
-  Globe
+  Globe,
+  CheckCircle // Используем для списка документов
 } from 'lucide-react';
 
 export const CertificationPage: React.FC = () => {
@@ -16,10 +17,8 @@ export const CertificationPage: React.FC = () => {
     <div className="font-sans text-slate-900 bg-white">
       
       {/* 1. HERO SECTION */}
-      {/* ✅ ИЗМЕНЕНО: Высота min-h-[65vh] и flex-выравнивание */}
       <section className="relative bg-slate-900 text-white overflow-hidden min-h-[65vh] flex items-center justify-center">
         <div className="absolute inset-0 opacity-20">
-            {/* Фоновое изображение */}
             <img 
               src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=2070&auto=format&fit=crop" 
               alt="Background" 
@@ -28,7 +27,6 @@ export const CertificationPage: React.FC = () => {
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/95 to-slate-900/50"></div>
         
-        {/* ✅ ИЗМЕНЕНО: Отступы pt-32 pb-16 для оптического центра */}
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16">
             <div className="max-w-3xl">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
@@ -53,7 +51,8 @@ export const CertificationPage: React.FC = () => {
       {/* 2. ТИПЫ СЕРТИФИКАТОВ */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Выберите правильный тип сертификата</h2>
+          {/* ✅ ЗАГОЛОВОК ОБНОВЛЕН */}
+          <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Выберите нужный Вам тип сертификата</h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
@@ -82,7 +81,6 @@ export const CertificationPage: React.FC = () => {
               </div>
             ))}
             
-            {/* Карточка "Не знаете что выбрать?" */}
             <div className="bg-slate-900 rounded-2xl p-6 shadow-sm flex flex-col justify-center items-center text-center">
               <h3 className="text-white font-bold text-xl mb-3">Нужна помощь?</h3>
               <p className="text-slate-400 text-sm mb-6">Наши эксперты помогут определить нужный тип сертификата для вашего груза.</p>
@@ -98,21 +96,36 @@ export const CertificationPage: React.FC = () => {
       <section className="py-16 bg-slate-50 border-y border-slate-100">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-200">
+            {/* Карточка 1 */}
             <div className="text-center px-4 pt-4 md:pt-0">
               <Banknote className="mx-auto text-blue-600 mb-4 h-10 w-10" />
-              <div className="text-4xl font-extrabold text-slate-900 mb-2">от 2288 ₽</div>
+              {/* ✅ Значение со звездочкой */}
+              <div className="text-4xl font-extrabold text-slate-900 mb-2">от 2288 ₽ *</div>
               <p className="text-slate-500">Стоимость услуги<br/><span className="text-sm">(зависит от вида товара)</span></p>
             </div>
+            
+            {/* Карточка 2 */}
             <div className="text-center px-4 pt-4 md:pt-0">
               <Clock className="mx-auto text-blue-600 mb-4 h-10 w-10" />
-              <div className="text-4xl font-extrabold text-slate-900 mb-2">1-2 дня</div>
+              {/* ✅ Значение со звездочкой и новый текст */}
+              <div className="text-4xl font-extrabold text-slate-900 mb-2">от 1 дня *</div>
               <p className="text-slate-500">Срок оформления<br/><span className="text-sm">(после подачи документов)</span></p>
             </div>
+            
+            {/* Карточка 3 */}
             <div className="text-center px-4 pt-4 md:pt-0">
               <Calendar className="mx-auto text-blue-600 mb-4 h-10 w-10" />
-              <div className="text-4xl font-extrabold text-slate-900 mb-2">12 мес</div>
+              {/* ✅ Значение со звездочкой */}
+              <div className="text-4xl font-extrabold text-slate-900 mb-2">12 месяцев *</div>
               <p className="text-slate-500">Срок действия<br/><span className="text-sm">(с даты выдачи)</span></p>
             </div>
+          </div>
+
+          {/* ✅ СНОСКА С ЮРИДИЧЕСКИМ УТОЧНЕНИЕМ */}
+          <div className="mt-4 text-center">
+            <p className="text-sm text-slate-400">
+              * Стоимость, сроки оформления и период действия сертификата зависят от номенклатуры товара и страны назначения. Точную информацию уточнит специалист Палаты после анализа документов.
+            </p>
           </div>
         </div>
       </section>
@@ -123,7 +136,6 @@ export const CertificationPage: React.FC = () => {
           <h2 className="text-3xl font-extrabold text-slate-900 mb-16 text-center">Как получить сертификат: просто и понятно</h2>
           
           <div className="relative">
-            {/* Line for Desktop */}
             <div className="hidden md:block absolute top-6 left-0 w-full h-1 bg-slate-100 rounded">
                 <div className="h-full bg-blue-100 w-3/4 rounded"></div>
             </div>
@@ -136,7 +148,6 @@ export const CertificationPage: React.FC = () => {
                 { title: 'Получение', desc: 'Получите готовый сертификат на защищенном бланке в офисе Палаты.' },
               ].map((step, idx) => (
                 <div key={idx} className="relative pt-8 md:pt-16 group">
-                   {/* Circle Number */}
                   <div className="absolute top-0 left-0 md:left-1/2 md:-translate-x-1/2 w-12 h-12 bg-white border-4 border-blue-600 text-blue-600 rounded-full flex items-center justify-center font-bold text-xl z-10 shadow-sm group-hover:bg-blue-600 group-hover:text-white transition-colors">
                     {idx + 1}
                   </div>
@@ -170,19 +181,24 @@ export const CertificationPage: React.FC = () => {
             ].map((doc, idx) => (
               <div key={idx} className="flex flex-col md:flex-row items-start md:items-center justify-between p-6 border-b border-slate-100 last:border-0 hover:bg-blue-50/30 transition-colors">
                 <div className="flex items-start gap-4">
+                  {/* ✅ ИКОНКА ЗАМЕНЕНА НА CheckCircle */}
                   <div className="p-2 bg-blue-100 text-blue-600 rounded-lg mt-1 md:mt-0">
-                    <Download size={20} />
+                    <CheckCircle size={20} />
                   </div>
                   <div>
                     <h4 className="font-bold text-slate-900 text-lg">{doc.name}</h4>
                     <p className="text-slate-500 text-sm">{doc.req}</p>
                   </div>
                 </div>
-                {doc.link && (
+                
+                {/* ✅ ЛОГИКА ОТОБРАЖЕНИЯ: Ссылка или Тире */}
+                {doc.link ? (
                   <a href="#" className="mt-4 md:mt-0 flex items-center text-blue-600 font-bold text-sm hover:text-blue-800 transition-colors whitespace-nowrap">
                     <Download size={16} className="mr-2" />
                     Скачать бланк
                   </a>
+                ) : (
+                   <div className="mt-4 md:mt-0 text-blue-600 font-bold text-lg select-none px-4">—</div>
                 )}
               </div>
             ))}
@@ -199,7 +215,6 @@ export const CertificationPage: React.FC = () => {
             {/* Manager 1 */}
             <div className="flex items-center gap-6 bg-slate-50 p-6 rounded-2xl w-full md:w-auto md:min-w-[400px] hover:shadow-lg transition-shadow">
               <div className="w-20 h-20 rounded-full bg-slate-300 overflow-hidden shrink-0 border-2 border-white shadow-md">
-                 {/* Placeholder Avatar */}
                  <div className="w-full h-full flex items-center justify-center bg-blue-600 text-white text-2xl font-bold">И</div>
               </div>
               <div>
