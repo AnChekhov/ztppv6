@@ -1,5 +1,7 @@
 import React from 'react';
 import { FileCheck, Globe, Scale, Users, BookOpen, Container, ChevronRight, ClipboardCheck, ArrowRight, FileText } from 'lucide-react';
+// ✅ ДОБАВЛЕНО: Импорт Link для навигации
+import { Link } from 'react-router-dom';
 import { Button } from './ui/Button';
 
 // --- КОМПОНЕНТ СТАНДАРТНОЙ КАРТОЧКИ (ДЛЯ НИЖНЕЙ СЕТКИ) ---
@@ -29,7 +31,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon: Icon, title, descriptio
   </div>
 );
 
-// --- КОМПОНЕНТ АКЦЕНТНОЙ КАРТОЧКИ (COMPACT & LIGHT ICON STYLE) ---
+// --- КОМПОНЕНТ АКЦЕНТНОЙ КАРТОЧКИ ---
 interface PriorityCardProps {
   icon: React.ElementType;
   title: string;
@@ -38,6 +40,7 @@ interface PriorityCardProps {
   badgeText: string;
   badgeStyle: 'green' | 'gray';
   buttonStyle: 'yellow' | 'dark';
+  link?: string; // ✅ ДОБАВЛЕНО: Опциональная ссылка
 }
 
 const PriorityCard: React.FC<PriorityCardProps> = ({ 
@@ -47,18 +50,17 @@ const PriorityCard: React.FC<PriorityCardProps> = ({
   buttonText, 
   badgeText,
   badgeStyle,
-  buttonStyle
+  buttonStyle,
+  link // ✅ Получаем ссылку
 }) => (
   <div className="bg-white rounded-[2rem] p-6 md:p-7 shadow-xl shadow-slate-200/60 border border-white flex flex-col h-full relative overflow-hidden transition-transform hover:-translate-y-1 duration-300">
     
-    {/* А. ВЕРХНЯЯ ЧАСТЬ: Иконка и Бейдж */}
+    {/* А. ВЕРХНЯЯ ЧАСТЬ */}
     <div className="flex justify-between items-start mb-5">
-      {/* Иконка: bg-blue-50 text-blue-600 */}
       <div className="w-14 h-14 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-105 bg-blue-50 text-blue-600">
         <Icon size={28} strokeWidth={1.5} />
       </div>
 
-      {/* Бейдж */}
       <span className={`inline-flex items-center px-3 py-1 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-wider ${
         badgeStyle === 'green' 
             ? 'bg-blue-100 text-blue-700' 
@@ -77,18 +79,35 @@ const PriorityCard: React.FC<PriorityCardProps> = ({
       {description}
     </p>
     
-    {/* В. КНОПКА */}
+    {/* В. КНОПКА (С ЛОГИКОЙ ССЫЛКИ) */}
     <div className="mt-6">
-      <Button 
-        variant="lime" 
-        className={`w-full h-12 md:h-14 text-sm md:text-base font-bold !rounded-xl shadow-md transition-all ${
-          buttonStyle === 'yellow' 
-            ? 'bg-yellow-400 text-slate-900 hover:bg-yellow-500 hover:shadow-yellow-400/30' 
-            : 'bg-slate-900 text-white hover:bg-slate-800 hover:shadow-slate-900/30'
-        }`}
-      >
-        {buttonText} <ArrowRight size={18} className="ml-2" />
-      </Button>
+      {link ? (
+        // ✅ Если ссылка есть, оборачиваем кнопку в Link
+        <Link to={link}>
+             <Button 
+                variant="lime" 
+                className={`w-full h-12 md:h-14 text-sm md:text-base font-bold !rounded-xl shadow-md transition-all ${
+                buttonStyle === 'yellow' 
+                    ? 'bg-yellow-400 text-slate-900 hover:bg-yellow-500 hover:shadow-yellow-400/30' 
+                    : 'bg-slate-900 text-white hover:bg-slate-800 hover:shadow-slate-900/30'
+                }`}
+            >
+                {buttonText} <ArrowRight size={18} className="ml-2" />
+            </Button>
+        </Link>
+      ) : (
+        // Иначе просто кнопка
+        <Button 
+            variant="lime" 
+            className={`w-full h-12 md:h-14 text-sm md:text-base font-bold !rounded-xl shadow-md transition-all ${
+            buttonStyle === 'yellow' 
+                ? 'bg-yellow-400 text-slate-900 hover:bg-yellow-500 hover:shadow-yellow-400/30' 
+                : 'bg-slate-900 text-white hover:bg-slate-800 hover:shadow-slate-900/30'
+            }`}
+        >
+            {buttonText} <ArrowRight size={18} className="ml-2" />
+        </Button>
+      )}
     </div>
   </div>
 );
@@ -100,7 +119,6 @@ const ServicesGrid: React.FC = () => {
         
         {/* 1. ВЕРХНИЙ ПРИЗЫВ */}
         <div className="text-center mb-10 max-w-2xl mx-auto">
-          {/* ИЗМЕНЕНИЕ: Слово "Получите" заменено на "Закажите" */}
           <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">
             Закажите нужный сертификат или экспертизу в пару кликов
           </h3>
@@ -120,6 +138,7 @@ const ServicesGrid: React.FC = () => {
             badgeText="Выдача за 1 день"
             badgeStyle="green" 
             buttonStyle="yellow"
+            link="/services/cert" /* ✅ ДОБАВЛЕНА ССЫЛКА */
           />
           
           {/* КАРТОЧКА 2: ЭКСПЕРТИЗА */}
@@ -131,6 +150,7 @@ const ServicesGrid: React.FC = () => {
             badgeText="Защита интересов"
             badgeStyle="gray"
             buttonStyle="dark"
+            link="/services/expert" /* Можно добавить ссылку и сюда, если страница есть */
           />
         </div>
 
