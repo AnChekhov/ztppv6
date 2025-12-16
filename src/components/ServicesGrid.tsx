@@ -40,7 +40,6 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon: Icon, title, descriptio
 
 const ServicesGrid: React.FC = () => {
   return (
-    {/* ИЗМЕНЕНИЕ: py-24 заменено на pt-10 pb-24 для уменьшения верхнего отступа */}
     <section className="pt-10 pb-24 bg-white">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         <div className="text-center mb-16 max-w-3xl mx-auto">
