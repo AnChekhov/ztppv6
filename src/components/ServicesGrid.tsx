@@ -1,6 +1,5 @@
 import React from 'react';
 import { FileCheck, Globe, Scale, Users, BookOpen, Container, ChevronRight, ClipboardCheck, ArrowRight, FileText } from 'lucide-react';
-// ✅ ДОБАВЛЕНО: Импорт Link для навигации
 import { Link } from 'react-router-dom';
 import { Button } from './ui/Button';
 
@@ -40,7 +39,7 @@ interface PriorityCardProps {
   badgeText: string;
   badgeStyle: 'green' | 'gray';
   buttonStyle: 'yellow' | 'dark';
-  link?: string; // ✅ ДОБАВЛЕНО: Опциональная ссылка
+  link?: string;
 }
 
 const PriorityCard: React.FC<PriorityCardProps> = ({ 
@@ -51,7 +50,7 @@ const PriorityCard: React.FC<PriorityCardProps> = ({
   badgeText,
   badgeStyle,
   buttonStyle,
-  link // ✅ Получаем ссылку
+  link 
 }) => (
   <div className="bg-white rounded-[2rem] p-6 md:p-7 shadow-xl shadow-slate-200/60 border border-white flex flex-col h-full relative overflow-hidden transition-transform hover:-translate-y-1 duration-300">
     
@@ -79,10 +78,9 @@ const PriorityCard: React.FC<PriorityCardProps> = ({
       {description}
     </p>
     
-    {/* В. КНОПКА (С ЛОГИКОЙ ССЫЛКИ) */}
+    {/* В. КНОПКА */}
     <div className="mt-6">
       {link ? (
-        // ✅ Если ссылка есть, оборачиваем кнопку в Link
         <Link to={link}>
              <Button 
                 variant="lime" 
@@ -96,7 +94,6 @@ const PriorityCard: React.FC<PriorityCardProps> = ({
             </Button>
         </Link>
       ) : (
-        // Иначе просто кнопка
         <Button 
             variant="lime" 
             className={`w-full h-12 md:h-14 text-sm md:text-base font-bold !rounded-xl shadow-md transition-all ${
@@ -129,7 +126,6 @@ const ServicesGrid: React.FC = () => {
 
         {/* 2. ДВА АКЦЕНТНЫХ БЛОКА */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-16">
-          {/* КАРТОЧКА 1: СЕРТИФИКАЦИЯ */}
           <PriorityCard 
             icon={FileText}
             title="Сертификаты происхождения товаров"
@@ -138,10 +134,9 @@ const ServicesGrid: React.FC = () => {
             badgeText="Выдача за 1 день"
             badgeStyle="green" 
             buttonStyle="yellow"
-            link="/services/cert" /* ✅ ДОБАВЛЕНА ССЫЛКА */
+            link="/services/cert"
           />
           
-          {/* КАРТОЧКА 2: ЭКСПЕРТИЗА */}
           <PriorityCard 
             icon={Scale}
             title="Независимая товарная экспертиза"
@@ -150,7 +145,7 @@ const ServicesGrid: React.FC = () => {
             badgeText="Защита интересов"
             badgeStyle="gray"
             buttonStyle="dark"
-            link="/services/expert" /* Можно добавить ссылку и сюда, если страница есть */
+            link="/services/expert"
           />
         </div>
 
@@ -191,13 +186,13 @@ const ServicesGrid: React.FC = () => {
             description="Семинары по изменениям в законодательстве, тренинги для участников ВЭД, повышение квалификации сотрудников."
           />
 
+          {/* ✅ ИЗМЕНЕНИЯ ЗДЕСЬ: Обновлен заголовок и описание */}
           <ServiceCard 
             icon={Users} 
-            title="Клубная деятельность" 
-            description="Нетворкинг, закрытые встречи с представителями власти, профильные комитеты для решения отраслевых проблем."
+            title="Мероприятия нашего сообщества" 
+            description="Нетворкинг, деловые обсуждения с представителями органов власти, профильные комитеты для решения отраслевых проблем."
           />
           
-          {/* Ссылка на каталог */}
           <div className="flex flex-col items-center justify-center p-8 rounded-2xl border border-dashed border-slate-300 bg-white/50 text-center h-full hover:bg-white transition-colors">
             <h4 className="text-lg font-bold text-slate-700 mb-2">Нужна другая услуга?</h4>
             <p className="text-sm text-slate-500 mb-6">У нас более 40 видов услуг для бизнеса</p>
