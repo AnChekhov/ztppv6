@@ -35,7 +35,6 @@ interface PriorityCardProps {
   title: string;
   description: string;
   buttonText: string;
-  // Стилизация
   badgeText: string;
   badgeStyle: 'green' | 'gray';
   buttonStyle: 'yellow' | 'dark';
@@ -54,7 +53,7 @@ const PriorityCard: React.FC<PriorityCardProps> = ({
     
     {/* А. ВЕРХНЯЯ ЧАСТЬ: Иконка и Бейдж */}
     <div className="flex justify-between items-start mb-8">
-      {/* Иконка: ИЗМЕНЕНО на bg-blue-600 (Яркий синий) */}
+      {/* Иконка: bg-blue-600 (Яркий синий) */}
       <div className="w-16 h-16 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-105 bg-blue-600 text-white">
         <Icon size={32} strokeWidth={1.5} />
       </div>
@@ -96,46 +95,10 @@ const PriorityCard: React.FC<PriorityCardProps> = ({
 
 const ServicesGrid: React.FC = () => {
   return (
-    // ФОН СЕКЦИИ
     <section className="pt-10 pb-24 bg-slate-50">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         
-        {/* ЗАГОЛОВОК СЕКЦИИ */}
-        <div className="text-center mb-12 max-w-3xl mx-auto">
-          <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
-            Комплексная поддержка бизнеса в Забайкальском крае
-          </h3>
-          <p className="text-slate-600 text-lg">
-            Весь спектр услуг для экспортеров, импортеров, производителей и предпринимателей Читы, Забайкалья и других регионов.
-          </p>
-        </div>
-
-        {/* ЧАСТЬ А: ДВА АКЦЕНТНЫХ БЛОКА (WHITE CARDS) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10 mb-16">
-          {/* КАРТОЧКА 1: СЕРТИФИКАЦИЯ */}
-          <PriorityCard 
-            icon={FileText}
-            title="Сертификаты происхождения товаров"
-            description="Оформление сертификатов (СТ-1, формы А, общей формы) для экспорта продукции. Необходимы для таможенного оформления, снижения пошлин и участия в государственных закупках."
-            buttonText="Оформить сертификат"
-            badgeText="Выдача за 1 день"
-            badgeStyle="green" 
-            buttonStyle="yellow"
-          />
-          
-          {/* КАРТОЧКА 2: ЭКСПЕРТИЗА */}
-          <PriorityCard 
-            icon={Scale}
-            title="Независимая товарная экспертиза"
-            description="Профессиональная приемка товаров по количеству и качеству. Экспертиза для таможенных целей (ВЭД), выявление брака, оценка ущерба и определение кодов ТН ВЭД."
-            buttonText="Заказать экспертизу"
-            badgeText="Защита интересов"
-            badgeStyle="gray"
-            buttonStyle="dark"
-          />
-        </div>
-
-        {/* ЧАСТЬ Б: ПРОМЕЖУТОЧНЫЙ ПРИЗЫВ */}
+        {/* 1. ВЕРХНИЙ ПРИЗЫВ (БЫВШИЙ ПРОМЕЖУТОЧНЫЙ) */}
         <div className="text-center mb-12 max-w-2xl mx-auto">
           <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">
             Получите нужный <span className="text-blue-700">сертификат</span> или <span className="text-blue-700">экспертизу</span> в пару кликов
@@ -145,7 +108,42 @@ const ServicesGrid: React.FC = () => {
           </p>
         </div>
 
-        {/* ЧАСТЬ В: ОСТАЛЬНАЯ СЕТКА УСЛУГ */}
+        {/* 2. ДВА АКЦЕНТНЫХ БЛОКА (ПРИОРИТЕТНЫЕ УСЛУГИ) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10 mb-20">
+          {/* КАРТОЧКА 1: СЕРТИФИКАЦИЯ (Текст обновлен) */}
+          <PriorityCard 
+            icon={FileText}
+            title="Сертификаты происхождения товаров"
+            description="Оформим сертификаты (Общей формы, СТ-1, формы А, и другие) для экспорта продукции. Поможем снизить пошлины, пройти таможенное оформление и сопроводим Ваше участие в госзакупках."
+            buttonText="Оформить сертификат"
+            badgeText="Выдача за 1 день"
+            badgeStyle="green" 
+            buttonStyle="yellow"
+          />
+          
+          {/* КАРТОЧКА 2: ЭКСПЕРТИЗА (Текст обновлен) */}
+          <PriorityCard 
+            icon={Scale}
+            title="Независимая товарная экспертиза"
+            description="Проведем независимую приемку товаров по качеству и количеству. Выявим брак, оценим ущерб и определим коды ТН ВЭД. Защитим ваши интересы в суде и спорах."
+            buttonText="Заказать экспертизу"
+            badgeText="Защита интересов"
+            badgeStyle="gray"
+            buttonStyle="dark"
+          />
+        </div>
+
+        {/* 3. ЗАГОЛОВОК ОБЩЕГО КАТАЛОГА (ОПУЩЕН ВНИЗ) */}
+        <div className="text-center mb-12 max-w-3xl mx-auto">
+          <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
+            Комплексная поддержка бизнеса в Забайкальском крае
+          </h3>
+          <p className="text-slate-600 text-lg">
+            Весь спектр услуг для экспортеров, импортеров, производителей и предпринимателей Читы, Забайкалья и других регионов.
+          </p>
+        </div>
+
+        {/* 4. СЕТКА ОСТАЛЬНЫХ УСЛУГ */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           
           <ServiceCard 
