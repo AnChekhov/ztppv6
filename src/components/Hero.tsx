@@ -1,21 +1,36 @@
 import React from 'react';
 // Импортируем все необходимые иконки
 import { ArrowRight, FileText, Scale, Shield, MapPin, CheckSquare } from 'lucide-react'; 
+// ✅ ДОБАВЛЕНО: Импорт Link
+import { Link } from 'react-router-dom';
 import { Button } from './ui/Button';
 
-// Компонент для карточки услуги
-const ServiceCard: React.FC<{ icon: React.ReactNode, title: string, subtitle: string }> = ({ icon, title, subtitle }) => (
-    <div className="flex items-center p-5 bg-white rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer w-full border border-slate-200">
-        <div className="p-3 bg-blue-50 text-blue-600 rounded-lg mr-4 flex-shrink-0">
-            {icon}
+// ✅ ИЗМЕНЕНО: Добавлено свойство link? в интерфейс и логика оборачивания в Link
+const ServiceCard: React.FC<{ icon: React.ReactNode, title: string, subtitle: string, link?: string }> = ({ icon, title, subtitle, link }) => {
+    
+    // Выносим содержимое карточки в переменную
+    const CardContent = (
+        <div className="flex items-center p-5 bg-white rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer w-full border border-slate-200 h-full">
+            <div className="p-3 bg-blue-50 text-blue-600 rounded-lg mr-4 flex-shrink-0">
+                {icon}
+            </div>
+            <div className="flex-grow">
+                <p className="font-bold text-lg text-slate-900 leading-tight">{title}</p>
+                <p className="text-sm text-slate-600 mt-1 leading-snug">{subtitle}</p>
+            </div>
+            <ArrowRight size={16} className="text-slate-400 ml-4 flex-shrink-0" />
         </div>
-        <div className="flex-grow">
-            <p className="font-bold text-lg text-slate-900 leading-tight">{title}</p>
-            <p className="text-sm text-slate-600 mt-1 leading-snug">{subtitle}</p>
-        </div>
-        <ArrowRight size={16} className="text-slate-400 ml-4 flex-shrink-0" />
-    </div>
-);
+    );
+
+    // Если ссылка есть — оборачиваем, если нет — возвращаем div (как было)
+    return link ? (
+        <Link to={link} className="block w-full">
+            {CardContent}
+        </Link>
+    ) : (
+        CardContent
+    );
+};
 
 
 export const Hero: React.FC = () => {
@@ -66,31 +81,32 @@ export const Hero: React.FC = () => {
                 
                 {/* 2. Right Column: Services Block */}
                 <div className="md:col-span-5 w-full mt-10 md:mt-0 pt-0 flex-shrink-0 self-center"> 
-                    {/* УДАЛЕНО: Заголовок "Популярные услуги" */}
                     
                     <div className="space-y-4">
-                        {/* КАРТОЧКА 1: Обновлены тексты */}
+                        {/* КАРТОЧКА 1: ✅ Добавлена ссылка на сертификацию */}
                         <ServiceCard 
                             icon={<FileText size={24} />} 
                             title="Сертификаты происхождения"
                             subtitle="Для экспорта и импорта. Оформим за 1 день."
+                            link="/services/cert"
                         />
-                        {/* КАРТОЧКА 2: Обновлен текст (удалено начало фразы) */}
+                        {/* КАРТОЧКА 2 */}
                         <ServiceCard 
                             icon={<Scale size={24} />} 
                             title="Товарная экспертиза"
                             subtitle="Оценка качества и ущерба."
+                            link="/services/expert"
                         />
-                        {/* КАРТОЧКА 3: Без изменений */}
+                        {/* КАРТОЧКА 3 */}
                         <ServiceCard 
                             icon={<Shield size={24} />} 
                             title="Юридическая защита"
                             subtitle="Форсмажор, арбитраж, проверка контрагентов."
+                            link="/services/law"
                         />
                     </div>
                     
                     <div className="text-right mt-6">
-                        {/* ОБНОВЛЕНО: Текст ссылки и отступ mt-6 */}
                         <a href="#" className="text-sm font-medium text-slate-400 hover:text-yellow-500 transition-colors">
                             Смотреть все услуги
                         </a>
