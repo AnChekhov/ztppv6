@@ -1,5 +1,5 @@
 import React from 'react';
-// Импортируем все необходимые иконки (иконки для удаленных блоков можно убрать, но я оставлю на случай возврата)
+// Импортируем все необходимые иконки
 import { ArrowRight, FileText, Scale, Shield, MapPin, CheckSquare } from 'lucide-react'; 
 import { Button } from './ui/Button';
 
@@ -10,10 +10,7 @@ const ServiceCard: React.FC<{ icon: React.ReactNode, title: string, subtitle: st
             {icon}
         </div>
         <div className="flex-grow">
-            {/* ИЗМЕНЕНИЕ: Увеличен шрифт заголовка (text-lg) и скорректирован интервал */}
             <p className="font-bold text-lg text-slate-900 leading-tight">{title}</p>
-            
-            {/* Описание (наследует правки из прошлого запроса: text-sm, slate-600) */}
             <p className="text-sm text-slate-600 mt-1 leading-snug">{subtitle}</p>
         </div>
         <ArrowRight size={16} className="text-slate-400 ml-4 flex-shrink-0" />
@@ -27,28 +24,22 @@ export const Hero: React.FC = () => {
       
       {/* BACKGROUND LAYERS */}
       <div className="absolute inset-0 z-0">
-          {/* 1. Текстура */}
           <img 
             src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop" 
             alt="Business Background" 
             className="w-full h-full object-cover opacity-20"
           />
-          
-          {/* 2. Градиент */}
           <div className="absolute inset-0 bg-gradient-to-b from-slate-900/90 via-slate-900/80 to-slate-900"></div>
-          
-          {/* 3. Свечение */}
           <div className="absolute top-0 right-0 w-2/3 h-full bg-gradient-to-bl from-blue-900/20 to-transparent blur-3xl rounded-full translate-x-1/4 -translate-y-1/4"></div>
       </div>
       
       {/* Content Container */}
       <div className="max-w-7xl mx-auto px-6 relative z-10 w-full pt-20 pb-12">
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16">
+            {/* ИЗМЕНЕНИЕ: Добавлен класс items-center для вертикального выравнивания колонок */}
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 items-center">
                 
                 {/* 1. Left Column: Headline and Buttons */}
                 <div className="md:col-span-7 text-left flex flex-col justify-center">
-                    
-                    {/* УДАЛЕНО: Бейдж "Официальный партнер бизнеса" */}
                     
                     {/* Headline */}
                     <h1 className="text-5xl lg:text-6xl font-extrabold mb-4 leading-tight text-white tracking-tight drop-shadow-lg max-w-xl">
@@ -60,8 +51,6 @@ export const Hero: React.FC = () => {
                     <p className="text-xl text-slate-300 mb-8 max-w-xl leading-relaxed">
                         Помогаем предпринимателям выходить на рынок Китая, оформляем сертификаты происхождения и защищаем ваши интересы на государственном уровне.
                     </p>
-                    
-                    {/* УДАЛЕНО: Блок с тегами (Гос. аккредитация / Связи с Китаем) */}
 
                     {/* Buttons */}
                     <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
