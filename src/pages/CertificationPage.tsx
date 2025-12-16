@@ -10,7 +10,7 @@ import {
   Mail, 
   Globe,
   CheckCircle,
-  ChevronDown,
+  ChevronDown, // Добавил иконку для селекта
   Check
 } from 'lucide-react';
 
@@ -41,7 +41,6 @@ export const CertificationPage: React.FC = () => {
     <div className="font-sans text-slate-900 bg-white">
       
       {/* 1. HERO SECTION */}
-      {/* Исправлено: min-h-[65vh] и асимметричные отступы pt-36 pb-20 для оптического центрирования */}
       <section className="relative bg-slate-900 text-white overflow-hidden min-h-[65vh] flex items-center justify-center">
         <div className="absolute inset-0 opacity-20">
             <img 
@@ -74,7 +73,6 @@ export const CertificationPage: React.FC = () => {
       </section>
 
       {/* 2. ТИПЫ СЕРТИФИКАТОВ */}
-      {/* Фон белый. Общая форма первая. */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Выберите нужный Вам тип сертификата</h2>
@@ -118,7 +116,6 @@ export const CertificationPage: React.FC = () => {
       </section>
 
       {/* 3. ЦИФРЫ И СРОКИ */}
-      {/* Фон серый. Сноска выровнена влево. Звездочки маленькие. */}
       <section className="py-16 bg-slate-50 border-y border-slate-100">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-200">
@@ -160,7 +157,6 @@ export const CertificationPage: React.FC = () => {
       </section>
 
       {/* 4. КАК ПОЛУЧИТЬ */}
-      {/* Фон белый */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-16 text-center">Как получить сертификат: просто и понятно</h2>
@@ -194,7 +190,6 @@ export const CertificationPage: React.FC = () => {
       </section>
 
       {/* 5. ДОКУМЕНТЫ */}
-      {/* Фон серый. Иконки галочек. */}
       <section className="py-24 bg-slate-50">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <div className="text-center mb-12">
@@ -235,8 +230,7 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 6. FAQ (НОВЫЙ БЛОК) */}
-      {/* Фон белый */}
+      {/* 6. FAQ */}
       <section className="py-24 bg-white">
         <div className="max-w-3xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Часто задаваемые вопросы</h2>
@@ -270,13 +264,11 @@ export const CertificationPage: React.FC = () => {
       </section>
 
       {/* 7. КОМАНДА */}
-      {/* Фон серый */}
       <section className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Остались вопросы? Мы поможем</h2>
           
           <div className="flex flex-wrap justify-center gap-8">
-            {/* Manager 1 */}
             <div className="flex items-center gap-6 bg-white p-6 rounded-2xl w-full md:w-auto md:min-w-[400px] shadow-sm hover:shadow-md transition-all">
               <div className="w-20 h-20 rounded-full bg-slate-100 overflow-hidden shrink-0 border-2 border-slate-100">
                  <div className="w-full h-full flex items-center justify-center bg-blue-600 text-white text-2xl font-bold">И</div>
@@ -291,7 +283,6 @@ export const CertificationPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Manager 2 */}
             <div className="flex items-center gap-6 bg-white p-6 rounded-2xl w-full md:w-auto md:min-w-[400px] shadow-sm hover:shadow-md transition-all">
               <div className="w-20 h-20 rounded-full bg-slate-100 overflow-hidden shrink-0 border-2 border-slate-100">
                  <div className="w-full h-full flex items-center justify-center bg-slate-800 text-white text-2xl font-bold">П</div>
@@ -358,16 +349,22 @@ export const CertificationPage: React.FC = () => {
                    <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="Иванов Иван" />
                 </div>
 
+                {/* ✅ ИСПРАВЛЕННЫЙ Select Box (Custom appearance) */}
                 <div>
                    <label className="block text-sm font-bold mb-2">Тип сертификата</label>
-                   <select className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all cursor-pointer">
-                     <option>Общая форма</option>
-                     <option>СТ-1 (СНГ)</option>
-                     <option>СТ-2 (Сербия)</option>
-                     <option>EAV (Вьетнам)</option>
-                     <option>Форма А</option>
-                     <option>Не знаю, нужна консультация</option>
-                   </select>
+                   <div className="relative">
+                     <select className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all cursor-pointer appearance-none text-slate-700">
+                       <option>Общая форма</option>
+                       <option>СТ-1 (СНГ)</option>
+                       <option>СТ-2 (Сербия)</option>
+                       <option>EAV (Вьетнам)</option>
+                       <option>Форма А</option>
+                       <option>Не знаю, нужна консультация</option>
+                     </select>
+                     <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-slate-500">
+                        <ChevronDown size={20} />
+                     </div>
+                   </div>
                 </div>
 
                 <div className="pt-2">
