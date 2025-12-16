@@ -29,7 +29,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon: Icon, title, descriptio
   </div>
 );
 
-// --- КОМПОНЕНТ АКЦЕНТНОЙ КАРТОЧКИ (COMPACT STYLE) ---
+// --- КОМПОНЕНТ АКЦЕНТНОЙ КАРТОЧКИ (COMPACT & LIGHT ICON STYLE) ---
 interface PriorityCardProps {
   icon: React.ElementType;
   title: string;
@@ -49,14 +49,12 @@ const PriorityCard: React.FC<PriorityCardProps> = ({
   badgeStyle,
   buttonStyle
 }) => (
-  // ИЗМЕНЕНИЕ: Уменьшены padding (p-6 md:p-7) и скругление для компактности
   <div className="bg-white rounded-[2rem] p-6 md:p-7 shadow-xl shadow-slate-200/60 border border-white flex flex-col h-full relative overflow-hidden transition-transform hover:-translate-y-1 duration-300">
     
     {/* А. ВЕРХНЯЯ ЧАСТЬ: Иконка и Бейдж */}
-    {/* ИЗМЕНЕНИЕ: Уменьшен отступ снизу (mb-5 вместо mb-8) */}
     <div className="flex justify-between items-start mb-5">
-      {/* Иконка: Уменьшен размер контейнера (w-14 вместо w-16) */}
-      <div className="w-14 h-14 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-105 bg-blue-600 text-white">
+      {/* ИКОНКА: ИЗМЕНЕНО на bg-blue-50 text-blue-600 (Светлый фон, синяя иконка) */}
+      <div className="w-14 h-14 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-105 bg-blue-50 text-blue-600">
         <Icon size={28} strokeWidth={1.5} />
       </div>
 
@@ -71,18 +69,15 @@ const PriorityCard: React.FC<PriorityCardProps> = ({
     </div>
 
     {/* Б. КОНТЕНТ */}
-    {/* ИЗМЕНЕНИЕ: Уменьшен шрифт (text-xl md:text-2xl) и отступ (mb-3) */}
     <h3 className="text-xl md:text-2xl font-extrabold text-slate-900 mb-3 leading-tight">
       {title}
     </h3>
     
-    {/* ИЗМЕНЕНИЕ: Уменьшен шрифт описания (text-sm md:text-base) */}
     <p className="text-sm md:text-base text-slate-600 leading-relaxed flex-grow">
       {description}
     </p>
     
     {/* В. КНОПКА */}
-    {/* ИЗМЕНЕНИЕ: Уменьшен отступ сверху (mt-6) */}
     <div className="mt-6">
       <Button 
         variant="lime" 
@@ -105,7 +100,6 @@ const ServicesGrid: React.FC = () => {
         
         {/* 1. ВЕРХНИЙ ПРИЗЫВ */}
         <div className="text-center mb-10 max-w-2xl mx-auto">
-          {/* ИЗМЕНЕНИЕ: Заголовок одного цвета (убраны span с цветами) */}
           <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">
             Получите нужный сертификат или экспертизу в пару кликов
           </h3>
@@ -114,8 +108,7 @@ const ServicesGrid: React.FC = () => {
           </p>
         </div>
 
-        {/* 2. ДВА АКЦЕНТНЫХ БЛОКА (КОМПАКТНЫЕ) */}
-        {/* ИЗМЕНЕНИЕ: Уменьшен отступ снизу (mb-16 вместо mb-20) */}
+        {/* 2. ДВА АКЦЕНТНЫХ БЛОКА */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-16">
           {/* КАРТОЧКА 1: СЕРТИФИКАЦИЯ */}
           <PriorityCard 
