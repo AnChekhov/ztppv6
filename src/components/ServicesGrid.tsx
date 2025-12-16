@@ -38,7 +38,6 @@ interface PriorityCardProps {
   // Стилизация
   badgeText: string;
   badgeStyle: 'green' | 'gray';
-  // iconBgStyle удален, так как теперь стиль единый
   buttonStyle: 'yellow' | 'dark';
 }
 
@@ -55,15 +54,15 @@ const PriorityCard: React.FC<PriorityCardProps> = ({
     
     {/* А. ВЕРХНЯЯ ЧАСТЬ: Иконка и Бейдж */}
     <div className="flex justify-between items-start mb-8">
-      {/* Иконка: УНИФИЦИРОВАНА (Темно-синий фон, белая иконка) */}
-      <div className="w-16 h-16 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-105 bg-slate-800 text-white">
+      {/* Иконка: ИЗМЕНЕНО на bg-blue-600 (Яркий синий) */}
+      <div className="w-16 h-16 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-105 bg-blue-600 text-white">
         <Icon size={32} strokeWidth={1.5} />
       </div>
 
-      {/* Бейдж: ЗЕЛЕНЫЙ ЗАМЕНЕН НА ГОЛУБОЙ */}
+      {/* Бейдж */}
       <span className={`inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider ${
         badgeStyle === 'green' 
-            ? 'bg-blue-100 text-blue-700' // Бывший зеленый стал голубым
+            ? 'bg-blue-100 text-blue-700' 
             : 'bg-slate-100 text-slate-600'
       }`}>
         {badgeText}
@@ -120,7 +119,7 @@ const ServicesGrid: React.FC = () => {
             description="Оформление сертификатов (СТ-1, формы А, общей формы) для экспорта продукции. Необходимы для таможенного оформления, снижения пошлин и участия в государственных закупках."
             buttonText="Оформить сертификат"
             badgeText="Выдача за 1 день"
-            badgeStyle="green" // Логически остался 'green', но визуально теперь синий
+            badgeStyle="green" 
             buttonStyle="yellow"
           />
           
