@@ -1,0 +1,365 @@
+import React from 'react';
+import { 
+  FileText, 
+  ShieldCheck, 
+  Key, 
+  Clock, 
+  Calendar, 
+  Banknote, 
+  Download, 
+  ArrowRight, 
+  CheckCircle2, 
+  UploadCloud, 
+  Phone, 
+  Mail, 
+  FileCheck,
+  Globe
+} from 'lucide-react';
+
+export const CertificationPage: React.FC = () => {
+  return (
+    <div className="font-sans text-slate-900 bg-white">
+      
+      {/* 1. HERO SECTION */}
+      <section className="relative bg-slate-900 text-white overflow-hidden py-24 lg:py-32">
+        <div className="absolute inset-0 opacity-20">
+            {/* Фоновое изображение (документы/логистика) */}
+            <img 
+              src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=2070&auto=format&fit=crop" 
+              alt="Background" 
+              className="w-full h-full object-cover"
+            />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/95 to-slate-900/50"></div>
+        
+        <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
+          <div className="max-w-3xl">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
+              Заказать сертификат происхождения товара в <span className="text-yellow-400">Забайкальской ТПП</span>
+            </h1>
+            <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl">
+              Оформите ключевой документ для экспорта онлайн. Получите льготы и преференции для вашего бизнеса. Гарантия прохождения таможни.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <button className="bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 px-8 rounded-xl transition-all hover:scale-105 shadow-[0_0_20px_rgba(250,204,21,0.3)]">
+                Оставить заявку онлайн
+              </button>
+              <button className="border-2 border-slate-600 hover:border-white text-white font-semibold py-4 px-8 rounded-xl transition-colors flex items-center justify-center gap-2 group">
+                <Download size={20} />
+                Скачать чек-лист
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. ПРЕИМУЩЕСТВА */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+          <div className="text-center mb-16 max-w-3xl mx-auto">
+            <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Сертификат происхождения — ваш пропуск на международные рынки</h2>
+            <p className="text-slate-500 text-lg">Этот документ необходим для таможенного контроля и получения льгот</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Card 1 */}
+            <div className="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+              <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center mb-6">
+                <Key className="text-blue-600" size={32} />
+              </div>
+              <h3 className="text-xl font-bold mb-3">Снижение пошлин</h3>
+              <p className="text-slate-500 leading-relaxed">
+                Получайте тарифные преференции и освобождение от уплаты пошлин в странах СНГ (форма СТ-1) и других государствах.
+              </p>
+            </div>
+
+            {/* Card 2 */}
+            <div className="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+              <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center mb-6">
+                <ShieldCheck className="text-blue-600" size={32} />
+              </div>
+              <h3 className="text-xl font-bold mb-3">Упрощение таможни</h3>
+              <p className="text-slate-500 leading-relaxed">
+                Избегайте задержек и дополнительных проверок, предоставляя официальное подтверждение страны происхождения товара.
+              </p>
+            </div>
+
+            {/* Card 3 */}
+            <div className="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+              <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center mb-6">
+                <FileCheck className="text-blue-600" size={32} />
+              </div>
+              <h3 className="text-xl font-bold mb-3">Выполнение контрактов</h3>
+              <p className="text-slate-500 leading-relaxed">
+                Соответствуйте требованиям международных контрактов и банковских аккредитивов, где сертификат обязателен.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. ТИПЫ СЕРТИФИКАТОВ (Grid вместо таблицы) */}
+      <section className="py-24 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+          <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Выберите правильный тип сертификата</h2>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { type: 'СТ-1', countries: 'Государства-участники СНГ', purpose: 'Получение тарифных преференций (снижение/отмена пошлин)', lang: 'Русский' },
+              { type: 'СТ-2', countries: 'Сербия', purpose: 'Получение преференций в рамках соглашения о свободной торговле', lang: 'Русский / Английский' },
+              { type: 'EAV', countries: 'Вьетнам', purpose: 'Получение преференций в рамках соглашения о свободной торговле', lang: 'Английский' },
+              { type: 'Общая форма', countries: 'Все остальные страны', purpose: 'Подтверждение страны происхождения для таможенных целей', lang: 'Английский / Другой' },
+              { type: 'Форма "А"', countries: 'Черногория', purpose: 'Получение преференций в рамках Генеральной системы', lang: 'Английский' },
+            ].map((item, index) => (
+              <div key={index} className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+                <div className="flex justify-between items-start mb-4">
+                  <span className="text-2xl font-black text-blue-600 bg-blue-50 px-3 py-1 rounded-lg">{item.type}</span>
+                  <Globe className="text-slate-300" size={24} />
+                </div>
+                <div className="mb-4">
+                  <div className="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">Назначение</div>
+                  <div className="font-bold text-slate-800">{item.countries}</div>
+                </div>
+                <div className="mb-4">
+                  <div className="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">Цель</div>
+                  <div className="text-sm text-slate-600 leading-snug">{item.purpose}</div>
+                </div>
+                <div className="pt-4 border-t border-slate-100 mt-auto">
+                   <div className="text-xs text-slate-400">Язык: {item.lang}</div>
+                </div>
+              </div>
+            ))}
+            
+            {/* Карточка "Не знаете что выбрать?" */}
+            <div className="bg-slate-900 rounded-2xl p-6 shadow-sm flex flex-col justify-center items-center text-center">
+              <h3 className="text-white font-bold text-xl mb-3">Нужна помощь?</h3>
+              <p className="text-slate-400 text-sm mb-6">Наши эксперты помогут определить нужный тип сертификата для вашего груза.</p>
+              <button className="w-full py-3 bg-white text-slate-900 font-bold rounded-lg hover:bg-yellow-400 transition-colors">
+                Консультация
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. ЦИФРЫ И СРОКИ */}
+      <section className="py-16 bg-white border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+          <div className="grid md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-100">
+            <div className="text-center px-4 pt-4 md:pt-0">
+              <Banknote className="mx-auto text-blue-600 mb-4 h-10 w-10" />
+              <div className="text-4xl font-extrabold text-slate-900 mb-2">от 2288 ₽</div>
+              <p className="text-slate-500">Стоимость услуги<br/><span className="text-sm">(зависит от вида товара)</span></p>
+            </div>
+            <div className="text-center px-4 pt-4 md:pt-0">
+              <Clock className="mx-auto text-blue-600 mb-4 h-10 w-10" />
+              <div className="text-4xl font-extrabold text-slate-900 mb-2">1-2 дня</div>
+              <p className="text-slate-500">Срок оформления<br/><span className="text-sm">(после подачи документов)</span></p>
+            </div>
+            <div className="text-center px-4 pt-4 md:pt-0">
+              <Calendar className="mx-auto text-blue-600 mb-4 h-10 w-10" />
+              <div className="text-4xl font-extrabold text-slate-900 mb-2">12 мес</div>
+              <p className="text-slate-500">Срок действия<br/><span className="text-sm">(с даты выдачи)</span></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. КАК ПОЛУЧИТЬ (Steps) */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+          <h2 className="text-3xl font-extrabold text-slate-900 mb-16 text-center">Как получить сертификат: просто и понятно</h2>
+          
+          <div className="relative">
+            {/* Line for Desktop */}
+            <div className="hidden md:block absolute top-6 left-0 w-full h-1 bg-slate-100 rounded">
+                <div className="h-full bg-blue-100 w-3/4 rounded"></div>
+            </div>
+            
+            <div className="grid md:grid-cols-4 gap-8">
+              {[
+                { title: 'Подготовка', desc: 'Соберите пакет документов по нашему чек-листу. Скачайте и заполните бланк заявления.' },
+                { title: 'Подача заявки', desc: 'Отправьте заявку и сканы документов онлайн через форму ниже или предоставьте в офис.' },
+                { title: 'Экспертиза', desc: 'Наши специалисты проверят документы и, при необходимости, проведут экспертизу.' },
+                { title: 'Получение', desc: 'Получите готовый сертификат на защищенном бланке в офисе Палаты.' },
+              ].map((step, idx) => (
+                <div key={idx} className="relative pt-8 md:pt-16 group">
+                   {/* Circle Number */}
+                  <div className="absolute top-0 left-0 md:left-1/2 md:-translate-x-1/2 w-12 h-12 bg-white border-4 border-blue-600 text-blue-600 rounded-full flex items-center justify-center font-bold text-xl z-10 shadow-sm group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                    {idx + 1}
+                  </div>
+                  
+                  <div className="bg-slate-50 p-6 rounded-2xl md:text-center h-full hover:bg-white hover:shadow-lg transition-all border border-transparent hover:border-slate-100">
+                    <h3 className="font-bold text-lg mb-2">{step.title}</h3>
+                    <p className="text-slate-500 text-sm leading-relaxed">{step.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. ДОКУМЕНТЫ (Downloads) */}
+      <section className="py-24 bg-slate-50">
+        <div className="max-w-4xl mx-auto px-6 md:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Все, что нужно для подачи заявки</h2>
+            <p className="text-slate-500">Мы подготовили для вас полный список и шаблоны, чтобы избежать ошибок</p>
+          </div>
+
+          <div className="bg-white rounded-3xl shadow-sm overflow-hidden border border-slate-100">
+            {[
+              { name: 'Заявление на выдачу сертификата', req: 'Заполняется по форме, печать организации', link: true },
+              { name: 'Копия экспортного контракта', req: 'Заверенная печатью и подписью', link: false },
+              { name: 'Копия счета-фактуры (инвойса)', req: 'Заверенная печатью и подписью', link: false },
+              { name: 'Письмо от производителя', req: 'Подтверждение производства в РФ с долей сырья', link: true },
+              { name: 'Учредительные документы', req: 'Копии ОГРН, ИНН, Устава (для первой подачи)', link: false },
+            ].map((doc, idx) => (
+              <div key={idx} className="flex flex-col md:flex-row items-start md:items-center justify-between p-6 border-b border-slate-100 last:border-0 hover:bg-blue-50/30 transition-colors">
+                <div className="flex items-start gap-4">
+                  <div className="p-2 bg-blue-100 text-blue-600 rounded-lg mt-1 md:mt-0">
+                    <FileText size={20} />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-slate-900 text-lg">{doc.name}</h4>
+                    <p className="text-slate-500 text-sm">{doc.req}</p>
+                  </div>
+                </div>
+                {doc.link && (
+                  <a href="#" className="mt-4 md:mt-0 flex items-center text-blue-600 font-bold text-sm hover:text-blue-800 transition-colors whitespace-nowrap">
+                    <Download size={16} className="mr-2" />
+                    Скачать бланк
+                  </a>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 7. КОМАНДА (Contacts) */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+          <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Остались вопросы? Мы поможем</h2>
+          
+          <div className="flex flex-wrap justify-center gap-8">
+            {/* Manager 1 */}
+            <div className="flex items-center gap-6 bg-slate-50 p-6 rounded-2xl w-full md:w-auto md:min-w-[400px]">
+              <div className="w-20 h-20 rounded-full bg-slate-300 overflow-hidden shrink-0 border-2 border-white shadow-md">
+                 {/* Placeholder Avatar */}
+                 <div className="w-full h-full flex items-center justify-center bg-blue-600 text-white text-2xl font-bold">И</div>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-slate-900">Иванова Елена</h3>
+                <p className="text-blue-600 font-medium text-sm mb-3">Ведущий специалист</p>
+                <div className="flex flex-col gap-1 text-sm text-slate-600">
+                  <a href="tel:+73022355598" className="hover:text-blue-600 flex items-center gap-2"><Phone size={14}/> +7 (3022) 35-55-98</a>
+                  <a href="mailto:ivanova.e@ztpp.ru" className="hover:text-blue-600 flex items-center gap-2"><Mail size={14}/> ivanova.e@ztpp.ru</a>
+                </div>
+              </div>
+            </div>
+
+            {/* Manager 2 */}
+            <div className="flex items-center gap-6 bg-slate-50 p-6 rounded-2xl w-full md:w-auto md:min-w-[400px]">
+              <div className="w-20 h-20 rounded-full bg-slate-300 overflow-hidden shrink-0 border-2 border-white shadow-md">
+                 <div className="w-full h-full flex items-center justify-center bg-slate-800 text-white text-2xl font-bold">П</div>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-slate-900">Петров Сергей</h3>
+                <p className="text-blue-600 font-medium text-sm mb-3">Эксперт по ВЭД</p>
+                <div className="flex flex-col gap-1 text-sm text-slate-600">
+                   <a href="tel:+73022355599" className="hover:text-blue-600 flex items-center gap-2"><Phone size={14}/> +7 (3022) 35-55-99</a>
+                   <a href="mailto:petrov.s@ztpp.ru" className="hover:text-blue-600 flex items-center gap-2"><Mail size={14}/> petrov.s@ztpp.ru</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 8. CTA ФОРМА */}
+      <section className="py-24 bg-slate-900 text-white">
+        <div className="max-w-5xl mx-auto px-6 md:px-8">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            
+            <div>
+              <h2 className="text-3xl md:text-4xl font-extrabold mb-6">Отправьте заявку на получение сертификата</h2>
+              <p className="text-slate-300 text-lg mb-8">
+                Заполните форму, и наш специалист свяжется с вами в ближайшее время для уточнения деталей и консультации.
+              </p>
+              <ul className="space-y-4 mb-8 text-slate-300">
+                <li className="flex items-center gap-3">
+                  <CheckCircle2 className="text-yellow-400 shrink-0" />
+                  <span>Быстрая проверка документов</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle2 className="text-yellow-400 shrink-0" />
+                  <span>Расчет точной стоимости</span>
+                </li>
+                 <li className="flex items-center gap-3">
+                  <CheckCircle2 className="text-yellow-400 shrink-0" />
+                  <span>Помощь в заполнении</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-white rounded-3xl p-8 text-slate-900 shadow-2xl">
+              <form className="space-y-4">
+                <div>
+                  <label className="block text-sm font-bold mb-2">Название организации</label>
+                  <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="ООО 'Пример'" />
+                </div>
+                
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-bold mb-2">ИНН</label>
+                    <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="1234567890" />
+                  </div>
+                   <div>
+                    <label className="block text-sm font-bold mb-2">Телефон</label>
+                    <input type="tel" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="+7 (___) ___-__-__" />
+                  </div>
+                </div>
+
+                <div>
+                   <label className="block text-sm font-bold mb-2">Контактное лицо</label>
+                   <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="Иванов Иван" />
+                </div>
+
+                <div>
+                   <label className="block text-sm font-bold mb-2">Тип сертификата</label>
+                   <select className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all cursor-pointer">
+                     <option>СТ-1 (СНГ)</option>
+                     <option>СТ-2 (Сербия)</option>
+                     <option>EAV (Вьетнам)</option>
+                     <option>Общая форма</option>
+                     <option>Форма А</option>
+                     <option>Не знаю, нужна консультация</option>
+                   </select>
+                </div>
+
+                <div className="pt-2">
+                  <label className="block text-sm font-bold mb-2">Прикрепите документы</label>
+                  <div className="border-2 border-dashed border-slate-300 rounded-xl p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-slate-50 transition-colors group">
+                    <UploadCloud className="text-slate-400 group-hover:text-blue-500 mb-2 transition-colors" size={32} />
+                    <span className="text-sm text-slate-500 font-medium">Перетащите файлы сюда или нажмите для загрузки</span>
+                  </div>
+                </div>
+
+                <button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all mt-4">
+                  Отправить заявку
+                </button>
+                <p className="text-xs text-center text-slate-400 mt-3">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </div>
+  );
+};
+
+export default CertificationPage;
