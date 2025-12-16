@@ -1,18 +1,13 @@
 import React from 'react';
 import { 
-  FileText, 
-  ShieldCheck, 
-  Key, 
   Clock, 
   Calendar, 
   Banknote, 
   Download, 
-  ArrowRight, 
   CheckCircle2, 
   UploadCloud, 
   Phone, 
   Mail, 
-  FileCheck,
   Globe
 } from 'lucide-react';
 
@@ -21,9 +16,9 @@ export const CertificationPage: React.FC = () => {
     <div className="font-sans text-slate-900 bg-white">
       
       {/* 1. HERO SECTION */}
-      <section className="relative bg-slate-900 text-white overflow-hidden py-24 lg:py-32">
+      <section className="relative bg-slate-900 text-white overflow-hidden min-h-[600px] lg:h-[85vh]">
         <div className="absolute inset-0 opacity-20">
-            {/* Фоновое изображение (документы/логистика) */}
+            {/* Фоновое изображение */}
             <img 
               src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=2070&auto=format&fit=crop" 
               alt="Background" 
@@ -32,86 +27,44 @@ export const CertificationPage: React.FC = () => {
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/95 to-slate-900/50"></div>
         
-        <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
-          <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
-              Заказать сертификат происхождения товара в <span className="text-yellow-400">Забайкальской ТПП</span>
-            </h1>
-            <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl">
-              Оформите ключевой документ для экспорта онлайн. Получите льготы и преференции для вашего бизнеса. Гарантия прохождения таможни.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button className="bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 px-8 rounded-xl transition-all hover:scale-105 shadow-[0_0_20px_rgba(250,204,21,0.3)]">
-                Оставить заявку онлайн
-              </button>
-              <button className="border-2 border-slate-600 hover:border-white text-white font-semibold py-4 px-8 rounded-xl transition-colors flex items-center justify-center gap-2 group">
-                <Download size={20} />
-                Скачать чек-лист
-              </button>
+        <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 h-full flex flex-col justify-center">
+          <div className="flex flex-col justify-center h-full py-20"> {/* Добавлены классы центровки */}
+            <div className="max-w-3xl">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
+                Заказать сертификат происхождения товара в <span className="text-yellow-400">Забайкальской ТПП</span>
+              </h1>
+              <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl">
+                Оформите ключевой документ для экспорта онлайн. Получите льготы и преференции для вашего бизнеса. Гарантия прохождения таможни.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button className="bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 px-8 rounded-xl transition-all hover:scale-105 shadow-[0_0_20px_rgba(250,204,21,0.3)]">
+                  Оставить заявку онлайн
+                </button>
+                <button className="border-2 border-slate-600 hover:border-white text-white font-semibold py-4 px-8 rounded-xl transition-colors flex items-center justify-center gap-2 group">
+                  <Download size={20} />
+                  Скачать чек-лист
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 2. ПРЕИМУЩЕСТВА */}
+      {/* 2. ТИПЫ СЕРТИФИКАТОВ (Теперь первая секция, bg-white, порядок изменен) */}
       <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <div className="text-center mb-16 max-w-3xl mx-auto">
-            <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Сертификат происхождения — ваш пропуск на международные рынки</h2>
-            <p className="text-slate-500 text-lg">Этот документ необходим для таможенного контроля и получения льгот</p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Card 1 */}
-            <div className="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-              <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center mb-6">
-                <Key className="text-blue-600" size={32} />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Снижение пошлин</h3>
-              <p className="text-slate-500 leading-relaxed">
-                Получайте тарифные преференции и освобождение от уплаты пошлин в странах СНГ (форма СТ-1) и других государствах.
-              </p>
-            </div>
-
-            {/* Card 2 */}
-            <div className="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-              <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center mb-6">
-                <ShieldCheck className="text-blue-600" size={32} />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Упрощение таможни</h3>
-              <p className="text-slate-500 leading-relaxed">
-                Избегайте задержек и дополнительных проверок, предоставляя официальное подтверждение страны происхождения товара.
-              </p>
-            </div>
-
-            {/* Card 3 */}
-            <div className="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-              <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center mb-6">
-                <FileCheck className="text-blue-600" size={32} />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Выполнение контрактов</h3>
-              <p className="text-slate-500 leading-relaxed">
-                Соответствуйте требованиям международных контрактов и банковских аккредитивов, где сертификат обязателен.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. ТИПЫ СЕРТИФИКАТОВ (Grid вместо таблицы) */}
-      <section className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Выберите правильный тип сертификата</h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
+              // "Общая форма" перемещена на первое место
+              { type: 'Общая форма', countries: 'Все остальные страны', purpose: 'Подтверждение страны происхождения для таможенных целей', lang: 'Английский / Другой' },
               { type: 'СТ-1', countries: 'Государства-участники СНГ', purpose: 'Получение тарифных преференций (снижение/отмена пошлин)', lang: 'Русский' },
               { type: 'СТ-2', countries: 'Сербия', purpose: 'Получение преференций в рамках соглашения о свободной торговле', lang: 'Русский / Английский' },
               { type: 'EAV', countries: 'Вьетнам', purpose: 'Получение преференций в рамках соглашения о свободной торговле', lang: 'Английский' },
-              { type: 'Общая форма', countries: 'Все остальные страны', purpose: 'Подтверждение страны происхождения для таможенных целей', lang: 'Английский / Другой' },
               { type: 'Форма "А"', countries: 'Черногория', purpose: 'Получение преференций в рамках Генеральной системы', lang: 'Английский' },
             ].map((item, index) => (
-              <div key={index} className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+              <div key={index} className="bg-white rounded-2xl p-6 shadow-lg shadow-slate-200/50 border border-slate-100 hover:shadow-xl transition-shadow hover:-translate-y-1 duration-300">
                 <div className="flex justify-between items-start mb-4">
                   <span className="text-2xl font-black text-blue-600 bg-blue-50 px-3 py-1 rounded-lg">{item.type}</span>
                   <Globe className="text-slate-300" size={24} />
@@ -142,10 +95,10 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. ЦИФРЫ И СРОКИ */}
-      <section className="py-16 bg-white border-b border-slate-100">
+      {/* 3. ЦИФРЫ И СРОКИ (Фон изменен на bg-slate-50) */}
+      <section className="py-16 bg-slate-50 border-y border-slate-100">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <div className="grid md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-100">
+          <div className="grid md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-200">
             <div className="text-center px-4 pt-4 md:pt-0">
               <Banknote className="mx-auto text-blue-600 mb-4 h-10 w-10" />
               <div className="text-4xl font-extrabold text-slate-900 mb-2">от 2288 ₽</div>
@@ -165,7 +118,7 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. КАК ПОЛУЧИТЬ (Steps) */}
+      {/* 4. КАК ПОЛУЧИТЬ (Фон bg-white) */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-16 text-center">Как получить сертификат: просто и понятно</h2>
@@ -200,7 +153,7 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 6. ДОКУМЕНТЫ (Downloads) */}
+      {/* 5. ДОКУМЕНТЫ (Фон bg-slate-50) */}
       <section className="py-24 bg-slate-50">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <div className="text-center mb-12">
@@ -219,7 +172,7 @@ export const CertificationPage: React.FC = () => {
               <div key={idx} className="flex flex-col md:flex-row items-start md:items-center justify-between p-6 border-b border-slate-100 last:border-0 hover:bg-blue-50/30 transition-colors">
                 <div className="flex items-start gap-4">
                   <div className="p-2 bg-blue-100 text-blue-600 rounded-lg mt-1 md:mt-0">
-                    <FileText size={20} />
+                    <Download size={20} />
                   </div>
                   <div>
                     <h4 className="font-bold text-slate-900 text-lg">{doc.name}</h4>
@@ -238,14 +191,14 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 7. КОМАНДА (Contacts) */}
+      {/* 6. КОМАНДА (Фон bg-white) */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Остались вопросы? Мы поможем</h2>
           
           <div className="flex flex-wrap justify-center gap-8">
             {/* Manager 1 */}
-            <div className="flex items-center gap-6 bg-slate-50 p-6 rounded-2xl w-full md:w-auto md:min-w-[400px]">
+            <div className="flex items-center gap-6 bg-slate-50 p-6 rounded-2xl w-full md:w-auto md:min-w-[400px] hover:shadow-lg transition-shadow">
               <div className="w-20 h-20 rounded-full bg-slate-300 overflow-hidden shrink-0 border-2 border-white shadow-md">
                  {/* Placeholder Avatar */}
                  <div className="w-full h-full flex items-center justify-center bg-blue-600 text-white text-2xl font-bold">И</div>
@@ -261,7 +214,7 @@ export const CertificationPage: React.FC = () => {
             </div>
 
             {/* Manager 2 */}
-            <div className="flex items-center gap-6 bg-slate-50 p-6 rounded-2xl w-full md:w-auto md:min-w-[400px]">
+            <div className="flex items-center gap-6 bg-slate-50 p-6 rounded-2xl w-full md:w-auto md:min-w-[400px] hover:shadow-lg transition-shadow">
               <div className="w-20 h-20 rounded-full bg-slate-300 overflow-hidden shrink-0 border-2 border-white shadow-md">
                  <div className="w-full h-full flex items-center justify-center bg-slate-800 text-white text-2xl font-bold">П</div>
               </div>
@@ -278,7 +231,7 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 8. CTA ФОРМА */}
+      {/* 7. CTA ФОРМА */}
       <section className="py-24 bg-slate-900 text-white">
         <div className="max-w-5xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
