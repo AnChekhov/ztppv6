@@ -47,10 +47,14 @@ export const Header: React.FC = () => {
         {/* 3. КОНТАКТЫ И КНОПКА */}
         <div className="hidden lg:flex items-center gap-6">
           <div className="text-right hidden xl:block">
-             <a href="tel:+73022123456" className="block text-sm font-bold text-slate-900 hover:text-blue-700 transition-colors">
-               +7 (3022) 12-34-56
+             {/* Обновленный телефон */}
+             <a href="tel:+79243733330" className="block text-sm font-bold text-slate-900 hover:text-blue-700 transition-colors">
+               +7 (924) 373-33-30
              </a>
-             <span className="text-[10px] font-medium text-slate-500 uppercase tracking-wider">пн-пт 9:00 - 18:00</span>
+             {/* Email вместо часов работы */}
+             <a href="mailto:info@zabtpp.ru" className="block text-xs font-medium text-slate-500 hover:text-blue-700 transition-colors mt-0.5">
+               info@zabtpp.ru
+             </a>
           </div>
 
           {/* Кнопка - Amber/Yellow Accent */}
@@ -73,8 +77,8 @@ export const Header: React.FC = () => {
           <Link to="/ved" className="text-lg font-semibold py-2 text-slate-800 hover:text-blue-700">ВЭД и Китай</Link>
           <hr className="border-slate-100"/>
           <div className="py-2">
-              <div className="font-bold text-slate-900">+7 (3022) 12-34-56</div>
-              <div className="text-xs text-slate-500">пн-пт 9:00 - 18:00</div>
+              <a href="tel:+79243733330" className="block font-bold text-slate-900">+7 (924) 373-33-30</a>
+              <a href="mailto:info@zabtpp.ru" className="block text-sm text-slate-500 mt-1">info@zabtpp.ru</a>
           </div>
           <Button variant="lime" className="w-full justify-center !rounded-lg font-bold">Вступить в палату</Button>
         </div>
