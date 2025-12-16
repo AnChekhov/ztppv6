@@ -1,9 +1,9 @@
 import React from 'react';
-import { FileCheck, Globe, Scale, Users, BookOpen, Container, ChevronRight, ClipboardCheck, ArrowRight, FileText } from 'lucide-react';
+import { FileText, Globe, Scale, Users, BookOpen, Container, ChevronRight, ArrowRight, HelpCircle } from 'lucide-react'; // Добавил HelpCircle
 import { Link } from 'react-router-dom';
 import { Button } from './ui/Button';
 
-// --- КОМПОНЕНТ СТАНДАРТНОЙ КАРТОЧКИ (ДЛЯ НИЖНЕЙ СЕТКИ) ---
+// --- КОМПОНЕНТ СТАНДАРТНОЙ КАРТОЧКИ ---
 interface ServiceCardProps {
   icon: React.ElementType;
   title: string;
@@ -56,13 +56,14 @@ const PriorityCard: React.FC<PriorityCardProps> = ({
     
     {/* А. ВЕРХНЯЯ ЧАСТЬ */}
     <div className="flex justify-between items-start mb-5">
+      {/* ИНВЕРСИЯ ЦВЕТОВ: Светлый фон, синяя иконка */}
       <div className="w-14 h-14 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-105 bg-blue-50 text-blue-600">
         <Icon size={28} strokeWidth={1.5} />
       </div>
 
       <span className={`inline-flex items-center px-3 py-1 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-wider ${
         badgeStyle === 'green' 
-            ? 'bg-blue-100 text-blue-700' 
+            ? 'bg-blue-100 text-blue-700' // Синий бейдж вместо зеленого
             : 'bg-slate-100 text-slate-600'
       }`}>
         {badgeText}
@@ -114,7 +115,7 @@ const ServicesGrid: React.FC = () => {
     <section className="pt-10 pb-24 bg-slate-50">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         
-        {/* 1. ВЕРХНИЙ ПРИЗЫВ */}
+        {/* 1. ВЕРХНИЙ ПРИЗЫВ (Акцент на действие) */}
         <div className="text-center mb-10 max-w-2xl mx-auto">
           <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">
             Закажите нужный сертификат или экспертизу в пару кликов
@@ -186,18 +187,26 @@ const ServicesGrid: React.FC = () => {
             description="Семинары по изменениям в законодательстве, тренинги для участников ВЭД, повышение квалификации сотрудников."
           />
 
-          {/* ✅ ИЗМЕНЕНИЯ ЗДЕСЬ: Обновлен заголовок и описание */}
           <ServiceCard 
             icon={Users} 
             title="Мероприятия нашего сообщества" 
             description="Нетворкинг, деловые обсуждения с представителями органов власти, профильные комитеты для решения отраслевых проблем."
           />
           
-          <div className="flex flex-col items-center justify-center p-8 rounded-2xl border border-dashed border-slate-300 bg-white/50 text-center h-full hover:bg-white transition-colors">
-            <h4 className="text-lg font-bold text-slate-700 mb-2">Нужна другая услуга?</h4>
-            <p className="text-sm text-slate-500 mb-6">У нас более 40 видов услуг для бизнеса</p>
-            <Button variant="outline" className="border-slate-300 hover:border-blue-700 hover:text-blue-700 bg-white">
-                Полный каталог
+          {/* ✅ КАРТОЧКА: ПРИЗЫВ К СВЯЗИ */}
+          <div className="flex flex-col items-center justify-center p-8 rounded-2xl border border-dashed border-slate-300 bg-white/50 text-center h-full hover:bg-white hover:border-blue-300 hover:shadow-md transition-all group">
+            
+            {/* Добавил иконку вопроса для визуального баланса с остальными карточками */}
+            <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-slate-100 text-slate-500 transition-transform group-hover:scale-110 group-hover:bg-blue-50 group-hover:text-blue-600">
+                <HelpCircle size={24} strokeWidth={1.5} />
+            </div>
+
+            <h4 className="text-lg font-bold text-slate-900 mb-2">Не нашли нужную услугу?</h4>
+            <p className="text-sm text-slate-500 mb-6 leading-relaxed">
+               Свяжитесь с нами — мы подберем решение под ваши задачи.
+            </p>
+            <Button variant="outline" className="border-blue-600 text-blue-700 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-colors bg-white">
+                Получить консультацию
             </Button>
           </div>
 
