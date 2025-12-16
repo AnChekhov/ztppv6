@@ -9,7 +9,7 @@ import {
   Phone, 
   Mail, 
   Globe,
-  CheckCircle // Используем для списка документов
+  CheckCircle 
 } from 'lucide-react';
 
 export const CertificationPage: React.FC = () => {
@@ -51,7 +51,6 @@ export const CertificationPage: React.FC = () => {
       {/* 2. ТИПЫ СЕРТИФИКАТОВ */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
-          {/* ✅ ЗАГОЛОВОК ОБНОВЛЕН */}
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Выберите нужный Вам тип сертификата</h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -99,30 +98,36 @@ export const CertificationPage: React.FC = () => {
             {/* Карточка 1 */}
             <div className="text-center px-4 pt-4 md:pt-0">
               <Banknote className="mx-auto text-blue-600 mb-4 h-10 w-10" />
-              {/* ✅ Значение со звездочкой */}
-              <div className="text-4xl font-extrabold text-slate-900 mb-2">от 2288 ₽ *</div>
+              {/* ✅ Звездочка исправлена: цвет slate-300, размер 2xl, align-top */}
+              <div className="text-4xl font-extrabold text-slate-900 mb-2">
+                от 2288 ₽ <span className="text-slate-300 text-2xl align-top">*</span>
+              </div>
               <p className="text-slate-500">Стоимость услуги<br/><span className="text-sm">(зависит от вида товара)</span></p>
             </div>
             
             {/* Карточка 2 */}
             <div className="text-center px-4 pt-4 md:pt-0">
               <Clock className="mx-auto text-blue-600 mb-4 h-10 w-10" />
-              {/* ✅ Значение со звездочкой и новый текст */}
-              <div className="text-4xl font-extrabold text-slate-900 mb-2">от 1 дня *</div>
+              {/* ✅ Звездочка исправлена */}
+              <div className="text-4xl font-extrabold text-slate-900 mb-2">
+                от 1 дня <span className="text-slate-300 text-2xl align-top">*</span>
+              </div>
               <p className="text-slate-500">Срок оформления<br/><span className="text-sm">(после подачи документов)</span></p>
             </div>
             
             {/* Карточка 3 */}
             <div className="text-center px-4 pt-4 md:pt-0">
               <Calendar className="mx-auto text-blue-600 mb-4 h-10 w-10" />
-              {/* ✅ Значение со звездочкой */}
-              <div className="text-4xl font-extrabold text-slate-900 mb-2">12 месяцев *</div>
+              {/* ✅ Звездочка исправлена */}
+              <div className="text-4xl font-extrabold text-slate-900 mb-2">
+                12 месяцев <span className="text-slate-300 text-2xl align-top">*</span>
+              </div>
               <p className="text-slate-500">Срок действия<br/><span className="text-sm">(с даты выдачи)</span></p>
             </div>
           </div>
 
-          {/* ✅ СНОСКА С ЮРИДИЧЕСКИМ УТОЧНЕНИЕМ */}
-          <div className="mt-4 text-center">
+          {/* ✅ СНОСКА: mt-12, max-w-4xl, mx-auto, text-left */}
+          <div className="mt-12 max-w-4xl mx-auto text-left">
             <p className="text-sm text-slate-400">
               * Стоимость, сроки оформления и период действия сертификата зависят от номенклатуры товара и страны назначения. Точную информацию уточнит специалист Палаты после анализа документов.
             </p>
@@ -181,7 +186,6 @@ export const CertificationPage: React.FC = () => {
             ].map((doc, idx) => (
               <div key={idx} className="flex flex-col md:flex-row items-start md:items-center justify-between p-6 border-b border-slate-100 last:border-0 hover:bg-blue-50/30 transition-colors">
                 <div className="flex items-start gap-4">
-                  {/* ✅ ИКОНКА ЗАМЕНЕНА НА CheckCircle */}
                   <div className="p-2 bg-blue-100 text-blue-600 rounded-lg mt-1 md:mt-0">
                     <CheckCircle size={20} />
                   </div>
@@ -191,7 +195,6 @@ export const CertificationPage: React.FC = () => {
                   </div>
                 </div>
                 
-                {/* ✅ ЛОГИКА ОТОБРАЖЕНИЯ: Ссылка или Тире */}
                 {doc.link ? (
                   <a href="#" className="mt-4 md:mt-0 flex items-center text-blue-600 font-bold text-sm hover:text-blue-800 transition-colors whitespace-nowrap">
                     <Download size={16} className="mr-2" />
