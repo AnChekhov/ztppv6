@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   Clock, 
   Calendar, 
@@ -9,14 +9,39 @@ import {
   Phone, 
   Mail, 
   Globe,
-  CheckCircle 
+  CheckCircle,
+  ChevronDown,
+  Check
 } from 'lucide-react';
 
 export const CertificationPage: React.FC = () => {
+  // Состояние для открытия/закрытия вопросов в FAQ
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  const toggleFaq = (index: number) => {
+    setOpenFaq(openFaq === index ? null : index);
+  };
+
+  const faqs = [
+    {
+      question: "Можно ли оформить один сертификат на несколько поставок?",
+      answer: "Обычно сертификат выдается на одну партию товара. Однако, в некоторых случаях и для определенных стран возможна выдача периодического сертификата. Рекомендуем уточнить этот момент у наших специалистов под ваш конкретный контракт."
+    },
+    {
+      question: "Что делать, если в производстве используется импортное сырье?",
+      answer: "Если в производстве используется импортное сырье, необходимо доказать, что товар подвергся достаточной переработке. Критерии переработки (смена кода ТН ВЭД, правило адвалорной доли и др.) зависят от соглашения со страной экспорта."
+    },
+    {
+      question: "Нужен ли оригинал сертификата или достаточно копии?",
+      answer: "Для предоставления в таможенные органы обычно требуется оригинал документа. Копии могут быть использованы для предварительного информирования или внутренних нужд контрагентов, но таможенные преференции предоставляются на основании оригинала."
+    }
+  ];
+
   return (
     <div className="font-sans text-slate-900 bg-white">
       
       {/* 1. HERO SECTION */}
+      {/* Исправлено: min-h-[65vh] и асимметричные отступы pt-36 pb-20 для оптического центрирования */}
       <section className="relative bg-slate-900 text-white overflow-hidden min-h-[65vh] flex items-center justify-center">
         <div className="absolute inset-0 opacity-20">
             <img 
@@ -27,7 +52,7 @@ export const CertificationPage: React.FC = () => {
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/95 to-slate-900/50"></div>
         
-        <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-36 pb-20 flex flex-col justify-center h-full">
             <div className="max-w-3xl">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
                 Заказать сертификат происхождения товара в <span className="text-yellow-400">Забайкальской ТПП</span>
@@ -49,6 +74,7 @@ export const CertificationPage: React.FC = () => {
       </section>
 
       {/* 2. ТИПЫ СЕРТИФИКАТОВ */}
+      {/* Фон белый. Общая форма первая. */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Выберите нужный Вам тип сертификата</h2>
@@ -63,7 +89,7 @@ export const CertificationPage: React.FC = () => {
             ].map((item, index) => (
               <div key={index} className="bg-white rounded-2xl p-6 shadow-lg shadow-slate-200/50 border border-slate-100 hover:shadow-xl transition-shadow hover:-translate-y-1 duration-300">
                 <div className="flex justify-between items-start mb-4">
-                  <span className="text-2xl font-black text-blue-600 bg-blue-50 px-3 py-1 rounded-lg">{item.type}</span>
+                  <span className="text-2xl font-black text-blue-600 bg-blue-50 px-3 py-1 rounded-lg whitespace-nowrap">{item.type}</span>
                   <Globe className="text-slate-300" size={24} />
                 </div>
                 <div className="mb-4">
@@ -92,50 +118,49 @@ export const CertificationPage: React.FC = () => {
       </section>
 
       {/* 3. ЦИФРЫ И СРОКИ */}
+      {/* Фон серый. Сноска выровнена влево. Звездочки маленькие. */}
       <section className="py-16 bg-slate-50 border-y border-slate-100">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-200">
             {/* Карточка 1 */}
             <div className="text-center px-4 pt-4 md:pt-0">
               <Banknote className="mx-auto text-blue-600 mb-4 h-10 w-10" />
-              {/* ✅ Звездочка исправлена: цвет slate-300, размер 2xl, align-top */}
-              <div className="text-4xl font-extrabold text-slate-900 mb-2">
-                от 2288 ₽ <span className="text-slate-300 text-2xl align-top">*</span>
+              <div className="text-4xl font-extrabold text-slate-900 mb-2 relative inline-block">
+                от 2288 ₽ <span className="text-slate-400 text-xl absolute -top-1 -right-4">*</span>
               </div>
-              <p className="text-slate-500">Стоимость услуги<br/><span className="text-sm">(зависит от вида товара)</span></p>
+              <p className="text-slate-500 mt-2">Стоимость услуги<br/><span className="text-sm">(зависит от вида товара)</span></p>
             </div>
             
             {/* Карточка 2 */}
             <div className="text-center px-4 pt-4 md:pt-0">
               <Clock className="mx-auto text-blue-600 mb-4 h-10 w-10" />
-              {/* ✅ Звездочка исправлена */}
-              <div className="text-4xl font-extrabold text-slate-900 mb-2">
-                от 1 дня <span className="text-slate-300 text-2xl align-top">*</span>
+              <div className="text-4xl font-extrabold text-slate-900 mb-2 relative inline-block">
+                от 1 дня <span className="text-slate-400 text-xl absolute -top-1 -right-4">*</span>
               </div>
-              <p className="text-slate-500">Срок оформления<br/><span className="text-sm">(после подачи документов)</span></p>
+              <p className="text-slate-500 mt-2">Срок оформления<br/><span className="text-sm">(после подачи документов)</span></p>
             </div>
             
             {/* Карточка 3 */}
             <div className="text-center px-4 pt-4 md:pt-0">
               <Calendar className="mx-auto text-blue-600 mb-4 h-10 w-10" />
-              {/* ✅ Звездочка исправлена */}
-              <div className="text-4xl font-extrabold text-slate-900 mb-2">
-                12 месяцев <span className="text-slate-300 text-2xl align-top">*</span>
+              <div className="text-4xl font-extrabold text-slate-900 mb-2 relative inline-block">
+                12 месяцев <span className="text-slate-400 text-xl absolute -top-1 -right-4">*</span>
               </div>
-              <p className="text-slate-500">Срок действия<br/><span className="text-sm">(с даты выдачи)</span></p>
+              <p className="text-slate-500 mt-2">Срок действия<br/><span className="text-sm">(с даты выдачи)</span></p>
             </div>
           </div>
 
-          {/* ✅ СНОСКА: mt-12, max-w-4xl, mx-auto, text-left */}
           <div className="mt-12 max-w-4xl mx-auto text-left">
-            <p className="text-sm text-slate-400">
-              * Стоимость, сроки оформления и период действия сертификата зависят от номенклатуры товара и страны назначения. Точную информацию уточнит специалист Палаты после анализа документов.
+            <p className="text-sm text-slate-400 leading-relaxed">
+              <span className="text-lg align-middle mr-1">*</span> 
+              Стоимость, сроки оформления и период действия сертификата зависят от номенклатуры товара и страны назначения. Точную информацию уточнит специалист Палаты после анализа документов.
             </p>
           </div>
         </div>
       </section>
 
       {/* 4. КАК ПОЛУЧИТЬ */}
+      {/* Фон белый */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-16 text-center">Как получить сертификат: просто и понятно</h2>
@@ -169,6 +194,7 @@ export const CertificationPage: React.FC = () => {
       </section>
 
       {/* 5. ДОКУМЕНТЫ */}
+      {/* Фон серый. Иконки галочек. */}
       <section className="py-24 bg-slate-50">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <div className="text-center mb-12">
@@ -187,7 +213,7 @@ export const CertificationPage: React.FC = () => {
               <div key={idx} className="flex flex-col md:flex-row items-start md:items-center justify-between p-6 border-b border-slate-100 last:border-0 hover:bg-blue-50/30 transition-colors">
                 <div className="flex items-start gap-4">
                   <div className="p-2 bg-blue-100 text-blue-600 rounded-lg mt-1 md:mt-0">
-                    <CheckCircle size={20} />
+                    <Check size={20} strokeWidth={3} />
                   </div>
                   <div>
                     <h4 className="font-bold text-slate-900 text-lg">{doc.name}</h4>
@@ -196,12 +222,12 @@ export const CertificationPage: React.FC = () => {
                 </div>
                 
                 {doc.link ? (
-                  <a href="#" className="mt-4 md:mt-0 flex items-center text-blue-600 font-bold text-sm hover:text-blue-800 transition-colors whitespace-nowrap">
+                  <a href="#" className="mt-4 md:mt-0 flex items-center text-blue-600 font-bold text-sm hover:text-blue-800 transition-colors whitespace-nowrap bg-blue-50 px-4 py-2 rounded-lg">
                     <Download size={16} className="mr-2" />
                     Скачать бланк
                   </a>
                 ) : (
-                   <div className="mt-4 md:mt-0 text-blue-600 font-bold text-lg select-none px-4">—</div>
+                   <div className="mt-4 md:mt-0 text-blue-600 font-bold text-xl select-none px-6 py-2">—</div>
                 )}
               </div>
             ))}
@@ -209,38 +235,73 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 6. КОМАНДА */}
+      {/* 6. FAQ (НОВЫЙ БЛОК) */}
+      {/* Фон белый */}
       <section className="py-24 bg-white">
+        <div className="max-w-3xl mx-auto px-6 md:px-8">
+          <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Часто задаваемые вопросы</h2>
+          
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
+              <div key={index} className="border-b border-slate-200 last:border-0">
+                <button 
+                  onClick={() => toggleFaq(index)}
+                  className="w-full flex justify-between items-center py-6 text-left group"
+                >
+                  <span className={`text-lg font-bold transition-colors ${openFaq === index ? 'text-blue-600' : 'text-slate-900 group-hover:text-blue-600'}`}>
+                    {faq.question}
+                  </span>
+                  <ChevronDown 
+                    className={`text-slate-400 transition-transform duration-300 ${openFaq === index ? 'rotate-180 text-blue-600' : ''}`} 
+                    size={24} 
+                  />
+                </button>
+                <div 
+                  className={`overflow-hidden transition-all duration-300 ease-in-out ${openFaq === index ? 'max-h-96 opacity-100 pb-6' : 'max-h-0 opacity-0'}`}
+                >
+                  <p className="text-slate-600 leading-relaxed text-base">
+                    {faq.answer}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 7. КОМАНДА */}
+      {/* Фон серый */}
+      <section className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Остались вопросы? Мы поможем</h2>
           
           <div className="flex flex-wrap justify-center gap-8">
             {/* Manager 1 */}
-            <div className="flex items-center gap-6 bg-slate-50 p-6 rounded-2xl w-full md:w-auto md:min-w-[400px] hover:shadow-lg transition-shadow">
-              <div className="w-20 h-20 rounded-full bg-slate-300 overflow-hidden shrink-0 border-2 border-white shadow-md">
+            <div className="flex items-center gap-6 bg-white p-6 rounded-2xl w-full md:w-auto md:min-w-[400px] shadow-sm hover:shadow-md transition-all">
+              <div className="w-20 h-20 rounded-full bg-slate-100 overflow-hidden shrink-0 border-2 border-slate-100">
                  <div className="w-full h-full flex items-center justify-center bg-blue-600 text-white text-2xl font-bold">И</div>
               </div>
               <div>
                 <h3 className="text-xl font-bold text-slate-900">Иванова Елена</h3>
                 <p className="text-blue-600 font-medium text-sm mb-3">Ведущий специалист</p>
                 <div className="flex flex-col gap-1 text-sm text-slate-600">
-                  <a href="tel:+73022355598" className="hover:text-blue-600 flex items-center gap-2"><Phone size={14}/> +7 (3022) 35-55-98</a>
-                  <a href="mailto:ivanova.e@ztpp.ru" className="hover:text-blue-600 flex items-center gap-2"><Mail size={14}/> ivanova.e@ztpp.ru</a>
+                  <a href="tel:+73022355598" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Phone size={14}/> +7 (3022) 35-55-98</a>
+                  <a href="mailto:ivanova.e@ztpp.ru" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Mail size={14}/> ivanova.e@ztpp.ru</a>
                 </div>
               </div>
             </div>
 
             {/* Manager 2 */}
-            <div className="flex items-center gap-6 bg-slate-50 p-6 rounded-2xl w-full md:w-auto md:min-w-[400px] hover:shadow-lg transition-shadow">
-              <div className="w-20 h-20 rounded-full bg-slate-300 overflow-hidden shrink-0 border-2 border-white shadow-md">
+            <div className="flex items-center gap-6 bg-white p-6 rounded-2xl w-full md:w-auto md:min-w-[400px] shadow-sm hover:shadow-md transition-all">
+              <div className="w-20 h-20 rounded-full bg-slate-100 overflow-hidden shrink-0 border-2 border-slate-100">
                  <div className="w-full h-full flex items-center justify-center bg-slate-800 text-white text-2xl font-bold">П</div>
               </div>
               <div>
                 <h3 className="text-xl font-bold text-slate-900">Петров Сергей</h3>
                 <p className="text-blue-600 font-medium text-sm mb-3">Эксперт по ВЭД</p>
                 <div className="flex flex-col gap-1 text-sm text-slate-600">
-                   <a href="tel:+73022355599" className="hover:text-blue-600 flex items-center gap-2"><Phone size={14}/> +7 (3022) 35-55-99</a>
-                   <a href="mailto:petrov.s@ztpp.ru" className="hover:text-blue-600 flex items-center gap-2"><Mail size={14}/> petrov.s@ztpp.ru</a>
+                   <a href="tel:+73022355599" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Phone size={14}/> +7 (3022) 35-55-99</a>
+                   <a href="mailto:petrov.s@ztpp.ru" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Mail size={14}/> petrov.s@ztpp.ru</a>
                 </div>
               </div>
             </div>
@@ -248,7 +309,7 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 7. CTA ФОРМА */}
+      {/* 8. CTA ФОРМА */}
       <section className="py-24 bg-slate-900 text-white">
         <div className="max-w-5xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -300,10 +361,10 @@ export const CertificationPage: React.FC = () => {
                 <div>
                    <label className="block text-sm font-bold mb-2">Тип сертификата</label>
                    <select className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all cursor-pointer">
+                     <option>Общая форма</option>
                      <option>СТ-1 (СНГ)</option>
                      <option>СТ-2 (Сербия)</option>
                      <option>EAV (Вьетнам)</option>
-                     <option>Общая форма</option>
                      <option>Форма А</option>
                      <option>Не знаю, нужна консультация</option>
                    </select>
