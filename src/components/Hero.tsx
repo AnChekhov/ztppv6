@@ -10,8 +10,11 @@ const ServiceCard: React.FC<{ icon: React.ReactNode, title: string, subtitle: st
             {icon}
         </div>
         <div className="flex-grow">
+            {/* Заголовок остался без изменений (text-sm font-bold) */}
             <p className="font-bold text-sm text-slate-900">{title}</p>
-            <p className="text-xs text-slate-500 mt-1">{subtitle}</p>
+            
+            {/* ИЗМЕНЕНИЕ ЗДЕСЬ: Увеличен шрифт (text-sm), цвет темнее (slate-600), интервал (leading-snug) */}
+            <p className="text-sm text-slate-600 mt-1 leading-snug">{subtitle}</p>
         </div>
         <ArrowRight size={16} className="text-slate-400 ml-4 flex-shrink-0" />
     </div>
@@ -53,13 +56,13 @@ export const Hero: React.FC = () => {
                         </span>
                     </div>
                     
-                    {/* Headline - ЗАМЕНЕН ТЕКСТ */}
+                    {/* Headline */}
                     <h1 className="text-5xl lg:text-6xl font-extrabold mb-4 leading-tight text-white tracking-tight drop-shadow-lg max-w-xl">
                         Укрепляем позиции <br />
                         Вашего бизнеса
                     </h1>
                     
-                    {/* Paragraph - ЗАМЕНЕН ТЕКСТ */}
+                    {/* Paragraph */}
                     <p className="text-xl text-slate-300 mb-6 max-w-xl leading-relaxed">
                         Помогаем предпринимателям выходить на рынок Китая, оформляем сертификаты происхождения и защищаем ваши интересы на государственном уровне.
                     </p>
@@ -86,7 +89,7 @@ export const Hero: React.FC = () => {
 
                 </div>
                 
-                {/* 2. Right Column: Popular Services Block - ОСТАВЛЕН БЕЗ ИЗМЕНЕНИЙ */}
+                {/* 2. Right Column: Popular Services Block */}
                 <div className="md:col-span-5 w-full mt-10 md:mt-0 pt-0 flex-shrink-0 self-center"> 
                     <p className="text-sm font-semibold text-slate-400 mb-4 uppercase tracking-widest text-right md:text-left">
                         Популярные услуги
