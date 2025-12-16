@@ -29,7 +29,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon: Icon, title, descriptio
   </div>
 );
 
-// --- КОМПОНЕНТ АКЦЕНТНОЙ КАРТОЧКИ (CLEAN / WHITE STYLE) ---
+// --- КОМПОНЕНТ АКЦЕНТНОЙ КАРТОЧКИ (COMPACT STYLE) ---
 interface PriorityCardProps {
   icon: React.ElementType;
   title: string;
@@ -49,17 +49,19 @@ const PriorityCard: React.FC<PriorityCardProps> = ({
   badgeStyle,
   buttonStyle
 }) => (
-  <div className="bg-white rounded-[2.5rem] p-8 md:p-10 shadow-xl shadow-slate-200/60 border border-white flex flex-col h-full relative overflow-hidden transition-transform hover:-translate-y-1 duration-300">
+  // ИЗМЕНЕНИЕ: Уменьшены padding (p-6 md:p-7) и скругление для компактности
+  <div className="bg-white rounded-[2rem] p-6 md:p-7 shadow-xl shadow-slate-200/60 border border-white flex flex-col h-full relative overflow-hidden transition-transform hover:-translate-y-1 duration-300">
     
     {/* А. ВЕРХНЯЯ ЧАСТЬ: Иконка и Бейдж */}
-    <div className="flex justify-between items-start mb-8">
-      {/* Иконка: bg-blue-600 (Яркий синий) */}
-      <div className="w-16 h-16 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-105 bg-blue-600 text-white">
-        <Icon size={32} strokeWidth={1.5} />
+    {/* ИЗМЕНЕНИЕ: Уменьшен отступ снизу (mb-5 вместо mb-8) */}
+    <div className="flex justify-between items-start mb-5">
+      {/* Иконка: Уменьшен размер контейнера (w-14 вместо w-16) */}
+      <div className="w-14 h-14 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-105 bg-blue-600 text-white">
+        <Icon size={28} strokeWidth={1.5} />
       </div>
 
       {/* Бейдж */}
-      <span className={`inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider ${
+      <span className={`inline-flex items-center px-3 py-1 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-wider ${
         badgeStyle === 'green' 
             ? 'bg-blue-100 text-blue-700' 
             : 'bg-slate-100 text-slate-600'
@@ -69,25 +71,28 @@ const PriorityCard: React.FC<PriorityCardProps> = ({
     </div>
 
     {/* Б. КОНТЕНТ */}
-    <h3 className="text-3xl font-extrabold text-slate-900 mb-4 leading-tight">
+    {/* ИЗМЕНЕНИЕ: Уменьшен шрифт (text-xl md:text-2xl) и отступ (mb-3) */}
+    <h3 className="text-xl md:text-2xl font-extrabold text-slate-900 mb-3 leading-tight">
       {title}
     </h3>
     
-    <p className="text-base md:text-lg text-slate-600 leading-relaxed flex-grow">
+    {/* ИЗМЕНЕНИЕ: Уменьшен шрифт описания (text-sm md:text-base) */}
+    <p className="text-sm md:text-base text-slate-600 leading-relaxed flex-grow">
       {description}
     </p>
     
     {/* В. КНОПКА */}
-    <div className="mt-8 pt-4">
+    {/* ИЗМЕНЕНИЕ: Уменьшен отступ сверху (mt-6) */}
+    <div className="mt-6">
       <Button 
         variant="lime" 
-        className={`w-full h-14 text-base font-bold !rounded-xl shadow-md transition-all ${
+        className={`w-full h-12 md:h-14 text-sm md:text-base font-bold !rounded-xl shadow-md transition-all ${
           buttonStyle === 'yellow' 
             ? 'bg-yellow-400 text-slate-900 hover:bg-yellow-500 hover:shadow-yellow-400/30' 
             : 'bg-slate-900 text-white hover:bg-slate-800 hover:shadow-slate-900/30'
         }`}
       >
-        {buttonText} <ArrowRight size={20} className="ml-2" />
+        {buttonText} <ArrowRight size={18} className="ml-2" />
       </Button>
     </div>
   </div>
@@ -98,19 +103,21 @@ const ServicesGrid: React.FC = () => {
     <section className="pt-10 pb-24 bg-slate-50">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         
-        {/* 1. ВЕРХНИЙ ПРИЗЫВ (БЫВШИЙ ПРОМЕЖУТОЧНЫЙ) */}
-        <div className="text-center mb-12 max-w-2xl mx-auto">
+        {/* 1. ВЕРХНИЙ ПРИЗЫВ */}
+        <div className="text-center mb-10 max-w-2xl mx-auto">
+          {/* ИЗМЕНЕНИЕ: Заголовок одного цвета (убраны span с цветами) */}
           <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">
-            Получите нужный <span className="text-blue-700">сертификат</span> или <span className="text-blue-700">экспертизу</span> в пару кликов
+            Получите нужный сертификат или экспертизу в пару кликов
           </h3>
           <p className="text-slate-500 font-medium">
             Сделаем всё за Вас в максимально короткие сроки.
           </p>
         </div>
 
-        {/* 2. ДВА АКЦЕНТНЫХ БЛОКА (ПРИОРИТЕТНЫЕ УСЛУГИ) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10 mb-20">
-          {/* КАРТОЧКА 1: СЕРТИФИКАЦИЯ (Текст обновлен) */}
+        {/* 2. ДВА АКЦЕНТНЫХ БЛОКА (КОМПАКТНЫЕ) */}
+        {/* ИЗМЕНЕНИЕ: Уменьшен отступ снизу (mb-16 вместо mb-20) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-16">
+          {/* КАРТОЧКА 1: СЕРТИФИКАЦИЯ */}
           <PriorityCard 
             icon={FileText}
             title="Сертификаты происхождения товаров"
@@ -121,7 +128,7 @@ const ServicesGrid: React.FC = () => {
             buttonStyle="yellow"
           />
           
-          {/* КАРТОЧКА 2: ЭКСПЕРТИЗА (Текст обновлен) */}
+          {/* КАРТОЧКА 2: ЭКСПЕРТИЗА */}
           <PriorityCard 
             icon={Scale}
             title="Независимая товарная экспертиза"
@@ -133,7 +140,7 @@ const ServicesGrid: React.FC = () => {
           />
         </div>
 
-        {/* 3. ЗАГОЛОВОК ОБЩЕГО КАТАЛОГА (ОПУЩЕН ВНИЗ) */}
+        {/* 3. ЗАГОЛОВОК ОБЩЕГО КАТАЛОГА */}
         <div className="text-center mb-12 max-w-3xl mx-auto">
           <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
             Комплексная поддержка бизнеса в Забайкальском крае
