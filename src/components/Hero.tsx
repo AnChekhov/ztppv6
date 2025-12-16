@@ -34,8 +34,9 @@ export const Hero: React.FC = () => {
       </div>
       
       {/* Content Container */}
-      <div className="max-w-7xl mx-auto px-6 relative z-10 w-full pt-20 pb-12">
-            {/* ИЗМЕНЕНИЕ: Добавлен класс items-center для вертикального выравнивания колонок */}
+      {/* ИЗМЕНЕНИЕ: pt-20 pb-12 заменены на py-20 для полной вертикальной симметрии */}
+      <div className="max-w-7xl mx-auto px-6 relative z-10 w-full py-20">
+            {/* ИЗМЕНЕНИЕ: items-center центрирует левую и правую колонку относительно друг друга */}
             <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 items-center">
                 
                 {/* 1. Left Column: Headline and Buttons */}
