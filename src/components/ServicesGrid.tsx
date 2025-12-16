@@ -40,7 +40,8 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon: Icon, title, descriptio
 
 const ServicesGrid: React.FC = () => {
   return (
-    <section className="py-24 bg-white">
+    {/* ИЗМЕНЕНИЕ: py-24 заменено на pt-10 pb-24 для уменьшения верхнего отступа */}
+    <section className="pt-10 pb-24 bg-white">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         <div className="text-center mb-16 max-w-3xl mx-auto">
           {/* Заголовок */}
@@ -48,7 +49,7 @@ const ServicesGrid: React.FC = () => {
             Комплексная поддержка бизнеса в Забайкальском крае
           </h3>
           
-          {/* ОБНОВЛЕНО: Описание */}
+          {/* Описание */}
           <p className="text-slate-600 text-lg">
             Весь спектр услуг для экспортеров, импортеров, производителей и предпринимателей Читы, Забайкалья и других регионов.
           </p>
