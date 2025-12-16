@@ -20,7 +20,6 @@ const ServiceCard: React.FC<{ icon: React.ReactNode, title: string, subtitle: st
 
 export const Hero: React.FC = () => {
   return (
-    // ВЫСОТА: Оставлена min-h-[65vh]
     <section className="relative bg-slate-900 text-white min-h-[65vh] flex items-center justify-center overflow-hidden">
       
       {/* BACKGROUND LAYERS */}
@@ -35,10 +34,8 @@ export const Hero: React.FC = () => {
       </div>
       
       {/* Content Container */}
-      {/* ИЗМЕНЕНИЕ: pt-32 pb-16 (Асимметричные отступы для компенсации шапки) */}
       <div className="max-w-7xl mx-auto px-6 relative z-10 w-full pt-32 pb-16">
             
-            {/* items-center сохранен */}
             <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 items-center">
                 
                 {/* 1. Left Column: Headline and Buttons */}
@@ -67,23 +64,24 @@ export const Hero: React.FC = () => {
 
                 </div>
                 
-                {/* 2. Right Column: Popular Services Block */}
+                {/* 2. Right Column: Services Block */}
                 <div className="md:col-span-5 w-full mt-10 md:mt-0 pt-0 flex-shrink-0 self-center"> 
-                    <p className="text-sm font-semibold text-slate-400 mb-4 uppercase tracking-widest text-right md:text-left">
-                        Популярные услуги
-                    </p>
+                    {/* УДАЛЕНО: Заголовок "Популярные услуги" */}
                     
                     <div className="space-y-4">
+                        {/* КАРТОЧКА 1: Обновлены тексты */}
                         <ServiceCard 
                             icon={<FileText size={24} />} 
-                            title="Сертификаты происхождения (СТ-1)"
-                            subtitle="Для экспорта и госзакупок. Оформление за 1 день."
+                            title="Сертификаты происхождения"
+                            subtitle="Для экспорта и импорта. Оформим за 1 день."
                         />
+                        {/* КАРТОЧКА 2: Обновлен текст (удалено начало фразы) */}
                         <ServiceCard 
                             icon={<Scale size={24} />} 
                             title="Товарная экспертиза"
-                            subtitle="Приказы по 44-ФЗ, оценка качества и ущерба."
+                            subtitle="Оценка качества и ущерба."
                         />
+                        {/* КАРТОЧКА 3: Без изменений */}
                         <ServiceCard 
                             icon={<Shield size={24} />} 
                             title="Юридическая защита"
@@ -91,9 +89,10 @@ export const Hero: React.FC = () => {
                         />
                     </div>
                     
-                    <div className="text-right mt-5">
+                    <div className="text-right mt-6">
+                        {/* ОБНОВЛЕНО: Текст ссылки и отступ mt-6 */}
                         <a href="#" className="text-sm font-medium text-slate-400 hover:text-yellow-500 transition-colors">
-                            Смотреть все 45+ услуг
+                            Смотреть все услуги
                         </a>
                     </div>
                 </div>
