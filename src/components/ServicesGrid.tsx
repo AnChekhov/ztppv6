@@ -43,10 +43,16 @@ const ServicesGrid: React.FC = () => {
     <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         <div className="text-center mb-16 max-w-3xl mx-auto">
-          <h2 className="text-blue-900 font-bold tracking-widest uppercase text-xs mb-4">Направления деятельности</h2>
-          <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Комплексная поддержка вашего бизнеса</h3>
+          {/* УДАЛЕНО: Надзаголовок "Направления деятельности" */}
+          
+          {/* ОБНОВЛЕНО: Заголовок для SEO */}
+          <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
+            Комплексная поддержка бизнеса в Забайкальском крае
+          </h3>
+          
+          {/* ОБНОВЛЕНО: Описание */}
           <p className="text-slate-600 text-lg">
-            Мы предоставляем более 40 видов услуг для экспортеров, производителей и предпринимателей региона. Наша экспертиза признана на международном уровне.
+            Мы предоставляем широкий спектр услуг для экспортеров, производителей и предпринимателей Читы и Забайкалья. Помогаем развивать ваше дело на всех этапах.
           </p>
         </div>
 
