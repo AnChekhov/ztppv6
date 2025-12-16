@@ -20,7 +20,7 @@ const ServiceCard: React.FC<{ icon: React.ReactNode, title: string, subtitle: st
 
 export const Hero: React.FC = () => {
   return (
-    // ИЗМЕНЕНИЕ 1: min-h-[65vh] (Компактная высота, убирает лишнее пространство)
+    // ВЫСОТА: Оставлена min-h-[65vh]
     <section className="relative bg-slate-900 text-white min-h-[65vh] flex items-center justify-center overflow-hidden">
       
       {/* BACKGROUND LAYERS */}
@@ -35,10 +35,10 @@ export const Hero: React.FC = () => {
       </div>
       
       {/* Content Container */}
-      {/* ИЗМЕНЕНИЕ 2: py-16 (Умеренные симметричные отступы сверху и снизу) */}
-      <div className="max-w-7xl mx-auto px-6 relative z-10 w-full py-16">
+      {/* ИЗМЕНЕНИЕ: pt-32 pb-16 (Асимметричные отступы для компенсации шапки) */}
+      <div className="max-w-7xl mx-auto px-6 relative z-10 w-full pt-32 pb-16">
             
-            {/* ПРОВЕРКА: items-center гарантирует центрирование контента при любой высоте */}
+            {/* items-center сохранен */}
             <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 items-center">
                 
                 {/* 1. Left Column: Headline and Buttons */}
