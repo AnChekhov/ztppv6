@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { FileCheck, Globe, Scale, Users, BookOpen, Container, ChevronRight, ClipboardCheck, ArrowRight, FileText } from 'lucide-react';
 import { Button } from './ui/Button';
@@ -39,7 +38,7 @@ interface PriorityCardProps {
   // Стилизация
   badgeText: string;
   badgeStyle: 'green' | 'gray';
-  iconBgStyle: 'blue' | 'dark';
+  // iconBgStyle удален, так как теперь стиль единый
   buttonStyle: 'yellow' | 'dark';
 }
 
@@ -50,23 +49,22 @@ const PriorityCard: React.FC<PriorityCardProps> = ({
   buttonText, 
   badgeText,
   badgeStyle,
-  iconBgStyle,
   buttonStyle
 }) => (
   <div className="bg-white rounded-[2.5rem] p-8 md:p-10 shadow-xl shadow-slate-200/60 border border-white flex flex-col h-full relative overflow-hidden transition-transform hover:-translate-y-1 duration-300">
     
     {/* А. ВЕРХНЯЯ ЧАСТЬ: Иконка и Бейдж */}
     <div className="flex justify-between items-start mb-8">
-      {/* Иконка */}
-      <div className={`w-16 h-16 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-105 ${
-        iconBgStyle === 'blue' ? 'bg-blue-50 text-blue-600' : 'bg-slate-800 text-white'
-      }`}>
+      {/* Иконка: УНИФИЦИРОВАНА (Темно-синий фон, белая иконка) */}
+      <div className="w-16 h-16 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-105 bg-slate-800 text-white">
         <Icon size={32} strokeWidth={1.5} />
       </div>
 
-      {/* Бейдж */}
+      {/* Бейдж: ЗЕЛЕНЫЙ ЗАМЕНЕН НА ГОЛУБОЙ */}
       <span className={`inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider ${
-        badgeStyle === 'green' ? 'bg-green-100 text-green-700' : 'bg-slate-100 text-slate-600'
+        badgeStyle === 'green' 
+            ? 'bg-blue-100 text-blue-700' // Бывший зеленый стал голубым
+            : 'bg-slate-100 text-slate-600'
       }`}>
         {badgeText}
       </span>
@@ -99,7 +97,7 @@ const PriorityCard: React.FC<PriorityCardProps> = ({
 
 const ServicesGrid: React.FC = () => {
   return (
-    // ФОН СЕКЦИИ: Светло-серый для контраста с белыми карточками
+    // ФОН СЕКЦИИ
     <section className="pt-10 pb-24 bg-slate-50">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         
@@ -117,25 +115,23 @@ const ServicesGrid: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10 mb-16">
           {/* КАРТОЧКА 1: СЕРТИФИКАЦИЯ */}
           <PriorityCard 
-            icon={FileText} // Синяя иконка
+            icon={FileText}
             title="Сертификаты происхождения товаров"
             description="Оформление сертификатов (СТ-1, формы А, общей формы) для экспорта продукции. Необходимы для таможенного оформления, снижения пошлин и участия в государственных закупках."
             buttonText="Оформить сертификат"
             badgeText="Выдача за 1 день"
-            badgeStyle="green"
-            iconBgStyle="blue"
+            badgeStyle="green" // Логически остался 'green', но визуально теперь синий
             buttonStyle="yellow"
           />
           
           {/* КАРТОЧКА 2: ЭКСПЕРТИЗА */}
           <PriorityCard 
-            icon={Scale} // Темная иконка
+            icon={Scale}
             title="Независимая товарная экспертиза"
             description="Профессиональная приемка товаров по количеству и качеству. Экспертиза для таможенных целей (ВЭД), выявление брака, оценка ущерба и определение кодов ТН ВЭД."
             buttonText="Заказать экспертизу"
             badgeText="Защита интересов"
             badgeStyle="gray"
-            iconBgStyle="dark"
             buttonStyle="dark"
           />
         </div>
