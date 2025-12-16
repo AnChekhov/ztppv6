@@ -10,7 +10,7 @@ import {
   Mail, 
   Globe,
   CheckCircle,
-  ChevronDown, // Добавил иконку для селекта
+  ChevronDown,
   Check
 } from 'lucide-react';
 
@@ -230,77 +230,7 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 6. FAQ */}
-      <section className="py-24 bg-white">
-        <div className="max-w-3xl mx-auto px-6 md:px-8">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Часто задаваемые вопросы</h2>
-          
-          <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <div key={index} className="border-b border-slate-200 last:border-0">
-                <button 
-                  onClick={() => toggleFaq(index)}
-                  className="w-full flex justify-between items-center py-6 text-left group"
-                >
-                  <span className={`text-lg font-bold transition-colors ${openFaq === index ? 'text-blue-600' : 'text-slate-900 group-hover:text-blue-600'}`}>
-                    {faq.question}
-                  </span>
-                  <ChevronDown 
-                    className={`text-slate-400 transition-transform duration-300 ${openFaq === index ? 'rotate-180 text-blue-600' : ''}`} 
-                    size={24} 
-                  />
-                </button>
-                <div 
-                  className={`overflow-hidden transition-all duration-300 ease-in-out ${openFaq === index ? 'max-h-96 opacity-100 pb-6' : 'max-h-0 opacity-0'}`}
-                >
-                  <p className="text-slate-600 leading-relaxed text-base">
-                    {faq.answer}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 7. КОМАНДА */}
-      <section className="py-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Остались вопросы? Мы поможем</h2>
-          
-          <div className="flex flex-wrap justify-center gap-8">
-            <div className="flex items-center gap-6 bg-white p-6 rounded-2xl w-full md:w-auto md:min-w-[400px] shadow-sm hover:shadow-md transition-all">
-              <div className="w-20 h-20 rounded-full bg-slate-100 overflow-hidden shrink-0 border-2 border-slate-100">
-                 <div className="w-full h-full flex items-center justify-center bg-blue-600 text-white text-2xl font-bold">И</div>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-slate-900">Иванова Елена</h3>
-                <p className="text-blue-600 font-medium text-sm mb-3">Ведущий специалист</p>
-                <div className="flex flex-col gap-1 text-sm text-slate-600">
-                  <a href="tel:+73022355598" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Phone size={14}/> +7 (3022) 35-55-98</a>
-                  <a href="mailto:ivanova.e@ztpp.ru" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Mail size={14}/> ivanova.e@ztpp.ru</a>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-6 bg-white p-6 rounded-2xl w-full md:w-auto md:min-w-[400px] shadow-sm hover:shadow-md transition-all">
-              <div className="w-20 h-20 rounded-full bg-slate-100 overflow-hidden shrink-0 border-2 border-slate-100">
-                 <div className="w-full h-full flex items-center justify-center bg-slate-800 text-white text-2xl font-bold">П</div>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-slate-900">Петров Сергей</h3>
-                <p className="text-blue-600 font-medium text-sm mb-3">Эксперт по ВЭД</p>
-                <div className="flex flex-col gap-1 text-sm text-slate-600">
-                   <a href="tel:+73022355599" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Phone size={14}/> +7 (3022) 35-55-99</a>
-                   <a href="mailto:petrov.s@ztpp.ru" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Mail size={14}/> petrov.s@ztpp.ru</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 8. CTA ФОРМА */}
+      {/* 6. CTA ФОРМА (Теперь ТУТ, перед FAQ) */}
       <section className="py-24 bg-slate-900 text-white">
         <div className="max-w-5xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -349,7 +279,6 @@ export const CertificationPage: React.FC = () => {
                    <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="Иванов Иван" />
                 </div>
 
-                {/* ✅ ИСПРАВЛЕННЫЙ Select Box (Custom appearance) */}
                 <div>
                    <label className="block text-sm font-bold mb-2">Тип сертификата</label>
                    <div className="relative">
@@ -382,6 +311,78 @@ export const CertificationPage: React.FC = () => {
               </form>
             </div>
 
+          </div>
+        </div>
+      </section>
+
+      {/* 7. FAQ (Теперь под формой) */}
+      {/* Фон Белый */}
+      <section className="py-24 bg-white">
+        <div className="max-w-3xl mx-auto px-6 md:px-8">
+          <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Часто задаваемые вопросы</h2>
+          
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
+              <div key={index} className="border-b border-slate-200 last:border-0">
+                <button 
+                  onClick={() => toggleFaq(index)}
+                  className="w-full flex justify-between items-center py-6 text-left group"
+                >
+                  <span className={`text-lg font-bold transition-colors ${openFaq === index ? 'text-blue-600' : 'text-slate-900 group-hover:text-blue-600'}`}>
+                    {faq.question}
+                  </span>
+                  <ChevronDown 
+                    className={`text-slate-400 transition-transform duration-300 ${openFaq === index ? 'rotate-180 text-blue-600' : ''}`} 
+                    size={24} 
+                  />
+                </button>
+                <div 
+                  className={`overflow-hidden transition-all duration-300 ease-in-out ${openFaq === index ? 'max-h-96 opacity-100 pb-6' : 'max-h-0 opacity-0'}`}
+                >
+                  <p className="text-slate-600 leading-relaxed text-base">
+                    {faq.answer}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 8. КОМАНДА */}
+      {/* Фон Серый */}
+      <section className="py-24 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+          <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Остались вопросы? Мы поможем</h2>
+          
+          <div className="flex flex-wrap justify-center gap-8">
+            <div className="flex items-center gap-6 bg-white p-6 rounded-2xl w-full md:w-auto md:min-w-[400px] shadow-sm hover:shadow-md transition-all">
+              <div className="w-20 h-20 rounded-full bg-slate-100 overflow-hidden shrink-0 border-2 border-slate-100">
+                 <div className="w-full h-full flex items-center justify-center bg-blue-600 text-white text-2xl font-bold">И</div>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-slate-900">Иванова Елена</h3>
+                <p className="text-blue-600 font-medium text-sm mb-3">Ведущий специалист</p>
+                <div className="flex flex-col gap-1 text-sm text-slate-600">
+                  <a href="tel:+73022355598" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Phone size={14}/> +7 (3022) 35-55-98</a>
+                  <a href="mailto:ivanova.e@ztpp.ru" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Mail size={14}/> ivanova.e@ztpp.ru</a>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-6 bg-white p-6 rounded-2xl w-full md:w-auto md:min-w-[400px] shadow-sm hover:shadow-md transition-all">
+              <div className="w-20 h-20 rounded-full bg-slate-100 overflow-hidden shrink-0 border-2 border-slate-100">
+                 <div className="w-full h-full flex items-center justify-center bg-slate-800 text-white text-2xl font-bold">П</div>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-slate-900">Петров Сергей</h3>
+                <p className="text-blue-600 font-medium text-sm mb-3">Эксперт по ВЭД</p>
+                <div className="flex flex-col gap-1 text-sm text-slate-600">
+                   <a href="tel:+73022355599" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Phone size={14}/> +7 (3022) 35-55-99</a>
+                   <a href="mailto:petrov.s@ztpp.ru" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Mail size={14}/> petrov.s@ztpp.ru</a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
