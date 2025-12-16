@@ -53,7 +53,7 @@ const PriorityCard: React.FC<PriorityCardProps> = ({
     
     {/* А. ВЕРХНЯЯ ЧАСТЬ: Иконка и Бейдж */}
     <div className="flex justify-between items-start mb-5">
-      {/* ИКОНКА: ИЗМЕНЕНО на bg-blue-50 text-blue-600 (Светлый фон, синяя иконка) */}
+      {/* Иконка: bg-blue-50 text-blue-600 */}
       <div className="w-14 h-14 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-105 bg-blue-50 text-blue-600">
         <Icon size={28} strokeWidth={1.5} />
       </div>
@@ -100,8 +100,9 @@ const ServicesGrid: React.FC = () => {
         
         {/* 1. ВЕРХНИЙ ПРИЗЫВ */}
         <div className="text-center mb-10 max-w-2xl mx-auto">
+          {/* ИЗМЕНЕНИЕ: Слово "Получите" заменено на "Закажите" */}
           <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">
-            Получите нужный сертификат или экспертизу в пару кликов
+            Закажите нужный сертификат или экспертизу в пару кликов
           </h3>
           <p className="text-slate-500 font-medium">
             Сделаем всё за Вас в максимально короткие сроки.
