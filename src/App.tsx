@@ -9,8 +9,11 @@ import CallToAction from './components/CallToAction';
 import NewsSection from './components/NewsSection';
 import Footer from './components/Footer';
 
+// ✅ НОВЫЙ ИМПОРТ: Импортируем созданную страницу сертификации
+// (Если вы сохранили файл в папку components, поменяйте путь на './components/CertificationPage')
+import CertificationPage from './pages/CertificationPage'; 
+
 // 1. КОМПОНЕНТ: Прокрутка наверх при переходе
-// Без этого при клике на ссылку в футере новая страница откроется в самом низу
 const ScrollToTop = () => {
   const { pathname } = useLocation();
 
@@ -22,7 +25,6 @@ const ScrollToTop = () => {
 };
 
 // 2. КОМПОНЕНТ: Универсальная страница-заглушка
-// Она позволяет сделать ссылки рабочими до того, как мы сверстаем реальный контент
 interface PlaceholderProps {
   title: string;
   description?: string;
@@ -57,13 +59,13 @@ const HomePage = () => {
 // 4. ОСНОВНОЕ ПРИЛОЖЕНИЕ (Роутинг)
 const App: React.FC = () => {
   return (
-    <div className="min-h-screen font-sans flex flex-col bg-tpp-surface text-slate-900">
+    <div className="min-h-screen font-sans flex flex-col bg-slate-50 text-slate-900">
       <ScrollToTop />
       <Header />
       
       <main className="flex-grow">
         <Routes>
-          {/* ГЛАВНАЯ */}
+          {/* ГЛАВНАЯ СТРАНИЦА */}
           <Route path="/" element={<HomePage />} />
 
           {/* СТРАНИЦЫ ИЗ ХЕДЕРА */}
@@ -77,8 +79,10 @@ const App: React.FC = () => {
           <Route path="/members" element={<PagePlaceholder title="Реестр членов" description="Список компаний, входящих в Союз «ТПП Забайкальского края»." />} />
           <Route path="/committees" element={<PagePlaceholder title="Комитеты и комиссии" description="Отраслевые объединения для решения системных проблем бизнеса." />} />
           
-          {/* Конкретные услуги */}
-          <Route path="/services/cert" element={<PagePlaceholder title="Сертификация" description="Выдача сертификатов происхождения товаров (СТ-1, Форма А и др)." />} />
+          {/* ✅ КОНКРЕТНЫЕ УСЛУГИ */}
+          {/* Здесь мы заменили заглушку на реальную страницу */}
+          <Route path="/services/cert" element={<CertificationPage />} />
+          
           <Route path="/services/expert" element={<PagePlaceholder title="Товарная экспертиза" description="Независимая оценка качества, количества и комплектности товаров." />} />
           <Route path="/services/law" element={<PagePlaceholder title="Юридические услуги" description="Консультации, представительство в суде и свидетельствование форс-мажора." />} />
         </Routes>
