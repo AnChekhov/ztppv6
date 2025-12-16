@@ -16,7 +16,8 @@ export const CertificationPage: React.FC = () => {
     <div className="font-sans text-slate-900 bg-white">
       
       {/* 1. HERO SECTION */}
-      <section className="relative bg-slate-900 text-white overflow-hidden min-h-[600px] lg:h-[85vh]">
+      {/* ✅ ИЗМЕНЕНО: Высота min-h-[65vh] и flex-выравнивание */}
+      <section className="relative bg-slate-900 text-white overflow-hidden min-h-[65vh] flex items-center justify-center">
         <div className="absolute inset-0 opacity-20">
             {/* Фоновое изображение */}
             <img 
@@ -27,8 +28,8 @@ export const CertificationPage: React.FC = () => {
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/95 to-slate-900/50"></div>
         
-        <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 h-full flex flex-col justify-center">
-          <div className="flex flex-col justify-center h-full py-20"> {/* Добавлены классы центровки */}
+        {/* ✅ ИЗМЕНЕНО: Отступы pt-32 pb-16 для оптического центра */}
+        <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16">
             <div className="max-w-3xl">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
                 Заказать сертификат происхождения товара в <span className="text-yellow-400">Забайкальской ТПП</span>
@@ -46,18 +47,16 @@ export const CertificationPage: React.FC = () => {
                 </button>
               </div>
             </div>
-          </div>
         </div>
       </section>
 
-      {/* 2. ТИПЫ СЕРТИФИКАТОВ (Теперь первая секция, bg-white, порядок изменен) */}
+      {/* 2. ТИПЫ СЕРТИФИКАТОВ */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Выберите правильный тип сертификата</h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              // "Общая форма" перемещена на первое место
               { type: 'Общая форма', countries: 'Все остальные страны', purpose: 'Подтверждение страны происхождения для таможенных целей', lang: 'Английский / Другой' },
               { type: 'СТ-1', countries: 'Государства-участники СНГ', purpose: 'Получение тарифных преференций (снижение/отмена пошлин)', lang: 'Русский' },
               { type: 'СТ-2', countries: 'Сербия', purpose: 'Получение преференций в рамках соглашения о свободной торговле', lang: 'Русский / Английский' },
@@ -95,7 +94,7 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. ЦИФРЫ И СРОКИ (Фон изменен на bg-slate-50) */}
+      {/* 3. ЦИФРЫ И СРОКИ */}
       <section className="py-16 bg-slate-50 border-y border-slate-100">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-200">
@@ -118,7 +117,7 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. КАК ПОЛУЧИТЬ (Фон bg-white) */}
+      {/* 4. КАК ПОЛУЧИТЬ */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-16 text-center">Как получить сертификат: просто и понятно</h2>
@@ -153,7 +152,7 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. ДОКУМЕНТЫ (Фон bg-slate-50) */}
+      {/* 5. ДОКУМЕНТЫ */}
       <section className="py-24 bg-slate-50">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <div className="text-center mb-12">
@@ -191,7 +190,7 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 6. КОМАНДА (Фон bg-white) */}
+      {/* 6. КОМАНДА */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Остались вопросы? Мы поможем</h2>
