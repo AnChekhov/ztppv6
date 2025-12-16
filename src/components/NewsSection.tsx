@@ -30,7 +30,8 @@ export const NewsSection: React.FC = () => {
               {/* News 2 */}
               <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 group cursor-pointer hover:-translate-y-1">
                   <div className="h-48 bg-slate-200 relative overflow-hidden">
-                       <img src="https://images.unsplash.com/photo-1577962917302-cd874c4e3169?q=80&w=2000&auto=format&fit=crop" alt="News" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+                       {/* Ссылка на изображение заменена ниже */}
+                       <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1932&auto=format&fit=crop" alt="News" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
                       <span className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded text-xs font-bold text-slate-900 uppercase tracking-wide">Мероприятия</span>
                   </div>
                   <div className="p-6">
