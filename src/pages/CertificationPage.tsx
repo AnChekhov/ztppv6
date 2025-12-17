@@ -11,11 +11,11 @@ import {
   Globe,
   CheckCircle,
   ChevronDown,
-  Check
+  Check,
+  FileCheck // ✅ Добавлена иконка для Hero секции
 } from 'lucide-react';
 
 export const CertificationPage: React.FC = () => {
-  // Состояние для открытия/закрытия вопросов в FAQ
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const toggleFaq = (index: number) => {
@@ -42,32 +42,61 @@ export const CertificationPage: React.FC = () => {
       
       {/* 1. HERO SECTION */}
       <section className="relative bg-slate-900 text-white overflow-hidden min-h-[65vh] flex items-center justify-center">
-        <div className="absolute inset-0 opacity-20">
+        {/* Фоновое изображение (сделал чуть прозрачнее, чтобы не спорило с иконкой) */}
+        <div className="absolute inset-0 opacity-10">
             <img 
               src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=2070&auto=format&fit=crop" 
               alt="Background" 
               className="w-full h-full object-cover"
             />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/95 to-slate-900/50"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/95 to-slate-900/60"></div>
         
-        <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-36 pb-20 flex flex-col justify-center h-full">
-            <div className="max-w-3xl">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
-                Заказать сертификат происхождения товара в <span className="text-yellow-400">Забайкальской ТПП</span>
-              </h1>
-              <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl">
-                Оформите ключевой документ для экспорта онлайн. Получите льготы и преференции для вашего бизнеса. Гарантия прохождения таможни.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button className="bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 px-8 rounded-xl transition-all hover:scale-105 shadow-[0_0_20px_rgba(250,204,21,0.3)]">
-                  Оставить заявку онлайн
-                </button>
-                <button className="border-2 border-slate-600 hover:border-white text-white font-semibold py-4 px-8 rounded-xl transition-colors flex items-center justify-center gap-2 group">
-                  <Download size={20} />
-                  Скачать чек-лист
-                </button>
+        <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-36 pb-20 h-full flex flex-col justify-center">
+            
+            {/* ✅ GRID LAYOUT: Разделил на 2 колонки для баланса */}
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              
+              {/* Левая колонка: Текст и Кнопки */}
+              <div className="max-w-3xl">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
+                  Заказать сертификат происхождения товара в <span className="text-yellow-400">Забайкальской ТПП</span>
+                </h1>
+                <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl">
+                  Оформите ключевой документ для экспорта онлайн. Получите льготы и преференции для вашего бизнеса. Гарантия прохождения таможни.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <button className="bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 px-8 rounded-xl transition-all hover:scale-105 shadow-[0_0_20px_rgba(250,204,21,0.3)]">
+                    Оставить заявку онлайн
+                  </button>
+                  <button className="border-2 border-slate-600 hover:border-white text-white font-semibold py-4 px-8 rounded-xl transition-colors flex items-center justify-center gap-2 group">
+                    <Download size={20} />
+                    Скачать чек-лист
+                  </button>
+                </div>
               </div>
+
+              {/* ✅ Правая колонка: Большая декоративная иконка */}
+              <div className="hidden lg:flex justify-center items-center relative">
+                {/* Декоративный круг за иконкой (свечение) */}
+                <div className="absolute w-96 h-96 bg-blue-600/20 rounded-full blur-3xl"></div>
+                
+                {/* Сама иконка (повернутая и полупрозрачная) */}
+                <div className="relative transform rotate-12 transition-transform duration-500 hover:rotate-6 hover:scale-105">
+                   <FileCheck 
+                      size={320} 
+                      strokeWidth={1}
+                      className="text-slate-700/50 drop-shadow-2xl" 
+                   />
+                   {/* Наложение цветной обводки для объема */}
+                   <FileCheck 
+                      size={320} 
+                      strokeWidth={1}
+                      className="absolute top-0 left-0 text-blue-500/30" 
+                   />
+                </div>
+              </div>
+
             </div>
         </div>
       </section>
@@ -119,7 +148,6 @@ export const CertificationPage: React.FC = () => {
       <section className="py-16 bg-slate-50 border-y border-slate-100">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-200">
-            {/* Карточка 1 */}
             <div className="text-center px-4 pt-4 md:pt-0">
               <Banknote className="mx-auto text-blue-600 mb-4 h-10 w-10" />
               <div className="text-4xl font-extrabold text-slate-900 mb-2 relative inline-block">
@@ -128,7 +156,6 @@ export const CertificationPage: React.FC = () => {
               <p className="text-slate-500 mt-2">Стоимость услуги<br/><span className="text-sm">(зависит от вида товара)</span></p>
             </div>
             
-            {/* Карточка 2 */}
             <div className="text-center px-4 pt-4 md:pt-0">
               <Clock className="mx-auto text-blue-600 mb-4 h-10 w-10" />
               <div className="text-4xl font-extrabold text-slate-900 mb-2 relative inline-block">
@@ -137,7 +164,6 @@ export const CertificationPage: React.FC = () => {
               <p className="text-slate-500 mt-2">Срок оформления<br/><span className="text-sm">(после подачи документов)</span></p>
             </div>
             
-            {/* Карточка 3 */}
             <div className="text-center px-4 pt-4 md:pt-0">
               <Calendar className="mx-auto text-blue-600 mb-4 h-10 w-10" />
               <div className="text-4xl font-extrabold text-slate-900 mb-2 relative inline-block">
@@ -230,7 +256,7 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 6. CTA ФОРМА (Теперь ТУТ, перед FAQ) */}
+      {/* 6. CTA ФОРМА */}
       <section className="py-24 bg-slate-900 text-white">
         <div className="max-w-5xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -315,8 +341,7 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 7. FAQ (Теперь под формой) */}
-      {/* Фон Белый */}
+      {/* 7. FAQ */}
       <section className="py-24 bg-white">
         <div className="max-w-3xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Часто задаваемые вопросы</h2>
@@ -350,7 +375,6 @@ export const CertificationPage: React.FC = () => {
       </section>
 
       {/* 8. КОМАНДА */}
-      {/* Фон Серый */}
       <section className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Остались вопросы? Мы поможем</h2>
