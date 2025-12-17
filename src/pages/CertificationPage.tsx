@@ -12,7 +12,7 @@ import {
   CheckCircle,
   ChevronDown,
   Check,
-  FileCheck // ✅ Добавлена иконка для Hero секции
+  FileCheck 
 } from 'lucide-react';
 
 export const CertificationPage: React.FC = () => {
@@ -42,7 +42,6 @@ export const CertificationPage: React.FC = () => {
       
       {/* 1. HERO SECTION */}
       <section className="relative bg-slate-900 text-white overflow-hidden min-h-[65vh] flex items-center justify-center">
-        {/* Фоновое изображение (сделал чуть прозрачнее, чтобы не спорило с иконкой) */}
         <div className="absolute inset-0 opacity-10">
             <img 
               src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=2070&auto=format&fit=crop" 
@@ -54,10 +53,9 @@ export const CertificationPage: React.FC = () => {
         
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-36 pb-20 h-full flex flex-col justify-center">
             
-            {/* ✅ GRID LAYOUT: Разделил на 2 колонки для баланса */}
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               
-              {/* Левая колонка: Текст и Кнопки */}
+              {/* Левая колонка */}
               <div className="max-w-3xl">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
                   Заказать сертификат происхождения товара в <span className="text-yellow-400">Забайкальской ТПП</span>
@@ -76,19 +74,17 @@ export const CertificationPage: React.FC = () => {
                 </div>
               </div>
 
-              {/* ✅ Правая колонка: Большая декоративная иконка */}
+              {/* Правая колонка: Иконка (теперь без наклона) */}
               <div className="hidden lg:flex justify-center items-center relative">
-                {/* Декоративный круг за иконкой (свечение) */}
                 <div className="absolute w-96 h-96 bg-blue-600/20 rounded-full blur-3xl"></div>
                 
-                {/* Сама иконка (повернутая и полупрозрачная) */}
-                <div className="relative transform rotate-12 transition-transform duration-500 hover:rotate-6 hover:scale-105">
+                {/* ✅ УБРАЛ rotate-12 и hover:rotate-6 */}
+                <div className="relative transform transition-transform duration-500 hover:scale-105">
                    <FileCheck 
                       size={320} 
                       strokeWidth={1}
                       className="text-slate-700/50 drop-shadow-2xl" 
                    />
-                   {/* Наложение цветной обводки для объема */}
                    <FileCheck 
                       size={320} 
                       strokeWidth={1}
