@@ -3,24 +3,23 @@ import { ClipboardCheck, FileText } from 'lucide-react';
 
 export const ExpertiseHero: React.FC = () => {
   return (
-    // Сохраняем min-h-[65vh], чтобы совпадало с главной страницей
     <section className="relative bg-slate-900 text-white overflow-hidden min-h-[65vh] flex items-center justify-center">
       <div className="absolute inset-0 opacity-10">
+        {/* ✅ ИСПРАВЛЕНО: Вставил фото с Главной страницы (Hero.tsx) для единого стиля */}
+        {/* Если на странице сертификации другое фото, замените эту ссылку */}
         <img 
-          src="https://images.unsplash.com/photo-1591382696684-38c427c7547a?q=80&w=2070&auto=format&fit=crop" 
+          src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop" 
           alt="Expertise Background" 
           className="w-full h-full object-cover"
         />
       </div>
       <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/95 to-slate-900/60"></div>
       
-      {/* Сохраняем отступ pt-32, как на главной */}
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center">
           
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           
           <div className="max-w-3xl">
-            {/* ✅ ИЗМЕНЕНО: Новый текст заголовка */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
               Товарная экспертиза в Чите и <span className="text-yellow-400">Забайкальском крае</span>
             </h1>
