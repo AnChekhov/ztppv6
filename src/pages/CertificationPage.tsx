@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { 
   Clock, 
@@ -52,7 +51,8 @@ export const CertificationPage: React.FC = () => {
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/95 to-slate-900/60"></div>
         
-        <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-36 pb-20 h-full flex flex-col justify-center">
+        {/* ✅ ИСПРАВЛЕНО: Синхронизированы отступы с главной страницей (pt-32 pb-16) */}
+        <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center">
             
             <div className="grid lg:grid-cols-12 gap-8 items-center">
               
