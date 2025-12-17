@@ -9,9 +9,9 @@ import CallToAction from './components/CallToAction';
 import NewsSection from './components/NewsSection';
 import Footer from './components/Footer';
 
-// ✅ НОВЫЙ ИМПОРТ: Импортируем созданную страницу сертификации
-// (Если вы сохранили файл в папку components, поменяйте путь на './components/CertificationPage')
+// Импорт страниц услуг
 import CertificationPage from './pages/CertificationPage'; 
+import ExpertisePage from './pages/ExpertisePage';
 
 // 1. КОМПОНЕНТ: Прокрутка наверх при переходе
 const ScrollToTop = () => {
@@ -79,11 +79,9 @@ const App: React.FC = () => {
           <Route path="/members" element={<PagePlaceholder title="Реестр членов" description="Список компаний, входящих в Союз «ТПП Забайкальского края»." />} />
           <Route path="/committees" element={<PagePlaceholder title="Комитеты и комиссии" description="Отраслевые объединения для решения системных проблем бизнеса." />} />
           
-          {/* ✅ КОНКРЕТНЫЕ УСЛУГИ */}
-          {/* Здесь мы заменили заглушку на реальную страницу */}
+          {/* КОНКРЕТНЫЕ УСЛУГИ */}
           <Route path="/services/cert" element={<CertificationPage />} />
-          
-          <Route path="/services/expert" element={<PagePlaceholder title="Товарная экспертиза" description="Независимая оценка качества, количества и комплектности товаров." />} />
+          <Route path="/services/expert" element={<ExpertisePage />} />
           <Route path="/services/law" element={<PagePlaceholder title="Юридические услуги" description="Консультации, представительство в суде и свидетельствование форс-мажора." />} />
         </Routes>
       </main>
