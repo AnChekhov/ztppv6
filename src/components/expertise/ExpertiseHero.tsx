@@ -3,6 +3,7 @@ import { ClipboardCheck, FileText } from 'lucide-react';
 
 export const ExpertiseHero: React.FC = () => {
   return (
+    // ✅ ИСПРАВЛЕНО: min-h-[65vh] для соответствия главной странице (было 85vh)
     <section className="relative bg-slate-900 text-white overflow-hidden min-h-[65vh] flex items-center justify-center">
       <div className="absolute inset-0 opacity-10">
         <img 
@@ -13,7 +14,8 @@ export const ExpertiseHero: React.FC = () => {
       </div>
       <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/95 to-slate-900/60"></div>
       
-      <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-36 pb-20 h-full flex flex-col justify-center">
+      {/* ✅ ИСПРАВЛЕНО: pt-32 pb-16 (как в Hero.tsx), чтобы контент не "прыгал" по вертикали */}
+      <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center">
           
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           
@@ -35,7 +37,6 @@ export const ExpertiseHero: React.FC = () => {
             </div>
           </div>
 
-          {/* Правая колонка: Иконка Планшета (Инспекция) */}
           <div className="hidden lg:flex justify-center items-center relative">
             <div className="absolute w-96 h-96 bg-blue-600/20 rounded-full blur-3xl"></div>
             <div className="relative transform transition-transform duration-500 hover:scale-105">
