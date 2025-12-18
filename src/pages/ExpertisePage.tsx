@@ -56,8 +56,9 @@ export const ExpertisePage: React.FC = () => {
       {/* 1. HERO SECTION */}
       <section className="relative bg-slate-900 text-white overflow-hidden min-h-[65vh] flex items-center justify-center">
         <div className="absolute inset-0 opacity-10">
+            {/* ✅ ИЗМЕНЕНО: Локальное изображение */}
             <img 
-              src="https://images.unsplash.com/photo-1591382696684-38c427c7547a?q=80&w=2070&auto=format&fit=crop" 
+              src="/images/hero-bg.jpg" 
               alt="Expertise Background" 
               className="w-full h-full object-cover"
             />
@@ -65,7 +66,9 @@ export const ExpertisePage: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/95 to-slate-900/60"></div>
         
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center">
+            
             <div className="grid lg:grid-cols-12 gap-8 items-center">
+              
               <div className="lg:col-span-7 max-w-3xl">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
                   Независимая товарная экспертиза в <span className="text-yellow-400">Забайкальском крае</span>
@@ -138,8 +141,7 @@ export const ExpertisePage: React.FC = () => {
                 icon: Factory 
               },
             ].map((item, index) => (
-              /* ✅ ИЗМЕНЕНО: hover:scale-[1.03] */
-              <div key={index} className="bg-white rounded-2xl p-8 shadow-lg shadow-slate-200/50 border border-slate-100 transition-all duration-300 hover:shadow-xl hover:shadow-blue-900/5 hover:scale-[1.03] flex flex-col h-full">
+              <div key={index} className="bg-white rounded-2xl p-8 shadow-lg shadow-slate-200/50 border border-slate-100 hover:shadow-xl transition-shadow hover:-translate-y-1 duration-300 flex flex-col h-full">
                 <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 bg-blue-50 text-blue-600">
                   <item.icon size={28} strokeWidth={1.5} />
                 </div>
@@ -224,14 +226,15 @@ export const ExpertisePage: React.FC = () => {
       {/* 5. CTA ФОРМА */}
       <section id="order-form" className="py-20 bg-slate-900 text-white">
         <div className="max-w-5xl mx-auto px-6 md:px-8">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-12 items-start">
             
+            {/* Левая колонка */}
             <div>
               <h2 className="text-3xl md:text-4xl font-extrabold mb-6">Закажите экспертизу онлайн</h2>
               <p className="text-slate-300 text-lg mb-8">
                 Оставьте заявку, и мы рассчитаем стоимость работ и согласуем время выезда эксперта.
               </p>
-              <ul className="space-y-4 mb-8 text-slate-300">
+              <ul className="space-y-4 mb-10 text-slate-300">
                 <li className="flex items-center gap-3">
                   <CheckCircle2 className="text-yellow-400 shrink-0" />
                   <span>Выезд эксперта в течение 24 часов</span>
@@ -245,6 +248,8 @@ export const ExpertisePage: React.FC = () => {
                   <span>Бесплатная консультация</span>
                 </li>
               </ul>
+
+              {/* Контакты для связи */}
               <div className="pt-8 border-t border-slate-700">
                 <p className="text-slate-400 text-sm mb-3 font-medium uppercase tracking-wider">
                   Нет времени заполнять форму?
@@ -261,6 +266,7 @@ export const ExpertisePage: React.FC = () => {
               </div>
             </div>
 
+            {/* Правая колонка: Форма */}
             <div className="bg-white rounded-3xl p-8 text-slate-900 shadow-2xl">
               <form className="space-y-4">
                 <div>
@@ -305,7 +311,7 @@ export const ExpertisePage: React.FC = () => {
                   </div>
                 </div>
 
-                <button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all mt-4">
+                <button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all mt-4">
                   Отправить заявку
                 </button>
                 <p className="text-xs text-center text-slate-400 mt-3">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
