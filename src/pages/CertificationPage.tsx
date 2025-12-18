@@ -23,6 +23,7 @@ export const CertificationPage: React.FC = () => {
     setOpenFaq(openFaq === index ? null : index);
   };
 
+  // Функция для скролла к форме
   const scrollToForm = () => {
     const formSection = document.getElementById('order-form');
     if (formSection) {
@@ -50,7 +51,7 @@ export const CertificationPage: React.FC = () => {
       
       {/* 1. HERO SECTION */}
       <section className="relative bg-slate-900 text-white overflow-hidden min-h-[65vh] flex items-center justify-center">
-        {/* ✅ ИСПРАВЛЕНО: Путь /ztppv6/... и opacity-40 */}
+        {/* Картинка с путем /ztppv6/... и opacity-40 */}
         <div className="absolute inset-0 opacity-40">
             <img 
               src="/ztppv6/images/hero-bg.jpg" 
@@ -58,13 +59,14 @@ export const CertificationPage: React.FC = () => {
               className="w-full h-full object-cover"
             />
         </div>
-        {/* ✅ ИСПРАВЛЕНО: Градиент via-slate-900/80 (светлее) */}
+        {/* Градиент */}
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/80 to-slate-900/50"></div>
         
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center">
             
             <div className="grid lg:grid-cols-12 gap-8 items-center">
               
+              {/* Левая колонка */}
               <div className="lg:col-span-7 max-w-3xl">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
                   Заказать сертификат происхождения товара в <span className="text-yellow-400">Забайкальской ТПП</span>
@@ -89,6 +91,7 @@ export const CertificationPage: React.FC = () => {
                 </div>
               </div>
 
+              {/* Правая колонка */}
               <div className="hidden lg:flex lg:col-span-5 justify-center items-center relative">
                 <div className="absolute w-80 h-80 bg-blue-600/10 rounded-full blur-3xl"></div>
                 <div className="relative transform transition-transform duration-500 hover:scale-105">
@@ -321,7 +324,7 @@ export const CertificationPage: React.FC = () => {
                   </div>
                 </div>
 
-                <button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all mt-4">
+                <button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all mt-4">
                   Отправить заявку
                 </button>
                 <p className="text-xs text-center text-slate-400 mt-3">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
@@ -401,3 +404,9 @@ export const CertificationPage: React.FC = () => {
           </div>
         </div>
       </section>
+
+    </div>
+  );
+};
+
+export default CertificationPage;
