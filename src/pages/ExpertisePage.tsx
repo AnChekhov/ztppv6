@@ -23,9 +23,20 @@ import {
 
 export const ExpertisePage: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  // Состояние для выбранного типа экспертизы
+  const [selectedExpertise, setSelectedExpertise] = useState<string>('Приемка по количеству и качеству');
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
+  };
+
+  // Функция: скролл + выбор типа
+  const handleServiceSelect = (type: string) => {
+    setSelectedExpertise(type);
+    const formSection = document.getElementById('order-form');
+    if (formSection) {
+      formSection.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   const scrollToForm = () => {
@@ -55,7 +66,6 @@ export const ExpertisePage: React.FC = () => {
       
       {/* 1. HERO SECTION */}
       <section className="relative bg-slate-900 text-white overflow-hidden min-h-[65vh] flex items-center justify-center">
-        {/* Картинка: opacity-40 */}
         <div className="absolute inset-0 opacity-40">
             <img 
               src="/ztppv6/images/hero-bg.jpg" 
@@ -64,8 +74,7 @@ export const ExpertisePage: React.FC = () => {
             />
         </div>
         
-        {/* ✅ ИСПРАВЛЕНО: Градиент (90% -> 100%) */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/80 to-slate-900"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/[0.87] to-slate-900"></div>
         
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center">
             
@@ -115,7 +124,6 @@ export const ExpertisePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Остальной контент... */}
       {/* 2. ВИДЫ ЭКСПЕРТИЗ */}
       <section className="pt-12 pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
@@ -154,14 +162,19 @@ export const ExpertisePage: React.FC = () => {
                 icon: Factory 
               },
             ].map((item, index) => (
-              <div key={index} className="bg-white rounded-2xl p-8 shadow-lg shadow-slate-200/50 border border-slate-100 hover:shadow-xl transition-shadow hover:-translate-y-1 duration-300 flex flex-col h-full">
+              /* ✅ ИСПРАВЛЕНО: Добавлен onClick и плавная анимация scale */
+              <div 
+                key={index} 
+                onClick={() => handleServiceSelect(item.title)}
+                className="bg-white rounded-2xl p-8 shadow-lg shadow-slate-200/50 border border-slate-100 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-blue-900/5 hover:scale-[1.03] flex flex-col h-full cursor-pointer"
+              >
                 <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 bg-blue-50 text-blue-600">
                   <item.icon size={28} strokeWidth={1.5} />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3">{item.title}</h3>
                 <p className="text-slate-600 text-sm leading-relaxed flex-grow">{item.desc}</p>
                 <div className="mt-6 pt-4 border-t border-slate-100">
-                   <button onClick={scrollToForm} className="text-sm font-bold text-blue-600 hover:text-blue-800 transition-colors">
+                   <button className="text-sm font-bold text-blue-600 hover:text-blue-800 transition-colors">
                      Подробнее →
                    </button>
                 </div>
@@ -289,8 +302,8 @@ export const ExpertisePage: React.FC = () => {
                 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-bold mb-2">ИНН</label>
-                    <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="1234567890" />
+                    <label className="block text-sm font-bold mb-2">Контактное лицо</label>
+                    <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="Имя" />
                   </div>
                    <div>
                     <label className="block text-sm font-bold mb-2">Телефон</label>
@@ -298,17 +311,22 @@ export const ExpertisePage: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Select: Вид экспертизы */}
+                {/* ✅ ИСПРАВЛЕНО: Select связан со стейтом selectedExpertise */}
                 <div>
                    <label className="block text-sm font-bold mb-2">Вид экспертизы</label>
                    <div className="relative">
-                     <select className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all cursor-pointer appearance-none text-slate-700">
-                       <option>Приемка (Качество/Количество)</option>
-                       <option>По 44-ФЗ (Госзакупки)</option>
-                       <option>Таможенная экспертиза</option>
-                       <option>Оценка ущерба</option>
-                       <option>Судебная экспертиза</option>
-                       <option>Другое / Нужна консультация</option>
+                     <select 
+                        value={selectedExpertise}
+                        onChange={(e) => setSelectedExpertise(e.target.value)}
+                        className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all cursor-pointer appearance-none text-slate-700"
+                     >
+                       <option value="Приемка по количеству и качеству">Приемка по количеству и качеству</option>
+                       <option value="Экспертиза по 44-ФЗ">Экспертиза по 44-ФЗ</option>
+                       <option value="Таможенная экспертиза">Таможенная экспертиза</option>
+                       <option value="Определение ущерба">Определение ущерба</option>
+                       <option value="Судебная экспертиза">Судебная экспертиза</option>
+                       <option value="Экспертиза оборудования">Экспертиза оборудования</option>
+                       <option value="Другое / Нужна консультация">Другое / Нужна консультация</option>
                      </select>
                      <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-slate-500">
                         <ChevronDown size={20} />
