@@ -33,13 +33,11 @@ export const Hero: React.FC = () => {
     <section className="relative bg-slate-900 text-white min-h-[65vh] flex items-center justify-center overflow-hidden">
       
       <div className="absolute inset-0 z-0">
-          {/* ✅ ИСПРАВЛЕНО: Путь /ztppv6/... и opacity-40 */}
           <img 
             src="/ztppv6/images/hero-bg.jpg" 
             alt="Business Background" 
             className="w-full h-full object-cover opacity-40"
           />
-          {/* ✅ ИСПРАВЛЕНО: Градиент стал легче (via-slate-900/80 вместо 95) */}
           <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-900/80 to-slate-900"></div>
           <div className="absolute top-0 right-0 w-2/3 h-full bg-gradient-to-bl from-blue-900/20 to-transparent blur-3xl rounded-full translate-x-1/4 -translate-y-1/4"></div>
       </div>
