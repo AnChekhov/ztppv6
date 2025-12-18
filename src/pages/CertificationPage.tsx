@@ -13,34 +13,85 @@ import {
   ChevronDown,
   Check,
   FileCheck,
-  MessageCircle
+  MessageCircle,
+  ChevronUp,
+  Info
 } from 'lucide-react';
 
 export const CertificationPage: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  // Состояние для выбранного типа сертификата (по умолчанию Общая форма)
   const [selectedType, setSelectedType] = useState<string>('Общая форма');
+  
+  // Состояние для раскрытия подробного описания
+  const [expandedDetail, setExpandedDetail] = useState<string | null>(null);
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
   };
 
-  // Функция: скролл к форме + выбор типа
-  const handleServiceSelect = (type: string) => {
-    setSelectedType(type); // Устанавливаем выбранный тип в селект
-    const formSection = document.getElementById('order-form');
-    if (formSection) {
-      formSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  // Просто скролл (для кнопок в Hero)
   const scrollToForm = () => {
     const formSection = document.getElementById('order-form');
     if (formSection) {
       formSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  // Клик по карточке -> Выбор в форме + Скролл к форме
+  const handleCardClick = (type: string) => {
+    setSelectedType(type);
+    scrollToForm();
+  };
+
+  // Клик по "Подробнее" -> Открытие текста + Скролл к тексту
+  const handleReadMore = (e: React.MouseEvent, id: string) => {
+    e.stopPropagation();
+    setExpandedDetail(id);
+    setTimeout(() => {
+      const element = document.getElementById(`detail-${id}`);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }, 100);
+  };
+
+  // Данные о сертификатах (SEO Texts)
+  const certTypes = [
+    {
+      id: 'general',
+      type: 'Общая форма',
+      countries: 'Все остальные страны',
+      purpose: 'Подтверждение страны происхождения для таможенных целей',
+      longDesc: 'Сертификат происхождения общей формы выдается на товары, экспортируемые во все страны, с которыми у России нет соглашений о преференциях (или если товар не попадает под действие таких соглашений). Этот документ необходим для прохождения таможенного контроля, подтверждения страны происхождения в целях соблюдения мер нетарифного регулирования (эмбарго, санкции), а также по требованию иностранных банков для разблокировки аккредитивов.'
+    },
+    {
+      id: 'st1',
+      type: 'СТ-1',
+      countries: 'Государства-участники СНГ',
+      purpose: 'Получение тарифных преференций (снижение/отмена пошлин)',
+      longDesc: 'Форма СТ-1 — основной документ для беспошлинной торговли со странами СНГ (Азербайджан, Армения, Беларусь, Казахстан, Кыргызстан, Молдова, Таджикистан, Туркменистан, Узбекистан). Наличие этого сертификата позволяет полностью освободиться от уплаты ввозной таможенной пошлины в стране назначения. Для получения сертификата товар должен соответствовать Критериям достаточной переработки (Правила 2009 года).'
+    },
+    {
+      id: 'st2',
+      type: 'СТ-2',
+      countries: 'Сербия',
+      purpose: 'Получение преференций в рамках соглашения о свободной торговле',
+      longDesc: 'Сертификат формы СТ-2 необходим для экспорта товаров в Республику Сербия. Между РФ и Сербией действует Соглашение о зоне свободной торговли, которое позволяет ввозить российские товары без уплаты таможенных пошлин при наличии данного сертификата. Документ заполняется на русском или английском языке.'
+    },
+    {
+      id: 'eav',
+      type: 'EAV',
+      countries: 'Вьетнам',
+      purpose: 'Получение преференций в рамках соглашения о свободной торговле',
+      longDesc: 'Сертификат формы EAV выдается для товаров, экспортируемых в Социалистическую Республику Вьетнам, в рамках Соглашения о свободной торговле между ЕАЭС и Вьетнамом. Позволяет получить значительные скидки на таможенные пошлины или полное освобождение от них. Обязательное условие — соблюдение правил происхождения товаров, установленных Соглашением.'
+    },
+    {
+      id: 'forma',
+      type: 'Форма "А"',
+      countries: 'Черногория',
+      purpose: 'Получение преференций в рамках Генеральной системы',
+      longDesc: 'Сертификат по форме "А" (Form A) используется для получения преференций в рамках Генеральной системы преференций (GSP). На данный момент актуален для экспорта в Черногорию. Ранее использовался для стран ЕС и США/Канады, но сейчас его сфера применения для российских товаров ограничена. Заполняется строго на английском языке.'
+    },
+  ];
 
   const faqs = [
     {
@@ -70,6 +121,7 @@ export const CertificationPage: React.FC = () => {
             />
         </div>
         
+        {/* Градиент */}
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/[0.87] to-slate-900"></div>
         
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center">
@@ -120,36 +172,38 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. ТИПЫ СЕРТИФИКАТОВ */}
+      {/* 2. ТИПЫ СЕРТИФИКАТОВ (GRID) */}
       <section className="pt-12 pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Выберите нужный Вам тип сертификата</h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { type: 'Общая форма', countries: 'Все остальные страны', purpose: 'Подтверждение страны происхождения для таможенных целей' },
-              { type: 'СТ-1', countries: 'Государства-участники СНГ', purpose: 'Получение тарифных преференций (снижение/отмена пошлин)' },
-              { type: 'СТ-2', countries: 'Сербия', purpose: 'Получение преференций в рамках соглашения о свободной торговле' },
-              { type: 'EAV', countries: 'Вьетнам', purpose: 'Получение преференций в рамках соглашения о свободной торговле' },
-              { type: 'Форма "А"', countries: 'Черногория', purpose: 'Получение преференций в рамках Генеральной системы' },
-            ].map((item, index) => (
-              /* ✅ ИСПРАВЛЕНО: Добавлен onClick, cursor-pointer и плавная анимация scale */
+            {certTypes.map((item) => (
               <div 
-                key={index} 
-                onClick={() => handleServiceSelect(item.type)}
-                className="bg-white rounded-2xl p-5 shadow-lg shadow-slate-200/50 border border-slate-100 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-blue-900/5 hover:scale-[1.03] flex flex-col cursor-pointer"
+                key={item.id} 
+                onClick={() => handleCardClick(item.type)}
+                className="bg-white rounded-2xl p-5 shadow-lg shadow-slate-200/50 border border-slate-100 hover:shadow-xl transition-all duration-300 ease-out hover:shadow-blue-900/5 hover:scale-[1.03] flex flex-col cursor-pointer group"
               >
                 <div className="flex justify-between items-start mb-3">
-                  <span className="text-xl font-black text-blue-600 bg-blue-50 px-3 py-1 rounded-lg whitespace-nowrap">{item.type}</span>
+                  <span className="text-xl font-black text-blue-600 bg-blue-50 px-3 py-1 rounded-lg whitespace-nowrap group-hover:bg-blue-600 group-hover:text-white transition-colors">{item.type}</span>
                   <Globe className="text-slate-300" size={22} />
                 </div>
                 <div className="mb-3">
                   <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-1">Назначение</div>
                   <div className="font-bold text-slate-800 text-sm">{item.countries}</div>
                 </div>
-                <div className="mb-0">
+                <div className="mb-3 flex-grow">
                   <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-1">Цель</div>
                   <div className="text-sm text-slate-600 leading-snug">{item.purpose}</div>
+                </div>
+                {/* Кнопка подробнее */}
+                <div className="mt-auto pt-3 border-t border-slate-100">
+                   <button 
+                     onClick={(e) => handleReadMore(e, item.id)}
+                     className="text-xs font-bold text-blue-600 hover:text-blue-800 transition-colors flex items-center"
+                   >
+                     Подробнее <ChevronDown size={14} className="ml-1" />
+                   </button>
                 </div>
               </div>
             ))}
@@ -165,8 +219,52 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. ЦИФРЫ И СРОКИ */}
-      <section className="py-20 bg-slate-50 border-y border-slate-100">
+      {/* 3. ПОДРОБНОЕ ОПИСАНИЕ (SEO Блок) - Серый фон */}
+      <section className="py-20 bg-slate-50 border-y border-slate-200">
+        <div className="max-w-4xl mx-auto px-6 md:px-8">
+          <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">Информация о сертификатах</h2>
+          <div className="space-y-4">
+            {certTypes.map((item) => (
+              <div 
+                key={item.id} 
+                id={`detail-${item.id}`} 
+                className={`bg-white rounded-2xl border transition-all duration-500 overflow-hidden ${expandedDetail === item.id ? 'border-blue-500 shadow-md' : 'border-slate-200'}`}
+              >
+                <button 
+                  onClick={() => setExpandedDetail(expandedDetail === item.id ? null : item.id)}
+                  className="w-full flex items-center justify-between p-6 text-left"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className={`p-2 rounded-lg ${expandedDetail === item.id ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-500'}`}>
+                       <FileCheck size={24} />
+                    </div>
+                    <span className="text-lg font-bold text-slate-900">{item.type} — {item.countries}</span>
+                  </div>
+                  {expandedDetail === item.id ? <ChevronUp className="text-blue-600"/> : <ChevronDown className="text-slate-400"/>}
+                </button>
+                
+                {/* Анимация раскрытия */}
+                <div className={`transition-all duration-300 ease-in-out ${expandedDetail === item.id ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+                  <div className="p-6 pt-0 text-slate-600 leading-relaxed border-t border-slate-100 mt-2">
+                    {item.longDesc}
+                    <div className="mt-4">
+                        <button 
+                            onClick={() => handleCardClick(item.type)}
+                            className="text-sm font-bold text-blue-600 hover:text-yellow-600 underline decoration-dashed underline-offset-4"
+                        >
+                            Оформить сертификат {item.type} →
+                        </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. ЦИФРЫ И СРОКИ (Белый фон) */}
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-200">
             <div className="text-center px-4 pt-4 md:pt-0">
@@ -203,12 +301,45 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. ДОКУМЕНТЫ */}
+      {/* 5. ШАГИ (Серый фон) */}
+      <section className="py-24 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+          <h2 className="text-3xl font-extrabold text-slate-900 mb-16 text-center">Как получить сертификат: просто и понятно</h2>
+          
+          <div className="relative">
+            <div className="hidden md:block absolute top-6 left-0 w-full h-1 bg-slate-200 rounded">
+                <div className="h-full bg-blue-200 w-3/4 rounded"></div>
+            </div>
+            
+            <div className="grid md:grid-cols-4 gap-8">
+              {[
+                { title: 'Подготовка', desc: 'Соберите пакет документов по нашему чек-листу. Скачайте и заполните бланк заявления.' },
+                { title: 'Подача заявки', desc: 'Отправьте заявку и сканы документов онлайн через форму ниже или предоставьте в офис.' },
+                { title: 'Экспертиза', desc: 'Наши специалисты проверят документы и, при необходимости, проведут экспертизу.' },
+                { title: 'Получение', desc: 'Получите готовый сертификат на защищенном бланке в офисе Палаты.' },
+              ].map((step, idx) => (
+                <div key={idx} className="relative pt-8 md:pt-16 group">
+                  <div className="absolute top-0 left-0 md:left-1/2 md:-translate-x-1/2 w-12 h-12 bg-white border-4 border-blue-600 text-blue-600 rounded-full flex items-center justify-center font-bold text-xl z-10 shadow-md group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                    {idx + 1}
+                  </div>
+                  
+                  <div className="bg-white p-6 rounded-2xl md:text-center h-full hover:shadow-lg transition-all border border-slate-100">
+                    <h3 className="font-bold text-lg mb-2">{step.title}</h3>
+                    <p className="text-slate-500 text-sm leading-relaxed">{step.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. ДОКУМЕНТЫ (Белый фон) */}
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Документы для проведения экспертизы</h2>
-            <p className="text-slate-500">Минимальный пакет документов для начала работы</p>
+            <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Все, что нужно для подачи заявки</h2>
+            <p className="text-slate-500">Мы подготовили для вас полный список и шаблоны, чтобы избежать ошибок</p>
           </div>
 
           <div className="bg-white rounded-3xl shadow-sm overflow-hidden border border-slate-100">
@@ -244,7 +375,7 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. CTA ФОРМА */}
+      {/* 7. CTA ФОРМА (Темный) */}
       <section id="order-form" className="py-20 bg-slate-900 text-white">
         <div className="max-w-5xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-start">
@@ -270,7 +401,6 @@ export const CertificationPage: React.FC = () => {
                 </li>
               </ul>
 
-              {/* Контакты для связи */}
               <div className="pt-8 border-t border-slate-700">
                 <p className="text-slate-400 text-sm mb-3 font-medium uppercase tracking-wider">
                   Нет времени заполнять форму?
@@ -306,12 +436,7 @@ export const CertificationPage: React.FC = () => {
                   </div>
                 </div>
 
-                <div>
-                   <label className="block text-sm font-bold mb-2">Контактное лицо</label>
-                   <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="Иванов Иван" />
-                </div>
-
-                {/* ✅ ИСПРАВЛЕНО: Select связан со стейтом selectedType */}
+                {/* Select: Тип сертификата */}
                 <div>
                    <label className="block text-sm font-bold mb-2">Тип сертификата</label>
                    <div className="relative">
@@ -320,12 +445,10 @@ export const CertificationPage: React.FC = () => {
                         onChange={(e) => setSelectedType(e.target.value)}
                         className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all cursor-pointer appearance-none text-slate-700"
                      >
-                       <option value="Общая форма">Общая форма</option>
-                       <option value="СТ-1">СТ-1 (СНГ)</option>
-                       <option value="СТ-2">СТ-2 (Сербия)</option>
-                       <option value="EAV">EAV (Вьетнам)</option>
-                       <option value="Форма А">Форма А</option>
-                       <option value="Не знаю, нужна консультация">Не знаю, нужна консультация</option>
+                       {certTypes.map(c => (
+                         <option key={c.id} value={c.type}>{c.type}</option>
+                       ))}
+                       <option value="Не знаю">Не знаю, нужна консультация</option>
                      </select>
                      <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-slate-500">
                         <ChevronDown size={20} />
@@ -352,7 +475,7 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 6. FAQ */}
+      {/* 8. FAQ (Белый) */}
       <section className="py-20 bg-white">
         <div className="max-w-3xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Часто задаваемые вопросы</h2>
@@ -385,7 +508,7 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 7. КОМАНДА */}
+      {/* 9. КОМАНДА (Серый) */}
       <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Эксперты Палаты</h2>
