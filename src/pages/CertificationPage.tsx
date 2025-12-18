@@ -50,7 +50,6 @@ export const CertificationPage: React.FC = () => {
       
       {/* 1. HERO SECTION */}
       <section className="relative bg-slate-900 text-white overflow-hidden min-h-[65vh] flex items-center justify-center">
-        {/* Картинка: opacity-40 */}
         <div className="absolute inset-0 opacity-40">
             <img 
               src="/ztppv6/images/hero-bg.jpg" 
@@ -59,13 +58,11 @@ export const CertificationPage: React.FC = () => {
             />
         </div>
         
-        {/* ✅ ИСПРАВЛЕНО: Градиент теперь плотный и справа (to-slate-900/90) */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/95 to-slate-900/90"></div>
+        {/* ✅ ИСПРАВЛЕНО: Градиент теперь 100% плотности с обеих сторон (to-slate-900) */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/95 to-slate-900"></div>
         
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center">
-            
             <div className="grid lg:grid-cols-12 gap-8 items-center">
-              
               <div className="lg:col-span-7 max-w-3xl">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
                   Заказать сертификат происхождения товара в <span className="text-yellow-400">Забайкальской ТПП</span>
@@ -74,43 +71,27 @@ export const CertificationPage: React.FC = () => {
                   Оформите ключевой документ для экспорта онлайн. Получите льготы и преференции для вашего бизнеса. Гарантия прохождения таможни.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <button 
-                    onClick={scrollToForm}
-                    className="bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 px-8 rounded-xl transition-all hover:scale-105 shadow-[0_0_20px_rgba(250,204,21,0.3)]"
-                  >
+                  <button onClick={scrollToForm} className="bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 px-8 rounded-xl transition-all hover:scale-105 shadow-[0_0_20px_rgba(250,204,21,0.3)]">
                     Заказать сертификат
                   </button>
-                  <button 
-                    onClick={scrollToForm}
-                    className="border-2 border-slate-600 hover:border-white text-white font-semibold py-4 px-8 rounded-xl transition-colors flex items-center justify-center gap-2 group"
-                  >
+                  <button onClick={scrollToForm} className="border-2 border-slate-600 hover:border-white text-white font-semibold py-4 px-8 rounded-xl transition-all hover:scale-105 flex items-center justify-center gap-2 group">
                     <MessageCircle size={20} />
                     Проконсультироваться
                   </button>
                 </div>
               </div>
-
               <div className="hidden lg:flex lg:col-span-5 justify-center items-center relative">
                 <div className="absolute w-80 h-80 bg-blue-600/10 rounded-full blur-3xl"></div>
                 <div className="relative transform transition-transform duration-500 hover:scale-105">
-                   <FileCheck 
-                      size={300} 
-                      strokeWidth={1}
-                      className="text-slate-600/70 drop-shadow-2xl" 
-                   />
-                   <FileCheck 
-                      size={300} 
-                      strokeWidth={1}
-                      className="absolute top-0 left-0 text-white/10" 
-                   />
+                   <FileCheck size={300} strokeWidth={1} className="text-slate-600/70 drop-shadow-2xl" />
+                   <FileCheck size={300} strokeWidth={1} className="absolute top-0 left-0 text-white/10" />
                 </div>
               </div>
-
             </div>
         </div>
       </section>
 
-      {/* Остальной контент без изменений */}
+      {/* ОСТАЛЬНОЙ КОД БЕЗ ИЗМЕНЕНИЙ... */}
       <section className="pt-12 pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Выберите нужный Вам тип сертификата</h2>
@@ -122,7 +103,7 @@ export const CertificationPage: React.FC = () => {
               { type: 'EAV', countries: 'Вьетнам', purpose: 'Получение преференций в рамках соглашения о свободной торговле' },
               { type: 'Форма "А"', countries: 'Черногория', purpose: 'Получение преференций в рамках Генеральной системы' },
             ].map((item, index) => (
-              <div key={index} className="bg-white rounded-2xl p-5 shadow-lg shadow-slate-200/50 border border-slate-100 hover:shadow-xl transition-shadow hover:-translate-y-1 duration-300 flex flex-col">
+              <div key={index} className="bg-white rounded-2xl p-5 shadow-lg shadow-slate-200/50 border border-slate-100 transition-all duration-300 hover:shadow-xl hover:shadow-blue-900/5 hover:scale-[1.03] flex flex-col">
                 <div className="flex justify-between items-start mb-3">
                   <span className="text-xl font-black text-blue-600 bg-blue-50 px-3 py-1 rounded-lg whitespace-nowrap">{item.type}</span>
                   <Globe className="text-slate-300" size={22} />
@@ -137,7 +118,7 @@ export const CertificationPage: React.FC = () => {
                 </div>
               </div>
             ))}
-            <div className="bg-slate-900 rounded-2xl p-5 shadow-sm flex flex-col justify-center items-center text-center">
+            <div className="bg-slate-900 rounded-2xl p-5 shadow-sm flex flex-col justify-center items-center text-center transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl hover:shadow-blue-500/20">
               <h3 className="text-white font-bold text-lg mb-2">Нужна помощь?</h3>
               <p className="text-slate-400 text-xs mb-4">Наши эксперты помогут определить нужный тип сертификата для вашего груза.</p>
               <button onClick={scrollToForm} className="w-full py-3 bg-white text-slate-900 font-bold rounded-lg hover:bg-yellow-400 transition-colors text-sm">
@@ -185,7 +166,7 @@ export const CertificationPage: React.FC = () => {
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Документы для проведения экспертизы</h2>
+            <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Документы для подачи заявки</h2>
             <p className="text-slate-500">Минимальный пакет документов для начала работы</p>
           </div>
           <div className="bg-white rounded-3xl shadow-sm overflow-hidden border border-slate-100">
@@ -300,7 +281,7 @@ export const CertificationPage: React.FC = () => {
                     <span className="text-sm text-slate-500 font-medium">Перетащите файлы сюда или нажмите для загрузки</span>
                   </div>
                 </div>
-                <button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all mt-4">
+                <button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all mt-4">
                   Отправить заявку
                 </button>
                 <p className="text-xs text-center text-slate-400 mt-3">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
@@ -316,24 +297,14 @@ export const CertificationPage: React.FC = () => {
           <div className="space-y-4">
             {faqs.map((faq, index) => (
               <div key={index} className="border-b border-slate-200 last:border-0">
-                <button 
-                  onClick={() => toggleFaq(index)}
-                  className="w-full flex justify-between items-center py-6 text-left group"
-                >
+                <button onClick={() => toggleFaq(index)} className="w-full flex justify-between items-center py-6 text-left group">
                   <span className={`text-lg font-bold transition-colors ${openFaq === index ? 'text-blue-600' : 'text-slate-900 group-hover:text-blue-600'}`}>
                     {faq.question}
                   </span>
-                  <ChevronDown 
-                    className={`text-slate-400 transition-transform duration-300 ${openFaq === index ? 'rotate-180 text-blue-600' : ''}`} 
-                    size={24} 
-                  />
+                  <ChevronDown className={`text-slate-400 transition-transform duration-300 ${openFaq === index ? 'rotate-180 text-blue-600' : ''}`} size={24} />
                 </button>
-                <div 
-                  className={`overflow-hidden transition-all duration-300 ease-in-out ${openFaq === index ? 'max-h-96 opacity-100 pb-6' : 'max-h-0 opacity-0'}`}
-                >
-                  <p className="text-slate-600 leading-relaxed text-base">
-                    {faq.answer}
-                  </p>
+                <div className={`overflow-hidden transition-all duration-300 ease-in-out ${openFaq === index ? 'max-h-96 opacity-100 pb-6' : 'max-h-0 opacity-0'}`}>
+                  <p className="text-slate-600 leading-relaxed text-base">{faq.answer}</p>
                 </div>
               </div>
             ))}
