@@ -6,12 +6,7 @@ import { Button } from './ui/Button';
 const ServiceCard: React.FC<{ icon: React.ReactNode, title: string, subtitle: string, link?: string }> = ({ icon, title, subtitle, link }) => {
     
     const CardContent = (
-        /* ✅ ИСПРАВЛЕНО: 
-           - Вернул scale (увеличение), но сделал его плавным [1.03]
-           - Убрал translate-y (подпрыгивание)
-           - Добавил transition-all duration-300
-        */
-        <div className="flex items-center p-5 bg-white rounded-xl shadow-xl transition-all duration-300 transform hover:scale-[1.03] hover:shadow-2xl hover:shadow-blue-900/20 cursor-pointer w-full border border-slate-200 h-full">
+        <div className="flex items-center p-5 bg-white rounded-xl shadow-xl transition-all duration-300 ease-out transform hover:scale-[1.03] hover:shadow-2xl hover:shadow-blue-900/20 cursor-pointer w-full border border-slate-200 h-full">
             <div className="p-3 bg-blue-50 text-blue-600 rounded-lg mr-4 flex-shrink-0">
                 {icon}
             </div>
@@ -38,8 +33,9 @@ export const Hero: React.FC = () => {
     <section className="relative bg-slate-900 text-white min-h-[65vh] flex items-center justify-center overflow-hidden">
       
       <div className="absolute inset-0 z-0">
+          {/* ✅ ИЗМЕНЕНО: Локальное изображение */}
           <img 
-            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop" 
+            src="/images/hero-bg.jpg" 
             alt="Business Background" 
             className="w-full h-full object-cover opacity-20"
           />
