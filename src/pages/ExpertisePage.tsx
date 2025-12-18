@@ -5,6 +5,8 @@ import {
   MapPin, Clock, ShieldCheck, Check, Globe, Download, 
   CheckCircle2, MessageCircle, ChevronUp, Info
 } from 'lucide-react';
+// ✅ 1. ИМПОРТ КОМПОНЕНТА SEO
+import SEO from '../components/SEO';
 
 export const ExpertisePage: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -100,6 +102,13 @@ export const ExpertisePage: React.FC = () => {
 
   return (
     <div className="font-sans text-slate-900 bg-white">
+      
+      {/* ✅ 2. ВСТАВКА SEO ТЕГОВ */}
+      <SEO 
+        title="Независимая товарная экспертиза в Чите и Забайкальске"
+        description="Проведение независимой экспертизы товаров: приемка по качеству, экспертиза по 44-ФЗ, оценка ущерба, судебная экспертиза. Аккредитованные эксперты ТПП Забайкальского края."
+        keywords="товарная экспертиза чита, экспертиза 44-фз, оценка ущерба, судебная экспертиза забайкалье, акт тпп, независимая экспертиза"
+      />
       
       {/* 1. HERO SECTION */}
       <section className="relative bg-slate-900 text-white overflow-hidden min-h-[65vh] flex items-center justify-center">
@@ -300,7 +309,7 @@ export const ExpertisePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 6. CTA ФОРМА (Темный) */}
+      {/* 6. CTA ФОРМА */}
       <section id="order-form" className="py-20 bg-slate-900 text-white">
         <div className="max-w-5xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-start">
@@ -400,7 +409,7 @@ export const ExpertisePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 7. FAQ (Белый) */}
+      {/* 7. FAQ */}
       <section className="py-20 bg-white">
         <div className="max-w-3xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Часто задаваемые вопросы</h2>
