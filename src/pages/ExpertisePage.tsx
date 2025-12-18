@@ -14,7 +14,11 @@ import {
   MapPin,
   Clock,
   ShieldCheck,
-  Check
+  Check,
+  // ✅ ДОБАВЛЕНЫ НЕДОСТАЮЩИЕ ИКОНКИ:
+  Globe,
+  Download,
+  CheckCircle2
 } from 'lucide-react';
 
 export const ExpertisePage: React.FC = () => {
@@ -260,7 +264,7 @@ export const ExpertisePage: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Select: Вид экспертизы (Стилизованный) */}
+                {/* Select: Вид экспертизы */}
                 <div>
                    <label className="block text-sm font-bold mb-2">Вид экспертизы</label>
                    <div className="relative">
@@ -297,7 +301,7 @@ export const ExpertisePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 6. FAQ - Белый фон */}
+      {/* 6. FAQ */}
       <section className="py-24 bg-white">
         <div className="max-w-3xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Часто задаваемые вопросы</h2>
