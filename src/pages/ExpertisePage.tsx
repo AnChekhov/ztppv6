@@ -1,42 +1,66 @@
 import React, { useState } from 'react';
 import { 
-  ClipboardCheck, 
-  Scale, 
-  Gavel, 
-  Truck, 
-  Factory, 
-  FileText,
-  Phone, 
-  Mail, 
-  CheckCircle,
-  ChevronDown,
-  UploadCloud,
-  MapPin,
-  Clock,
-  ShieldCheck,
-  Check,
-  Globe,
-  Download,
-  CheckCircle2,
-  MessageCircle
+  ClipboardCheck, Scale, Gavel, Truck, Factory, FileText, 
+  Phone, Mail, CheckCircle, ChevronDown, UploadCloud, 
+  MapPin, Clock, ShieldCheck, Check, Globe, Download, 
+  CheckCircle2, MessageCircle, ChevronUp, Info
 } from 'lucide-react';
 
 export const ExpertisePage: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  // Состояние для выбранного типа экспертизы
   const [selectedExpertise, setSelectedExpertise] = useState<string>('Приемка по количеству и качеству');
+  
+  // Состояние для раскрытия подробного описания (SEO-блок)
+  const [expandedDetail, setExpandedDetail] = useState<string | null>(null);
+
+  // Данные об услугах (Title, Icon, Short Desc, Long SEO Desc)
+  const expertiseServices = [
+    {
+      id: 'quality',
+      title: 'Приемка по количеству и качеству',
+      shortDesc: 'Проверка соответствия товара условиям контракта, ГОСТам и спецификациям при поступлении на склад.',
+      longDesc: 'Профессиональная приемка товаров народного потребления, сырья, промышленного оборудования и продуктов питания. Эксперт ТПП фиксирует фактическое количество, комплектность и качество товара в момент выгрузки. Мы выявляем пересортицу, производственный брак, нарушения упаковки и повреждения при транспортировке. Акт экспертизы является юридическим основанием для выставления претензии поставщику (в т.ч. иностранному) и возмещения убытков.',
+      icon: Truck
+    },
+    {
+      id: '44fz',
+      title: 'Экспертиза по 44-ФЗ',
+      shortDesc: 'Обязательная внешняя экспертиза исполнения контрактов для государственных и муниципальных заказчиков.',
+      longDesc: 'Проведение независимой экспертизы результатов, предусмотренных контрактом, в соответствии с ч. 3 ст. 94 Федерального закона № 44-ФЗ. Наши эксперты проверяют соответствие поставленных товаров, работ или услуг условиям государственного контракта. По итогам выдается Заключение экспертизы, которое необходимо для подписания акта приемки и размещения сведений в ЕИС. Работаем со всеми бюджетными учреждениями Забайкальского края.',
+      icon: FileText
+    },
+    {
+      id: 'customs',
+      title: 'Таможенная экспертиза',
+      shortDesc: 'Идентификация товара для целей таможенного оформления, определение кодов ТН ВЭД, страны происхождения.',
+      longDesc: 'Идентификационная экспертиза для таможенных целей. Помогаем правильно определить код ТН ВЭД ЕАЭС, что напрямую влияет на размер таможенных пошлин. Проводим экспертизу для подтверждения страны происхождения товара, характеристик товара (состав, материал, назначение) при возникновении споров с таможенными органами. Акты ТПП принимаются ФТС России как доказательная база.',
+      icon: Globe
+    },
+    {
+      id: 'damage',
+      title: 'Определение ущерба',
+      shortDesc: 'Фиксация повреждений груза при транспортировке, пожаре или затоплении. Оценка стоимости ущерба.',
+      longDesc: 'Независимая оценка ущерба, причиненного имуществу в результате стихийных бедствий (пожар, наводнение), аварий коммунальных систем (затопление), ДТП или противоправных действий третьих лиц. Мы определяем стоимость восстановительного ремонта, размер утраты товарной стоимости (УТС) и реальный ущерб для страховых компаний и судебных исков.',
+      icon: ShieldCheck
+    },
+    {
+      id: 'judicial',
+      title: 'Судебная экспертиза',
+      shortDesc: 'Проведение экспертиз по определению суда или постановлению следователя. Рецензирование заключений.',
+      longDesc: 'Проведение судебных экспертиз по гражданским, арбитражным и уголовным делам. Эксперты Палаты обладают необходимыми допусками и квалификацией для проведения товароведческих, строительно-технических и оценочных экспертиз. Мы готовим объективные заключения, отвечающие на вопросы суда, а также проводим рецензирование экспертиз сторонних организаций.',
+      icon: Gavel
+    },
+    {
+      id: 'equipment',
+      title: 'Экспертиза оборудования',
+      shortDesc: 'Оценка технического состояния, комплектности и производительности промышленного оборудования.',
+      longDesc: 'Техническая экспертиза машин, механизмов и производственных линий. Оценка степени физического износа, определение причин поломки (эксплуатационный или заводской дефект), проверка комплектности и соответствия техническому заданию. Актуально при списании основных средств, купле-продаже б/у оборудования или лизинговых сделках.',
+      icon: Factory
+    },
+  ];
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
-  };
-
-  // Функция: скролл + выбор типа
-  const handleServiceSelect = (type: string) => {
-    setSelectedExpertise(type);
-    const formSection = document.getElementById('order-form');
-    if (formSection) {
-      formSection.scrollIntoView({ behavior: 'smooth' });
-    }
   };
 
   const scrollToForm = () => {
@@ -46,7 +70,25 @@ export const ExpertisePage: React.FC = () => {
     }
   };
 
-  const faqs = [
+  // Клик по карточке -> Выбор в форме + Скролл к форме
+  const handleCardClick = (title: string) => {
+    setSelectedExpertise(title);
+    scrollToForm();
+  };
+
+  // Клик по "Подробнее" -> Открытие текста + Скролл к тексту
+  const handleReadMore = (e: React.MouseEvent, id: string) => {
+    e.stopPropagation(); // Чтобы не сработал клик по карточке
+    setExpandedDetail(id);
+    setTimeout(() => {
+      const element = document.getElementById(`detail-${id}`);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }, 100);
+  };
+
+  const faqsItems = [
     {
       question: "Имеет ли акт экспертизы ТПП юридическую силу в суде?",
       answer: "Да, безусловно. Торгово-промышленная палата имеет статус независимой экспертной организации (Закон РФ «О торгово-промышленных палатах»). Наши акты признаются судами, таможенными органами и страховыми компаниями как официальное доказательство."
@@ -74,6 +116,7 @@ export const ExpertisePage: React.FC = () => {
             />
         </div>
         
+        {/* Градиент: Слева 90%, Справа 100%, Центр 87% */}
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/[0.87] to-slate-900"></div>
         
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center">
@@ -107,16 +150,8 @@ export const ExpertisePage: React.FC = () => {
               <div className="hidden lg:flex lg:col-span-5 justify-center items-center relative">
                 <div className="absolute w-80 h-80 bg-blue-600/10 rounded-full blur-3xl"></div>
                 <div className="relative transform transition-transform duration-500 hover:scale-105">
-                   <ClipboardCheck 
-                      size={300} 
-                      strokeWidth={1}
-                      className="text-slate-600/70 drop-shadow-2xl" 
-                   />
-                   <ClipboardCheck 
-                      size={300} 
-                      strokeWidth={1}
-                      className="absolute top-0 left-0 text-white/10" 
-                   />
+                   <ClipboardCheck size={300} strokeWidth={1} className="text-slate-600/70 drop-shadow-2xl" />
+                   <ClipboardCheck size={300} strokeWidth={1} className="absolute top-0 left-0 text-white/10" />
                 </div>
               </div>
 
@@ -124,58 +159,30 @@ export const ExpertisePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. ВИДЫ ЭКСПЕРТИЗ */}
+      {/* 2. ВИДЫ ЭКСПЕРТИЗ (GRID) */}
       <section className="pt-12 pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Какие задачи мы решаем</h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { 
-                title: 'Приемка по количеству и качеству', 
-                desc: 'Проверка соответствия товара условиям контракта, ГОСТам и спецификациям при поступлении на склад.',
-                icon: Truck 
-              },
-              { 
-                title: 'Экспертиза по 44-ФЗ', 
-                desc: 'Обязательная внешняя экспертиза исполнения контрактов для государственных и муниципальных заказчиков.',
-                icon: FileText 
-              },
-              { 
-                title: 'Таможенная экспертиза', 
-                desc: 'Идентификация товара для целей таможенного оформления, определение кодов ТН ВЭД, страны происхождения.',
-                icon: Globe 
-              },
-              { 
-                title: 'Определение ущерба', 
-                desc: 'Фиксация повреждений груза при транспортировке, пожаре или затоплении. Оценка стоимости ущерба.',
-                icon: ShieldCheck 
-              },
-              { 
-                title: 'Судебная экспертиза', 
-                desc: 'Проведение экспертиз по определению суда или постановлению следователя. Рецензирование заключений.',
-                icon: Gavel 
-              },
-              { 
-                title: 'Экспертиза оборудования', 
-                desc: 'Оценка технического состояния, комплектности и производительности промышленного оборудования.',
-                icon: Factory 
-              },
-            ].map((item, index) => (
-              /* ✅ ИСПРАВЛЕНО: Добавлен onClick и плавная анимация scale */
+            {expertiseServices.map((item) => (
               <div 
-                key={index} 
-                onClick={() => handleServiceSelect(item.title)}
-                className="bg-white rounded-2xl p-8 shadow-lg shadow-slate-200/50 border border-slate-100 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-blue-900/5 hover:scale-[1.03] flex flex-col h-full cursor-pointer"
+                key={item.id} 
+                onClick={() => handleCardClick(item.title)}
+                className="bg-white rounded-2xl p-8 shadow-lg shadow-slate-200/50 border border-slate-100 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-blue-900/5 hover:scale-[1.03] flex flex-col h-full cursor-pointer group"
               >
-                <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 bg-blue-50 text-blue-600">
+                <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
                   <item.icon size={28} strokeWidth={1.5} />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3">{item.title}</h3>
-                <p className="text-slate-600 text-sm leading-relaxed flex-grow">{item.desc}</p>
+                <p className="text-slate-600 text-sm leading-relaxed flex-grow">{item.shortDesc}</p>
                 <div className="mt-6 pt-4 border-t border-slate-100">
-                   <button className="text-sm font-bold text-blue-600 hover:text-blue-800 transition-colors">
-                     Подробнее →
+                   {/* Кнопка ведет к описанию */}
+                   <button 
+                     onClick={(e) => handleReadMore(e, item.id)}
+                     className="text-sm font-bold text-blue-600 hover:text-blue-800 transition-colors flex items-center"
+                   >
+                     Подробнее <ChevronDown size={16} className="ml-1" />
                    </button>
                 </div>
               </div>
@@ -184,8 +191,52 @@ export const ExpertisePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. ПОЧЕМУ ТПП */}
-      <section className="py-20 bg-slate-50 border-y border-slate-100">
+      {/* 3. ПОДРОБНОЕ ОПИСАНИЕ (SEO Блок) - Серый фон */}
+      <section className="py-20 bg-slate-50 border-y border-slate-200">
+        <div className="max-w-4xl mx-auto px-6 md:px-8">
+          <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">Подробная информация об услугах</h2>
+          <div className="space-y-4">
+            {expertiseServices.map((item) => (
+              <div 
+                key={item.id} 
+                id={`detail-${item.id}`} 
+                className={`bg-white rounded-2xl border transition-all duration-500 overflow-hidden ${expandedDetail === item.id ? 'border-blue-500 shadow-md' : 'border-slate-200'}`}
+              >
+                <button 
+                  onClick={() => setExpandedDetail(expandedDetail === item.id ? null : item.id)}
+                  className="w-full flex items-center justify-between p-6 text-left"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className={`p-2 rounded-lg ${expandedDetail === item.id ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-500'}`}>
+                       <item.icon size={24} />
+                    </div>
+                    <span className="text-lg font-bold text-slate-900">{item.title}</span>
+                  </div>
+                  {expandedDetail === item.id ? <ChevronUp className="text-blue-600"/> : <ChevronDown className="text-slate-400"/>}
+                </button>
+                
+                {/* Анимация раскрытия */}
+                <div className={`transition-all duration-300 ease-in-out ${expandedDetail === item.id ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+                  <div className="p-6 pt-0 text-slate-600 leading-relaxed border-t border-slate-100 mt-2">
+                    {item.longDesc}
+                    <div className="mt-4">
+                        <button 
+                            onClick={() => handleCardClick(item.title)}
+                            className="text-sm font-bold text-blue-600 hover:text-yellow-600 underline decoration-dashed underline-offset-4"
+                        >
+                            Заказать эту экспертизу →
+                        </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. ПОЧЕМУ ТПП (Белый фон) */}
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-200">
             <div className="text-center px-4 pt-4 md:pt-0">
@@ -209,8 +260,8 @@ export const ExpertisePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. ДОКУМЕНТЫ */}
-      <section className="py-20 bg-white">
+      {/* 5. ДОКУМЕНТЫ (Серый фон) */}
+      <section className="py-20 bg-slate-50 border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Документы для проведения экспертизы</h2>
@@ -249,12 +300,11 @@ export const ExpertisePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. CTA ФОРМА */}
+      {/* 6. CTA ФОРМА (Темный) */}
       <section id="order-form" className="py-20 bg-slate-900 text-white">
         <div className="max-w-5xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-start">
             
-            {/* Левая колонка */}
             <div>
               <h2 className="text-3xl md:text-4xl font-extrabold mb-6">Закажите экспертизу онлайн</h2>
               <p className="text-slate-300 text-lg mb-8">
@@ -275,7 +325,6 @@ export const ExpertisePage: React.FC = () => {
                 </li>
               </ul>
 
-              {/* Контакты для связи */}
               <div className="pt-8 border-t border-slate-700">
                 <p className="text-slate-400 text-sm mb-3 font-medium uppercase tracking-wider">
                   Нет времени заполнять форму?
@@ -292,7 +341,6 @@ export const ExpertisePage: React.FC = () => {
               </div>
             </div>
 
-            {/* Правая колонка: Форма */}
             <div className="bg-white rounded-3xl p-8 text-slate-900 shadow-2xl">
               <form className="space-y-4">
                 <div>
@@ -311,7 +359,7 @@ export const ExpertisePage: React.FC = () => {
                   </div>
                 </div>
 
-                {/* ✅ ИСПРАВЛЕНО: Select связан со стейтом selectedExpertise */}
+                {/* Select: Вид экспертизы */}
                 <div>
                    <label className="block text-sm font-bold mb-2">Вид экспертизы</label>
                    <div className="relative">
@@ -320,13 +368,10 @@ export const ExpertisePage: React.FC = () => {
                         onChange={(e) => setSelectedExpertise(e.target.value)}
                         className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all cursor-pointer appearance-none text-slate-700"
                      >
-                       <option value="Приемка по количеству и качеству">Приемка по количеству и качеству</option>
-                       <option value="Экспертиза по 44-ФЗ">Экспертиза по 44-ФЗ</option>
-                       <option value="Таможенная экспертиза">Таможенная экспертиза</option>
-                       <option value="Определение ущерба">Определение ущерба</option>
-                       <option value="Судебная экспертиза">Судебная экспертиза</option>
-                       <option value="Экспертиза оборудования">Экспертиза оборудования</option>
-                       <option value="Другое / Нужна консультация">Другое / Нужна консультация</option>
+                       {expertiseServices.map(s => (
+                         <option key={s.id} value={s.title}>{s.title}</option>
+                       ))}
+                       <option value="Другое">Другое / Нужна консультация</option>
                      </select>
                      <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-slate-500">
                         <ChevronDown size={20} />
@@ -342,7 +387,7 @@ export const ExpertisePage: React.FC = () => {
                   </div>
                 </div>
 
-                <button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all mt-4">
+                <button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all mt-4">
                   Отправить заявку
                 </button>
                 <p className="text-xs text-center text-slate-400 mt-3">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
@@ -353,13 +398,13 @@ export const ExpertisePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 6. FAQ */}
+      {/* 7. FAQ (Белый) */}
       <section className="py-20 bg-white">
         <div className="max-w-3xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Часто задаваемые вопросы</h2>
           
           <div className="space-y-4">
-            {faqs.map((faq, index) => (
+            {faqsItems.map((faq, index) => (
               <div key={index} className="border-b border-slate-200 last:border-0">
                 <button 
                   onClick={() => toggleFaq(index)}
@@ -386,7 +431,7 @@ export const ExpertisePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 7. КОМАНДА */}
+      {/* 8. КОМАНДА (Серый) */}
       <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Эксперты Палаты</h2>
