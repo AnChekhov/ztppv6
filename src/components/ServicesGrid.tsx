@@ -1,5 +1,15 @@
 import React from 'react';
-import { FileText, Globe, Scale, Users, BookOpen, Container, ChevronRight, ArrowRight, HelpCircle } from 'lucide-react';
+import { 
+  FileText, 
+  Globe, 
+  Scale, 
+  Users, 
+  Container, 
+  ChevronRight, 
+  ArrowRight, 
+  HelpCircle,
+  Hammer // ✅ Добавлена иконка для стройки
+} from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from './ui/Button';
 
@@ -155,45 +165,51 @@ const ServicesGrid: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           
+          {/* 1. ВЭД */}
           <ServiceCard 
             icon={Globe} 
             title="ВЭД и работа с Китаем" 
             description="Поиск надежных партнеров в КНР, организация бизнес-миссий, проверка контрагентов и сопровождение экспортных контрактов под ключ."
           />
 
+          {/* 2. ТАМОЖЕННОЕ СОПРОВОЖДЕНИЕ */}
+          <ServiceCard 
+            icon={Container} 
+            title="Таможенное сопровождение" 
+            description="Помощь в классификации товаров (ТН ВЭД), расчет таможенных платежей, подготовка документов для таможенного оформления."
+          />
+
+          {/* 3. СТРОИТЕЛЬНАЯ ЭКСПЕРТИЗА (НОВАЯ) */}
+          <ServiceCard 
+            icon={Hammer} 
+            title="Строительно-техническая экспертиза" 
+            description="Оценка качества строительных работ, проверка сметной документации, выявление дефектов, приемка квартир и коммерческих помещений."
+          />
+
+          {/* 4. ЮРИДИЧЕСКАЯ ЗАЩИТА */}
           <ServiceCard 
             icon={Scale} 
             title="Юридическая защита" 
             description="Свидетельствование форс-мажора, международный коммерческий арбитраж, медиация и защита интересов бизнеса в органах власти."
           />
 
-           <ServiceCard 
-            icon={Container} 
-            title="Таможенное консультирование" 
-            description="Помощь в классификации товаров (ТН ВЭД), расчет таможенных платежей, подготовка документов для таможенного оформления."
-          />
-
-          <ServiceCard 
-            icon={BookOpen} 
-            title="Обучение и Развитие" 
-            description="Семинары по изменениям в законодательстве, тренинги для участников ВЭД, повышение квалификации сотрудников."
-          />
-
+          {/* 5. МЕРОПРИЯТИЯ (ОБЪЕДИНЕНО С ОБУЧЕНИЕМ) */}
           <ServiceCard 
             icon={Users} 
             title="Мероприятия нашего сообщества" 
-            description="Нетворкинг, деловые обсуждения с представителями органов власти, профильные комитеты для решения отраслевых проблем."
+            description="Нетворкинг, деловые обсуждения с представителями органов власти, а также семинары, тренинги и повышение квалификации для сотрудников."
           />
           
+          {/* 6. ПОЛНЫЙ СПИСОК (CTA) */}
           <div className="flex flex-col items-center justify-center p-8 rounded-2xl border border-dashed border-slate-300 bg-white/50 text-center h-full hover:bg-white hover:border-blue-300 hover:shadow-xl hover:shadow-blue-100 transition-all duration-300 hover:scale-[1.03] group">
             
             <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-slate-100 text-slate-500 transition-transform group-hover:scale-110 group-hover:bg-blue-50 group-hover:text-blue-600">
                 <HelpCircle size={24} strokeWidth={1.5} />
             </div>
 
-            <h4 className="text-lg font-bold text-slate-900 mb-2">Не нашли нужную услугу?</h4>
+            <h4 className="text-lg font-bold text-slate-900 mb-2">Полный список услуг</h4>
             <p className="text-sm text-slate-500 mb-6 leading-relaxed">
-               Свяжитесь с нами - мы подберем решение под ваши задачи.
+               В нашем арсенале более 40 услуг. Свяжитесь с нами - мы подберем решение под ваши задачи.
             </p>
             <Button variant="outline" className="border-blue-600 text-blue-700 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-colors bg-white hover:scale-105">
                 Получить консультацию
