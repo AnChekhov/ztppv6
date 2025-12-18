@@ -58,8 +58,8 @@ export const CertificationPage: React.FC = () => {
             />
         </div>
         
-        {/* ✅ ИСПРАВЛЕНО: Градиент (Слева 90% -> Справа 100%) */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/95 to-slate-900"></div>
+        {/* ✅ ИСПРАВЛЕНО: Центр осветлен (via-slate-900/80) */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/80 to-slate-900"></div>
         
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center">
             
@@ -113,6 +113,7 @@ export const CertificationPage: React.FC = () => {
       <section className="pt-12 pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Выберите нужный Вам тип сертификата</h2>
+          
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { type: 'Общая форма', countries: 'Все остальные страны', purpose: 'Подтверждение страны происхождения для таможенных целей' },
@@ -136,6 +137,7 @@ export const CertificationPage: React.FC = () => {
                 </div>
               </div>
             ))}
+            
             <div className="bg-slate-900 rounded-2xl p-5 shadow-sm flex flex-col justify-center items-center text-center">
               <h3 className="text-white font-bold text-lg mb-2">Нужна помощь?</h3>
               <p className="text-slate-400 text-xs mb-4">Наши эксперты помогут определить нужный тип сертификата для вашего груза.</p>
@@ -158,6 +160,7 @@ export const CertificationPage: React.FC = () => {
               </div>
               <p className="text-slate-500 mt-2">Стоимость услуги<br/><span className="text-sm">(зависит от вида товара)</span></p>
             </div>
+            
             <div className="text-center px-4 pt-4 md:pt-0">
               <Clock className="mx-auto text-blue-600 mb-4 h-10 w-10" />
               <div className="text-4xl font-extrabold text-slate-900 mb-2 relative inline-block">
@@ -165,6 +168,7 @@ export const CertificationPage: React.FC = () => {
               </div>
               <p className="text-slate-500 mt-2">Срок оформления<br/><span className="text-sm">(после подачи документов)</span></p>
             </div>
+            
             <div className="text-center px-4 pt-4 md:pt-0">
               <Calendar className="mx-auto text-blue-600 mb-4 h-10 w-10" />
               <div className="text-4xl font-extrabold text-slate-900 mb-2 relative inline-block">
@@ -173,6 +177,7 @@ export const CertificationPage: React.FC = () => {
               <p className="text-slate-500 mt-2">Срок действия<br/><span className="text-sm">(с даты выдачи)</span></p>
             </div>
           </div>
+
           <div className="mt-12 max-w-4xl mx-auto text-left">
             <p className="text-sm text-slate-400 leading-relaxed">
               <span className="text-lg align-middle mr-1">*</span> 
@@ -189,6 +194,7 @@ export const CertificationPage: React.FC = () => {
             <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Документы для проведения экспертизы</h2>
             <p className="text-slate-500">Минимальный пакет документов для начала работы</p>
           </div>
+
           <div className="bg-white rounded-3xl shadow-sm overflow-hidden border border-slate-100">
             {[
               { name: 'Заявление на выдачу сертификата', req: 'Заполняется по форме, печать организации', link: true },
@@ -207,6 +213,7 @@ export const CertificationPage: React.FC = () => {
                     <p className="text-slate-500 text-sm">{doc.req}</p>
                   </div>
                 </div>
+                
                 {doc.link ? (
                   <a href="#" className="mt-4 md:mt-0 flex items-center text-blue-600 font-bold text-sm hover:text-blue-800 transition-colors whitespace-nowrap bg-blue-50 px-4 py-2 rounded-lg">
                     <Download size={16} className="mr-2" />
@@ -225,6 +232,8 @@ export const CertificationPage: React.FC = () => {
       <section id="order-form" className="py-20 bg-slate-900 text-white">
         <div className="max-w-5xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-start">
+            
+            {/* Левая колонка */}
             <div>
               <h2 className="text-3xl md:text-4xl font-extrabold mb-6">Закажите сертификат онлайн</h2>
               <p className="text-slate-300 text-lg mb-8">
@@ -244,6 +253,8 @@ export const CertificationPage: React.FC = () => {
                   <span>Помощь в заполнении</span>
                 </li>
               </ul>
+
+              {/* Контакты для связи */}
               <div className="pt-8 border-t border-slate-700">
                 <p className="text-slate-400 text-sm mb-3 font-medium uppercase tracking-wider">
                   Нет времени заполнять форму?
@@ -259,12 +270,15 @@ export const CertificationPage: React.FC = () => {
                 </a>
               </div>
             </div>
+
+            {/* Правая колонка: Форма */}
             <div className="bg-white rounded-3xl p-8 text-slate-900 shadow-2xl">
               <form className="space-y-4">
                 <div>
                   <label className="block text-sm font-bold mb-2">Название организации</label>
                   <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="ООО 'Пример'" />
                 </div>
+                
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-bold mb-2">ИНН</label>
@@ -275,10 +289,8 @@ export const CertificationPage: React.FC = () => {
                     <input type="tel" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="+7 (___) ___-__-__" />
                   </div>
                 </div>
-                <div>
-                   <label className="block text-sm font-bold mb-2">Контактное лицо</label>
-                   <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="Иванов Иван" />
-                </div>
+
+                {/* Select: Тип сертификата */}
                 <div>
                    <label className="block text-sm font-bold mb-2">Тип сертификата</label>
                    <div className="relative">
@@ -295,6 +307,7 @@ export const CertificationPage: React.FC = () => {
                      </div>
                    </div>
                 </div>
+
                 <div className="pt-2">
                   <label className="block text-sm font-bold mb-2">Прикрепите документы</label>
                   <div className="border-2 border-dashed border-slate-300 rounded-xl p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-slate-50 transition-colors group">
@@ -302,12 +315,14 @@ export const CertificationPage: React.FC = () => {
                     <span className="text-sm text-slate-500 font-medium">Перетащите файлы сюда или нажмите для загрузки</span>
                   </div>
                 </div>
+
                 <button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all mt-4">
                   Отправить заявку
                 </button>
                 <p className="text-xs text-center text-slate-400 mt-3">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
               </form>
             </div>
+
           </div>
         </div>
       </section>
@@ -316,6 +331,7 @@ export const CertificationPage: React.FC = () => {
       <section className="py-20 bg-white">
         <div className="max-w-3xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Часто задаваемые вопросы</h2>
+          
           <div className="space-y-4">
             {faqs.map((faq, index) => (
               <div key={index} className="border-b border-slate-200 last:border-0">
@@ -348,10 +364,11 @@ export const CertificationPage: React.FC = () => {
       <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Эксперты Палаты</h2>
+          
           <div className="flex flex-wrap justify-center gap-8">
             <div className="flex items-center gap-6 bg-white p-6 rounded-2xl w-full md:w-auto md:min-w-[400px] shadow-sm hover:shadow-md transition-all hover:scale-[1.02]">
               <div className="w-20 h-20 rounded-full bg-slate-100 overflow-hidden shrink-0 border-2 border-slate-100">
-                 <div className="w-full h-full flex items-center justify-center bg-slate-800 text-white text-2xl font-bold">И</div>
+                 <div className="w-full h-full flex items-center justify-center bg-blue-600 text-white text-2xl font-bold">И</div>
               </div>
               <div>
                 <h3 className="text-xl font-bold text-slate-900">Иванова Елена</h3>
@@ -362,6 +379,7 @@ export const CertificationPage: React.FC = () => {
                 </div>
               </div>
             </div>
+
             <div className="flex items-center gap-6 bg-white p-6 rounded-2xl w-full md:w-auto md:min-w-[400px] shadow-sm hover:shadow-md transition-all hover:scale-[1.02]">
               <div className="w-20 h-20 rounded-full bg-slate-100 overflow-hidden shrink-0 border-2 border-slate-100">
                  <div className="w-full h-full flex items-center justify-center bg-slate-800 text-white text-2xl font-bold">П</div>
