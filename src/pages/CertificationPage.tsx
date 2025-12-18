@@ -13,7 +13,7 @@ import {
   ChevronDown,
   Check,
   FileCheck,
-  MessageCircle // Добавлена иконка
+  MessageCircle
 } from 'lucide-react';
 
 export const CertificationPage: React.FC = () => {
@@ -73,7 +73,7 @@ export const CertificationPage: React.FC = () => {
                   Оформите ключевой документ для экспорта онлайн. Получите льготы и преференции для вашего бизнеса. Гарантия прохождения таможни.
                 </p>
                 
-                {/* Обновленные кнопки */}
+                {/* Кнопки */}
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button 
                     onClick={scrollToForm}
@@ -113,7 +113,8 @@ export const CertificationPage: React.FC = () => {
       </section>
 
       {/* 2. ТИПЫ СЕРТИФИКАТОВ */}
-      <section className="py-24 bg-white">
+      {/* ✅ ИСПРАВЛЕНО: pt-12 (было py-24) для уменьшения отступа сверху */}
+      <section className="pt-12 pb-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Выберите нужный Вам тип сертификата</h2>
           
@@ -233,7 +234,7 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. CTA ФОРМА (С ID и КОНТАКТАМИ) */}
+      {/* 5. CTA ФОРМА */}
       <section id="order-form" className="py-24 bg-slate-900 text-white">
         <div className="max-w-5xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-start">
@@ -259,7 +260,7 @@ export const CertificationPage: React.FC = () => {
                 </li>
               </ul>
 
-              {/* ✅ НОВЫЙ БЛОК: КОНТАКТЫ ДЛЯ СВЯЗИ */}
+              {/* Контакты для связи */}
               <div className="pt-8 border-t border-slate-700">
                 <p className="text-slate-400 text-sm mb-3 font-medium uppercase tracking-wider">
                   Нет времени заполнять форму?
