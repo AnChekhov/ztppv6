@@ -21,7 +21,6 @@ import {
 export const CertificationPage: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [selectedType, setSelectedType] = useState<string>('Общая форма');
-  
   const [expandedDetail, setExpandedDetail] = useState<string | null>(null);
 
   const toggleFaq = (index: number) => {
@@ -51,7 +50,6 @@ export const CertificationPage: React.FC = () => {
     }, 100);
   };
 
-  // Данные о сертификатах
   const certTypes = [
     {
       id: 'general',
@@ -65,7 +63,6 @@ export const CertificationPage: React.FC = () => {
       type: 'СТ-1',
       countries: 'Государства-участники СНГ',
       purpose: 'Получение тарифных преференций (снижение/отмена пошлин)',
-      // ✅ ИСПРАВЛЕНО: "—" на "-"
       longDesc: 'Форма СТ-1 - основной документ для беспошлинной торговли со странами СНГ (Азербайджан, Армения, Беларусь, Казахстан, Кыргызстан, Молдова, Таджикистан, Туркменистан, Узбекистан). Наличие этого сертификата позволяет полностью освободиться от уплаты ввозной таможенной пошлины в стране назначения. Для получения сертификата товар должен соответствовать Критериям достаточной переработки (Правила 2009 года).'
     },
     {
@@ -118,7 +115,7 @@ export const CertificationPage: React.FC = () => {
               className="w-full h-full object-cover"
             />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/95 to-slate-900/90"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/[0.87] to-slate-900"></div>
         
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center">
             <div className="grid lg:grid-cols-12 gap-8 items-center">
@@ -220,7 +217,6 @@ export const CertificationPage: React.FC = () => {
                     <div className={`p-2 rounded-lg ${expandedDetail === item.id ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-500'}`}>
                        <FileCheck size={24} />
                     </div>
-                    {/* ✅ ИСПРАВЛЕНО: "—" на "-" */}
                     <span className="text-lg font-bold text-slate-900">{item.type} - {item.countries}</span>
                   </div>
                   {expandedDetail === item.id ? <ChevronUp className="text-blue-600"/> : <ChevronDown className="text-slate-400"/>}
@@ -281,7 +277,7 @@ export const CertificationPage: React.FC = () => {
       </section>
 
       {/* 5. ШАГИ */}
-      <section className="py-24 bg-slate-50">
+      <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-16 text-center">Как получить сертификат: просто и понятно</h2>
           <div className="relative">
@@ -408,6 +404,7 @@ export const CertificationPage: React.FC = () => {
                    <label className="block text-sm font-bold mb-2">Контактное лицо</label>
                    <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="Иванов Иван" />
                 </div>
+                {/* ✅ ИСПРАВЛЕНО: Select связан со стейтом selectedType */}
                 <div>
                    <label className="block text-sm font-bold mb-2">Тип сертификата</label>
                    <div className="relative">
@@ -435,7 +432,7 @@ export const CertificationPage: React.FC = () => {
                     <span className="text-sm text-slate-500 font-medium">Перетащите файлы сюда или нажмите для загрузки</span>
                   </div>
                 </div>
-                <button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all mt-4">
+                <button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all mt-4">
                   Отправить заявку
                 </button>
                 <p className="text-xs text-center text-slate-400 mt-3">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
@@ -482,6 +479,7 @@ export const CertificationPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Эксперты Палаты</h2>
           <div className="flex flex-wrap justify-center gap-8">
+            {/* ✅ ИСПРАВЛЕНО: Обновил контакты во всех карточках */}
             <div className="flex items-center gap-6 bg-white p-6 rounded-2xl w-full md:w-auto md:min-w-[400px] shadow-sm hover:shadow-md transition-all hover:scale-[1.02]">
               <div className="w-20 h-20 rounded-full bg-slate-100 overflow-hidden shrink-0 border-2 border-slate-100">
                  <div className="w-full h-full flex items-center justify-center bg-blue-600 text-white text-2xl font-bold">И</div>
@@ -490,11 +488,12 @@ export const CertificationPage: React.FC = () => {
                 <h3 className="text-xl font-bold text-slate-900">Иванова Елена</h3>
                 <p className="text-blue-600 font-medium text-sm mb-3">Ведущий специалист</p>
                 <div className="flex flex-col gap-1 text-sm text-slate-600">
-                  <a href="tel:+73022355598" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Phone size={14}/> +7 (3022) 35-55-98</a>
-                  <a href="mailto:ivanova.e@ztpp.ru" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Mail size={14}/> ivanova.e@ztpp.ru</a>
+                  <a href="tel:+79243733330" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Phone size={14}/> +7 (924) 373-33-30</a>
+                  <a href="mailto:info@zabtpp.ru" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Mail size={14}/> info@zabtpp.ru</a>
                 </div>
               </div>
             </div>
+
             <div className="flex items-center gap-6 bg-white p-6 rounded-2xl w-full md:w-auto md:min-w-[400px] shadow-sm hover:shadow-md transition-all hover:scale-[1.02]">
               <div className="w-20 h-20 rounded-full bg-slate-100 overflow-hidden shrink-0 border-2 border-slate-100">
                  <div className="w-full h-full flex items-center justify-center bg-slate-800 text-white text-2xl font-bold">П</div>
@@ -503,8 +502,8 @@ export const CertificationPage: React.FC = () => {
                 <h3 className="text-xl font-bold text-slate-900">Петров Сергей</h3>
                 <p className="text-blue-600 font-medium text-sm mb-3">Эксперт по ВЭД</p>
                 <div className="flex flex-col gap-1 text-sm text-slate-600">
-                   <a href="tel:+73022355599" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Phone size={14}/> +7 (3022) 35-55-99</a>
-                   <a href="mailto:petrov.s@ztpp.ru" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Mail size={14}/> petrov.s@ztpp.ru</a>
+                   <a href="tel:+79243733330" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Phone size={14}/> +7 (924) 373-33-30</a>
+                   <a href="mailto:info@zabtpp.ru" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Mail size={14}/> info@zabtpp.ru</a>
                 </div>
               </div>
             </div>
