@@ -23,7 +23,6 @@ export const CertificationPage: React.FC = () => {
     setOpenFaq(openFaq === index ? null : index);
   };
 
-  // Функция для скролла к форме
   const scrollToForm = () => {
     const formSection = document.getElementById('order-form');
     if (formSection) {
@@ -61,10 +60,7 @@ export const CertificationPage: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/95 to-slate-900/60"></div>
         
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center">
-            
             <div className="grid lg:grid-cols-12 gap-8 items-center">
-              
-              {/* Левая колонка */}
               <div className="lg:col-span-7 max-w-3xl">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
                   Заказать сертификат происхождения товара в <span className="text-yellow-400">Забайкальской ТПП</span>
@@ -72,8 +68,6 @@ export const CertificationPage: React.FC = () => {
                 <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl">
                   Оформите ключевой документ для экспорта онлайн. Получите льготы и преференции для вашего бизнеса. Гарантия прохождения таможни.
                 </p>
-                
-                {/* Кнопки */}
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button 
                     onClick={scrollToForm}
@@ -83,31 +77,20 @@ export const CertificationPage: React.FC = () => {
                   </button>
                   <button 
                     onClick={scrollToForm}
-                    className="border-2 border-slate-600 hover:border-white text-white font-semibold py-4 px-8 rounded-xl transition-colors flex items-center justify-center gap-2 group"
+                    className="border-2 border-slate-600 hover:border-white text-white font-semibold py-4 px-8 rounded-xl transition-all hover:scale-105 flex items-center justify-center gap-2 group"
                   >
                     <MessageCircle size={20} />
                     Проконсультироваться
                   </button>
                 </div>
               </div>
-
-              {/* Правая колонка */}
               <div className="hidden lg:flex lg:col-span-5 justify-center items-center relative">
                 <div className="absolute w-80 h-80 bg-blue-600/10 rounded-full blur-3xl"></div>
                 <div className="relative transform transition-transform duration-500 hover:scale-105">
-                   <FileCheck 
-                      size={300} 
-                      strokeWidth={1}
-                      className="text-slate-600/70 drop-shadow-2xl" 
-                   />
-                   <FileCheck 
-                      size={300} 
-                      strokeWidth={1}
-                      className="absolute top-0 left-0 text-white/10" 
-                   />
+                   <FileCheck size={300} strokeWidth={1} className="text-slate-600/70 drop-shadow-2xl" />
+                   <FileCheck size={300} strokeWidth={1} className="absolute top-0 left-0 text-white/10" />
                 </div>
               </div>
-
             </div>
         </div>
       </section>
@@ -125,7 +108,8 @@ export const CertificationPage: React.FC = () => {
               { type: 'EAV', countries: 'Вьетнам', purpose: 'Получение преференций в рамках соглашения о свободной торговле' },
               { type: 'Форма "А"', countries: 'Черногория', purpose: 'Получение преференций в рамках Генеральной системы' },
             ].map((item, index) => (
-              <div key={index} className="bg-white rounded-2xl p-5 shadow-lg shadow-slate-200/50 border border-slate-100 hover:shadow-xl transition-shadow hover:-translate-y-1 duration-300 flex flex-col">
+              /* ✅ ИЗМЕНЕНО: hover:scale-[1.03] + тень */
+              <div key={index} className="bg-white rounded-2xl p-5 shadow-lg shadow-slate-200/50 border border-slate-100 transition-all duration-300 hover:shadow-xl hover:shadow-blue-900/5 hover:scale-[1.03] flex flex-col">
                 <div className="flex justify-between items-start mb-3">
                   <span className="text-xl font-black text-blue-600 bg-blue-50 px-3 py-1 rounded-lg whitespace-nowrap">{item.type}</span>
                   <Globe className="text-slate-300" size={22} />
@@ -141,7 +125,8 @@ export const CertificationPage: React.FC = () => {
               </div>
             ))}
             
-            <div className="bg-slate-900 rounded-2xl p-5 shadow-sm flex flex-col justify-center items-center text-center">
+            {/* ✅ ИЗМЕНЕНО: hover:scale-[1.03] + синяя тень для темной карточки */}
+            <div className="bg-slate-900 rounded-2xl p-5 shadow-sm flex flex-col justify-center items-center text-center transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl hover:shadow-blue-500/20">
               <h3 className="text-white font-bold text-lg mb-2">Нужна помощь?</h3>
               <p className="text-slate-400 text-xs mb-4">Наши эксперты помогут определить нужный тип сертификата для вашего груза.</p>
               <button onClick={scrollToForm} className="w-full py-3 bg-white text-slate-900 font-bold rounded-lg hover:bg-yellow-400 transition-colors text-sm">
@@ -166,7 +151,6 @@ export const CertificationPage: React.FC = () => {
             
             <div className="text-center px-4 pt-4 md:pt-0">
               <Clock className="mx-auto text-blue-600 mb-4 h-10 w-10" />
-              {/* ✅ ИЗМЕНЕНО: "от 1 дня" -> "за 2 часа" */}
               <div className="text-4xl font-extrabold text-slate-900 mb-2 relative inline-block">
                 за 2 часа <span className="text-slate-400 text-xl absolute -top-1 -right-4">*</span>
               </div>
@@ -217,7 +201,6 @@ export const CertificationPage: React.FC = () => {
                     <p className="text-slate-500 text-sm">{doc.req}</p>
                   </div>
                 </div>
-                
                 {doc.link ? (
                   <a href="#" className="mt-4 md:mt-0 flex items-center text-blue-600 font-bold text-sm hover:text-blue-800 transition-colors whitespace-nowrap bg-blue-50 px-4 py-2 rounded-lg">
                     <Download size={16} className="mr-2" />
@@ -236,8 +219,6 @@ export const CertificationPage: React.FC = () => {
       <section id="order-form" className="py-20 bg-slate-900 text-white">
         <div className="max-w-5xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-start">
-            
-            {/* Левая колонка */}
             <div>
               <h2 className="text-3xl md:text-4xl font-extrabold mb-6">Закажите сертификат онлайн</h2>
               <p className="text-slate-300 text-lg mb-8">
@@ -257,8 +238,6 @@ export const CertificationPage: React.FC = () => {
                   <span>Помощь в заполнении</span>
                 </li>
               </ul>
-
-              {/* Контакты для связи */}
               <div className="pt-8 border-t border-slate-700">
                 <p className="text-slate-400 text-sm mb-3 font-medium uppercase tracking-wider">
                   Нет времени заполнять форму?
@@ -274,15 +253,12 @@ export const CertificationPage: React.FC = () => {
                 </a>
               </div>
             </div>
-
-            {/* Правая колонка: Форма */}
             <div className="bg-white rounded-3xl p-8 text-slate-900 shadow-2xl">
               <form className="space-y-4">
                 <div>
                   <label className="block text-sm font-bold mb-2">Название организации</label>
                   <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="ООО 'Пример'" />
                 </div>
-                
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-bold mb-2">ИНН</label>
@@ -293,12 +269,10 @@ export const CertificationPage: React.FC = () => {
                     <input type="tel" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="+7 (___) ___-__-__" />
                   </div>
                 </div>
-
                 <div>
                    <label className="block text-sm font-bold mb-2">Контактное лицо</label>
                    <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="Иванов Иван" />
                 </div>
-
                 <div>
                    <label className="block text-sm font-bold mb-2">Тип сертификата</label>
                    <div className="relative">
@@ -315,7 +289,6 @@ export const CertificationPage: React.FC = () => {
                      </div>
                    </div>
                 </div>
-
                 <div className="pt-2">
                   <label className="block text-sm font-bold mb-2">Прикрепите документы</label>
                   <div className="border-2 border-dashed border-slate-300 rounded-xl p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-slate-50 transition-colors group">
@@ -323,14 +296,12 @@ export const CertificationPage: React.FC = () => {
                     <span className="text-sm text-slate-500 font-medium">Перетащите файлы сюда или нажмите для загрузки</span>
                   </div>
                 </div>
-
-                <button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all mt-4">
+                <button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all mt-4">
                   Отправить заявку
                 </button>
                 <p className="text-xs text-center text-slate-400 mt-3">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
               </form>
             </div>
-
           </div>
         </div>
       </section>
@@ -339,7 +310,6 @@ export const CertificationPage: React.FC = () => {
       <section className="py-20 bg-white">
         <div className="max-w-3xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Часто задаваемые вопросы</h2>
-          
           <div className="space-y-4">
             {faqs.map((faq, index) => (
               <div key={index} className="border-b border-slate-200 last:border-0">
@@ -372,9 +342,8 @@ export const CertificationPage: React.FC = () => {
       <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Эксперты Палаты</h2>
-          
           <div className="flex flex-wrap justify-center gap-8">
-            <div className="flex items-center gap-6 bg-white p-6 rounded-2xl w-full md:w-auto md:min-w-[400px] shadow-sm hover:shadow-md transition-all">
+            <div className="flex items-center gap-6 bg-white p-6 rounded-2xl w-full md:w-auto md:min-w-[400px] shadow-sm hover:shadow-md transition-all hover:scale-[1.02]">
               <div className="w-20 h-20 rounded-full bg-slate-100 overflow-hidden shrink-0 border-2 border-slate-100">
                  <div className="w-full h-full flex items-center justify-center bg-blue-600 text-white text-2xl font-bold">И</div>
               </div>
@@ -387,8 +356,7 @@ export const CertificationPage: React.FC = () => {
                 </div>
               </div>
             </div>
-
-            <div className="flex items-center gap-6 bg-white p-6 rounded-2xl w-full md:w-auto md:min-w-[400px] shadow-sm hover:shadow-md transition-all">
+            <div className="flex items-center gap-6 bg-white p-6 rounded-2xl w-full md:w-auto md:min-w-[400px] shadow-sm hover:shadow-md transition-all hover:scale-[1.02]">
               <div className="w-20 h-20 rounded-full bg-slate-100 overflow-hidden shrink-0 border-2 border-slate-100">
                  <div className="w-full h-full flex items-center justify-center bg-slate-800 text-white text-2xl font-bold">П</div>
               </div>
