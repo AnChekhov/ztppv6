@@ -110,10 +110,13 @@ export const ExpertisePage: React.FC = () => {
               className="w-full h-full object-cover"
             />
         </div>
+        
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/[0.87] to-slate-900"></div>
         
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center">
+            
             <div className="grid lg:grid-cols-12 gap-8 items-center">
+              
               <div className="lg:col-span-7 max-w-3xl">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
                   Независимая товарная экспертиза в <span className="text-yellow-400">Забайкальском крае</span>
@@ -137,21 +140,32 @@ export const ExpertisePage: React.FC = () => {
                   </button>
                 </div>
               </div>
+
               <div className="hidden lg:flex lg:col-span-5 justify-center items-center relative">
                 <div className="absolute w-80 h-80 bg-blue-600/10 rounded-full blur-3xl"></div>
                 <div className="relative transform transition-transform duration-500 hover:scale-105">
-                   <ClipboardCheck size={300} strokeWidth={1} className="text-slate-600/70 drop-shadow-2xl" />
-                   <ClipboardCheck size={300} strokeWidth={1} className="absolute top-0 left-0 text-white/10" />
+                   <ClipboardCheck 
+                      size={300} 
+                      strokeWidth={1}
+                      className="text-slate-600/70 drop-shadow-2xl" 
+                   />
+                   <ClipboardCheck 
+                      size={300} 
+                      strokeWidth={1}
+                      className="absolute top-0 left-0 text-white/10" 
+                   />
                 </div>
               </div>
+
             </div>
         </div>
       </section>
 
-      {/* 2. ВИДЫ ЭКСПЕРТИЗ (pt-12 pb-20) */}
+      {/* 2. ВИДЫ ЭКСПЕРТИЗ (GRID) */}
       <section className="pt-12 pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Какие задачи мы решаем</h2>
+          
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {expertiseServices.map((item) => (
               <div 
@@ -178,7 +192,7 @@ export const ExpertisePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. ПОДРОБНОЕ ОПИСАНИЕ (py-20) */}
+      {/* 3. ПОДРОБНОЕ ОПИСАНИЕ (SEO Блок) */}
       <section className="py-20 bg-slate-50 border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">Подробная информация об услугах</h2>
@@ -201,6 +215,7 @@ export const ExpertisePage: React.FC = () => {
                   </div>
                   {expandedDetail === item.id ? <ChevronUp className="text-blue-600"/> : <ChevronDown className="text-slate-400"/>}
                 </button>
+                
                 <div className={`transition-all duration-300 ease-in-out ${expandedDetail === item.id ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
                   <div className="p-6 pt-0 text-slate-600 leading-relaxed border-t border-slate-100 mt-2">
                     {item.longDesc}
@@ -220,7 +235,7 @@ export const ExpertisePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. ПОЧЕМУ ТПП (py-20) */}
+      {/* 4. ПОЧЕМУ ТПП */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-200">
@@ -229,11 +244,13 @@ export const ExpertisePage: React.FC = () => {
               <div className="text-2xl font-extrabold text-slate-900 mb-2">Независимость</div>
               <p className="text-slate-500 text-sm leading-relaxed">Мы не зависим от продавцов, покупателей или госорганов. Наш статус закреплен Федеральным законом.</p>
             </div>
+            
             <div className="text-center px-4 pt-4 md:pt-0">
               <MapPin className="mx-auto text-blue-600 mb-4 h-10 w-10" />
               <div className="text-2xl font-extrabold text-slate-900 mb-2">Оперативность</div>
               <p className="text-slate-500 text-sm leading-relaxed">Штат экспертов в Чите и представительства в Забайкальске. Выезд на осмотр в день заявки.</p>
             </div>
+            
             <div className="text-center px-4 pt-4 md:pt-0">
               <Clock className="mx-auto text-blue-600 mb-4 h-10 w-10" />
               <div className="text-2xl font-extrabold text-slate-900 mb-2">Опыт с 1994 года</div>
@@ -243,13 +260,14 @@ export const ExpertisePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. ДОКУМЕНТЫ (py-20) */}
+      {/* 5. ДОКУМЕНТЫ */}
       <section className="py-20 bg-slate-50 border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Документы для проведения экспертизы</h2>
             <p className="text-slate-500">Минимальный пакет документов для начала работы</p>
           </div>
+
           <div className="bg-white rounded-3xl shadow-sm overflow-hidden border border-slate-100">
             {[
               { name: 'Заявка на проведение экспертизы', req: 'По форме Палаты', link: true },
@@ -267,6 +285,7 @@ export const ExpertisePage: React.FC = () => {
                     <p className="text-slate-500 text-sm">{doc.req}</p>
                   </div>
                 </div>
+                
                 {doc.link ? (
                   <a href="#" className="mt-4 md:mt-0 flex items-center text-blue-600 font-bold text-sm hover:text-blue-800 transition-colors whitespace-nowrap bg-blue-50 px-4 py-2 rounded-lg">
                     <Download size={16} className="mr-2" />
@@ -281,10 +300,12 @@ export const ExpertisePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 6. CTA ФОРМА (py-20) */}
+      {/* 6. CTA ФОРМА (Темный) */}
       <section id="order-form" className="py-20 bg-slate-900 text-white">
         <div className="max-w-5xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-start">
+            
+            {/* Левая колонка */}
             <div>
               <h2 className="text-3xl md:text-4xl font-extrabold mb-6">Закажите экспертизу онлайн</h2>
               <p className="text-slate-300 text-lg mb-8">
@@ -304,6 +325,7 @@ export const ExpertisePage: React.FC = () => {
                   <span>Бесплатная консультация</span>
                 </li>
               </ul>
+
               <div className="pt-8 border-t border-slate-700">
                 <p className="text-slate-400 text-sm mb-3 font-medium uppercase tracking-wider">
                   Нет времени заполнять форму?
@@ -319,27 +341,27 @@ export const ExpertisePage: React.FC = () => {
                 </a>
               </div>
             </div>
+
+            {/* Правая колонка: Форма */}
             <div className="bg-white rounded-3xl p-8 text-slate-900 shadow-2xl">
               <form className="space-y-4">
                 <div>
                   <label className="block text-sm font-bold mb-2">Название организации</label>
                   <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="ООО 'Пример'" />
                 </div>
+                
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-bold mb-2">ИНН</label>
-                    <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="1234567890" />
+                    <label className="block text-sm font-bold mb-2">Контактное лицо</label>
+                    <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="Имя" />
                   </div>
                    <div>
                     <label className="block text-sm font-bold mb-2">Телефон</label>
                     <input type="tel" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="+7 (___) ___-__-__" />
                   </div>
                 </div>
-                <div>
-                   <label className="block text-sm font-bold mb-2">Контактное лицо</label>
-                   <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="Иванов Иван" />
-                </div>
-                {/* Select: Вид экспертизы (связан со стейтом) */}
+
+                {/* Select: Вид экспертизы */}
                 <div>
                    <label className="block text-sm font-bold mb-2">Вид экспертизы</label>
                    <div className="relative">
@@ -348,19 +370,17 @@ export const ExpertisePage: React.FC = () => {
                         onChange={(e) => setSelectedExpertise(e.target.value)}
                         className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all cursor-pointer appearance-none text-slate-700"
                      >
-                       <option value="Приемка по количеству и качеству">Приемка по количеству и качеству</option>
-                       <option value="Экспертиза по 44-ФЗ">Экспертиза по 44-ФЗ</option>
-                       <option value="Таможенная экспертиза">Таможенная экспертиза</option>
-                       <option value="Определение ущерба">Определение ущерба</option>
-                       <option value="Судебная экспертиза">Судебная экспертиза</option>
-                       <option value="Экспертиза оборудования">Экспертиза оборудования</option>
-                       <option value="Другое / Нужна консультация">Другое / Нужна консультация</option>
+                       {expertiseServices.map(s => (
+                         <option key={s.id} value={s.title}>{s.title}</option>
+                       ))}
+                       <option value="Другое">Другое / Нужна консультация</option>
                      </select>
                      <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-slate-500">
                         <ChevronDown size={20} />
                      </div>
                    </div>
                 </div>
+
                 <div className="pt-2">
                   <label className="block text-sm font-bold mb-2">Документы (если есть)</label>
                   <div className="border-2 border-dashed border-slate-300 rounded-xl p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-slate-50 transition-colors group">
@@ -368,20 +388,23 @@ export const ExpertisePage: React.FC = () => {
                     <span className="text-sm text-slate-500 font-medium">Загрузить контракт или фото</span>
                   </div>
                 </div>
-                <button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all mt-4">
+
+                <button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all mt-4">
                   Отправить заявку
                 </button>
                 <p className="text-xs text-center text-slate-400 mt-3">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
               </form>
             </div>
+
           </div>
         </div>
       </section>
 
-      {/* 7. FAQ (py-20) */}
+      {/* 7. FAQ (Белый) */}
       <section className="py-20 bg-white">
         <div className="max-w-3xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Часто задаваемые вопросы</h2>
+          
           <div className="space-y-4">
             {faqsItems.map((faq, index) => (
               <div key={index} className="border-b border-slate-200 last:border-0">
@@ -410,21 +433,37 @@ export const ExpertisePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 8. КОМАНДА (py-20) */}
+      {/* 8. КОМАНДА (Серый) */}
       <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Эксперты Палаты</h2>
+          
           <div className="flex flex-wrap justify-center gap-8">
+            {/* ✅ ИСПРАВЛЕНО: Обновил контакты во всех карточках */}
             <div className="flex items-center gap-6 bg-white p-6 rounded-2xl w-full md:w-auto md:min-w-[400px] shadow-sm hover:shadow-md transition-all hover:scale-[1.02]">
               <div className="w-20 h-20 rounded-full bg-slate-100 overflow-hidden shrink-0 border-2 border-slate-100">
-                 <div className="w-full h-full flex items-center justify-center bg-slate-800 text-white text-2xl font-bold">Э</div>
+                 <div className="w-full h-full flex items-center justify-center bg-blue-600 text-white text-2xl font-bold">И</div>
               </div>
               <div>
-                <h3 className="text-xl font-bold text-slate-900">Экспертный отдел</h3>
-                <p className="text-blue-600 font-medium text-sm mb-3">Прием заявок</p>
+                <h3 className="text-xl font-bold text-slate-900">Иванова Елена</h3>
+                <p className="text-blue-600 font-medium text-sm mb-3">Ведущий специалист</p>
                 <div className="flex flex-col gap-1 text-sm text-slate-600">
-                  <a href="tel:+73022355599" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Phone size={14}/> +7 (3022) 35-55-99</a>
-                  <a href="mailto:expert@ztpp.ru" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Mail size={14}/> expert@ztpp.ru</a>
+                  <a href="tel:+79243733330" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Phone size={14}/> +7 (924) 373-33-30</a>
+                  <a href="mailto:info@zabtpp.ru" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Mail size={14}/> info@zabtpp.ru</a>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-6 bg-white p-6 rounded-2xl w-full md:w-auto md:min-w-[400px] shadow-sm hover:shadow-md transition-all hover:scale-[1.02]">
+              <div className="w-20 h-20 rounded-full bg-slate-100 overflow-hidden shrink-0 border-2 border-slate-100">
+                 <div className="w-full h-full flex items-center justify-center bg-slate-800 text-white text-2xl font-bold">П</div>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-slate-900">Петров Сергей</h3>
+                <p className="text-blue-600 font-medium text-sm mb-3">Эксперт по ВЭД</p>
+                <div className="flex flex-col gap-1 text-sm text-slate-600">
+                   <a href="tel:+79243733330" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Phone size={14}/> +7 (924) 373-33-30</a>
+                   <a href="mailto:info@zabtpp.ru" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Mail size={14}/> info@zabtpp.ru</a>
                 </div>
               </div>
             </div>
