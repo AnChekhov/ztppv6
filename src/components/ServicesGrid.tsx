@@ -8,7 +8,7 @@ import {
   ChevronRight, 
   ArrowRight, 
   HelpCircle,
-  Hammer // ✅ Добавлена иконка для стройки
+  Hammer 
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from './ui/Button';
@@ -179,7 +179,7 @@ const ServicesGrid: React.FC = () => {
             description="Помощь в классификации товаров (ТН ВЭД), расчет таможенных платежей, подготовка документов для таможенного оформления."
           />
 
-          {/* 3. СТРОИТЕЛЬНАЯ ЭКСПЕРТИЗА (НОВАЯ) */}
+          {/* 3. СТРОИТЕЛЬНАЯ ЭКСПЕРТИЗА */}
           <ServiceCard 
             icon={Hammer} 
             title="Строительно-техническая экспертиза" 
@@ -193,7 +193,7 @@ const ServicesGrid: React.FC = () => {
             description="Свидетельствование форс-мажора, международный коммерческий арбитраж, медиация и защита интересов бизнеса в органах власти."
           />
 
-          {/* 5. МЕРОПРИЯТИЯ (ОБЪЕДИНЕНО С ОБУЧЕНИЕМ) */}
+          {/* 5. МЕРОПРИЯТИЯ */}
           <ServiceCard 
             icon={Users} 
             title="Мероприятия нашего сообщества" 
@@ -211,8 +211,12 @@ const ServicesGrid: React.FC = () => {
             <p className="text-sm text-slate-500 mb-6 leading-relaxed">
                В нашем арсенале более 40 услуг. Свяжитесь с нами - мы подберем решение под ваши задачи.
             </p>
-            <Button variant="outline" className="border-blue-600 text-blue-700 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-colors bg-white hover:scale-105">
-                Получить консультацию
+            {/* ✅ ИЗМЕНЕНО: Желтая кнопка (variant="lime"), как у всех остальных */}
+            <Button 
+                variant="lime" 
+                className="w-full h-12 font-bold bg-yellow-400 text-slate-900 hover:bg-yellow-500 hover:shadow-md transition-all rounded-xl"
+            >
+                Получить консультацию <ArrowRight size={18} className="ml-2" />
             </Button>
           </div>
 
