@@ -82,7 +82,7 @@ export const ExpertisePage: React.FC = () => {
                   </button>
                   <button 
                     onClick={scrollToForm}
-                    className="border-2 border-slate-600 hover:border-white text-white font-semibold py-4 px-8 rounded-xl transition-colors flex items-center justify-center gap-2 group"
+                    className="border-2 border-slate-600 hover:border-white text-white font-semibold py-4 px-8 rounded-xl transition-all hover:scale-105 flex items-center justify-center gap-2 group"
                   >
                     <MessageCircle size={20} />
                     Проконсультироваться
@@ -101,7 +101,6 @@ export const ExpertisePage: React.FC = () => {
       </section>
 
       {/* 2. ВИДЫ ЭКСПЕРТИЗ */}
-      {/* pt-12 (малый отступ сверху), pb-20 (стандарт) */}
       <section className="pt-12 pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Какие задачи мы решаем</h2>
@@ -139,14 +138,14 @@ export const ExpertisePage: React.FC = () => {
                 icon: Factory 
               },
             ].map((item, index) => (
-              <div key={index} className="bg-white rounded-2xl p-8 shadow-lg shadow-slate-200/50 border border-slate-100 hover:shadow-xl transition-shadow hover:-translate-y-1 duration-300 flex flex-col h-full">
+              /* ✅ ИЗМЕНЕНО: hover:scale-[1.03] */
+              <div key={index} className="bg-white rounded-2xl p-8 shadow-lg shadow-slate-200/50 border border-slate-100 transition-all duration-300 hover:shadow-xl hover:shadow-blue-900/5 hover:scale-[1.03] flex flex-col h-full">
                 <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 bg-blue-50 text-blue-600">
                   <item.icon size={28} strokeWidth={1.5} />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3">{item.title}</h3>
                 <p className="text-slate-600 text-sm leading-relaxed flex-grow">{item.desc}</p>
                 <div className="mt-6 pt-4 border-t border-slate-100">
-                   {/* Кнопка ведет на форму */}
                    <button onClick={scrollToForm} className="text-sm font-bold text-blue-600 hover:text-blue-800 transition-colors">
                      Подробнее →
                    </button>
@@ -157,7 +156,7 @@ export const ExpertisePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. ПОЧЕМУ ТПП (py-20) */}
+      {/* 3. ПОЧЕМУ ТПП */}
       <section className="py-20 bg-slate-50 border-y border-slate-100">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-200">
@@ -182,7 +181,7 @@ export const ExpertisePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. ДОКУМЕНТЫ (py-20) */}
+      {/* 4. ДОКУМЕНТЫ */}
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <div className="text-center mb-12">
@@ -222,7 +221,7 @@ export const ExpertisePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. CTA ФОРМА (py-20) */}
+      {/* 5. CTA ФОРМА */}
       <section id="order-form" className="py-20 bg-slate-900 text-white">
         <div className="max-w-5xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -268,6 +267,7 @@ export const ExpertisePage: React.FC = () => {
                   <label className="block text-sm font-bold mb-2">Название организации</label>
                   <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="ООО 'Пример'" />
                 </div>
+                
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-bold mb-2">Контактное лицо</label>
@@ -278,6 +278,8 @@ export const ExpertisePage: React.FC = () => {
                     <input type="tel" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="+7 (___) ___-__-__" />
                   </div>
                 </div>
+
+                {/* Select: Вид экспертизы */}
                 <div>
                    <label className="block text-sm font-bold mb-2">Вид экспертизы</label>
                    <div className="relative">
@@ -294,6 +296,7 @@ export const ExpertisePage: React.FC = () => {
                      </div>
                    </div>
                 </div>
+
                 <div className="pt-2">
                   <label className="block text-sm font-bold mb-2">Документы (если есть)</label>
                   <div className="border-2 border-dashed border-slate-300 rounded-xl p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-slate-50 transition-colors group">
@@ -301,20 +304,23 @@ export const ExpertisePage: React.FC = () => {
                     <span className="text-sm text-slate-500 font-medium">Загрузить контракт или фото</span>
                   </div>
                 </div>
-                <button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all mt-4">
+
+                <button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all mt-4">
                   Отправить заявку
                 </button>
                 <p className="text-xs text-center text-slate-400 mt-3">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
               </form>
             </div>
+
           </div>
         </div>
       </section>
 
-      {/* 6. FAQ (py-20) */}
+      {/* 6. FAQ */}
       <section className="py-20 bg-white">
         <div className="max-w-3xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Часто задаваемые вопросы</h2>
+          
           <div className="space-y-4">
             {faqs.map((faq, index) => (
               <div key={index} className="border-b border-slate-200 last:border-0">
@@ -343,12 +349,13 @@ export const ExpertisePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 7. КОМАНДА (py-20) */}
+      {/* 7. КОМАНДА */}
       <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Эксперты Палаты</h2>
+          
           <div className="flex flex-wrap justify-center gap-8">
-            <div className="flex items-center gap-6 bg-white p-6 rounded-2xl w-full md:w-auto md:min-w-[400px] shadow-sm hover:shadow-md transition-all">
+            <div className="flex items-center gap-6 bg-white p-6 rounded-2xl w-full md:w-auto md:min-w-[400px] shadow-sm hover:shadow-md transition-all hover:scale-[1.02]">
               <div className="w-20 h-20 rounded-full bg-slate-100 overflow-hidden shrink-0 border-2 border-slate-100">
                  <div className="w-full h-full flex items-center justify-center bg-slate-800 text-white text-2xl font-bold">Э</div>
               </div>
