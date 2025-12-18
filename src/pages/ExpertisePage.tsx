@@ -18,7 +18,7 @@ import {
   Globe,
   Download,
   CheckCircle2,
-  MessageCircle // Добавил иконку для кнопки консультации
+  MessageCircle
 } from 'lucide-react';
 
 export const ExpertisePage: React.FC = () => {
@@ -28,7 +28,6 @@ export const ExpertisePage: React.FC = () => {
     setOpenFaq(openFaq === index ? null : index);
   };
 
-  // Функция для плавного скролла к форме
   const scrollToForm = () => {
     const formSection = document.getElementById('order-form');
     if (formSection) {
@@ -66,9 +65,7 @@ export const ExpertisePage: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/95 to-slate-900/60"></div>
         
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center">
-            
             <div className="grid lg:grid-cols-12 gap-8 items-center">
-              
               <div className="lg:col-span-7 max-w-3xl">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
                   Независимая товарная экспертиза в <span className="text-yellow-400">Забайкальском крае</span>
@@ -76,8 +73,6 @@ export const ExpertisePage: React.FC = () => {
                 <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl">
                   Защитите свой бизнес от убытков. Профессиональная приемка товаров, выявление брака и оценка ущерба. Акты ТПП признаются судами и таможней.
                 </p>
-                
-                {/* КНОПКИ HERO */}
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button 
                     onClick={scrollToForm}
@@ -94,30 +89,20 @@ export const ExpertisePage: React.FC = () => {
                   </button>
                 </div>
               </div>
-
-              {/* Правая колонка: Иконка Планшета */}
               <div className="hidden lg:flex lg:col-span-5 justify-center items-center relative">
                 <div className="absolute w-80 h-80 bg-blue-600/10 rounded-full blur-3xl"></div>
                 <div className="relative transform transition-transform duration-500 hover:scale-105">
-                   <ClipboardCheck 
-                      size={300} 
-                      strokeWidth={1}
-                      className="text-slate-600/70 drop-shadow-2xl" 
-                   />
-                   <ClipboardCheck 
-                      size={300} 
-                      strokeWidth={1}
-                      className="absolute top-0 left-0 text-white/10" 
-                   />
+                   <ClipboardCheck size={300} strokeWidth={1} className="text-slate-600/70 drop-shadow-2xl" />
+                   <ClipboardCheck size={300} strokeWidth={1} className="absolute top-0 left-0 text-white/10" />
                 </div>
               </div>
-
             </div>
         </div>
       </section>
 
-      {/* 2. ВИДЫ ЭКСПЕРТИЗ (GRID) */}
-      <section className="py-24 bg-white">
+      {/* 2. ВИДЫ ЭКСПЕРТИЗ */}
+      {/* pt-12 (малый отступ сверху), pb-20 (стандарт) */}
+      <section className="pt-12 pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Какие задачи мы решаем</h2>
           
@@ -161,6 +146,7 @@ export const ExpertisePage: React.FC = () => {
                 <h3 className="text-xl font-bold text-slate-900 mb-3">{item.title}</h3>
                 <p className="text-slate-600 text-sm leading-relaxed flex-grow">{item.desc}</p>
                 <div className="mt-6 pt-4 border-t border-slate-100">
+                   {/* Кнопка ведет на форму */}
                    <button onClick={scrollToForm} className="text-sm font-bold text-blue-600 hover:text-blue-800 transition-colors">
                      Подробнее →
                    </button>
@@ -171,8 +157,8 @@ export const ExpertisePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. ПОЧЕМУ ТПП (ФАКТЫ) */}
-      <section className="py-16 bg-slate-50 border-y border-slate-100">
+      {/* 3. ПОЧЕМУ ТПП (py-20) */}
+      <section className="py-20 bg-slate-50 border-y border-slate-100">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-200">
             <div className="text-center px-4 pt-4 md:pt-0">
@@ -196,8 +182,8 @@ export const ExpertisePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. ДОКУМЕНТЫ */}
-      <section className="py-24 bg-white">
+      {/* 4. ДОКУМЕНТЫ (py-20) */}
+      <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Документы для проведения экспертизы</h2>
@@ -236,18 +222,17 @@ export const ExpertisePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. CTA ФОРМА (С ID и КОНТАКТАМИ) */}
-      <section id="order-form" className="py-24 bg-slate-900 text-white">
+      {/* 5. CTA ФОРМА (py-20) */}
+      <section id="order-form" className="py-20 bg-slate-900 text-white">
         <div className="max-w-5xl mx-auto px-6 md:px-8">
-          <div className="grid md:grid-cols-2 gap-12 items-start">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
             
-            {/* Левая колонка */}
             <div>
               <h2 className="text-3xl md:text-4xl font-extrabold mb-6">Закажите экспертизу онлайн</h2>
               <p className="text-slate-300 text-lg mb-8">
                 Оставьте заявку, и мы рассчитаем стоимость работ и согласуем время выезда эксперта.
               </p>
-              <ul className="space-y-4 mb-10 text-slate-300">
+              <ul className="space-y-4 mb-8 text-slate-300">
                 <li className="flex items-center gap-3">
                   <CheckCircle2 className="text-yellow-400 shrink-0" />
                   <span>Выезд эксперта в течение 24 часов</span>
@@ -261,8 +246,6 @@ export const ExpertisePage: React.FC = () => {
                   <span>Бесплатная консультация</span>
                 </li>
               </ul>
-
-              {/* ✅ НОВЫЙ БЛОК: КОНТАКТЫ ДЛЯ СВЯЗИ */}
               <div className="pt-8 border-t border-slate-700">
                 <p className="text-slate-400 text-sm mb-3 font-medium uppercase tracking-wider">
                   Нет времени заполнять форму?
@@ -279,14 +262,12 @@ export const ExpertisePage: React.FC = () => {
               </div>
             </div>
 
-            {/* Правая колонка: Форма */}
             <div className="bg-white rounded-3xl p-8 text-slate-900 shadow-2xl">
               <form className="space-y-4">
                 <div>
                   <label className="block text-sm font-bold mb-2">Название организации</label>
                   <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="ООО 'Пример'" />
                 </div>
-                
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-bold mb-2">Контактное лицо</label>
@@ -297,8 +278,6 @@ export const ExpertisePage: React.FC = () => {
                     <input type="tel" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="+7 (___) ___-__-__" />
                   </div>
                 </div>
-
-                {/* Select: Вид экспертизы */}
                 <div>
                    <label className="block text-sm font-bold mb-2">Вид экспертизы</label>
                    <div className="relative">
@@ -315,7 +294,6 @@ export const ExpertisePage: React.FC = () => {
                      </div>
                    </div>
                 </div>
-
                 <div className="pt-2">
                   <label className="block text-sm font-bold mb-2">Документы (если есть)</label>
                   <div className="border-2 border-dashed border-slate-300 rounded-xl p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-slate-50 transition-colors group">
@@ -323,23 +301,20 @@ export const ExpertisePage: React.FC = () => {
                     <span className="text-sm text-slate-500 font-medium">Загрузить контракт или фото</span>
                   </div>
                 </div>
-
                 <button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all mt-4">
                   Отправить заявку
                 </button>
                 <p className="text-xs text-center text-slate-400 mt-3">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
               </form>
             </div>
-
           </div>
         </div>
       </section>
 
-      {/* 6. FAQ */}
-      <section className="py-24 bg-white">
+      {/* 6. FAQ (py-20) */}
+      <section className="py-20 bg-white">
         <div className="max-w-3xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Часто задаваемые вопросы</h2>
-          
           <div className="space-y-4">
             {faqs.map((faq, index) => (
               <div key={index} className="border-b border-slate-200 last:border-0">
@@ -368,11 +343,10 @@ export const ExpertisePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 7. КОМАНДА */}
-      <section className="py-24 bg-slate-50">
+      {/* 7. КОМАНДА (py-20) */}
+      <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Эксперты Палаты</h2>
-          
           <div className="flex flex-wrap justify-center gap-8">
             <div className="flex items-center gap-6 bg-white p-6 rounded-2xl w-full md:w-auto md:min-w-[400px] shadow-sm hover:shadow-md transition-all">
               <div className="w-20 h-20 rounded-full bg-slate-100 overflow-hidden shrink-0 border-2 border-slate-100">
