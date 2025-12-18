@@ -14,8 +14,11 @@ import {
   Check,
   FileCheck,
   MessageCircle,
-  ChevronUp
+  ChevronUp,
+  Info
 } from 'lucide-react';
+// ✅ 1. ИМПОРТ КОМПОНЕНТА SEO (Добавил эту строку)
+import SEO from '../components/SEO';
 
 export const CertificationPage: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -105,6 +108,13 @@ export const CertificationPage: React.FC = () => {
   return (
     <div className="font-sans text-slate-900 bg-white">
       
+      {/* ✅ 2. ВСТАВКА SEO ТЕГОВ (Сразу после открывающего div) */}
+      <SEO 
+        title="Сертификаты происхождения товаров (СТ-1, Общая форма) в Чите"
+        description="Оформление сертификатов происхождения товаров (СТ-1, EAV, Общая форма) в Забайкальском крае. Срочная выдача для экспорта в Китай. Консультации экспертов ТПП."
+        keywords="сертификат происхождения чита, ст-1 забайкальск, экспорт в китай документы, тпп чита услуги"
+      />
+      
       {/* 1. HERO SECTION */}
       <section className="relative bg-slate-900 text-white overflow-hidden min-h-[65vh] flex items-center justify-center">
         <div className="absolute inset-0 opacity-40">
@@ -114,10 +124,12 @@ export const CertificationPage: React.FC = () => {
               className="w-full h-full object-cover"
             />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/[0.87] to-slate-900"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/95 to-slate-900/90"></div>
         
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center">
+            
             <div className="grid lg:grid-cols-12 gap-8 items-center">
+              
               <div className="lg:col-span-7 max-w-3xl">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
                   Заказать сертификат происхождения товара в <span className="text-yellow-400">Забайкальской ТПП</span>
@@ -157,6 +169,7 @@ export const CertificationPage: React.FC = () => {
                    />
                 </div>
               </div>
+
             </div>
         </div>
       </section>
@@ -165,6 +178,7 @@ export const CertificationPage: React.FC = () => {
       <section className="pt-12 pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Выберите нужный Вам тип сертификата</h2>
+          
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {certTypes.map((item) => (
               <div 
@@ -287,42 +301,12 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. ШАГИ */}
-      <section className="py-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-16 text-center">Как получить сертификат: просто и понятно</h2>
-          <div className="relative">
-            <div className="hidden md:block absolute top-6 left-0 w-full h-1 bg-slate-200 rounded">
-                <div className="h-full bg-blue-200 w-3/4 rounded"></div>
-            </div>
-            <div className="grid md:grid-cols-4 gap-8">
-              {[
-                { title: 'Подготовка', desc: 'Соберите пакет документов по нашему чек-листу. Скачайте и заполните бланк заявления.' },
-                { title: 'Подача заявки', desc: 'Отправьте заявку и сканы документов онлайн через форму ниже или предоставьте в офис.' },
-                { title: 'Экспертиза', desc: 'Наши специалисты проверят документы и, при необходимости, проведут экспертизу.' },
-                { title: 'Получение', desc: 'Получите готовый сертификат на защищенном бланке в офисе Палаты.' },
-              ].map((step, idx) => (
-                <div key={idx} className="relative pt-8 md:pt-16 group">
-                  <div className="absolute top-0 left-0 md:left-1/2 md:-translate-x-1/2 w-12 h-12 bg-white border-4 border-blue-600 text-blue-600 rounded-full flex items-center justify-center font-bold text-xl z-10 shadow-md group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                    {idx + 1}
-                  </div>
-                  <div className="bg-white p-6 rounded-2xl md:text-center h-full hover:shadow-lg transition-all border border-slate-100">
-                    <h3 className="font-bold text-lg mb-2">{step.title}</h3>
-                    <p className="text-slate-500 text-sm leading-relaxed">{step.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 6. ДОКУМЕНТЫ */}
-      <section className="py-20 bg-white">
+      {/* 5. ДОКУМЕНТЫ */}
+      <section className="py-20 bg-slate-50 border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Все, что нужно для подачи заявки</h2>
-            <p className="text-slate-500">Мы подготовили для вас полный список и шаблоны, чтобы избежать ошибок</p>
+            <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Документы для проведения экспертизы</h2>
+            <p className="text-slate-500">Минимальный пакет документов для начала работы</p>
           </div>
 
           <div className="bg-white rounded-3xl shadow-sm overflow-hidden border border-slate-100">
@@ -358,7 +342,7 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 7. CTA ФОРМА */}
+      {/* 6. CTA ФОРМА */}
       <section id="order-form" className="py-20 bg-slate-900 text-white">
         <div className="max-w-5xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-start">
@@ -384,7 +368,7 @@ export const CertificationPage: React.FC = () => {
                 </li>
               </ul>
 
-              {/* Контакты */}
+              {/* Контакты для связи */}
               <div className="pt-8 border-t border-slate-700">
                 <p className="text-slate-400 text-sm mb-3 font-medium uppercase tracking-wider">
                   Нет времени заполнять форму?
@@ -466,7 +450,7 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 8. FAQ */}
+      {/* 7. FAQ */}
       <section className="py-20 bg-white">
         <div className="max-w-3xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Часто задаваемые вопросы</h2>
