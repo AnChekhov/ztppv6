@@ -1,57 +1,55 @@
 import React from 'react';
-import { CheckCircle2 } from 'lucide-react';
+import { Button } from './ui/Button';
 
 const CallToAction: React.FC = () => {
   return (
-    // Фон секции - Dark Slate 900
-    <section className="bg-slate-900 pt-20 pb-24 relative overflow-hidden">
-        
-      {/* Декоративные пятна на фоне */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-yellow-500/5 rounded-full blur-3xl"></div>
-
-      <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
-        
-        {/* Белая карточка */}
-        <div className="bg-white rounded-3xl p-8 md:p-12 lg:p-16 flex flex-col lg:flex-row items-center gap-12 shadow-2xl">
-          
-          <div className="flex-1">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6 leading-tight">
-              Станьте членом Союза <br/>«ТПП Забайкальского края»
-            </h2>
-            <p className="text-slate-600 text-lg mb-8 leading-relaxed">
-              Присоединяйтесь к сообществу из 450+ успешных компаний. Получите доступ к закрытым мероприятиям, прямой диалог с властью и скидки на услуги палаты.
-            </p>
-            
-            <div className="space-y-4">
-              {/* Преимущество 1: Amber/Yellow кружок */}
-              <div className="flex items-start gap-3">
-                <div className="w-2.5 h-2.5 rounded-full bg-yellow-500 shrink-0 mt-2"></div>
-                <span className="text-slate-700 font-medium">Защита и продвижение интересов вашего бизнеса</span>
-              </div>
-              {/* Преимущество 2: Amber/Yellow кружок */}
-              <div className="flex items-start gap-3">
-                <div className="w-2.5 h-2.5 rounded-full bg-yellow-500 shrink-0 mt-2"></div>
-                <span className="text-slate-700 font-medium">Скидки до 20% на услуги сертификации и экспертизы</span>
-              </div>
-              {/* Преимущество 3: Amber/Yellow кружок */}
-              <div className="flex items-start gap-3">
-                <div className="w-2.5 h-2.5 rounded-full bg-yellow-500 shrink-0 mt-2"></div>
-                <span className="text-slate-700 font-medium">Участие в международных бизнес-миссиях</span>
-              </div>
+    <section className="py-24 bg-slate-900 text-white relative overflow-hidden">
+      {/* Декоративный фон */}
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-blue-600/10 blur-3xl rounded-full translate-x-1/3"></div>
+      
+      <div className="max-w-5xl mx-auto px-6 md:px-8 relative z-10">
+        <div className="bg-white/5 border border-white/10 p-8 md:p-12 rounded-3xl backdrop-blur-sm">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 className="text-3xl md:text-4xl font-extrabold mb-6 leading-tight">
+                        Станьте членом Союза <br/>
+                        «ТПП Забайкальского края»
+                    </h2>
+                    {/* ✅ ИЗМЕНЕНО: Новый текст */}
+                    <p className="text-slate-300 text-lg mb-8 leading-relaxed">
+                        Присоединяйтесь к сообществу успешных компаний и предпринимателей. 
+                        Получите доступ к закрытым мероприятиям, прямой диалог с властью и скидки на услуги палаты.
+                    </p>
+                    
+                    <ul className="space-y-3 mb-8">
+                        <li className="flex items-center gap-3 text-slate-300">
+                            <span className="w-2 h-2 rounded-full bg-yellow-400"></span>
+                            Защита и продвижение интересов вашего бизнеса
+                        </li>
+                        <li className="flex items-center gap-3 text-slate-300">
+                            <span className="w-2 h-2 rounded-full bg-yellow-400"></span>
+                            Скидки до 20% на услуги сертификации и экспертизы
+                        </li>
+                        <li className="flex items-center gap-3 text-slate-300">
+                            <span className="w-2 h-2 rounded-full bg-yellow-400"></span>
+                            Участие в международных бизнес-миссиях
+                        </li>
+                    </ul>
+                </div>
+                
+                <div className="flex flex-col gap-4">
+                    <div className="bg-slate-800/50 p-6 rounded-2xl border border-white/5 mb-4 text-center">
+                        <p className="text-slate-400 text-sm mb-2">Хотите узнать подробнее?</p>
+                        <p className="text-white font-bold text-xl">Получите консультацию по членству</p>
+                    </div>
+                    <Button variant="lime" className="w-full h-14 text-lg font-bold bg-yellow-400 text-slate-900 hover:bg-yellow-500">
+                        Подать заявку онлайн
+                    </Button>
+                    <Button variant="outline" className="w-full h-14 text-lg border-slate-600 hover:border-white text-slate-300 hover:text-white">
+                        Узнать условия членства
+                    </Button>
+                </div>
             </div>
-          </div>
-          
-          <div className="flex flex-col gap-4 w-full lg:w-auto min-w-[320px]">
-            {/* Кнопка Amber/Yellow */}
-            <button className="bg-yellow-500 hover:bg-yellow-400 text-slate-900 font-bold py-4 px-8 rounded-lg shadow-lg text-center text-lg transition-all transform hover:-translate-y-1">
-              Подать заявку онлайн
-            </button>
-            <button className="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-4 px-8 rounded-lg text-center text-lg transition-colors">
-              Узнать условия членства
-            </button>
-          </div>
-
         </div>
       </div>
     </section>
