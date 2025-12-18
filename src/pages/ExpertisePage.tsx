@@ -55,8 +55,8 @@ export const ExpertisePage: React.FC = () => {
       
       {/* 1. HERO SECTION */}
       <section className="relative bg-slate-900 text-white overflow-hidden min-h-[65vh] flex items-center justify-center">
-        <div className="absolute inset-0 opacity-10">
-            {/* ✅ ИЗМЕНЕНО: Локальное изображение */}
+        {/* ✅ ИЗМЕНЕНО: opacity-10 -> opacity-30 (чтобы фон был виден) */}
+        <div className="absolute inset-0 opacity-30">
             <img 
               src="/images/hero-bg.jpg" 
               alt="Expertise Background" 
@@ -76,6 +76,8 @@ export const ExpertisePage: React.FC = () => {
                 <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl">
                   Защитите свой бизнес от убытков. Профессиональная приемка товаров, выявление брака и оценка ущерба. Акты ТПП признаются судами и таможней.
                 </p>
+                
+                {/* КНОПКИ HERO */}
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button 
                     onClick={scrollToForm}
@@ -92,18 +94,29 @@ export const ExpertisePage: React.FC = () => {
                   </button>
                 </div>
               </div>
+
+              {/* Правая колонка: Иконка Планшета */}
               <div className="hidden lg:flex lg:col-span-5 justify-center items-center relative">
                 <div className="absolute w-80 h-80 bg-blue-600/10 rounded-full blur-3xl"></div>
                 <div className="relative transform transition-transform duration-500 hover:scale-105">
-                   <ClipboardCheck size={300} strokeWidth={1} className="text-slate-600/70 drop-shadow-2xl" />
-                   <ClipboardCheck size={300} strokeWidth={1} className="absolute top-0 left-0 text-white/10" />
+                   <ClipboardCheck 
+                      size={300} 
+                      strokeWidth={1}
+                      className="text-slate-600/70 drop-shadow-2xl" 
+                   />
+                   <ClipboardCheck 
+                      size={300} 
+                      strokeWidth={1}
+                      className="absolute top-0 left-0 text-white/10" 
+                   />
                 </div>
               </div>
+
             </div>
         </div>
       </section>
 
-      {/* 2. ВИДЫ ЭКСПЕРТИЗ */}
+      {/* 2. ВИДЫ ЭКСПЕРТИЗ (GRID) */}
       <section className="pt-12 pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Какие задачи мы решаем</h2>
@@ -158,7 +171,7 @@ export const ExpertisePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. ПОЧЕМУ ТПП */}
+      {/* 3. ПОЧЕМУ ТПП (ФАКТЫ) */}
       <section className="py-20 bg-slate-50 border-y border-slate-100">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-200">
