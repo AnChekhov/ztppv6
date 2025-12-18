@@ -50,15 +50,16 @@ export const CertificationPage: React.FC = () => {
       
       {/* 1. HERO SECTION */}
       <section className="relative bg-slate-900 text-white overflow-hidden min-h-[65vh] flex items-center justify-center">
-        <div className="absolute inset-0 opacity-10">
-            {/* ✅ ИЗМЕНЕНО: Локальное изображение */}
+        {/* ✅ ИСПРАВЛЕНО: Путь /ztppv6/... и opacity-40 */}
+        <div className="absolute inset-0 opacity-40">
             <img 
-              src="/images/hero-bg.jpg" 
+              src="/ztppv6/images/hero-bg.jpg" 
               alt="Background" 
               className="w-full h-full object-cover"
             />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/95 to-slate-900/60"></div>
+        {/* ✅ ИСПРАВЛЕНО: Градиент via-slate-900/80 (светлее) */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/80 to-slate-900/50"></div>
         
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center">
             
@@ -320,7 +321,7 @@ export const CertificationPage: React.FC = () => {
                   </div>
                 </div>
 
-                <button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all mt-4">
+                <button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all mt-4">
                   Отправить заявку
                 </button>
                 <p className="text-xs text-center text-slate-400 mt-3">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
@@ -400,9 +401,3 @@ export const CertificationPage: React.FC = () => {
           </div>
         </div>
       </section>
-
-    </div>
-  );
-};
-
-export default CertificationPage;
