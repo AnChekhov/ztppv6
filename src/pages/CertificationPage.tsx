@@ -14,12 +14,14 @@ import {
   Check,
   FileCheck,
   MessageCircle,
-  ChevronUp
+  ChevronUp,
+  Info
 } from 'lucide-react';
 
 export const CertificationPage: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [selectedType, setSelectedType] = useState<string>('Общая форма');
+  
   const [expandedDetail, setExpandedDetail] = useState<string | null>(null);
 
   const toggleFaq = (index: number) => {
@@ -49,6 +51,7 @@ export const CertificationPage: React.FC = () => {
     }, 100);
   };
 
+  // Данные о сертификатах
   const certTypes = [
     {
       id: 'general',
@@ -62,7 +65,8 @@ export const CertificationPage: React.FC = () => {
       type: 'СТ-1',
       countries: 'Государства-участники СНГ',
       purpose: 'Получение тарифных преференций (снижение/отмена пошлин)',
-      longDesc: 'Форма СТ-1 — основной документ для беспошлинной торговли со странами СНГ (Азербайджан, Армения, Беларусь, Казахстан, Кыргызстан, Молдова, Таджикистан, Туркменистан, Узбекистан). Наличие этого сертификата позволяет полностью освободиться от уплаты ввозной таможенной пошлины в стране назначения. Для получения сертификата товар должен соответствовать Критериям достаточной переработки (Правила 2009 года).'
+      // ✅ ИСПРАВЛЕНО: "—" на "-"
+      longDesc: 'Форма СТ-1 - основной документ для беспошлинной торговли со странами СНГ (Азербайджан, Армения, Беларусь, Казахстан, Кыргызстан, Молдова, Таджикистан, Туркменистан, Узбекистан). Наличие этого сертификата позволяет полностью освободиться от уплаты ввозной таможенной пошлины в стране назначения. Для получения сертификата товар должен соответствовать Критериям достаточной переработки (Правила 2009 года).'
     },
     {
       id: 'st2',
@@ -114,7 +118,7 @@ export const CertificationPage: React.FC = () => {
               className="w-full h-full object-cover"
             />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/[0.87] to-slate-900"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/95 to-slate-900/90"></div>
         
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center">
             <div className="grid lg:grid-cols-12 gap-8 items-center">
@@ -152,7 +156,7 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. ТИПЫ СЕРТИФИКАТОВ (pt-12 pb-20 - спец. отступы) */}
+      {/* 2. ТИПЫ СЕРТИФИКАТОВ */}
       <section className="pt-12 pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Выберите нужный Вам тип сертификата</h2>
@@ -197,7 +201,7 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. ИНФОРМАЦИЯ О СЕРТИФИКАТАХ (py-20) */}
+      {/* 3. ИНФОРМАЦИЯ О СЕРТИФИКАТАХ */}
       <section className="py-20 bg-slate-50 border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">Информация о сертификатах</h2>
@@ -216,7 +220,8 @@ export const CertificationPage: React.FC = () => {
                     <div className={`p-2 rounded-lg ${expandedDetail === item.id ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-500'}`}>
                        <FileCheck size={24} />
                     </div>
-                    <span className="text-lg font-bold text-slate-900">{item.type} — {item.countries}</span>
+                    {/* ✅ ИСПРАВЛЕНО: "—" на "-" */}
+                    <span className="text-lg font-bold text-slate-900">{item.type} - {item.countries}</span>
                   </div>
                   {expandedDetail === item.id ? <ChevronUp className="text-blue-600"/> : <ChevronDown className="text-slate-400"/>}
                 </button>
@@ -240,7 +245,7 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. ЦИФРЫ И СРОКИ (py-20) */}
+      {/* 4. ЦИФРЫ И СРОКИ */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-200">
@@ -275,8 +280,8 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. ШАГИ (py-20) */}
-      <section className="py-20 bg-slate-50">
+      {/* 5. ШАГИ */}
+      <section className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-16 text-center">Как получить сертификат: просто и понятно</h2>
           <div className="relative">
@@ -305,13 +310,14 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 6. ДОКУМЕНТЫ (py-20) */}
+      {/* 6. ДОКУМЕНТЫ */}
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Все, что нужно для подачи заявки</h2>
             <p className="text-slate-500">Мы подготовили для вас полный список и шаблоны, чтобы избежать ошибок</p>
           </div>
+
           <div className="bg-white rounded-3xl shadow-sm overflow-hidden border border-slate-100">
             {[
               { name: 'Заявление на выдачу сертификата', req: 'Заполняется по форме, печать организации', link: true },
@@ -344,7 +350,7 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 7. CTA ФОРМА (py-20) */}
+      {/* 7. CTA ФОРМА */}
       <section id="order-form" className="py-20 bg-slate-900 text-white">
         <div className="max-w-5xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-start">
@@ -399,6 +405,10 @@ export const CertificationPage: React.FC = () => {
                   </div>
                 </div>
                 <div>
+                   <label className="block text-sm font-bold mb-2">Контактное лицо</label>
+                   <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="Иванов Иван" />
+                </div>
+                <div>
                    <label className="block text-sm font-bold mb-2">Тип сертификата</label>
                    <div className="relative">
                      <select 
@@ -425,7 +435,7 @@ export const CertificationPage: React.FC = () => {
                     <span className="text-sm text-slate-500 font-medium">Перетащите файлы сюда или нажмите для загрузки</span>
                   </div>
                 </div>
-                <button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all mt-4">
+                <button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all mt-4">
                   Отправить заявку
                 </button>
                 <p className="text-xs text-center text-slate-400 mt-3">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
@@ -435,7 +445,7 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 8. FAQ (py-20) */}
+      {/* 8. FAQ */}
       <section className="py-20 bg-white">
         <div className="max-w-3xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Часто задаваемые вопросы</h2>
@@ -467,7 +477,7 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 9. КОМАНДА (py-20) */}
+      {/* 9. КОМАНДА */}
       <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Эксперты Палаты</h2>
