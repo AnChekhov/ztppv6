@@ -1,9 +1,9 @@
 import React from 'react';
-import { FileText, Globe, Scale, Users, BookOpen, Container, ChevronRight, ArrowRight, HelpCircle } from 'lucide-react'; // Добавил HelpCircle
+import { FileText, Globe, Scale, Users, BookOpen, Container, ChevronRight, ArrowRight, HelpCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from './ui/Button';
 
-// --- КОМПОНЕНТ СТАНДАРТНОЙ КАРТОЧКИ ---
+// --- СТАНДАРТНАЯ КАРТОЧКА ---
 interface ServiceCardProps {
   icon: React.ElementType;
   title: string;
@@ -11,7 +11,8 @@ interface ServiceCardProps {
 }
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ icon: Icon, title, description }) => (
-  <div className="group p-8 rounded-2xl bg-white border border-slate-100 hover:border-slate-200 hover:shadow-lg transition-all duration-300 flex flex-col h-full">
+  /* ✅ ИЗМЕНЕНО: hover:scale-[1.03] и hover:shadow-blue-900/5 для свечения */
+  <div className="group p-8 rounded-2xl bg-white border border-slate-100 hover:border-slate-200 transition-all duration-300 flex flex-col h-full hover:shadow-xl hover:shadow-blue-900/5 hover:scale-[1.03]">
     <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-blue-50 text-blue-900 transition-transform group-hover:scale-105">
       <Icon size={24} strokeWidth={1.5} />
     </div>
@@ -30,7 +31,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon: Icon, title, descriptio
   </div>
 );
 
-// --- КОМПОНЕНТ АКЦЕНТНОЙ КАРТОЧКИ ---
+// --- ПРИОРИТЕТНАЯ КАРТОЧКА ---
 interface PriorityCardProps {
   icon: React.ElementType;
   title: string;
@@ -52,25 +53,23 @@ const PriorityCard: React.FC<PriorityCardProps> = ({
   buttonStyle,
   link 
 }) => (
-  <div className="bg-white rounded-[2rem] p-6 md:p-7 shadow-xl shadow-slate-200/60 border border-white flex flex-col h-full relative overflow-hidden transition-transform hover:-translate-y-1 duration-300">
+  /* ✅ ИЗМЕНЕНО: hover:scale-[1.02] (чуть меньше, т.к. карта большая) и тень */
+  <div className="bg-white rounded-[2rem] p-6 md:p-7 shadow-xl shadow-slate-200/60 border border-white flex flex-col h-full relative overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-900/10">
     
-    {/* А. ВЕРХНЯЯ ЧАСТЬ */}
     <div className="flex justify-between items-start mb-5">
-      {/* ИНВЕРСИЯ ЦВЕТОВ: Светлый фон, синяя иконка */}
       <div className="w-14 h-14 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-105 bg-blue-50 text-blue-600">
         <Icon size={28} strokeWidth={1.5} />
       </div>
 
       <span className={`inline-flex items-center px-3 py-1 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-wider ${
         badgeStyle === 'green' 
-            ? 'bg-blue-100 text-blue-700' // Синий бейдж вместо зеленого
+            ? 'bg-blue-100 text-blue-700'
             : 'bg-slate-100 text-slate-600'
       }`}>
         {badgeText}
       </span>
     </div>
 
-    {/* Б. КОНТЕНТ */}
     <h3 className="text-xl md:text-2xl font-extrabold text-slate-900 mb-3 leading-tight">
       {title}
     </h3>
@@ -79,13 +78,12 @@ const PriorityCard: React.FC<PriorityCardProps> = ({
       {description}
     </p>
     
-    {/* В. КНОПКА */}
     <div className="mt-6">
       {link ? (
         <Link to={link}>
              <Button 
                 variant="lime" 
-                className={`w-full h-12 md:h-14 text-sm md:text-base font-bold !rounded-xl shadow-md transition-all ${
+                className={`w-full h-12 md:h-14 text-sm md:text-base font-bold !rounded-xl shadow-md transition-all hover:scale-105 ${
                 buttonStyle === 'yellow' 
                     ? 'bg-yellow-400 text-slate-900 hover:bg-yellow-500 hover:shadow-yellow-400/30' 
                     : 'bg-slate-900 text-white hover:bg-slate-800 hover:shadow-slate-900/30'
@@ -97,7 +95,7 @@ const PriorityCard: React.FC<PriorityCardProps> = ({
       ) : (
         <Button 
             variant="lime" 
-            className={`w-full h-12 md:h-14 text-sm md:text-base font-bold !rounded-xl shadow-md transition-all ${
+            className={`w-full h-12 md:h-14 text-sm md:text-base font-bold !rounded-xl shadow-md transition-all hover:scale-105 ${
             buttonStyle === 'yellow' 
                 ? 'bg-yellow-400 text-slate-900 hover:bg-yellow-500 hover:shadow-yellow-400/30' 
                 : 'bg-slate-900 text-white hover:bg-slate-800 hover:shadow-slate-900/30'
@@ -115,7 +113,6 @@ const ServicesGrid: React.FC = () => {
     <section className="pt-10 pb-24 bg-slate-50">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         
-        {/* 1. ВЕРХНИЙ ПРИЗЫВ (Акцент на действие) */}
         <div className="text-center mb-10 max-w-2xl mx-auto">
           <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">
             Закажите нужный сертификат или экспертизу в пару кликов
@@ -125,7 +122,6 @@ const ServicesGrid: React.FC = () => {
           </p>
         </div>
 
-        {/* 2. ДВА АКЦЕНТНЫХ БЛОКА */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-16">
           <PriorityCard 
             icon={FileText}
@@ -150,7 +146,6 @@ const ServicesGrid: React.FC = () => {
           />
         </div>
 
-        {/* 3. ЗАГОЛОВОК ОБЩЕГО КАТАЛОГА */}
         <div className="text-center mb-12 max-w-3xl mx-auto">
           <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
             Комплексная поддержка бизнеса в Забайкальском крае
@@ -160,7 +155,6 @@ const ServicesGrid: React.FC = () => {
           </p>
         </div>
 
-        {/* 4. СЕТКА ОСТАЛЬНЫХ УСЛУГ */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           
           <ServiceCard 
@@ -194,9 +188,9 @@ const ServicesGrid: React.FC = () => {
           />
           
           {/* ✅ КАРТОЧКА: ПРИЗЫВ К СВЯЗИ */}
-          <div className="flex flex-col items-center justify-center p-8 rounded-2xl border border-dashed border-slate-300 bg-white/50 text-center h-full hover:bg-white hover:border-blue-300 hover:shadow-md transition-all group">
+          {/* Добавлен hover:scale-[1.03] и цветная тень */}
+          <div className="flex flex-col items-center justify-center p-8 rounded-2xl border border-dashed border-slate-300 bg-white/50 text-center h-full hover:bg-white hover:border-blue-300 hover:shadow-xl hover:shadow-blue-100 transition-all duration-300 hover:scale-[1.03] group">
             
-            {/* Добавил иконку вопроса для визуального баланса с остальными карточками */}
             <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-slate-100 text-slate-500 transition-transform group-hover:scale-110 group-hover:bg-blue-50 group-hover:text-blue-600">
                 <HelpCircle size={24} strokeWidth={1.5} />
             </div>
@@ -205,7 +199,7 @@ const ServicesGrid: React.FC = () => {
             <p className="text-sm text-slate-500 mb-6 leading-relaxed">
                Свяжитесь с нами — мы подберем решение под ваши задачи.
             </p>
-            <Button variant="outline" className="border-blue-600 text-blue-700 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-colors bg-white">
+            <Button variant="outline" className="border-blue-600 text-blue-700 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-colors bg-white hover:scale-105">
                 Получить консультацию
             </Button>
           </div>
