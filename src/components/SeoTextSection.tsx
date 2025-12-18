@@ -16,9 +16,11 @@ const SeoTextSection: React.FC = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6 text-slate-600 leading-relaxed">
+          {/* ✅ ИЗМЕНЕНО: text-left -> text-justify */}
+          <div className="space-y-6 text-slate-600 leading-relaxed text-justify">
             <p>
-              Мы работаем с 1994 года и являемся ключевым звеном во внешнеэкономической деятельности региона. 
+              {/* ✅ ИЗМЕНЕНО: Убрана дата 1994, "ключевым" -> "важным" */}
+              Мы являемся важным звеном во внешнеэкономической деятельности региона. 
               Благодаря приграничному положению (граница с КНР), наша Палата обладает уникальной экспертизой 
               в вопросах <strong>экспорта и импорта товаров через Китай</strong>.
             </p>
