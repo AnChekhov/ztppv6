@@ -389,7 +389,7 @@ export const ExpertisePage: React.FC = () => {
                   </div>
                 </div>
 
-                <button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all mt-4">
+                <button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all mt-4">
                   Отправить заявку
                 </button>
                 <p className="text-xs text-center text-slate-400 mt-3">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
@@ -429,44 +429,6 @@ export const ExpertisePage: React.FC = () => {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 8. КОМАНДА (Серый) */}
-      <section className="py-20 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Эксперты Палаты</h2>
-          
-          <div className="flex flex-wrap justify-center gap-8">
-            {/* ✅ ИСПРАВЛЕНО: Обновил контакты во всех карточках */}
-            <div className="flex items-center gap-6 bg-white p-6 rounded-2xl w-full md:w-auto md:min-w-[400px] shadow-sm hover:shadow-md transition-all hover:scale-[1.02]">
-              <div className="w-20 h-20 rounded-full bg-slate-100 overflow-hidden shrink-0 border-2 border-slate-100">
-                 <div className="w-full h-full flex items-center justify-center bg-blue-600 text-white text-2xl font-bold">И</div>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-slate-900">Иванова Елена</h3>
-                <p className="text-blue-600 font-medium text-sm mb-3">Ведущий специалист</p>
-                <div className="flex flex-col gap-1 text-sm text-slate-600">
-                  <a href="tel:+79243733330" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Phone size={14}/> +7 (924) 373-33-30</a>
-                  <a href="mailto:info@zabtpp.ru" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Mail size={14}/> info@zabtpp.ru</a>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-6 bg-white p-6 rounded-2xl w-full md:w-auto md:min-w-[400px] shadow-sm hover:shadow-md transition-all hover:scale-[1.02]">
-              <div className="w-20 h-20 rounded-full bg-slate-100 overflow-hidden shrink-0 border-2 border-slate-100">
-                 <div className="w-full h-full flex items-center justify-center bg-slate-800 text-white text-2xl font-bold">П</div>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-slate-900">Петров Сергей</h3>
-                <p className="text-blue-600 font-medium text-sm mb-3">Эксперт по ВЭД</p>
-                <div className="flex flex-col gap-1 text-sm text-slate-600">
-                   <a href="tel:+79243733330" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Phone size={14}/> +7 (924) 373-33-30</a>
-                   <a href="mailto:info@zabtpp.ru" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Mail size={14}/> info@zabtpp.ru</a>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
