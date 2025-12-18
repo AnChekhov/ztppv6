@@ -8,6 +8,7 @@ import ServicesGrid from './components/ServicesGrid';
 import CallToAction from './components/CallToAction';
 import NewsSection from './components/NewsSection';
 import Footer from './components/Footer';
+import SeoTextSection from './components/SeoTextSection'; // ✅ Импортировали SEO блок
 
 // Импорт страниц услуг
 import CertificationPage from './pages/CertificationPage'; 
@@ -52,6 +53,7 @@ const HomePage = () => {
       <ServicesGrid />
       <CallToAction />
       <NewsSection />
+      <SeoTextSection /> {/* ✅ Добавили блок в структуру */}
     </>
   );
 };
