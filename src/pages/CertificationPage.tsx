@@ -113,42 +113,42 @@ export const CertificationPage: React.FC = () => {
       </section>
 
       {/* 2. ТИПЫ СЕРТИФИКАТОВ */}
-      {/* ✅ ИСПРАВЛЕНО: pt-12 (было py-24) для уменьшения отступа сверху */}
       <section className="pt-12 pb-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Выберите нужный Вам тип сертификата</h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { type: 'Общая форма', countries: 'Все остальные страны', purpose: 'Подтверждение страны происхождения для таможенных целей', lang: 'Английский / Другой' },
-              { type: 'СТ-1', countries: 'Государства-участники СНГ', purpose: 'Получение тарифных преференций (снижение/отмена пошлин)', lang: 'Русский' },
-              { type: 'СТ-2', countries: 'Сербия', purpose: 'Получение преференций в рамках соглашения о свободной торговле', lang: 'Русский / Английский' },
-              { type: 'EAV', countries: 'Вьетнам', purpose: 'Получение преференций в рамках соглашения о свободной торговле', lang: 'Английский' },
-              { type: 'Форма "А"', countries: 'Черногория', purpose: 'Получение преференций в рамках Генеральной системы', lang: 'Английский' },
+              { type: 'Общая форма', countries: 'Все остальные страны', purpose: 'Подтверждение страны происхождения для таможенных целей' },
+              { type: 'СТ-1', countries: 'Государства-участники СНГ', purpose: 'Получение тарифных преференций (снижение/отмена пошлин)' },
+              { type: 'СТ-2', countries: 'Сербия', purpose: 'Получение преференций в рамках соглашения о свободной торговле' },
+              { type: 'EAV', countries: 'Вьетнам', purpose: 'Получение преференций в рамках соглашения о свободной торговле' },
+              { type: 'Форма "А"', countries: 'Черногория', purpose: 'Получение преференций в рамках Генеральной системы' },
             ].map((item, index) => (
-              <div key={index} className="bg-white rounded-2xl p-6 shadow-lg shadow-slate-200/50 border border-slate-100 hover:shadow-xl transition-shadow hover:-translate-y-1 duration-300">
-                <div className="flex justify-between items-start mb-4">
-                  <span className="text-2xl font-black text-blue-600 bg-blue-50 px-3 py-1 rounded-lg whitespace-nowrap">{item.type}</span>
-                  <Globe className="text-slate-300" size={24} />
+              /* ✅ ИСПРАВЛЕНО: Уменьшен padding (p-5), убран блок с языком */
+              <div key={index} className="bg-white rounded-2xl p-5 shadow-lg shadow-slate-200/50 border border-slate-100 hover:shadow-xl transition-shadow hover:-translate-y-1 duration-300 flex flex-col">
+                <div className="flex justify-between items-start mb-3">
+                  <span className="text-xl font-black text-blue-600 bg-blue-50 px-3 py-1 rounded-lg whitespace-nowrap">{item.type}</span>
+                  <Globe className="text-slate-300" size={22} />
                 </div>
-                <div className="mb-4">
-                  <div className="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">Назначение</div>
-                  <div className="font-bold text-slate-800">{item.countries}</div>
+                
+                <div className="mb-3">
+                  <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-1">Назначение</div>
+                  <div className="font-bold text-slate-800 text-sm">{item.countries}</div>
                 </div>
-                <div className="mb-4">
-                  <div className="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">Цель</div>
+                
+                {/* mb-0, так как это теперь последний элемент */}
+                <div className="mb-0">
+                  <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-1">Цель</div>
                   <div className="text-sm text-slate-600 leading-snug">{item.purpose}</div>
-                </div>
-                <div className="pt-4 border-t border-slate-100 mt-auto">
-                   <div className="text-xs text-slate-400">Язык: {item.lang}</div>
                 </div>
               </div>
             ))}
             
-            <div className="bg-slate-900 rounded-2xl p-6 shadow-sm flex flex-col justify-center items-center text-center">
-              <h3 className="text-white font-bold text-xl mb-3">Нужна помощь?</h3>
-              <p className="text-slate-400 text-sm mb-6">Наши эксперты помогут определить нужный тип сертификата для вашего груза.</p>
-              <button className="w-full py-3 bg-white text-slate-900 font-bold rounded-lg hover:bg-yellow-400 transition-colors">
+            <div className="bg-slate-900 rounded-2xl p-5 shadow-sm flex flex-col justify-center items-center text-center">
+              <h3 className="text-white font-bold text-lg mb-2">Нужна помощь?</h3>
+              <p className="text-slate-400 text-xs mb-4">Наши эксперты помогут определить нужный тип сертификата для вашего груза.</p>
+              <button onClick={scrollToForm} className="w-full py-3 bg-white text-slate-900 font-bold rounded-lg hover:bg-yellow-400 transition-colors text-sm">
                 Консультация
               </button>
             </div>
@@ -204,10 +204,11 @@ export const CertificationPage: React.FC = () => {
 
           <div className="bg-white rounded-3xl shadow-sm overflow-hidden border border-slate-100">
             {[
-              { name: 'Заявка на проведение экспертизы', req: 'По форме Палаты', link: true },
-              { name: 'Контракт / Договор поставки', req: 'Копия', link: false },
-              { name: 'Товаросопроводительные документы', req: 'Инвойс, накладные, упаковочные листы', link: false },
-              { name: 'Сертификаты качества / Паспорта', req: 'При наличии от производителя', link: false },
+              { name: 'Заявление на выдачу сертификата', req: 'Заполняется по форме, печать организации', link: true },
+              { name: 'Копия экспортного контракта', req: 'Заверенная печатью и подписью', link: false },
+              { name: 'Копия счета-фактуры (инвойса)', req: 'Заверенная печатью и подписью', link: false },
+              { name: 'Письмо от производителя', req: 'Подтверждение производства в РФ с долей сырья', link: true },
+              { name: 'Учредительные документы', req: 'Копии ОГРН, ИНН, Устава (для первой подачи)', link: false },
             ].map((doc, idx) => (
               <div key={idx} className="flex flex-col md:flex-row items-start md:items-center justify-between p-6 border-b border-slate-100 last:border-0 hover:bg-blue-50/30 transition-colors">
                 <div className="flex items-start gap-4">
@@ -301,7 +302,6 @@ export const CertificationPage: React.FC = () => {
                    <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="Иванов Иван" />
                 </div>
 
-                {/* Select: Тип сертификата */}
                 <div>
                    <label className="block text-sm font-bold mb-2">Тип сертификата</label>
                    <div className="relative">
@@ -379,14 +379,28 @@ export const CertificationPage: React.FC = () => {
           <div className="flex flex-wrap justify-center gap-8">
             <div className="flex items-center gap-6 bg-white p-6 rounded-2xl w-full md:w-auto md:min-w-[400px] shadow-sm hover:shadow-md transition-all">
               <div className="w-20 h-20 rounded-full bg-slate-100 overflow-hidden shrink-0 border-2 border-slate-100">
-                 <div className="w-full h-full flex items-center justify-center bg-slate-800 text-white text-2xl font-bold">Э</div>
+                 <div className="w-full h-full flex items-center justify-center bg-blue-600 text-white text-2xl font-bold">И</div>
               </div>
               <div>
-                <h3 className="text-xl font-bold text-slate-900">Экспертный отдел</h3>
-                <p className="text-blue-600 font-medium text-sm mb-3">Прием заявок</p>
+                <h3 className="text-xl font-bold text-slate-900">Иванова Елена</h3>
+                <p className="text-blue-600 font-medium text-sm mb-3">Ведущий специалист</p>
                 <div className="flex flex-col gap-1 text-sm text-slate-600">
-                  <a href="tel:+73022355599" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Phone size={14}/> +7 (3022) 35-55-99</a>
-                  <a href="mailto:expert@ztpp.ru" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Mail size={14}/> expert@ztpp.ru</a>
+                  <a href="tel:+73022355598" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Phone size={14}/> +7 (3022) 35-55-98</a>
+                  <a href="mailto:ivanova.e@ztpp.ru" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Mail size={14}/> ivanova.e@ztpp.ru</a>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-6 bg-white p-6 rounded-2xl w-full md:w-auto md:min-w-[400px] shadow-sm hover:shadow-md transition-all">
+              <div className="w-20 h-20 rounded-full bg-slate-100 overflow-hidden shrink-0 border-2 border-slate-100">
+                 <div className="w-full h-full flex items-center justify-center bg-slate-800 text-white text-2xl font-bold">П</div>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-slate-900">Петров Сергей</h3>
+                <p className="text-blue-600 font-medium text-sm mb-3">Эксперт по ВЭД</p>
+                <div className="flex flex-col gap-1 text-sm text-slate-600">
+                   <a href="tel:+73022355599" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Phone size={14}/> +7 (3022) 35-55-99</a>
+                   <a href="mailto:petrov.s@ztpp.ru" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Mail size={14}/> petrov.s@ztpp.ru</a>
                 </div>
               </div>
             </div>
