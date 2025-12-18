@@ -46,8 +46,8 @@ interface PriorityCardProps {
   title: string;
   description: string;
   buttonText: string;
-  badgeText: string;
-  badgeStyle: 'green' | 'gray';
+  badgeText?: string; // ✅ Сделал необязательным
+  badgeStyle?: 'green' | 'gray'; // ✅ Сделал необязательным
   buttonStyle: 'yellow' | 'dark';
   link?: string;
 }
@@ -65,17 +65,21 @@ const PriorityCard: React.FC<PriorityCardProps> = ({
   <div className="bg-white rounded-[2rem] p-6 md:p-7 shadow-xl shadow-slate-200/60 border border-white flex flex-col h-full relative overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-900/10">
     
     <div className="flex justify-between items-start mb-5">
+      {/* Иконка: Светлый фон, синяя иконка */}
       <div className="w-14 h-14 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-105 bg-blue-50 text-blue-600">
         <Icon size={28} strokeWidth={1.5} />
       </div>
 
-      <span className={`inline-flex items-center px-3 py-1 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-wider ${
-        badgeStyle === 'green' 
-            ? 'bg-blue-100 text-blue-700'
-            : 'bg-slate-100 text-slate-600'
-      }`}>
-        {badgeText}
-      </span>
+      {/* ✅ Условие: Рисуем бейдж только если есть текст */}
+      {badgeText && (
+        <span className={`inline-flex items-center px-3 py-1 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-wider ${
+          badgeStyle === 'green' 
+              ? 'bg-blue-100 text-blue-700'
+              : 'bg-slate-100 text-slate-600'
+        }`}>
+          {badgeText}
+        </span>
+      )}
     </div>
 
     <h3 className="text-xl md:text-2xl font-extrabold text-slate-900 mb-3 leading-tight">
@@ -142,14 +146,13 @@ const ServicesGrid: React.FC = () => {
             link="/services/cert"
           />
           
+          {/* ✅ ИЗМЕНЕНО: Убран бейдж, кнопка стала желтой */}
           <PriorityCard 
             icon={Scale}
             title="Независимая товарная экспертиза"
             description="Проведем независимую приемку товаров по качеству и количеству. Выявим брак, оценим ущерб и определим коды ТН ВЭД. Защитим ваши интересы в суде и спорах."
             buttonText="Заказать экспертизу"
-            badgeText="Защита интересов"
-            badgeStyle="gray"
-            buttonStyle="dark"
+            buttonStyle="yellow" 
             link="/services/expert"
           />
         </div>
@@ -211,7 +214,6 @@ const ServicesGrid: React.FC = () => {
             <p className="text-sm text-slate-500 mb-6 leading-relaxed">
                В нашем арсенале более 40 услуг. Свяжитесь с нами - мы подберем решение под ваши задачи.
             </p>
-            {/* ✅ ИЗМЕНЕНО: Желтая кнопка (variant="lime"), как у всех остальных */}
             <Button 
                 variant="lime" 
                 className="w-full h-12 font-bold bg-yellow-400 text-slate-900 hover:bg-yellow-500 hover:shadow-md transition-all rounded-xl"
