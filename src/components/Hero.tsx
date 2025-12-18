@@ -6,12 +6,12 @@ import { Button } from './ui/Button';
 const ServiceCard: React.FC<{ icon: React.ReactNode, title: string, subtitle: string, link?: string }> = ({ icon, title, subtitle, link }) => {
     
     const CardContent = (
-        /* ✅ ИЗМЕНЕНО: 
-           - Убрал hover:-translate-y-1 
-           - Добавил hover:scale-[1.02]
-           - Добавил hover:shadow-blue-900/20 для эффекта глубины
+        /* ✅ ИСПРАВЛЕНО: 
+           - Было: hover:scale-[1.02] (резкое увеличение)
+           - Стало: hover:-translate-y-1 (плавное всплытие, как на странице сертификатов)
+           - Добавил ease-out для мягкости старта анимации
         */
-        <div className="flex items-center p-5 bg-white rounded-xl shadow-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-900/20 cursor-pointer w-full border border-slate-200 h-full">
+        <div className="flex items-center p-5 bg-white rounded-xl shadow-xl transition-all duration-300 ease-out transform hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-900/20 cursor-pointer w-full border border-slate-200 h-full">
             <div className="p-3 bg-blue-50 text-blue-600 rounded-lg mr-4 flex-shrink-0">
                 {icon}
             </div>
@@ -59,11 +59,11 @@ export const Hero: React.FC = () => {
                         Помогаем предпринимателям выходить на рынок Китая, оформляем сертификаты происхождения и защищаем ваши интересы на государственном уровне.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-                        {/* Кнопки тоже имеют scale эффект */}
-                        <Button variant="lime" className="h-14 px-8 text-lg !rounded-lg shadow-lg shadow-yellow-500/20 bg-yellow-500 text-slate-900 hover:bg-yellow-400 hover:scale-105 transition-transform duration-300">
+                        {/* Кнопкам тоже добавил ease-out для плавности */}
+                        <Button variant="lime" className="h-14 px-8 text-lg !rounded-lg shadow-lg shadow-yellow-500/20 bg-yellow-500 text-slate-900 hover:bg-yellow-400 hover:-translate-y-1 transition-all duration-300 ease-out">
                             Получить консультацию <ArrowRight size={20} className="ml-2"/>
                         </Button>
-                        <Button variant="outline" className="h-14 px-8 text-lg !rounded-lg border-2 border-white/20 text-white hover:bg-white/10 hover:text-white hover:border-white hover:scale-105 transition-all duration-300">
+                        <Button variant="outline" className="h-14 px-8 text-lg !rounded-lg border-2 border-white/20 text-white hover:bg-white/10 hover:text-white hover:border-white hover:-translate-y-1 transition-all duration-300 ease-out">
                             Стать партнером <ArrowRight size={20} className="ml-2"/>
                         </Button>
                     </div>
