@@ -64,7 +64,7 @@ export const ExpertisePage: React.FC = () => {
             />
         </div>
         {/* ✅ ИСПРАВЛЕНО: Градиент via-slate-900/80 */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/80 to-slate-900/50"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/80 to-slate-900/90"></div>
         
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center">
             
@@ -104,11 +104,10 @@ export const ExpertisePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. ВИДЫ ЭКСПЕРТИЗ */}
+      {/* Остальной контент без изменений */}
       <section className="pt-12 pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Какие задачи мы решаем</h2>
-          
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { 
@@ -159,7 +158,6 @@ export const ExpertisePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. ПОЧЕМУ ТПП */}
       <section className="py-20 bg-slate-50 border-y border-slate-100">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-200">
@@ -168,13 +166,11 @@ export const ExpertisePage: React.FC = () => {
               <div className="text-2xl font-extrabold text-slate-900 mb-2">Независимость</div>
               <p className="text-slate-500 text-sm leading-relaxed">Мы не зависим от продавцов, покупателей или госорганов. Наш статус закреплен Федеральным законом.</p>
             </div>
-            
             <div className="text-center px-4 pt-4 md:pt-0">
               <MapPin className="mx-auto text-blue-600 mb-4 h-10 w-10" />
               <div className="text-2xl font-extrabold text-slate-900 mb-2">Оперативность</div>
               <p className="text-slate-500 text-sm leading-relaxed">Штат экспертов в Чите и представительства в Забайкальске. Выезд на осмотр в день заявки.</p>
             </div>
-            
             <div className="text-center px-4 pt-4 md:pt-0">
               <Clock className="mx-auto text-blue-600 mb-4 h-10 w-10" />
               <div className="text-2xl font-extrabold text-slate-900 mb-2">Опыт с 1994 года</div>
@@ -184,14 +180,12 @@ export const ExpertisePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. ДОКУМЕНТЫ */}
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Документы для проведения экспертизы</h2>
             <p className="text-slate-500">Минимальный пакет документов для начала работы</p>
           </div>
-
           <div className="bg-white rounded-3xl shadow-sm overflow-hidden border border-slate-100">
             {[
               { name: 'Заявка на проведение экспертизы', req: 'По форме Палаты', link: true },
@@ -209,7 +203,6 @@ export const ExpertisePage: React.FC = () => {
                     <p className="text-slate-500 text-sm">{doc.req}</p>
                   </div>
                 </div>
-                
                 {doc.link ? (
                   <a href="#" className="mt-4 md:mt-0 flex items-center text-blue-600 font-bold text-sm hover:text-blue-800 transition-colors whitespace-nowrap bg-blue-50 px-4 py-2 rounded-lg">
                     <Download size={16} className="mr-2" />
@@ -224,12 +217,9 @@ export const ExpertisePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. CTA ФОРМА */}
       <section id="order-form" className="py-20 bg-slate-900 text-white">
         <div className="max-w-5xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-start">
-            
-            {/* Левая колонка */}
             <div>
               <h2 className="text-3xl md:text-4xl font-extrabold mb-6">Закажите экспертизу онлайн</h2>
               <p className="text-slate-300 text-lg mb-8">
@@ -249,8 +239,6 @@ export const ExpertisePage: React.FC = () => {
                   <span>Бесплатная консультация</span>
                 </li>
               </ul>
-
-              {/* Контакты для связи */}
               <div className="pt-8 border-t border-slate-700">
                 <p className="text-slate-400 text-sm mb-3 font-medium uppercase tracking-wider">
                   Нет времени заполнять форму?
@@ -266,27 +254,22 @@ export const ExpertisePage: React.FC = () => {
                 </a>
               </div>
             </div>
-
-            {/* Правая колонка: Форма */}
             <div className="bg-white rounded-3xl p-8 text-slate-900 shadow-2xl">
               <form className="space-y-4">
                 <div>
                   <label className="block text-sm font-bold mb-2">Название организации</label>
                   <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="ООО 'Пример'" />
                 </div>
-                
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-bold mb-2">ИНН</label>
-                    <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="1234567890" />
+                    <label className="block text-sm font-bold mb-2">Контактное лицо</label>
+                    <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="Имя" />
                   </div>
                    <div>
                     <label className="block text-sm font-bold mb-2">Телефон</label>
                     <input type="tel" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="+7 (___) ___-__-__" />
                   </div>
                 </div>
-
-                {/* Select: Вид экспертизы */}
                 <div>
                    <label className="block text-sm font-bold mb-2">Вид экспертизы</label>
                    <div className="relative">
@@ -303,7 +286,6 @@ export const ExpertisePage: React.FC = () => {
                      </div>
                    </div>
                 </div>
-
                 <div className="pt-2">
                   <label className="block text-sm font-bold mb-2">Документы (если есть)</label>
                   <div className="border-2 border-dashed border-slate-300 rounded-xl p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-slate-50 transition-colors group">
@@ -311,23 +293,19 @@ export const ExpertisePage: React.FC = () => {
                     <span className="text-sm text-slate-500 font-medium">Загрузить контракт или фото</span>
                   </div>
                 </div>
-
                 <button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all mt-4">
                   Отправить заявку
                 </button>
                 <p className="text-xs text-center text-slate-400 mt-3">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
               </form>
             </div>
-
           </div>
         </div>
       </section>
 
-      {/* 6. FAQ */}
       <section className="py-20 bg-white">
         <div className="max-w-3xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Часто задаваемые вопросы</h2>
-          
           <div className="space-y-4">
             {faqs.map((faq, index) => (
               <div key={index} className="border-b border-slate-200 last:border-0">
@@ -356,11 +334,9 @@ export const ExpertisePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 7. КОМАНДА */}
       <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Эксперты Палаты</h2>
-          
           <div className="flex flex-wrap justify-center gap-8">
             <div className="flex items-center gap-6 bg-white p-6 rounded-2xl w-full md:w-auto md:min-w-[400px] shadow-sm hover:shadow-md transition-all hover:scale-[1.02]">
               <div className="w-20 h-20 rounded-full bg-slate-100 overflow-hidden shrink-0 border-2 border-slate-100">
