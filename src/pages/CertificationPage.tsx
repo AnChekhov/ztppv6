@@ -12,7 +12,8 @@ import {
   CheckCircle,
   ChevronDown,
   Check,
-  FileCheck 
+  FileCheck,
+  MessageCircle // Добавлена иконка
 } from 'lucide-react';
 
 export const CertificationPage: React.FC = () => {
@@ -20,6 +21,14 @@ export const CertificationPage: React.FC = () => {
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
+  };
+
+  // Функция для скролла к форме
+  const scrollToForm = () => {
+    const formSection = document.getElementById('order-form');
+    if (formSection) {
+      formSection.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   const faqs = [
@@ -51,7 +60,6 @@ export const CertificationPage: React.FC = () => {
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/95 to-slate-900/60"></div>
         
-        {/* ✅ ИСПРАВЛЕНО: Синхронизированы отступы с главной страницей (pt-32 pb-16) */}
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center">
             
             <div className="grid lg:grid-cols-12 gap-8 items-center">
@@ -64,18 +72,26 @@ export const CertificationPage: React.FC = () => {
                 <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl">
                   Оформите ключевой документ для экспорта онлайн. Получите льготы и преференции для вашего бизнеса. Гарантия прохождения таможни.
                 </p>
+                
+                {/* Обновленные кнопки */}
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <button className="bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 px-8 rounded-xl transition-all hover:scale-105 shadow-[0_0_20px_rgba(250,204,21,0.3)]">
-                    Оставить заявку онлайн
+                  <button 
+                    onClick={scrollToForm}
+                    className="bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 px-8 rounded-xl transition-all hover:scale-105 shadow-[0_0_20px_rgba(250,204,21,0.3)]"
+                  >
+                    Заказать сертификат
                   </button>
-                  <button className="border-2 border-slate-600 hover:border-white text-white font-semibold py-4 px-8 rounded-xl transition-colors flex items-center justify-center gap-2 group">
-                    <Download size={20} />
-                    Скачать чек-лист
+                  <button 
+                    onClick={scrollToForm}
+                    className="border-2 border-slate-600 hover:border-white text-white font-semibold py-4 px-8 rounded-xl transition-colors flex items-center justify-center gap-2 group"
+                  >
+                    <MessageCircle size={20} />
+                    Проконсультироваться
                   </button>
                 </div>
               </div>
 
-              {/* Правая колонка: Иконка */}
+              {/* Правая колонка */}
               <div className="hidden lg:flex lg:col-span-5 justify-center items-center relative">
                 <div className="absolute w-80 h-80 bg-blue-600/10 rounded-full blur-3xl"></div>
                 <div className="relative transform transition-transform duration-500 hover:scale-105">
@@ -181,17 +197,16 @@ export const CertificationPage: React.FC = () => {
       <section className="py-24 bg-white">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Все, что нужно для подачи заявки</h2>
-            <p className="text-slate-500">Мы подготовили для вас полный список и шаблоны, чтобы избежать ошибок</p>
+            <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Документы для проведения экспертизы</h2>
+            <p className="text-slate-500">Минимальный пакет документов для начала работы</p>
           </div>
 
           <div className="bg-white rounded-3xl shadow-sm overflow-hidden border border-slate-100">
             {[
-              { name: 'Заявление на выдачу сертификата', req: 'Заполняется по форме, печать организации', link: true },
-              { name: 'Копия экспортного контракта', req: 'Заверенная печатью и подписью', link: false },
-              { name: 'Копия счета-фактуры (инвойса)', req: 'Заверенная печатью и подписью', link: false },
-              { name: 'Письмо от производителя', req: 'Подтверждение производства в РФ с долей сырья', link: true },
-              { name: 'Учредительные документы', req: 'Копии ОГРН, ИНН, Устава (для первой подачи)', link: false },
+              { name: 'Заявка на проведение экспертизы', req: 'По форме Палаты', link: true },
+              { name: 'Контракт / Договор поставки', req: 'Копия', link: false },
+              { name: 'Товаросопроводительные документы', req: 'Инвойс, накладные, упаковочные листы', link: false },
+              { name: 'Сертификаты качества / Паспорта', req: 'При наличии от производителя', link: false },
             ].map((doc, idx) => (
               <div key={idx} className="flex flex-col md:flex-row items-start md:items-center justify-between p-6 border-b border-slate-100 last:border-0 hover:bg-blue-50/30 transition-colors">
                 <div className="flex items-start gap-4">
@@ -218,17 +233,18 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. CTA ФОРМА */}
-      <section className="py-24 bg-slate-900 text-white">
+      {/* 5. CTA ФОРМА (С ID и КОНТАКТАМИ) */}
+      <section id="order-form" className="py-24 bg-slate-900 text-white">
         <div className="max-w-5xl mx-auto px-6 md:px-8">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-12 items-start">
             
+            {/* Левая колонка */}
             <div>
-              <h2 className="text-3xl md:text-4xl font-extrabold mb-6">Отправьте заявку на получение сертификата</h2>
+              <h2 className="text-3xl md:text-4xl font-extrabold mb-6">Закажите сертификат онлайн</h2>
               <p className="text-slate-300 text-lg mb-8">
-                Заполните форму, и наш специалист свяжется с вами в ближайшее время для уточнения деталей и консультации.
+                Оставьте заявку, и мы подготовим все необходимые документы для получения сертификата происхождения.
               </p>
-              <ul className="space-y-4 mb-8 text-slate-300">
+              <ul className="space-y-4 mb-10 text-slate-300">
                 <li className="flex items-center gap-3">
                   <CheckCircle2 className="text-yellow-400 shrink-0" />
                   <span>Быстрая проверка документов</span>
@@ -242,8 +258,25 @@ export const CertificationPage: React.FC = () => {
                   <span>Помощь в заполнении</span>
                 </li>
               </ul>
+
+              {/* ✅ НОВЫЙ БЛОК: КОНТАКТЫ ДЛЯ СВЯЗИ */}
+              <div className="pt-8 border-t border-slate-700">
+                <p className="text-slate-400 text-sm mb-3 font-medium uppercase tracking-wider">
+                  Нет времени заполнять форму?
+                </p>
+                <p className="text-slate-300 text-base mb-4">
+                  Решим ваш вопрос по телефону прямо сейчас:
+                </p>
+                <a href="tel:+79243733330" className="block text-3xl md:text-4xl font-extrabold text-white hover:text-yellow-400 transition-colors mb-4">
+                  +7 (924) 373-33-30
+                </a>
+                <a href="mailto:info@zabtpp.ru" className="inline-flex items-center gap-2 text-blue-400 hover:text-white transition-colors text-lg font-medium">
+                  <Mail size={20} /> info@zabtpp.ru
+                </a>
+              </div>
             </div>
 
+            {/* Правая колонка: Форма */}
             <div className="bg-white rounded-3xl p-8 text-slate-900 shadow-2xl">
               <form className="space-y-4">
                 <div>
@@ -267,6 +300,7 @@ export const CertificationPage: React.FC = () => {
                    <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="Иванов Иван" />
                 </div>
 
+                {/* Select: Тип сертификата */}
                 <div>
                    <label className="block text-sm font-bold mb-2">Тип сертификата</label>
                    <div className="relative">
@@ -339,33 +373,19 @@ export const CertificationPage: React.FC = () => {
       {/* 7. КОМАНДА */}
       <section className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Остались вопросы? Мы поможем</h2>
+          <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Эксперты Палаты</h2>
           
           <div className="flex flex-wrap justify-center gap-8">
             <div className="flex items-center gap-6 bg-white p-6 rounded-2xl w-full md:w-auto md:min-w-[400px] shadow-sm hover:shadow-md transition-all">
               <div className="w-20 h-20 rounded-full bg-slate-100 overflow-hidden shrink-0 border-2 border-slate-100">
-                 <div className="w-full h-full flex items-center justify-center bg-blue-600 text-white text-2xl font-bold">И</div>
+                 <div className="w-full h-full flex items-center justify-center bg-slate-800 text-white text-2xl font-bold">Э</div>
               </div>
               <div>
-                <h3 className="text-xl font-bold text-slate-900">Иванова Елена</h3>
-                <p className="text-blue-600 font-medium text-sm mb-3">Ведущий специалист</p>
+                <h3 className="text-xl font-bold text-slate-900">Экспертный отдел</h3>
+                <p className="text-blue-600 font-medium text-sm mb-3">Прием заявок</p>
                 <div className="flex flex-col gap-1 text-sm text-slate-600">
-                  <a href="tel:+73022355598" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Phone size={14}/> +7 (3022) 35-55-98</a>
-                  <a href="mailto:ivanova.e@ztpp.ru" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Mail size={14}/> ivanova.e@ztpp.ru</a>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-6 bg-white p-6 rounded-2xl w-full md:w-auto md:min-w-[400px] shadow-sm hover:shadow-md transition-all">
-              <div className="w-20 h-20 rounded-full bg-slate-100 overflow-hidden shrink-0 border-2 border-slate-100">
-                 <div className="w-full h-full flex items-center justify-center bg-slate-800 text-white text-2xl font-bold">П</div>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-slate-900">Петров Сергей</h3>
-                <p className="text-blue-600 font-medium text-sm mb-3">Эксперт по ВЭД</p>
-                <div className="flex flex-col gap-1 text-sm text-slate-600">
-                   <a href="tel:+73022355599" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Phone size={14}/> +7 (3022) 35-55-99</a>
-                   <a href="mailto:petrov.s@ztpp.ru" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Mail size={14}/> petrov.s@ztpp.ru</a>
+                  <a href="tel:+73022355599" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Phone size={14}/> +7 (3022) 35-55-99</a>
+                  <a href="mailto:expert@ztpp.ru" className="hover:text-blue-600 flex items-center gap-2 transition-colors"><Mail size={14}/> expert@ztpp.ru</a>
                 </div>
               </div>
             </div>
