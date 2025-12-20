@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { 
   Container, Calculator, FileText, BadgeCheck, 
   MessageCircle, Mail, Phone, UploadCloud, 
-  ChevronDown, ChevronUp, Globe, Shield 
+  ChevronDown, ChevronUp, Globe, Shield,
+  // ✅ ДОБАВЛЕНО: Импорт иконки Search
+  Search 
 } from 'lucide-react';
 import SEO from '../components/SEO';
 
@@ -44,7 +46,7 @@ export const CustomsPage: React.FC = () => {
       title: 'Классификация товаров (ТН ВЭД)',
       shortDesc: 'Определение верного кода товара для минимизации пошлин и рисков.',
       longDesc: 'Правильный код ТН ВЭД ЕАЭС — основа таможенного оформления. Мы проводим экспертизу товара, подбираем верный код, который позволяет применить минимально возможную ставку пошлины и избежать штрафов за недостоверное декларирование. Выдаем экспертное заключение.',
-      icon: Search // Or Container/FileText
+      icon: Search // ✅ Теперь эта иконка найдена
     },
     {
       id: 'payments',
@@ -68,19 +70,6 @@ export const CustomsPage: React.FC = () => {
       icon: Shield
     },
   ];
-
-  // Поскольку иконки в массиве выше были переменными, а не компонентами, здесь я использовал импортированные.
-  // Исправление: добавим недостающий импорт Search или заменим на другую.
-  // Заменим иконку первого элемента на Container для простоты в этом примере, или добавим Search в импорт.
-  // В коде выше Search не импортирован. Заменю на Container.
-
-  const servicesFixed = [
-      { ...services[0], icon: Container },
-      { ...services[1], icon: Calculator },
-      { ...services[2], icon: FileText },
-      { ...services[3], icon: Shield },
-  ];
-
 
   const faqs = [
     {
@@ -140,7 +129,7 @@ export const CustomsPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Наши услуги</h2>
           <div className="grid md:grid-cols-2 gap-6">
-            {servicesFixed.map((item) => (
+            {services.map((item) => (
               <div 
                 key={item.id} 
                 onClick={(e) => handleReadMore(e, item.id)}
@@ -166,7 +155,7 @@ export const CustomsPage: React.FC = () => {
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">Подробности</h2>
           <div className="space-y-4">
-            {servicesFixed.map((item) => (
+            {services.map((item) => (
               <div key={item.id} id={`detail-${item.id}`} className={`bg-white rounded-2xl border transition-all duration-500 overflow-hidden ${expandedDetail === item.id ? 'border-blue-500 shadow-md' : 'border-slate-200'}`}>
                 <button onClick={() => setExpandedDetail(expandedDetail === item.id ? null : item.id)} className="w-full flex items-center justify-between p-6 text-left">
                   <div className="flex items-center gap-4">
@@ -210,22 +199,38 @@ export const CustomsPage: React.FC = () => {
               </div>
               <div className="bg-white rounded-3xl p-8 text-slate-900 shadow-2xl">
                 <form className="space-y-4">
-                  <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Организация" />
-                  <div className="grid grid-cols-2 gap-4">
-                    <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Имя" />
-                    <input type="tel" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="+7 (___) ___-__-__" />
+                  <div>
+                    <label className="block text-sm font-bold mb-2">Название организации</label>
+                    <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="ООО 'Пример'" />
                   </div>
-                  <div className="relative">
-                     <select value={selectedService} onChange={(e) => setSelectedService(e.target.value)} className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none appearance-none cursor-pointer">
-                       {servicesFixed.map(s => <option key={s.id} value={s.title}>{s.title}</option>)}
-                       <option>Другое</option>
-                     </select>
-                     <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-slate-500"><ChevronDown size={20} /></div>
-                   </div>
+                  
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-bold mb-2">Контактное лицо</label>
+                      <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="Имя" />
+                    </div>
+                     <div>
+                      <label className="block text-sm font-bold mb-2">Телефон</label>
+                      <input type="tel" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="+7 (___) ___-__-__" />
+                    </div>
+                  </div>
+
+                  <div>
+                     <label className="block text-sm font-bold mb-2">Вид услуги</label>
+                     <div className="relative">
+                       <select value={selectedService} onChange={(e) => setSelectedService(e.target.value)} className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none appearance-none cursor-pointer">
+                         {services.map(s => <option key={s.id} value={s.title}>{s.title}</option>)}
+                         <option>Другое</option>
+                       </select>
+                       <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-slate-500"><ChevronDown size={20} /></div>
+                     </div>
+                  </div>
+                  
                   <div className="pt-2">
+                     <label className="block text-sm font-bold mb-2">Документы (если есть)</label>
                      <div className="border-2 border-dashed border-slate-300 rounded-xl p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-slate-50 transition-colors group">
-                       <UploadCloud className="text-slate-400 group-hover:text-blue-500 mb-2" size={32} />
-                       <span className="text-sm text-slate-500">Документы</span>
+                       <UploadCloud className="text-slate-400 group-hover:text-blue-500 mb-2 transition-colors" size={32} />
+                       <span className="text-sm text-slate-500 font-medium">Прикрепить документы</span>
                      </div>
                   </div>
                   <button className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all mt-4">Заказать сопровождение</button>
