@@ -68,15 +68,13 @@ export const ExpertisePage: React.FC = () => {
     }
   };
 
-  // Клик по кнопке "Заказать" внутри описания
   const handleOrderClick = (title: string) => {
     setSelectedExpertise(title);
     scrollToForm();
   };
 
-  // Клик по карточке или "Подробнее" -> Открытие текста
   const handleReadMore = (e: React.MouseEvent, id: string) => {
-    // e.stopPropagation() не нужен здесь, так как мы хотим, чтобы клик по всей карточке работал так же
+    e.stopPropagation();
     setExpandedDetail(id);
     setTimeout(() => {
       const element = document.getElementById(`detail-${id}`);
@@ -179,7 +177,6 @@ export const ExpertisePage: React.FC = () => {
             {expertiseServices.map((item) => (
               <div 
                 key={item.id} 
-                /* ✅ ИСПРАВЛЕНО: Клик по карточке открывает описание */
                 onClick={(e) => handleReadMore(e, item.id)}
                 className="bg-white rounded-2xl p-8 shadow-lg shadow-slate-200/50 border border-slate-100 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-blue-900/5 hover:scale-[1.03] flex flex-col h-full cursor-pointer group"
               >
@@ -225,14 +222,14 @@ export const ExpertisePage: React.FC = () => {
                   {expandedDetail === item.id ? <ChevronUp className="text-blue-600"/> : <ChevronDown className="text-slate-400"/>}
                 </button>
                 
+                {/* ✅ ИСПРАВЛЕНО: Убрано пунктирное подчеркивание */}
                 <div className={`transition-all duration-300 ease-in-out ${expandedDetail === item.id ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
                   <div className="p-6 pt-0 text-slate-600 leading-relaxed border-t border-slate-100 mt-2">
                     {item.longDesc}
                     <div className="mt-4">
                         <button 
-                            /* ✅ ИСПРАВЛЕНО: Кнопка ведет к форме */
                             onClick={() => handleOrderClick(item.title)}
-                            className="text-sm font-bold text-blue-600 hover:text-yellow-600 underline decoration-dashed underline-offset-4"
+                            className="text-sm font-bold text-blue-600 hover:text-yellow-600 transition-colors"
                         >
                             Заказать эту экспертизу →
                         </button>
@@ -337,6 +334,7 @@ export const ExpertisePage: React.FC = () => {
                   </li>
                 </ul>
 
+                {/* Контакты для связи */}
                 <div className="pt-8 border-t border-slate-700">
                   <p className="text-slate-400 text-sm mb-3 font-medium uppercase tracking-wider">
                     Нет времени заполнять форму?
