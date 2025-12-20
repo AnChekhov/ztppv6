@@ -10,16 +10,15 @@ import NewsSection from './components/NewsSection';
 import SeoTextSection from './components/SeoTextSection';
 import Footer from './components/Footer';
 
-// Импорт страниц услуг
+// Импорт страниц услуг и разделов
 import CertificationPage from './pages/CertificationPage'; 
 import ExpertisePage from './pages/ExpertisePage';
-// ✅ Импорт новых страниц
 import VedPage from './pages/VedPage';
-import AllServicesPage from './pages/AllServicesPage'; // ✅ Импорт
 import ConstructionPage from './pages/ConstructionPage';
 import CustomsPage from './pages/CustomsPage';
-import LegalServicesPage from './pages/LegalServicesPage'; // Юристы
-import EventsPage from './pages/EventsPage'; // Мероприятия
+import LegalServicesPage from './pages/LegalServicesPage';
+import EventsPage from './pages/EventsPage';
+import AllServicesPage from './pages/AllServicesPage'; // ✅ Импорт страницы "Все услуги"
 
 // 1. КОМПОНЕНТ: Прокрутка наверх при переходе
 const ScrollToTop = () => {
@@ -78,21 +77,19 @@ const App: React.FC = () => {
           <Route path="/" element={<HomePage />} />
 
           {/* ОСНОВНЫЕ РАЗДЕЛЫ */}
-          <Route path="/services" element={<PagePlaceholder title="Каталог услуг" description="Полный перечень услуг для бизнеса." />} />
-          <Route path="/membership" element={<PagePlaceholder title="Членство в Союзе" description="Как вступить в ТПП, преимущества и реестр членов." />} />
-          <Route path="/ved" element={<VedPage />} /> {/* ✅ ВЭД */}
+          {/* ✅ ИСПРАВЛЕНО: Теперь здесь AllServicesPage вместо заглушки */}
+          <Route path="/services" element={<AllServicesPage />} />
           
-          {/* ✅ МЕРОПРИЯТИЯ: Ссылка может быть /news или /events. 
-             В шапке ссылка на /news. Давайте подключим EventsPage туда. */}
+          <Route path="/membership" element={<PagePlaceholder title="Членство в Союзе" description="Как вступить в ТПП, преимущества и реестр членов." />} />
+          <Route path="/ved" element={<VedPage />} />
           <Route path="/news" element={<EventsPage />} /> 
 
           {/* СТРАНИЦЫ УСЛУГ */}
           <Route path="/services/cert" element={<CertificationPage />} />
           <Route path="/services/expert" element={<ExpertisePage />} />
           <Route path="/services/construction" element={<ConstructionPage />} />
-          <Route path="/services" element={<AllServicesPage />} />
           <Route path="/services/customs" element={<CustomsPage />} />
-          <Route path="/services/law" element={<LegalServicesPage />} /> {/* ✅ Юристы */}
+          <Route path="/services/law" element={<LegalServicesPage />} />
 
           {/* СЛУЖЕБНЫЕ */}
           <Route path="/about" element={<PagePlaceholder title="Об организации" description="История Палаты, руководство и документы." />} />
