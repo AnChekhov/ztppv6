@@ -13,9 +13,12 @@ import Footer from './components/Footer';
 // Импорт страниц услуг
 import CertificationPage from './pages/CertificationPage'; 
 import ExpertisePage from './pages/ExpertisePage';
+// ✅ Импорт новых страниц
 import VedPage from './pages/VedPage';
 import ConstructionPage from './pages/ConstructionPage';
 import CustomsPage from './pages/CustomsPage';
+import LegalServicesPage from './pages/LegalServicesPage'; // Юристы
+import EventsPage from './pages/EventsPage'; // Мероприятия
 
 // 1. КОМПОНЕНТ: Прокрутка наверх при переходе
 const ScrollToTop = () => {
@@ -48,7 +51,7 @@ const PagePlaceholder: React.FC<PlaceholderProps> = ({ title, description }) => 
   </div>
 );
 
-// 3. КОМПОНЕНТ: Главная страница (Сборка блоков)
+// 3. КОМПОНЕНТ: Главная страница
 const HomePage = () => {
   return (
     <>
@@ -61,7 +64,7 @@ const HomePage = () => {
   );
 };
 
-// 4. ОСНОВНОЕ ПРИЛОЖЕНИЕ (Роутинг)
+// 4. ОСНОВНОЕ ПРИЛОЖЕНИЕ
 const App: React.FC = () => {
   return (
     <div className="min-h-screen font-sans flex flex-col bg-slate-50 text-slate-900">
@@ -74,18 +77,20 @@ const App: React.FC = () => {
           <Route path="/" element={<HomePage />} />
 
           {/* ОСНОВНЫЕ РАЗДЕЛЫ */}
-          <Route path="/services" element={<PagePlaceholder title="Каталог услуг" description="Полный перечень услуг для бизнеса: от сертификации до переводов." />} />
+          <Route path="/services" element={<PagePlaceholder title="Каталог услуг" description="Полный перечень услуг для бизнеса." />} />
           <Route path="/membership" element={<PagePlaceholder title="Членство в Союзе" description="Как вступить в ТПП, преимущества и реестр членов." />} />
-          <Route path="/ved" element={<VedPage />} /> {/* ✅ Страница ВЭД */}
-          <Route path="/news" element={<PagePlaceholder title="Пресс-центр" description="Новости, анонсы мероприятий и отчеты о деятельности." />} />
+          <Route path="/ved" element={<VedPage />} /> {/* ✅ ВЭД */}
+          
+          {/* ✅ МЕРОПРИЯТИЯ: Ссылка может быть /news или /events. 
+             В шапке ссылка на /news. Давайте подключим EventsPage туда. */}
+          <Route path="/news" element={<EventsPage />} /> 
 
           {/* СТРАНИЦЫ УСЛУГ */}
           <Route path="/services/cert" element={<CertificationPage />} />
           <Route path="/services/expert" element={<ExpertisePage />} />
-          <Route path="/services/construction" element={<ConstructionPage />} /> {/* ✅ Страница Стройки */}
-          <Route path="/services/customs" element={<CustomsPage />} /> {/* ✅ Страница Таможни */}
-          
-          <Route path="/services/law" element={<PagePlaceholder title="Юридические услуги" description="Консультации, представительство в суде и свидетельствование форс-мажора." />} />
+          <Route path="/services/construction" element={<ConstructionPage />} />
+          <Route path="/services/customs" element={<CustomsPage />} />
+          <Route path="/services/law" element={<LegalServicesPage />} /> {/* ✅ Юристы */}
 
           {/* СЛУЖЕБНЫЕ */}
           <Route path="/about" element={<PagePlaceholder title="Об организации" description="История Палаты, руководство и документы." />} />
