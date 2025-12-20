@@ -116,7 +116,6 @@ export const ConstructionPage: React.FC = () => {
                   Проверка качества работ, смет и материалов. Поможем в спорах с подрядчиками, застройщиками и при разделе недвижимости.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  {/* ✅ ИЗМЕНЕНО: Кнопка обновлена */}
                   <button onClick={scrollToForm} className="bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 px-8 rounded-xl transition-all hover:scale-105 shadow-lg">
                     Заказать экспертизу
                   </button>
@@ -184,7 +183,8 @@ export const ConstructionPage: React.FC = () => {
                   <div className="p-6 pt-0 text-slate-600 leading-relaxed border-t border-slate-100 mt-2">
                     {item.longDesc}
                     <div className="mt-4">
-                        <button onClick={() => handleOrderClick(item.title)} className="text-sm font-bold text-blue-600 hover:text-yellow-600 underline decoration-dashed underline-offset-4">
+                        {/* ✅ ИСПРАВЛЕНО: Убрано подчеркивание */}
+                        <button onClick={() => handleOrderClick(item.title)} className="text-sm font-bold text-blue-600 hover:text-yellow-600 transition-colors">
                             Заказать экспертизу →
                         </button>
                     </div>
