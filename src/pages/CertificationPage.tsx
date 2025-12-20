@@ -14,7 +14,8 @@ import {
   Check,
   FileCheck,
   MessageCircle,
-  ChevronUp
+  ChevronUp,
+  Info
 } from 'lucide-react';
 import SEO from '../components/SEO';
 
@@ -34,13 +35,14 @@ export const CertificationPage: React.FC = () => {
     }
   };
 
-  const handleCardClick = (type: string) => {
+  // 1. Функция для кнопки "Заказать" (внутри описания) -> Ведет к форме
+  const handleOrderClick = (type: string) => {
     setSelectedType(type);
     scrollToForm();
   };
 
-  const handleReadMore = (e: React.MouseEvent, id: string) => {
-    e.stopPropagation();
+  // 2. Функция для клика по карточке или "Подробнее" -> Ведет к описанию
+  const handleDescriptionClick = (id: string) => {
     setExpandedDetail(id);
     setTimeout(() => {
       const element = document.getElementById(`detail-${id}`);
@@ -172,7 +174,7 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. ТИПЫ СЕРТИФИКАТОВ */}
+      {/* 2. ТИПЫ СЕРТИФИКАТОВ (GRID) */}
       <section className="pt-12 pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Выберите нужный Вам тип сертификата</h2>
@@ -181,7 +183,8 @@ export const CertificationPage: React.FC = () => {
             {certTypes.map((item) => (
               <div 
                 key={item.id} 
-                onClick={() => handleCardClick(item.type)}
+                /* ✅ ИСПРАВЛЕНО: Клик по карточке ведет к описанию */
+                onClick={() => handleDescriptionClick(item.id)}
                 className="bg-white rounded-2xl p-5 shadow-lg shadow-slate-200/50 border border-slate-100 hover:shadow-xl transition-all duration-300 ease-out hover:shadow-blue-900/5 hover:scale-[1.03] flex flex-col cursor-pointer group"
               >
                 <div className="flex justify-between items-start mb-3">
@@ -198,7 +201,7 @@ export const CertificationPage: React.FC = () => {
                 </div>
                 <div className="mt-auto pt-3 border-t border-slate-100">
                    <button 
-                     onClick={(e) => handleReadMore(e, item.id)}
+                     /* ✅ ИСПРАВЛЕНО: Убран e.stopPropagation, так как вся карточка кликабельна */
                      className="text-xs font-bold text-blue-600 hover:text-blue-800 transition-colors flex items-center"
                    >
                      Подробнее <ChevronDown size={14} className="ml-1" />
@@ -218,7 +221,7 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. ИНФОРМАЦИЯ О СЕРТИФИКАТАХ */}
+      {/* 3. ИНФОРМАЦИЯ О СЕРТИФИКАТАХ (Аккордеон) */}
       <section className="py-20 bg-slate-50 border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">Информация о сертификатах</h2>
@@ -247,7 +250,8 @@ export const CertificationPage: React.FC = () => {
                     {item.longDesc}
                     <div className="mt-4">
                         <button 
-                            onClick={() => handleCardClick(item.type)}
+                            /* ✅ ИСПРАВЛЕНО: Кнопка ведет к форме заявки */
+                            onClick={() => handleOrderClick(item.type)}
                             className="text-sm font-bold text-blue-600 hover:text-yellow-600 underline decoration-dashed underline-offset-4"
                         >
                             Оформить сертификат {item.type} →
@@ -300,7 +304,7 @@ export const CertificationPage: React.FC = () => {
       </section>
 
       {/* 5. ШАГИ */}
-      <section className="py-20 bg-slate-50 border-y border-slate-200">
+      <section className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-16 text-center">Как получить сертификат: просто и понятно</h2>
           <div className="relative">
@@ -371,7 +375,6 @@ export const CertificationPage: React.FC = () => {
       </section>
 
       {/* 7. CTA ФОРМА */}
-      {/* ✅ ИСПРАВЛЕНО: Добавлен div-обертка с отступом для компенсации шапки */}
       <div id="order-form" className="pt-24">
         <section className="py-20 bg-slate-900 text-white">
           <div className="max-w-5xl mx-auto px-6 md:px-8">
@@ -398,7 +401,6 @@ export const CertificationPage: React.FC = () => {
                   </li>
                 </ul>
 
-                {/* Контакты для связи */}
                 <div className="pt-8 border-t border-slate-700">
                   <p className="text-slate-400 text-sm mb-3 font-medium uppercase tracking-wider">
                     Нет времени заполнять форму?
