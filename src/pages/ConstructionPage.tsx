@@ -116,8 +116,9 @@ export const ConstructionPage: React.FC = () => {
                   Проверка качества работ, смет и материалов. Поможем в спорах с подрядчиками, застройщиками и при разделе недвижимости.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
+                  {/* ✅ ИЗМЕНЕНО: Кнопка обновлена */}
                   <button onClick={scrollToForm} className="bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 px-8 rounded-xl transition-all hover:scale-105 shadow-lg">
-                    Вызвать эксперта
+                    Заказать экспертизу
                   </button>
                   <button onClick={scrollToForm} className="border-2 border-slate-600 hover:border-white text-white font-semibold py-4 px-8 rounded-xl transition-all hover:scale-105 flex items-center justify-center gap-2">
                     <MessageCircle size={20} />
@@ -240,7 +241,6 @@ export const ConstructionPage: React.FC = () => {
         </section>
       </div>
 
-      {/* FAQ */}
       <section className="py-20 bg-white">
         <div className="max-w-3xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Часто задаваемые вопросы</h2>
