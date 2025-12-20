@@ -15,6 +15,7 @@ import CertificationPage from './pages/CertificationPage';
 import ExpertisePage from './pages/ExpertisePage';
 // ✅ Импорт новых страниц
 import VedPage from './pages/VedPage';
+import AllServicesPage from './pages/AllServicesPage'; // ✅ Импорт
 import ConstructionPage from './pages/ConstructionPage';
 import CustomsPage from './pages/CustomsPage';
 import LegalServicesPage from './pages/LegalServicesPage'; // Юристы
@@ -89,6 +90,7 @@ const App: React.FC = () => {
           <Route path="/services/cert" element={<CertificationPage />} />
           <Route path="/services/expert" element={<ExpertisePage />} />
           <Route path="/services/construction" element={<ConstructionPage />} />
+          <Route path="/services" element={<AllServicesPage />} />
           <Route path="/services/customs" element={<CustomsPage />} />
           <Route path="/services/law" element={<LegalServicesPage />} /> {/* ✅ Юристы */}
 
