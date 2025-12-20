@@ -3,7 +3,9 @@ import {
   FileText, Globe, Scale, Users, 
   Container, Hammer, Calculator, Briefcase,
   Award, ShieldCheck, Languages, PenTool,
-  CheckCircle2, Search, ArrowRight, MessageCircle
+  CheckCircle2, Search, ArrowRight, MessageCircle,
+  // ✅ ДОБАВЛЕНО: Phone, Mail
+  Phone, Mail
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
