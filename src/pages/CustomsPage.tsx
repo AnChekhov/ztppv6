@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import { 
   Container, Calculator, FileText, BadgeCheck, 
   MessageCircle, Mail, Phone, UploadCloud, 
-  ChevronDown, ChevronUp, Globe, Shield,
-  // ✅ ДОБАВЛЕНО: Импорт иконки Search
-  Search 
+  ChevronDown, ChevronUp, Globe, Shield, Search 
 } from 'lucide-react';
 import SEO from '../components/SEO';
 
@@ -45,8 +43,8 @@ export const CustomsPage: React.FC = () => {
       id: 'tnved',
       title: 'Классификация товаров (ТН ВЭД)',
       shortDesc: 'Определение верного кода товара для минимизации пошлин и рисков.',
-      longDesc: 'Правильный код ТН ВЭД ЕАЭС — основа таможенного оформления. Мы проводим экспертизу товара, подбираем верный код, который позволяет применить минимально возможную ставку пошлины и избежать штрафов за недостоверное декларирование. Выдаем экспертное заключение.',
-      icon: Search // ✅ Теперь эта иконка найдена
+      longDesc: 'Правильный код ТН ВЭД ЕАЭС - основа таможенного оформления. Мы проводим экспертизу товара, подбираем верный код, который позволяет применить минимально возможную ставку пошлины и избежать штрафов за недостоверное декларирование. Выдаем экспертное заключение.',
+      icon: Search
     },
     {
       id: 'payments',
@@ -90,11 +88,13 @@ export const CustomsPage: React.FC = () => {
         keywords="таможенное оформление чита, код тн вэд услуги, расчет пошлин, таможенный представитель забайкальск"
       />
 
+      {/* HERO SECTION */}
       <section className="relative bg-slate-900 text-white overflow-hidden min-h-[65vh] flex items-center justify-center">
         <div className="absolute inset-0 opacity-40">
             <img src="/ztppv6/images/hero-bg.jpg" alt="Background" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/[0.87] to-slate-900"></div>
+        
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center">
             <div className="grid lg:grid-cols-12 gap-8 items-center">
               <div className="lg:col-span-7 max-w-3xl">
@@ -116,15 +116,17 @@ export const CustomsPage: React.FC = () => {
               </div>
               <div className="hidden lg:flex lg:col-span-5 justify-center items-center relative">
                 <div className="absolute w-80 h-80 bg-blue-600/10 rounded-full blur-3xl"></div>
+                {/* ✅ ИЗМЕНЕНО: Иконка Container */}
                 <div className="relative transform transition-transform duration-500 hover:scale-105">
-                   <BadgeCheck size={300} strokeWidth={1} className="text-slate-600/70 drop-shadow-2xl" />
-                   <BadgeCheck size={300} strokeWidth={1} className="absolute top-0 left-0 text-white/10" />
+                   <Container size={300} strokeWidth={1} className="text-slate-600/70 drop-shadow-2xl" />
+                   <Container size={300} strokeWidth={1} className="absolute top-0 left-0 text-white/10" />
                 </div>
               </div>
             </div>
         </div>
       </section>
 
+      {/* SERVICES GRID */}
       <section className="pt-12 pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Наши услуги</h2>
@@ -151,6 +153,7 @@ export const CustomsPage: React.FC = () => {
         </div>
       </section>
 
+      {/* SEO ACCORDION */}
       <section className="py-20 bg-slate-50 border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">Подробности</h2>
@@ -199,38 +202,22 @@ export const CustomsPage: React.FC = () => {
               </div>
               <div className="bg-white rounded-3xl p-8 text-slate-900 shadow-2xl">
                 <form className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-bold mb-2">Название организации</label>
-                    <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="ООО 'Пример'" />
-                  </div>
-                  
+                  <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Организация" />
                   <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-bold mb-2">Контактное лицо</label>
-                      <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="Имя" />
-                    </div>
-                     <div>
-                      <label className="block text-sm font-bold mb-2">Телефон</label>
-                      <input type="tel" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="+7 (___) ___-__-__" />
-                    </div>
+                    <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Имя" />
+                    <input type="tel" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="+7 (___) ___-__-__" />
                   </div>
-
-                  <div>
-                     <label className="block text-sm font-bold mb-2">Вид услуги</label>
-                     <div className="relative">
-                       <select value={selectedService} onChange={(e) => setSelectedService(e.target.value)} className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none appearance-none cursor-pointer">
-                         {services.map(s => <option key={s.id} value={s.title}>{s.title}</option>)}
-                         <option>Другое</option>
-                       </select>
-                       <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-slate-500"><ChevronDown size={20} /></div>
-                     </div>
-                  </div>
-                  
+                  <div className="relative">
+                     <select value={selectedService} onChange={(e) => setSelectedService(e.target.value)} className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none appearance-none cursor-pointer">
+                       {services.map(s => <option key={s.id} value={s.title}>{s.title}</option>)}
+                       <option>Другое</option>
+                     </select>
+                     <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-slate-500"><ChevronDown size={20} /></div>
+                   </div>
                   <div className="pt-2">
-                     <label className="block text-sm font-bold mb-2">Документы (если есть)</label>
                      <div className="border-2 border-dashed border-slate-300 rounded-xl p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-slate-50 transition-colors group">
-                       <UploadCloud className="text-slate-400 group-hover:text-blue-500 mb-2 transition-colors" size={32} />
-                       <span className="text-sm text-slate-500 font-medium">Прикрепить документы</span>
+                       <UploadCloud className="text-slate-400 group-hover:text-blue-500 mb-2" size={32} />
+                       <span className="text-sm text-slate-500">Прикрепить документы</span>
                      </div>
                   </div>
                   <button className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all mt-4">Заказать сопровождение</button>
