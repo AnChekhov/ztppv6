@@ -24,26 +24,26 @@ const Header: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         <div className="flex items-center justify-between">
           
-          {/* ЛОГОТИП И НАЗВАНИЕ */}
-          <Link to="/" className="flex items-center gap-4 group">
+          {/* ✅ ИЗМЕНЕНО: Логотип и текст в едином блоке */}
+          <Link to="/" className="flex items-center gap-4 px-5 py-3 bg-slate-900 rounded-xl transition-transform hover:scale-[1.02] group shadow-sm">
             
-            <div className="flex items-center justify-center w-14 h-14 bg-slate-900 border-2 border-yellow-400 rounded-xl shadow-sm transition-transform group-hover:scale-105">
-                {/* ✅ ИСПРАВЛЕНО: Добавлен префикс /ztppv6 к пути */}
-                <img 
-                  src="/ztppv6/images/logo-TPP-white.png" 
-                  alt="Logo ZTPP" 
-                  className="w-8 h-auto" 
-                />
-            </div>
+            {/* Картинка */}
+            <img 
+              src="/ztppv6/images/logo-TPP-white.png" 
+              alt="Logo ZTPP" 
+              className="w-8 h-auto opacity-90 group-hover:opacity-100 transition-opacity" 
+            />
 
+            {/* Текст (теперь внутри блока) */}
             <div className="flex flex-col">
-              <span className="text-xs font-bold tracking-widest text-slate-900 uppercase leading-tight">
+              <span className="text-[10px] font-bold tracking-widest text-white uppercase leading-tight">
                 Торгово-промышленная
               </span>
-              <span className="text-xs font-bold tracking-widest text-slate-900 uppercase leading-tight">
+              <span className="text-[10px] font-bold tracking-widest text-white uppercase leading-tight">
                 палата
               </span>
-              <span className="text-blue-700 font-bold text-xs uppercase tracking-widest leading-tight">
+              {/* Желтый акцент вместо синего */}
+              <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-widest leading-tight">
                 Забайкальского края
               </span>
             </div>
@@ -82,7 +82,7 @@ const Header: React.FC = () => {
         </div>
       </div>
 
-      {/* МОБИЛЬНОЕ МЕНЮ (ВЫПАДАЮЩЕЕ) */}
+      {/* МОБИЛЬНОЕ МЕНЮ */}
       {isMobileMenuOpen && (
         <div className="absolute top-full left-0 w-full bg-white border-t border-slate-100 shadow-xl lg:hidden flex flex-col p-6 gap-4">
           <Link to="/services" className="text-lg font-medium text-slate-900" onClick={() => setIsMobileMenuOpen(false)}>Услуги</Link>
