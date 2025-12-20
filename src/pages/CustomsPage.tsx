@@ -116,7 +116,6 @@ export const CustomsPage: React.FC = () => {
               </div>
               <div className="hidden lg:flex lg:col-span-5 justify-center items-center relative">
                 <div className="absolute w-80 h-80 bg-blue-600/10 rounded-full blur-3xl"></div>
-                {/* ✅ ИЗМЕНЕНО: Иконка Container */}
                 <div className="relative transform transition-transform duration-500 hover:scale-105">
                    <Container size={300} strokeWidth={1} className="text-slate-600/70 drop-shadow-2xl" />
                    <Container size={300} strokeWidth={1} className="absolute top-0 left-0 text-white/10" />
@@ -173,7 +172,8 @@ export const CustomsPage: React.FC = () => {
                   <div className="p-6 pt-0 text-slate-600 leading-relaxed border-t border-slate-100 mt-2">
                     {item.longDesc}
                     <div className="mt-4">
-                        <button onClick={() => handleOrderClick(item.title)} className="text-sm font-bold text-blue-600 hover:text-yellow-600 underline decoration-dashed underline-offset-4">
+                        {/* ✅ ИСПРАВЛЕНО: Убрано подчеркивание */}
+                        <button onClick={() => handleOrderClick(item.title)} className="text-sm font-bold text-blue-600 hover:text-yellow-600 transition-colors">
                             Получить консультацию →
                         </button>
                     </div>
