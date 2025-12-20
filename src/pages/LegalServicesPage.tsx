@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { 
-  // ✅ ДОБАВЛЕНО: Shield, Calculator
-  Gavel, Scale, FileText, Handshake, Briefcase, DollarSign,
+  Gavel, Scale, FileText, Briefcase, DollarSign,
   Phone, Mail, CheckCircle, ChevronDown, UploadCloud, 
   ChevronUp, MessageCircle, CheckCircle2, Shield, Calculator
 } from 'lucide-react';
@@ -9,7 +8,7 @@ import SEO from '../components/SEO';
 
 export const LegalServicesPage: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [selectedService, setSelectedService] = useState<string>('Международный коммерческий арбитраж');
+  const [selectedService, setSelectedService] = useState<string>('Свидетельствование форс-мажора'); // Поменял дефолт
   const [expandedDetail, setExpandedDetail] = useState<string | null>(null);
 
   const toggleFaq = (index: number) => {
@@ -39,20 +38,21 @@ export const LegalServicesPage: React.FC = () => {
     }, 100);
   };
 
+  // ✅ ИЗМЕНЕНО: Новый порядок карточек
   const services = [
-    {
-      id: 'arbitration',
-      title: 'Международный коммерческий арбитраж',
-      shortDesc: 'Помощь в разрешении споров по ВЭД, медиация и представительство в арбитраже.',
-      longDesc: 'Разрешение внешнеторговых споров с иностранными партнерами через медиацию или обращение в Международный коммерческий арбитражный суд при ТПП РФ. Представительство ваших интересов, составление исков, подготовка доказательной базы.',
-      icon: Gavel
-    },
     {
       id: 'force-majeure',
       title: 'Свидетельствование форс-мажора',
       shortDesc: 'Оформление заключений о форс-мажоре по российским и международным контрактам.',
       longDesc: 'Выдача официальных заключений о наступлении обстоятельств непреодолимой силы (форс-мажора). Это позволяет освободиться от ответственности за неисполнение контракта из-за объективных причин (санкции, стихийные бедствия, эпидемии).',
       icon: Shield
+    },
+    {
+      id: 'business-protection',
+      title: 'Защита интересов бизнеса',
+      shortDesc: 'Представительство в государственных органах, юридические консультации.',
+      longDesc: 'Представительство интересов предпринимателей в налоговых органах, прокуратуре, ФАС и других государственных структурах. Обжалование незаконных актов, защита от необоснованных проверок, консультации по административному и гражданскому праву.',
+      icon: Briefcase
     },
     {
       id: 'contract-law',
@@ -62,11 +62,11 @@ export const LegalServicesPage: React.FC = () => {
       icon: FileText
     },
     {
-      id: 'business-protection',
-      title: 'Защита интересов бизнеса',
-      shortDesc: 'Представительство в государственных органах, юридические консультации.',
-      longDesc: 'Представительство интересов предпринимателей в налоговых органах, прокуратуре, ФАС и других государственных структурах. Обжалование незаконных актов, защита от необоснованных проверок, консультации по административному и гражданскому праву.',
-      icon: Briefcase
+      id: 'arbitration',
+      title: 'Международный коммерческий арбитраж',
+      shortDesc: 'Помощь в разрешении споров по ВЭД, медиация и представительство в арбитраже.',
+      longDesc: 'Разрешение внешнеторговых споров с иностранными партнерами через медиацию или обращение в Международный коммерческий арбитражный суд при ТПП РФ. Представительство ваших интересов, составление исков, подготовка доказательной базы.',
+      icon: Gavel
     },
     {
       id: 'debt-collection',
@@ -102,18 +102,16 @@ export const LegalServicesPage: React.FC = () => {
   return (
     <div className="font-sans text-slate-900 bg-white">
       <SEO 
-        title="Юридические услуги для бизнеса | Международный арбитраж, Форс-мажор | ТПП Чита"
-        description="Комплексные юридические услуги: международный арбитраж, свидетельствование форс-мажора, защита интересов бизнеса, взыскание долгов, налоговые консультации."
-        keywords="юридические услуги чита, арбитраж ВЭД, форс-мажор, защита бизнеса, налоговые консультации"
+        title="Юридические услуги для бизнеса | Форс-мажор, Защита прав, Арбитраж | ТПП Чита"
+        description="Комплексные юридические услуги: свидетельствование форс-мажора, защита интересов бизнеса в госорганах, договорное право ВЭД, международный арбитраж."
+        keywords="юридические услуги чита, форс-мажор, защита бизнеса, арбитраж ВЭД, взыскание долгов"
       />
 
-      {/* HERO SECTION */}
       <section className="relative bg-slate-900 text-white overflow-hidden min-h-[65vh] flex items-center justify-center">
         <div className="absolute inset-0 opacity-40">
             <img src="/ztppv6/images/hero-bg.jpg" alt="Background" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/[0.87] to-slate-900"></div>
-        
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center">
             <div className="grid lg:grid-cols-12 gap-8 items-center">
               <div className="lg:col-span-7 max-w-3xl">
@@ -121,7 +119,7 @@ export const LegalServicesPage: React.FC = () => {
                   Надежная юридическая защита <span className="text-yellow-400">вашего бизнеса</span>
                 </h1>
                 <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl">
-                  Международный коммерческий арбитраж, свидетельствование форс-мажора, защита интересов в судах и госорганах.
+                  Свидетельствование форс-мажора, защита интересов в судах и госорганах, международный арбитраж.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button onClick={scrollToForm} className="bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 px-8 rounded-xl transition-all hover:scale-105 shadow-lg">
@@ -144,7 +142,6 @@ export const LegalServicesPage: React.FC = () => {
         </div>
       </section>
 
-      {/* SERVICES GRID */}
       <section className="pt-12 pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Наши юридические услуги</h2>
@@ -171,7 +168,6 @@ export const LegalServicesPage: React.FC = () => {
         </div>
       </section>
 
-      {/* SEO ACCORDION */}
       <section className="py-20 bg-slate-50 border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">Детально о правовой поддержке</h2>
@@ -187,11 +183,16 @@ export const LegalServicesPage: React.FC = () => {
                   </div>
                   {expandedDetail === item.id ? <ChevronUp className="text-blue-600"/> : <ChevronDown className="text-slate-400"/>}
                 </button>
+                
+                {/* ✅ ИСПРАВЛЕНО: Убрано пунктирное подчеркивание (underline decoration-dashed) */}
                 <div className={`transition-all duration-300 ease-in-out ${expandedDetail === item.id ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
                   <div className="p-6 pt-0 text-slate-600 leading-relaxed border-t border-slate-100 mt-2">
                     {item.longDesc}
                     <div className="mt-4">
-                        <button onClick={() => handleOrderClick(item.title)} className="text-sm font-bold text-blue-600 hover:text-yellow-600 underline decoration-dashed underline-offset-4">
+                        <button 
+                          onClick={() => handleOrderClick(item.title)} 
+                          className="text-sm font-bold text-blue-600 hover:text-yellow-600 transition-colors"
+                        >
                             Получить консультацию →
                         </button>
                     </div>
