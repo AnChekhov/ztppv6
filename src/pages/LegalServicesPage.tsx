@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { 
+  // ✅ ДОБАВЛЕНО: Shield, Calculator
   Gavel, Scale, FileText, Handshake, Briefcase, DollarSign,
   Phone, Mail, CheckCircle, ChevronDown, UploadCloud, 
-  ChevronUp, MessageCircle, CheckCircle2
+  ChevronUp, MessageCircle, CheckCircle2, Shield, Calculator
 } from 'lucide-react';
 import SEO from '../components/SEO';
 
@@ -79,23 +80,9 @@ export const LegalServicesPage: React.FC = () => {
       title: 'Налоговые консультации',
       shortDesc: 'Консультации по налогообложению в сфере ВЭД и ведению бизнеса.',
       longDesc: 'Экспертные консультации по применению налогового законодательства РФ в части импортно-экспортных операций, возмещению НДС. Оптимизация налоговой нагрузки. Помощь в подготовке отчетности для ФНС.',
-      icon: Calculator // Note: Need to import Calculator
+      icon: Calculator
     },
   ];
-
-  // Correction: Ensure Calculator is imported.
-  // In the imports above, Calculator is NOT imported. Let's fix that.
-  // Actually, I'll remove Calculator from services and use FileText or similar to avoid import errors if not careful, 
-  // or better - add Calculator to import.
-  
-  // Re-writing imports to include Calculator:
-  /*
-  import { 
-    Gavel, Scale, FileText, Handshake, Briefcase, DollarSign,
-    Phone, Mail, CheckCircle, ChevronDown, UploadCloud, 
-    ChevronUp, MessageCircle, CheckCircle2, Calculator // Added Calculator
-  } from 'lucide-react';
-  */
 
   const faqs = [
     {
