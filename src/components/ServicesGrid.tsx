@@ -44,7 +44,7 @@ interface PriorityCardProps {
   title: string;
   description: string;
   buttonText: string;
-  badgeText: string;
+  badgeText?: string; // Сделал необязательным
   badgeStyle: 'green' | 'gray';
   buttonStyle: 'yellow' | 'dark';
   link?: string;
@@ -54,35 +54,47 @@ const PriorityCard: React.FC<PriorityCardProps> = ({
   icon: Icon, title, description, buttonText, badgeText, badgeStyle, buttonStyle, link 
 }) => (
   <div className="bg-white rounded-[2rem] p-6 md:p-7 shadow-xl shadow-slate-200/60 border border-white flex flex-col h-full relative overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-900/10">
+    
     <div className="flex justify-between items-start mb-5">
       <div className="w-14 h-14 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-105 bg-blue-50 text-blue-600">
         <Icon size={28} strokeWidth={1.5} />
       </div>
-      <span className={`inline-flex items-center px-3 py-1 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-wider ${
-        badgeStyle === 'green' ? 'bg-blue-100 text-blue-700' : 'bg-slate-100 text-slate-600'
-      }`}>
-        {badgeText}
-      </span>
+
+      {/* Показываем бейдж только если есть текст */}
+      {badgeText && (
+        <span className={`inline-flex items-center px-3 py-1 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-wider ${
+          badgeStyle === 'green' ? 'bg-blue-100 text-blue-700' : 'bg-slate-100 text-slate-600'
+        }`}>
+          {badgeText}
+        </span>
+      )}
     </div>
+
     <h3 className="text-xl md:text-2xl font-extrabold text-slate-900 mb-3 leading-tight">
       {title}
     </h3>
+    
     <p className="text-sm md:text-base text-slate-600 leading-relaxed flex-grow">
       {description}
     </p>
+    
     <div className="mt-6">
       {link ? (
         <Link to={link}>
-             <Button variant="lime" className={`w-full h-12 md:h-14 text-sm md:text-base font-bold !rounded-xl shadow-md transition-all hover:scale-105 ${
-                buttonStyle === 'yellow' ? 'bg-yellow-400 text-slate-900 hover:bg-yellow-500 hover:shadow-yellow-400/30' : 'bg-slate-900 text-white hover:bg-slate-800 hover:shadow-slate-900/30'
-             }`}>
+             <Button 
+                variant="lime" 
+                className={`w-full h-12 md:h-14 text-sm md:text-base font-bold !rounded-xl shadow-md transition-all hover:scale-105 ${
+                /* ✅ ИЗМЕНЕНО: Принудительно делаем желтую кнопку, если передан стиль yellow, иначе темную. Но мы передадим yellow везде */
+                buttonStyle === 'yellow' 
+                    ? 'bg-yellow-400 text-slate-900 hover:bg-yellow-500 hover:shadow-yellow-400/30' 
+                    : 'bg-slate-900 text-white hover:bg-slate-800 hover:shadow-slate-900/30'
+                }`}
+            >
                 {buttonText} <ArrowRight size={18} className="ml-2" />
             </Button>
         </Link>
       ) : (
-        <Button variant="lime" className={`w-full h-12 md:h-14 text-sm md:text-base font-bold !rounded-xl shadow-md transition-all hover:scale-105 ${
-            buttonStyle === 'yellow' ? 'bg-yellow-400 text-slate-900 hover:bg-yellow-500 hover:shadow-yellow-400/30' : 'bg-slate-900 text-white hover:bg-slate-800 hover:shadow-slate-900/30'
-        }`}>
+        <Button variant="lime" className="w-full h-12 md:h-14 text-sm md:text-base font-bold !rounded-xl shadow-md transition-all hover:scale-105 bg-yellow-400 text-slate-900 hover:bg-yellow-500">
             {buttonText} <ArrowRight size={18} className="ml-2" />
         </Button>
       )}
@@ -105,6 +117,7 @@ const ServicesGrid: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-16">
+          {/* КАРТОЧКА 1: СЕРТИФИКАЦИЯ */}
           <PriorityCard 
             icon={FileText}
             title="Сертификаты происхождения товаров"
@@ -112,17 +125,19 @@ const ServicesGrid: React.FC = () => {
             buttonText="Оформить сертификат"
             badgeText="Выдача за 1 день"
             badgeStyle="green" 
-            buttonStyle="yellow"
+            buttonStyle="yellow" /* ✅ Желтая кнопка */
             link="/services/cert"
           />
+          
+          {/* КАРТОЧКА 2: ЭКСПЕРТИЗА */}
           <PriorityCard 
             icon={Scale}
             title="Независимая товарная экспертиза"
             description="Проведем независимую приемку товаров по качеству и количеству. Выявим брак, оценим ущерб и определим коды ТН ВЭД. Защитим ваши интересы в суде и спорах."
             buttonText="Заказать экспертизу"
-            badgeText="Защита интересов"
+            badgeText="" /* ✅ Убрал бейдж "Защита интересов" */
             badgeStyle="gray"
-            buttonStyle="dark"
+            buttonStyle="yellow" /* ✅ ИЗМЕНЕНО: Теперь тоже Желтая кнопка */
             link="/services/expert"
           />
         </div>
@@ -132,12 +147,12 @@ const ServicesGrid: React.FC = () => {
             Другие услуги
           </h3>
           <p className="text-slate-600 text-lg">
-            {/* ✅ ИСПРАВЛЕНО: "Забайкалья" -> "Забайкальского края" */}
             Весь спектр услуг для экспортеров, импортеров, производителей и предпринимателей Читы, Забайкальского края и других регионов.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          
           <ServiceCard 
             icon={Globe} 
             title="ВЭД и работа с Китаем" 
@@ -169,18 +184,19 @@ const ServicesGrid: React.FC = () => {
             link="/news"
           />
           
-          {/* Ссылка на полный список */}
+          {/* КАРТОЧКА: ПОЛНЫЙ СПИСОК */}
           <div className="flex flex-col items-center justify-center p-8 rounded-2xl border border-dashed border-slate-300 bg-white/50 text-center h-full hover:bg-white hover:border-blue-300 hover:shadow-xl hover:shadow-blue-100 transition-all duration-300 hover:scale-[1.03] group cursor-pointer">
              <Link to="/services" className="flex flex-col items-center w-full h-full">
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-slate-100 text-slate-500 transition-transform group-hover:scale-110 group-hover:bg-blue-50 group-hover:text-blue-600">
                     <HelpCircle size={24} strokeWidth={1.5} />
                 </div>
                 <h4 className="text-lg font-bold text-slate-900 mb-2">Полный список услуг</h4>
+                {/* ✅ ИЗМЕНЕНО: Убрал "более 40 услуг" */}
                 <p className="text-sm text-slate-500 mb-6 leading-relaxed flex-grow">
-                   В нашем арсенале более 40 услуг. Ознакомьтесь с полным перечнем.
+                   Свяжитесь с нами - мы подберем решение под ваши задачи.
                 </p>
                 <Button variant="lime" className="w-full h-12 font-bold bg-yellow-400 text-slate-900 hover:bg-yellow-500 hover:shadow-md transition-all rounded-xl">
-                    Перейти в каталог <ArrowRight size={18} className="ml-2" />
+                    Получить консультацию <ArrowRight size={18} className="ml-2" />
                 </Button>
             </Link>
           </div>
