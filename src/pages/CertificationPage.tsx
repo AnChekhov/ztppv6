@@ -35,13 +35,11 @@ export const CertificationPage: React.FC = () => {
     }
   };
 
-  // 1. Функция для кнопки "Заказать" (внутри описания) -> Ведет к форме
   const handleOrderClick = (type: string) => {
     setSelectedType(type);
     scrollToForm();
   };
 
-  // 2. Функция для клика по карточке или "Подробнее" -> Ведет к описанию
   const handleDescriptionClick = (id: string) => {
     setExpandedDetail(id);
     setTimeout(() => {
@@ -123,7 +121,6 @@ export const CertificationPage: React.FC = () => {
               className="w-full h-full object-cover"
             />
         </div>
-        
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/[0.87] to-slate-900"></div>
         
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center">
@@ -174,7 +171,7 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. ТИПЫ СЕРТИФИКАТОВ (GRID) */}
+      {/* 2. ТИПЫ СЕРТИФИКАТОВ */}
       <section className="pt-12 pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Выберите нужный Вам тип сертификата</h2>
@@ -183,7 +180,6 @@ export const CertificationPage: React.FC = () => {
             {certTypes.map((item) => (
               <div 
                 key={item.id} 
-                /* ✅ ИСПРАВЛЕНО: Клик по карточке ведет к описанию */
                 onClick={() => handleDescriptionClick(item.id)}
                 className="bg-white rounded-2xl p-5 shadow-lg shadow-slate-200/50 border border-slate-100 hover:shadow-xl transition-all duration-300 ease-out hover:shadow-blue-900/5 hover:scale-[1.03] flex flex-col cursor-pointer group"
               >
@@ -201,7 +197,6 @@ export const CertificationPage: React.FC = () => {
                 </div>
                 <div className="mt-auto pt-3 border-t border-slate-100">
                    <button 
-                     /* ✅ ИСПРАВЛЕНО: Убран e.stopPropagation, так как вся карточка кликабельна */
                      className="text-xs font-bold text-blue-600 hover:text-blue-800 transition-colors flex items-center"
                    >
                      Подробнее <ChevronDown size={14} className="ml-1" />
@@ -221,7 +216,7 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. ИНФОРМАЦИЯ О СЕРТИФИКАТАХ (Аккордеон) */}
+      {/* 3. ИНФОРМАЦИЯ О СЕРТИФИКАТАХ */}
       <section className="py-20 bg-slate-50 border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">Информация о сертификатах</h2>
@@ -250,11 +245,11 @@ export const CertificationPage: React.FC = () => {
                     {item.longDesc}
                     <div className="mt-4">
                         <button 
-                            /* ✅ ИСПРАВЛЕНО: Кнопка ведет к форме заявки */
+                            /* ✅ ИСПРАВЛЕНО: "Заказать" */
                             onClick={() => handleOrderClick(item.type)}
                             className="text-sm font-bold text-blue-600 hover:text-yellow-600 underline decoration-dashed underline-offset-4"
                         >
-                            Оформить сертификат {item.type} →
+                            Заказать сертификат {item.type} →
                         </button>
                     </div>
                   </div>
@@ -303,42 +298,12 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. ШАГИ */}
-      <section className="py-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-16 text-center">Как получить сертификат: просто и понятно</h2>
-          <div className="relative">
-            <div className="hidden md:block absolute top-6 left-0 w-full h-1 bg-slate-200 rounded">
-                <div className="h-full bg-blue-200 w-3/4 rounded"></div>
-            </div>
-            <div className="grid md:grid-cols-4 gap-8">
-              {[
-                { title: 'Подготовка', desc: 'Соберите пакет документов по нашему чек-листу. Скачайте и заполните бланк заявления.' },
-                { title: 'Подача заявки', desc: 'Отправьте заявку и сканы документов онлайн через форму ниже или предоставьте в офис.' },
-                { title: 'Экспертиза', desc: 'Наши специалисты проверят документы и, при необходимости, проведут экспертизу.' },
-                { title: 'Получение', desc: 'Получите готовый сертификат на защищенном бланке в офисе Палаты.' },
-              ].map((step, idx) => (
-                <div key={idx} className="relative pt-8 md:pt-16 group">
-                  <div className="absolute top-0 left-0 md:left-1/2 md:-translate-x-1/2 w-12 h-12 bg-white border-4 border-blue-600 text-blue-600 rounded-full flex items-center justify-center font-bold text-xl z-10 shadow-md group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                    {idx + 1}
-                  </div>
-                  <div className="bg-white p-6 rounded-2xl md:text-center h-full hover:shadow-lg transition-all border border-slate-100">
-                    <h3 className="font-bold text-lg mb-2">{step.title}</h3>
-                    <p className="text-slate-500 text-sm leading-relaxed">{step.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 6. ДОКУМЕНТЫ */}
-      <section className="py-20 bg-white">
+      {/* 5. ДОКУМЕНТЫ */}
+      <section className="py-20 bg-slate-50 border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Все, что нужно для подачи заявки</h2>
-            <p className="text-slate-500">Мы подготовили для вас полный список и шаблоны, чтобы избежать ошибок</p>
+            <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Документы для проведения экспертизы</h2>
+            <p className="text-slate-500">Минимальный пакет документов для начала работы</p>
           </div>
 
           <div className="bg-white rounded-3xl shadow-sm overflow-hidden border border-slate-100">
@@ -374,7 +339,7 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 7. CTA ФОРМА */}
+      {/* 6. CTA ФОРМА */}
       <div id="order-form" className="pt-24">
         <section className="py-20 bg-slate-900 text-white">
           <div className="max-w-5xl mx-auto px-6 md:px-8">
@@ -401,6 +366,7 @@ export const CertificationPage: React.FC = () => {
                   </li>
                 </ul>
 
+                {/* Контакты для связи */}
                 <div className="pt-8 border-t border-slate-700">
                   <p className="text-slate-400 text-sm mb-3 font-medium uppercase tracking-wider">
                     Нет времени заполнять форму?
@@ -434,11 +400,6 @@ export const CertificationPage: React.FC = () => {
                       <label className="block text-sm font-bold mb-2">Телефон</label>
                       <input type="tel" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="+7 (___) ___-__-__" />
                     </div>
-                  </div>
-
-                  <div>
-                     <label className="block text-sm font-bold mb-2">Контактное лицо</label>
-                     <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="Иванов Иван" />
                   </div>
 
                   {/* Select: Тип сертификата */}
@@ -481,7 +442,7 @@ export const CertificationPage: React.FC = () => {
         </section>
       </div>
 
-      {/* 8. FAQ */}
+      {/* 7. FAQ */}
       <section className="py-20 bg-white">
         <div className="max-w-3xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Часто задаваемые вопросы</h2>
