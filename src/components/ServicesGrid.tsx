@@ -128,12 +128,12 @@ const ServicesGrid: React.FC = () => {
         </div>
 
         <div className="text-center mb-12 max-w-3xl mx-auto">
-          {/* ✅ ИЗМЕНЕНО: Заголовок "Другие услуги" */}
           <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
             Другие услуги
           </h3>
           <p className="text-slate-600 text-lg">
-            Весь спектр услуг для экспортеров, импортеров, производителей и предпринимателей Читы, Забайкалья и других регионов.
+            {/* ✅ ИСПРАВЛЕНО: "Забайкалья" -> "Забайкальского края" */}
+            Весь спектр услуг для экспортеров, импортеров, производителей и предпринимателей Читы, Забайкальского края и других регионов.
           </p>
         </div>
 
@@ -169,19 +169,22 @@ const ServicesGrid: React.FC = () => {
             link="/news"
           />
           
-          {/* ✅ ИЗМЕНЕНО: Убрана информация про 40 услуг */}
-          <div className="flex flex-col items-center justify-center p-8 rounded-2xl border border-dashed border-slate-300 bg-white/50 text-center h-full hover:bg-white hover:border-blue-300 hover:shadow-xl hover:shadow-blue-100 transition-all duration-300 hover:scale-[1.03] group">
-            <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-slate-100 text-slate-500 transition-transform group-hover:scale-110 group-hover:bg-blue-50 group-hover:text-blue-600">
-                <HelpCircle size={24} strokeWidth={1.5} />
-            </div>
-            <h4 className="text-lg font-bold text-slate-900 mb-2">Полный список услуг</h4>
-            <p className="text-sm text-slate-500 mb-6 leading-relaxed">
-               Свяжитесь с нами - мы подберем решение под ваши задачи.
-            </p>
-            <Button variant="lime" className="w-full h-12 font-bold bg-yellow-400 text-slate-900 hover:bg-yellow-500 hover:shadow-md transition-all rounded-xl">
-                Получить консультацию <ArrowRight size={18} className="ml-2" />
-            </Button>
+          {/* Ссылка на полный список */}
+          <div className="flex flex-col items-center justify-center p-8 rounded-2xl border border-dashed border-slate-300 bg-white/50 text-center h-full hover:bg-white hover:border-blue-300 hover:shadow-xl hover:shadow-blue-100 transition-all duration-300 hover:scale-[1.03] group cursor-pointer">
+             <Link to="/services" className="flex flex-col items-center w-full h-full">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-slate-100 text-slate-500 transition-transform group-hover:scale-110 group-hover:bg-blue-50 group-hover:text-blue-600">
+                    <HelpCircle size={24} strokeWidth={1.5} />
+                </div>
+                <h4 className="text-lg font-bold text-slate-900 mb-2">Полный список услуг</h4>
+                <p className="text-sm text-slate-500 mb-6 leading-relaxed flex-grow">
+                   В нашем арсенале более 40 услуг. Ознакомьтесь с полным перечнем.
+                </p>
+                <Button variant="lime" className="w-full h-12 font-bold bg-yellow-400 text-slate-900 hover:bg-yellow-500 hover:shadow-md transition-all rounded-xl">
+                    Перейти в каталог <ArrowRight size={18} className="ml-2" />
+                </Button>
+            </Link>
           </div>
+
         </div>
       </div>
     </section>
