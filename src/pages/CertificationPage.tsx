@@ -17,7 +17,6 @@ import {
   ChevronUp,
   Info
 } from 'lucide-react';
-// ✅ 1. ИМПОРТ КОМПОНЕНТА SEO (Добавил эту строку)
 import SEO from '../components/SEO';
 
 export const CertificationPage: React.FC = () => {
@@ -32,7 +31,8 @@ export const CertificationPage: React.FC = () => {
   const scrollToForm = () => {
     const formSection = document.getElementById('order-form');
     if (formSection) {
-      formSection.scrollIntoView({ behavior: 'smooth' });
+      // ✅ ИЗМЕНЕНО: block: 'center' центрирует элемент по вертикали
+      formSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   };
 
@@ -47,6 +47,7 @@ export const CertificationPage: React.FC = () => {
     setTimeout(() => {
       const element = document.getElementById(`detail-${id}`);
       if (element) {
+        // ✅ Убедились, что здесь тоже center
         element.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
     }, 100);
@@ -108,7 +109,6 @@ export const CertificationPage: React.FC = () => {
   return (
     <div className="font-sans text-slate-900 bg-white">
       
-      {/* ✅ 2. ВСТАВКА SEO ТЕГОВ (Сразу после открывающего div) */}
       <SEO 
         title="Сертификаты происхождения товаров (СТ-1, Общая форма) в Чите"
         description="Оформление сертификатов происхождения товаров (СТ-1, EAV, Общая форма) в Забайкальском крае. Срочная выдача для экспорта в Китай. Консультации экспертов ТПП."
@@ -124,7 +124,7 @@ export const CertificationPage: React.FC = () => {
               className="w-full h-full object-cover"
             />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/95 to-slate-900/90"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/[0.87] to-slate-900"></div>
         
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center">
             
@@ -402,11 +402,6 @@ export const CertificationPage: React.FC = () => {
                     <label className="block text-sm font-bold mb-2">Телефон</label>
                     <input type="tel" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="+7 (___) ___-__-__" />
                   </div>
-                </div>
-
-                <div>
-                   <label className="block text-sm font-bold mb-2">Контактное лицо</label>
-                   <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="Иванов Иван" />
                 </div>
 
                 {/* Select: Тип сертификата */}
