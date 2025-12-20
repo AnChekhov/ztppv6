@@ -1,21 +1,8 @@
 import React, { useState } from 'react';
 import { 
-  Clock, 
-  Calendar, 
-  Banknote, 
-  Download, 
-  CheckCircle2, 
-  UploadCloud, 
-  Phone, 
-  Mail, 
-  Globe,
-  CheckCircle,
-  ChevronDown,
-  Check,
-  FileCheck,
-  MessageCircle,
-  ChevronUp,
-  Info
+  Clock, Calendar, Banknote, Download, CheckCircle2, UploadCloud, 
+  Phone, Mail, Globe, CheckCircle, ChevronDown, Check, 
+  FileCheck, MessageCircle, ChevronUp, Info
 } from 'lucide-react';
 import SEO from '../components/SEO';
 
@@ -121,6 +108,7 @@ export const CertificationPage: React.FC = () => {
               className="w-full h-full object-cover"
             />
         </div>
+        
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/[0.87] to-slate-900"></div>
         
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center">
@@ -171,7 +159,7 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. ТИПЫ СЕРТИФИКАТОВ */}
+      {/* 2. ТИПЫ СЕРТИФИКАТОВ (GRID) */}
       <section className="pt-12 pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Выберите нужный Вам тип сертификата</h2>
@@ -197,6 +185,7 @@ export const CertificationPage: React.FC = () => {
                 </div>
                 <div className="mt-auto pt-3 border-t border-slate-100">
                    <button 
+                     /* Убран e.stopPropagation, т.к. клик по всей карте работает */
                      className="text-xs font-bold text-blue-600 hover:text-blue-800 transition-colors flex items-center"
                    >
                      Подробнее <ChevronDown size={14} className="ml-1" />
@@ -216,7 +205,7 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. ИНФОРМАЦИЯ О СЕРТИФИКАТАХ */}
+      {/* 3. ИНФОРМАЦИЯ О СЕРТИФИКАТАХ (Аккордеон) */}
       <section className="py-20 bg-slate-50 border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">Информация о сертификатах</h2>
@@ -240,16 +229,16 @@ export const CertificationPage: React.FC = () => {
                   {expandedDetail === item.id ? <ChevronUp className="text-blue-600"/> : <ChevronDown className="text-slate-400"/>}
                 </button>
                 
+                {/* ✅ ИСПРАВЛЕНО: Убрано пунктирное подчеркивание */}
                 <div className={`transition-all duration-300 ease-in-out ${expandedDetail === item.id ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
                   <div className="p-6 pt-0 text-slate-600 leading-relaxed border-t border-slate-100 mt-2">
                     {item.longDesc}
                     <div className="mt-4">
                         <button 
-                            /* ✅ ИСПРАВЛЕНО: "Заказать" */
                             onClick={() => handleOrderClick(item.type)}
-                            className="text-sm font-bold text-blue-600 hover:text-yellow-600 underline decoration-dashed underline-offset-4"
+                            className="text-sm font-bold text-blue-600 hover:text-yellow-600 transition-colors"
                         >
-                            Заказать сертификат {item.type} →
+                            Оформить сертификат {item.type} →
                         </button>
                     </div>
                   </div>
@@ -298,12 +287,42 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. ДОКУМЕНТЫ */}
-      <section className="py-20 bg-slate-50 border-y border-slate-200">
+      {/* 5. ШАГИ */}
+      <section className="py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+          <h2 className="text-3xl font-extrabold text-slate-900 mb-16 text-center">Как получить сертификат: просто и понятно</h2>
+          <div className="relative">
+            <div className="hidden md:block absolute top-6 left-0 w-full h-1 bg-slate-200 rounded">
+                <div className="h-full bg-blue-200 w-3/4 rounded"></div>
+            </div>
+            <div className="grid md:grid-cols-4 gap-8">
+              {[
+                { title: 'Подготовка', desc: 'Соберите пакет документов по нашему чек-листу. Скачайте и заполните бланк заявления.' },
+                { title: 'Подача заявки', desc: 'Отправьте заявку и сканы документов онлайн через форму ниже или предоставьте в офис.' },
+                { title: 'Экспертиза', desc: 'Наши специалисты проверят документы и, при необходимости, проведут экспертизу.' },
+                { title: 'Получение', desc: 'Получите готовый сертификат на защищенном бланке в офисе Палаты.' },
+              ].map((step, idx) => (
+                <div key={idx} className="relative pt-8 md:pt-16 group">
+                  <div className="absolute top-0 left-0 md:left-1/2 md:-translate-x-1/2 w-12 h-12 bg-white border-4 border-blue-600 text-blue-600 rounded-full flex items-center justify-center font-bold text-xl z-10 shadow-md group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                    {idx + 1}
+                  </div>
+                  <div className="bg-white p-6 rounded-2xl md:text-center h-full hover:shadow-lg transition-all border border-slate-100">
+                    <h3 className="font-bold text-lg mb-2">{step.title}</h3>
+                    <p className="text-slate-500 text-sm leading-relaxed">{step.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. ДОКУМЕНТЫ */}
+      <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Документы для проведения экспертизы</h2>
-            <p className="text-slate-500">Минимальный пакет документов для начала работы</p>
+            <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Все, что нужно для подачи заявки</h2>
+            <p className="text-slate-500">Мы подготовили для вас полный список и шаблоны, чтобы избежать ошибок</p>
           </div>
 
           <div className="bg-white rounded-3xl shadow-sm overflow-hidden border border-slate-100">
@@ -339,7 +358,7 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 6. CTA ФОРМА */}
+      {/* 7. CTA ФОРМА */}
       <div id="order-form" className="pt-24">
         <section className="py-20 bg-slate-900 text-white">
           <div className="max-w-5xl mx-auto px-6 md:px-8">
@@ -442,7 +461,7 @@ export const CertificationPage: React.FC = () => {
         </section>
       </div>
 
-      {/* 7. FAQ */}
+      {/* 8. FAQ */}
       <section className="py-20 bg-white">
         <div className="max-w-3xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Часто задаваемые вопросы</h2>
