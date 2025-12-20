@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, Phone } from 'lucide-react';
+import { Menu, X, Phone, Mail } from 'lucide-react';
 import { Button } from './ui/Button';
 
-export const Header: React.FC = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -16,71 +18,92 @@ export const Header: React.FC = () => {
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-3' : 'bg-white py-5'
+        isScrolled ? 'bg-white shadow-md py-2' : 'bg-white py-4'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-8 flex items-center justify-between">
-        
-        {/* 1. ЛОГОТИП И НАЗВАНИЕ */}
-        <Link to="/" className="flex items-center gap-4 group shrink-0">
-           <img 
-             src="images/logo-TPP-indigo.png" 
-             alt="ТПП Забайкальского края" 
-             className="h-12 w-auto object-contain transition-transform group-hover:scale-105" 
-           />
-           <div className="hidden md:flex flex-col justify-center ml-2">
-             <span className="text-sm font-extrabold text-slate-900 leading-tight max-w-[220px] uppercase">
-               Торгово-промышленная палата <br/>
-               <span className="text-blue-700">Забайкальского края</span>
-             </span>
-           </div>
-        </Link>
-        
-        {/* 2. НАВИГАЦИЯ */}
-        <nav className="hidden xl:flex items-center gap-8 text-sm font-bold text-slate-600">
-            <Link to="/" className="hover:text-blue-700 transition-colors duration-200">Услуги</Link>
-            <Link to="/membership" className="hover:text-blue-700 transition-colors duration-200">Членство</Link>
-            <Link to="/ved" className="hover:text-blue-700 transition-colors duration-200">ВЭД и Китай</Link>
-            <Link to="/news" className="hover:text-blue-700 transition-colors duration-200">Пресс-центр</Link>
-        </nav>
+      <div className="max-w-7xl mx-auto px-6 md:px-8">
+        <div className="flex items-center justify-between">
           
-        {/* 3. КОНТАКТЫ И КНОПКА */}
-        <div className="hidden lg:flex items-center gap-6">
-          <div className="text-right hidden xl:block">
-             {/* Обновленный телефон */}
-             <a href="tel:+79243733330" className="block text-sm font-bold text-slate-900 hover:text-blue-700 transition-colors">
-               +7 (924) 373-33-30
-             </a>
-             {/* Email вместо часов работы */}
-             <a href="mailto:info@zabtpp.ru" className="block text-xs font-medium text-slate-500 hover:text-blue-700 transition-colors mt-0.5">
-               info@zabtpp.ru
-             </a>
+          {/* ЛОГОТИП И НАЗВАНИЕ */}
+          <Link to="/" className="flex items-center gap-4 group">
+            
+            {/* ✅ ИЗМЕНЕНО: Логотип в "гербовом" квадрате */}
+            <div className="flex items-center justify-center w-14 h-14 bg-slate-900 border-2 border-yellow-400 rounded-xl shadow-sm transition-transform group-hover:scale-105">
+                <img 
+                  src="/images/logo-TPP-white.png" 
+                  alt="Logo ZTPP" 
+                  className="w-8 h-auto" 
+                />
+            </div>
+
+            <div className="flex flex-col">
+              <span className="text-xs font-bold tracking-widest text-slate-900 uppercase leading-tight">
+                Торгово-промышленная
+              </span>
+              <span className="text-xs font-bold tracking-widest text-slate-900 uppercase leading-tight">
+                палата
+              </span>
+              <span className="text-blue-700 font-bold text-xs uppercase tracking-widest leading-tight">
+                Забайкальского края
+              </span>
+            </div>
+          </Link>
+
+          {/* НАВИГАЦИЯ (DESKTOP) */}
+          <nav className="hidden lg:flex items-center gap-8">
+            <Link to="/services" className="text-sm font-medium text-slate-600 hover:text-blue-700 transition-colors">Услуги</Link>
+            <Link to="/membership" className="text-sm font-medium text-slate-600 hover:text-blue-700 transition-colors">Членство</Link>
+            <Link to="/ved" className="text-sm font-medium text-slate-600 hover:text-blue-700 transition-colors">ВЭД и Китай</Link>
+            <Link to="/news" className="text-sm font-medium text-slate-600 hover:text-blue-700 transition-colors">Пресс-центр</Link>
+          </nav>
+
+          {/* КОНТАКТЫ И КНОПКА (DESKTOP) */}
+          <div className="hidden lg:flex items-center gap-6">
+            <div className="text-right">
+              <a href="tel:+79243733330" className="block text-slate-900 font-bold hover:text-blue-700 transition-colors">
+                +7 (924) 373-33-30
+              </a>
+              <a href="mailto:info@zabtpp.ru" className="text-xs text-slate-500 hover:text-yellow-600 transition-colors flex items-center justify-end gap-1">
+                info@zabtpp.ru
+              </a>
+            </div>
+            <Button variant="lime" className="bg-yellow-400 text-slate-900 hover:bg-yellow-500 font-bold shadow-md">
+              Вступить в палату
+            </Button>
           </div>
 
-          {/* Кнопка - Amber/Yellow Accent */}
-          <Button variant="lime" className="!rounded-lg shadow-md px-6 py-2.5 text-sm font-bold bg-yellow-500 text-slate-900 hover:bg-yellow-400 hover:-translate-y-0.5 transition-all">
-              Вступить в палату
-          </Button>
+          {/* МОБИЛЬНОЕ МЕНЮ (КНОПКА) */}
+          <button 
+            className="lg:hidden text-slate-900"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
         </div>
-
-        {/* Мобильное меню */}
-        <button className="lg:hidden text-slate-900 hover:text-blue-700 transition-colors" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-          {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
       </div>
 
-      {/* Выпадающее меню (Мобильное) */}
+      {/* МОБИЛЬНОЕ МЕНЮ (ВЫПАДАЮЩЕЕ) */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden absolute top-full left-0 w-full bg-white border-b border-slate-200 p-6 flex flex-col gap-4 shadow-2xl animate-in slide-in-from-top-5">
-          <Link to="/" className="text-lg font-semibold py-2 text-slate-800 hover:text-blue-700">Услуги</Link>
-          <Link to="/membership" className="text-lg font-semibold py-2 text-slate-800 hover:text-blue-700">Членство</Link>
-          <Link to="/ved" className="text-lg font-semibold py-2 text-slate-800 hover:text-blue-700">ВЭД и Китай</Link>
-          <hr className="border-slate-100"/>
-          <div className="py-2">
-              <a href="tel:+79243733330" className="block font-bold text-slate-900">+7 (924) 373-33-30</a>
-              <a href="mailto:info@zabtpp.ru" className="block text-sm text-slate-500 mt-1">info@zabtpp.ru</a>
+        <div className="absolute top-full left-0 w-full bg-white border-t border-slate-100 shadow-xl lg:hidden flex flex-col p-6 gap-4">
+          <Link to="/services" className="text-lg font-medium text-slate-900" onClick={() => setIsMobileMenuOpen(false)}>Услуги</Link>
+          <Link to="/membership" className="text-lg font-medium text-slate-900" onClick={() => setIsMobileMenuOpen(false)}>Членство</Link>
+          <Link to="/ved" className="text-lg font-medium text-slate-900" onClick={() => setIsMobileMenuOpen(false)}>ВЭД и Китай</Link>
+          <Link to="/news" className="text-lg font-medium text-slate-900" onClick={() => setIsMobileMenuOpen(false)}>Пресс-центр</Link>
+          
+          <hr className="border-slate-100 my-2" />
+          
+          <div className="flex flex-col gap-3">
+             <a href="tel:+79243733330" className="flex items-center gap-2 text-slate-900 font-bold">
+               <Phone size={18} className="text-yellow-500" /> +7 (924) 373-33-30
+             </a>
+             <a href="mailto:info@zabtpp.ru" className="flex items-center gap-2 text-slate-600">
+               <Mail size={18} className="text-yellow-500" /> info@zabtpp.ru
+             </a>
           </div>
-          <Button variant="lime" className="w-full justify-center !rounded-lg font-bold">Вступить в палату</Button>
+          
+          <Button variant="lime" className="bg-yellow-400 text-slate-900 w-full justify-center font-bold">
+            Вступить в палату
+          </Button>
         </div>
       )}
     </header>
