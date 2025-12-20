@@ -13,32 +13,37 @@ import {
 import { Link } from 'react-router-dom';
 import { Button } from './ui/Button';
 
-// --- СТАНДАРТНАЯ КАРТОЧКА ---
+// --- СТАНДАРТНАЯ КАРТОЧКА (Теперь кликабельная) ---
 interface ServiceCardProps {
   icon: React.ElementType;
   title: string;
   description: string;
+  link?: string; // Добавил проп link
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ icon: Icon, title, description }) => (
-  <div className="group p-8 rounded-2xl bg-white border border-slate-100 hover:border-slate-200 transition-all duration-300 flex flex-col h-full hover:shadow-xl hover:shadow-blue-900/5 hover:scale-[1.03]">
-    <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-blue-50 text-blue-900 transition-transform group-hover:scale-105">
-      <Icon size={24} strokeWidth={1.5} />
+const ServiceCard: React.FC<ServiceCardProps> = ({ icon: Icon, title, description, link }) => {
+  const CardContent = (
+    <div className="group p-8 rounded-2xl bg-white border border-slate-100 hover:border-slate-200 transition-all duration-300 flex flex-col h-full hover:shadow-xl hover:shadow-blue-900/5 hover:scale-[1.03] cursor-pointer">
+      <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-blue-50 text-blue-900 transition-transform group-hover:scale-105">
+        <Icon size={24} strokeWidth={1.5} />
+      </div>
+      
+      <h3 className="text-lg font-bold mb-3 text-slate-900">
+        {title}
+      </h3>
+      
+      <p className="text-sm leading-relaxed mb-6 flex-grow text-slate-600">
+        {description}
+      </p>
+      
+      <div className="inline-flex items-center font-bold text-sm mt-auto text-blue-700 hover:text-blue-900 transition-colors">
+        Подробнее <ChevronRight size={16} className="ml-1 transition-transform group-hover:translate-x-1" />
+      </div>
     </div>
-    
-    <h3 className="text-lg font-bold mb-3 text-slate-900">
-      {title}
-    </h3>
-    
-    <p className="text-sm leading-relaxed mb-6 flex-grow text-slate-600">
-      {description}
-    </p>
-    
-    <a href="#" className="inline-flex items-center font-bold text-sm mt-auto text-blue-700 hover:text-blue-900 transition-colors">
-      Подробнее <ChevronRight size={16} className="ml-1 transition-transform group-hover:translate-x-1" />
-    </a>
-  </div>
-);
+  );
+
+  return link ? <Link to={link} className="block h-full">{CardContent}</Link> : CardContent;
+};
 
 // --- ПРИОРИТЕТНАЯ КАРТОЧКА ---
 interface PriorityCardProps {
@@ -46,8 +51,8 @@ interface PriorityCardProps {
   title: string;
   description: string;
   buttonText: string;
-  badgeText?: string; // ✅ Сделал необязательным
-  badgeStyle?: 'green' | 'gray'; // ✅ Сделал необязательным
+  badgeText: string;
+  badgeStyle: 'green' | 'gray';
   buttonStyle: 'yellow' | 'dark';
   link?: string;
 }
@@ -65,21 +70,17 @@ const PriorityCard: React.FC<PriorityCardProps> = ({
   <div className="bg-white rounded-[2rem] p-6 md:p-7 shadow-xl shadow-slate-200/60 border border-white flex flex-col h-full relative overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-900/10">
     
     <div className="flex justify-between items-start mb-5">
-      {/* Иконка: Светлый фон, синяя иконка */}
       <div className="w-14 h-14 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-105 bg-blue-50 text-blue-600">
         <Icon size={28} strokeWidth={1.5} />
       </div>
 
-      {/* ✅ Условие: Рисуем бейдж только если есть текст */}
-      {badgeText && (
-        <span className={`inline-flex items-center px-3 py-1 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-wider ${
-          badgeStyle === 'green' 
-              ? 'bg-blue-100 text-blue-700'
-              : 'bg-slate-100 text-slate-600'
-        }`}>
-          {badgeText}
-        </span>
-      )}
+      <span className={`inline-flex items-center px-3 py-1 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-wider ${
+        badgeStyle === 'green' 
+            ? 'bg-blue-100 text-blue-700'
+            : 'bg-slate-100 text-slate-600'
+      }`}>
+        {badgeText}
+      </span>
     </div>
 
     <h3 className="text-xl md:text-2xl font-extrabold text-slate-900 mb-3 leading-tight">
@@ -125,6 +126,7 @@ const ServicesGrid: React.FC = () => {
     <section className="pt-10 pb-24 bg-slate-50">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         
+        {/* ВЕРХНИЙ ПРИЗЫВ */}
         <div className="text-center mb-10 max-w-2xl mx-auto">
           <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">
             Закажите нужный сертификат или экспертизу в пару кликов
@@ -134,6 +136,7 @@ const ServicesGrid: React.FC = () => {
           </p>
         </div>
 
+        {/* ДВА АКЦЕНТНЫХ БЛОКА */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-16">
           <PriorityCard 
             icon={FileText}
@@ -146,17 +149,19 @@ const ServicesGrid: React.FC = () => {
             link="/services/cert"
           />
           
-          {/* ✅ ИЗМЕНЕНО: Убран бейдж, кнопка стала желтой */}
           <PriorityCard 
             icon={Scale}
             title="Независимая товарная экспертиза"
             description="Проведем независимую приемку товаров по качеству и количеству. Выявим брак, оценим ущерб и определим коды ТН ВЭД. Защитим ваши интересы в суде и спорах."
             buttonText="Заказать экспертизу"
-            buttonStyle="yellow" 
+            badgeText="Защита интересов"
+            badgeStyle="gray"
+            buttonStyle="dark"
             link="/services/expert"
           />
         </div>
 
+        {/* ЗАГОЛОВОК ОБЩЕГО КАТАЛОГА */}
         <div className="text-center mb-12 max-w-3xl mx-auto">
           <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
             Комплексная поддержка бизнеса в Забайкальском крае
@@ -166,6 +171,7 @@ const ServicesGrid: React.FC = () => {
           </p>
         </div>
 
+        {/* СЕТКА ОСТАЛЬНЫХ УСЛУГ */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           
           {/* 1. ВЭД */}
@@ -173,6 +179,7 @@ const ServicesGrid: React.FC = () => {
             icon={Globe} 
             title="ВЭД и работа с Китаем" 
             description="Поиск надежных партнеров в КНР, организация бизнес-миссий, проверка контрагентов и сопровождение экспортных контрактов под ключ."
+            link="/ved"
           />
 
           {/* 2. ТАМОЖЕННОЕ СОПРОВОЖДЕНИЕ */}
@@ -180,6 +187,7 @@ const ServicesGrid: React.FC = () => {
             icon={Container} 
             title="Таможенное сопровождение" 
             description="Помощь в классификации товаров (ТН ВЭД), расчет таможенных платежей, подготовка документов для таможенного оформления."
+            link="/services/customs"
           />
 
           {/* 3. СТРОИТЕЛЬНАЯ ЭКСПЕРТИЗА */}
@@ -187,6 +195,7 @@ const ServicesGrid: React.FC = () => {
             icon={Hammer} 
             title="Строительно-техническая экспертиза" 
             description="Оценка качества строительных работ, проверка сметной документации, выявление дефектов, приемка квартир и коммерческих помещений."
+            link="/services/construction"
           />
 
           {/* 4. ЮРИДИЧЕСКАЯ ЗАЩИТА */}
@@ -194,6 +203,7 @@ const ServicesGrid: React.FC = () => {
             icon={Scale} 
             title="Юридическая защита" 
             description="Свидетельствование форс-мажора, международный коммерческий арбитраж, медиация и защита интересов бизнеса в органах власти."
+            link="/services/law"
           />
 
           {/* 5. МЕРОПРИЯТИЯ */}
@@ -201,6 +211,7 @@ const ServicesGrid: React.FC = () => {
             icon={Users} 
             title="Мероприятия нашего сообщества" 
             description="Нетворкинг, деловые обсуждения с представителями органов власти, а также семинары, тренинги и повышение квалификации для сотрудников."
+            link="/news"
           />
           
           {/* 6. ПОЛНЫЙ СПИСОК (CTA) */}
