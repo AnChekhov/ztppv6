@@ -5,7 +5,6 @@ import {
   MapPin, Clock, ShieldCheck, Check, Globe, Download, 
   CheckCircle2, MessageCircle, ChevronUp, Info
 } from 'lucide-react';
-// ✅ 1. ИМПОРТ КОМПОНЕНТА SEO
 import SEO from '../components/SEO';
 
 export const ExpertisePage: React.FC = () => {
@@ -65,7 +64,7 @@ export const ExpertisePage: React.FC = () => {
   const scrollToForm = () => {
     const formSection = document.getElementById('order-form');
     if (formSection) {
-      formSection.scrollIntoView({ behavior: 'smooth' });
+      formSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   };
 
@@ -103,7 +102,6 @@ export const ExpertisePage: React.FC = () => {
   return (
     <div className="font-sans text-slate-900 bg-white">
       
-      {/* ✅ 2. ВСТАВКА SEO ТЕГОВ */}
       <SEO 
         title="Независимая товарная экспертиза в Чите и Забайкальске"
         description="Проведение независимой экспертизы товаров: приемка по качеству, экспертиза по 44-ФЗ, оценка ущерба, судебная экспертиза. Аккредитованные эксперты ТПП Забайкальского края."
@@ -244,8 +242,8 @@ export const ExpertisePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. ПОЧЕМУ ТПП (ФАКТЫ) */}
-      <section className="py-20 bg-slate-50 border-y border-slate-200">
+      {/* 4. ПОЧЕМУ ТПП */}
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-200">
             <div className="text-center px-4 pt-4 md:pt-0">
@@ -262,7 +260,6 @@ export const ExpertisePage: React.FC = () => {
             
             <div className="text-center px-4 pt-4 md:pt-0">
               <Clock className="mx-auto text-blue-600 mb-4 h-10 w-10" />
-              {/* ✅ ИЗМЕНЕНО: Заголовок */}
               <div className="text-2xl font-extrabold text-slate-900 mb-2">Многолетний опыт</div>
               <p className="text-slate-500 text-sm leading-relaxed">Более 3000 экспертиз ежегодно. Наши акты проходят любые проверки и суды.</p>
             </div>
@@ -311,104 +308,108 @@ export const ExpertisePage: React.FC = () => {
       </section>
 
       {/* 6. CTA ФОРМА */}
-      <section id="order-form" className="py-20 bg-slate-900 text-white">
-        <div className="max-w-5xl mx-auto px-6 md:px-8">
-          <div className="grid md:grid-cols-2 gap-12 items-start">
-            
-            {/* Левая колонка */}
-            <div>
-              <h2 className="text-3xl md:text-4xl font-extrabold mb-6">Закажите экспертизу онлайн</h2>
-              <p className="text-slate-300 text-lg mb-8">
-                Оставьте заявку, и мы рассчитаем стоимость работ и согласуем время выезда эксперта.
-              </p>
-              <ul className="space-y-4 mb-10 text-slate-300">
-                <li className="flex items-center gap-3">
-                  <CheckCircle2 className="text-yellow-400 shrink-0" />
-                  <span>Выезд эксперта в течение 24 часов</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <CheckCircle2 className="text-yellow-400 shrink-0" />
-                  <span>Официальный акт установленного образца</span>
-                </li>
-                 <li className="flex items-center gap-3">
-                  <CheckCircle2 className="text-yellow-400 shrink-0" />
-                  <span>Бесплатная консультация</span>
-                </li>
-              </ul>
+      {/* ✅ ИСПРАВЛЕНО: Добавлен div-обертка с pt-24 */}
+      <div id="order-form" className="pt-24">
+        <section className="py-20 bg-slate-900 text-white">
+          <div className="max-w-5xl mx-auto px-6 md:px-8">
+            <div className="grid md:grid-cols-2 gap-12 items-start">
+              
+              {/* Левая колонка */}
+              <div>
+                <h2 className="text-3xl md:text-4xl font-extrabold mb-6">Закажите экспертизу онлайн</h2>
+                <p className="text-slate-300 text-lg mb-8">
+                  Оставьте заявку, и мы рассчитаем стоимость работ и согласуем время выезда эксперта.
+                </p>
+                <ul className="space-y-4 mb-10 text-slate-300">
+                  <li className="flex items-center gap-3">
+                    <CheckCircle2 className="text-yellow-400 shrink-0" />
+                    <span>Выезд эксперта в течение 24 часов</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <CheckCircle2 className="text-yellow-400 shrink-0" />
+                    <span>Официальный акт установленного образца</span>
+                  </li>
+                   <li className="flex items-center gap-3">
+                    <CheckCircle2 className="text-yellow-400 shrink-0" />
+                    <span>Бесплатная консультация</span>
+                  </li>
+                </ul>
 
-              <div className="pt-8 border-t border-slate-700">
-                <p className="text-slate-400 text-sm mb-3 font-medium uppercase tracking-wider">
-                  Нет времени заполнять форму?
-                </p>
-                <p className="text-slate-300 text-base mb-4">
-                  Решим ваш вопрос по телефону прямо сейчас:
-                </p>
-                <a href="tel:+79243733330" className="block text-3xl md:text-4xl font-extrabold text-white hover:text-yellow-400 transition-colors mb-4">
-                  +7 (924) 373-33-30
-                </a>
-                <a href="mailto:info@zabtpp.ru" className="inline-flex items-center gap-2 text-blue-400 hover:text-white transition-colors text-lg font-medium">
-                  <Mail size={20} /> info@zabtpp.ru
-                </a>
+                {/* Контакты для связи */}
+                <div className="pt-8 border-t border-slate-700">
+                  <p className="text-slate-400 text-sm mb-3 font-medium uppercase tracking-wider">
+                    Нет времени заполнять форму?
+                  </p>
+                  <p className="text-slate-300 text-base mb-4">
+                    Решим ваш вопрос по телефону прямо сейчас:
+                  </p>
+                  <a href="tel:+79243733330" className="block text-3xl md:text-4xl font-extrabold text-white hover:text-yellow-400 transition-colors mb-4">
+                    +7 (924) 373-33-30
+                  </a>
+                  <a href="mailto:info@zabtpp.ru" className="inline-flex items-center gap-2 text-blue-400 hover:text-white transition-colors text-lg font-medium">
+                    <Mail size={20} /> info@zabtpp.ru
+                  </a>
+                </div>
               </div>
-            </div>
 
-            {/* Правая колонка: Форма */}
-            <div className="bg-white rounded-3xl p-8 text-slate-900 shadow-2xl">
-              <form className="space-y-4">
-                <div>
-                  <label className="block text-sm font-bold mb-2">Название организации</label>
-                  <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="ООО 'Пример'" />
-                </div>
-                
-                <div className="grid grid-cols-2 gap-4">
+              {/* Правая колонка: Форма */}
+              <div className="bg-white rounded-3xl p-8 text-slate-900 shadow-2xl">
+                <form className="space-y-4">
                   <div>
-                    <label className="block text-sm font-bold mb-2">Контактное лицо</label>
-                    <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="Имя" />
+                    <label className="block text-sm font-bold mb-2">Название организации</label>
+                    <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="ООО 'Пример'" />
                   </div>
-                   <div>
-                    <label className="block text-sm font-bold mb-2">Телефон</label>
-                    <input type="tel" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="+7 (___) ___-__-__" />
+                  
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-bold mb-2">Контактное лицо</label>
+                      <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="Имя" />
+                    </div>
+                     <div>
+                      <label className="block text-sm font-bold mb-2">Телефон</label>
+                      <input type="tel" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="+7 (___) ___-__-__" />
+                    </div>
                   </div>
-                </div>
 
-                {/* Select: Вид экспертизы */}
-                <div>
-                   <label className="block text-sm font-bold mb-2">Вид экспертизы</label>
-                   <div className="relative">
-                     <select 
-                        value={selectedExpertise}
-                        onChange={(e) => setSelectedExpertise(e.target.value)}
-                        className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all cursor-pointer appearance-none text-slate-700"
-                     >
-                       {expertiseServices.map(s => (
-                         <option key={s.id} value={s.title}>{s.title}</option>
-                       ))}
-                       <option value="Другое">Другое / Нужна консультация</option>
-                     </select>
-                     <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-slate-500">
-                        <ChevronDown size={20} />
+                  {/* Select: Вид экспертизы */}
+                  <div>
+                     <label className="block text-sm font-bold mb-2">Вид экспертизы</label>
+                     <div className="relative">
+                       <select 
+                          value={selectedExpertise}
+                          onChange={(e) => setSelectedExpertise(e.target.value)}
+                          className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all cursor-pointer appearance-none text-slate-700"
+                       >
+                         {expertiseServices.map(s => (
+                           <option key={s.id} value={s.title}>{s.title}</option>
+                         ))}
+                         <option value="Другое">Другое / Нужна консультация</option>
+                       </select>
+                       <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-slate-500">
+                          <ChevronDown size={20} />
+                       </div>
                      </div>
-                   </div>
-                </div>
-
-                <div className="pt-2">
-                  <label className="block text-sm font-bold mb-2">Документы (если есть)</label>
-                  <div className="border-2 border-dashed border-slate-300 rounded-xl p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-slate-50 transition-colors group">
-                    <UploadCloud className="text-slate-400 group-hover:text-blue-500 mb-2 transition-colors" size={32} />
-                    <span className="text-sm text-slate-500 font-medium">Загрузить контракт или фото</span>
                   </div>
-                </div>
 
-                <button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all mt-4">
-                  Отправить заявку
-                </button>
-                <p className="text-xs text-center text-slate-400 mt-3">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
-              </form>
+                  <div className="pt-2">
+                    <label className="block text-sm font-bold mb-2">Документы (если есть)</label>
+                    <div className="border-2 border-dashed border-slate-300 rounded-xl p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-slate-50 transition-colors group">
+                      <UploadCloud className="text-slate-400 group-hover:text-blue-500 mb-2 transition-colors" size={32} />
+                      <span className="text-sm text-slate-500 font-medium">Загрузить контракт или фото</span>
+                    </div>
+                  </div>
+
+                  <button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all mt-4">
+                    Отправить заявку
+                  </button>
+                  <p className="text-xs text-center text-slate-400 mt-3">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
+                </form>
+              </div>
+
             </div>
-
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
       {/* 7. FAQ */}
       <section className="py-20 bg-white">
@@ -416,7 +417,7 @@ export const ExpertisePage: React.FC = () => {
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Часто задаваемые вопросы</h2>
           
           <div className="space-y-4">
-            {faqsItems.map((faq, index) => (
+            {faqs.map((faq, index) => (
               <div key={index} className="border-b border-slate-200 last:border-0">
                 <button 
                   onClick={() => toggleFaq(index)}
