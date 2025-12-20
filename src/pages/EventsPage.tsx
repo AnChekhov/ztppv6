@@ -76,7 +76,6 @@ export const EventsPage: React.FC = () => {
     },
     {
       id: 'club',
-      // ✅ ИЗМЕНЕНО: Заголовок
       title: 'Закрытые мероприятия для членов палаты',
       shortDesc: 'Эксклюзивный нетворкинг и встречи с представителями власти для членов сообщества.',
       longDesc: 'Формат закрытых встреч для членов Палаты. Обмен контактами, неформальное общение с коллегами и представителями региональной власти. Расширение круга деловых знакомств, поиск инвесторов и партнеров в комфортной обстановке.',
@@ -191,7 +190,8 @@ export const EventsPage: React.FC = () => {
                   <div className="p-6 pt-0 text-slate-600 leading-relaxed border-t border-slate-100 mt-2">
                     {item.longDesc}
                     <div className="mt-4">
-                        <button onClick={() => handleOrderClick(item.title)} className="text-sm font-bold text-blue-600 hover:text-yellow-600 underline decoration-dashed underline-offset-4">
+                        {/* ✅ ИСПРАВЛЕНО: Убрано подчеркивание */}
+                        <button onClick={() => handleOrderClick(item.title)} className="text-sm font-bold text-blue-600 hover:text-yellow-600 transition-colors">
                             Участвовать →
                         </button>
                     </div>
