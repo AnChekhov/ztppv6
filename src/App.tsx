@@ -7,12 +7,15 @@ import Hero from './components/Hero';
 import ServicesGrid from './components/ServicesGrid';
 import CallToAction from './components/CallToAction';
 import NewsSection from './components/NewsSection';
+import SeoTextSection from './components/SeoTextSection';
 import Footer from './components/Footer';
-import SeoTextSection from './components/SeoTextSection'; // ✅ Импортировали SEO блок
 
 // Импорт страниц услуг
 import CertificationPage from './pages/CertificationPage'; 
 import ExpertisePage from './pages/ExpertisePage';
+import VedPage from './pages/VedPage';
+import ConstructionPage from './pages/ConstructionPage';
+import CustomsPage from './pages/CustomsPage';
 
 // 1. КОМПОНЕНТ: Прокрутка наверх при переходе
 const ScrollToTop = () => {
@@ -53,7 +56,7 @@ const HomePage = () => {
       <ServicesGrid />
       <CallToAction />
       <NewsSection />
-      <SeoTextSection /> {/* ✅ Добавили блок в структуру */}
+      <SeoTextSection />
     </>
   );
 };
@@ -70,21 +73,24 @@ const App: React.FC = () => {
           {/* ГЛАВНАЯ СТРАНИЦА */}
           <Route path="/" element={<HomePage />} />
 
-          {/* СТРАНИЦЫ ИЗ ХЕДЕРА */}
+          {/* ОСНОВНЫЕ РАЗДЕЛЫ */}
           <Route path="/services" element={<PagePlaceholder title="Каталог услуг" description="Полный перечень услуг для бизнеса: от сертификации до переводов." />} />
           <Route path="/membership" element={<PagePlaceholder title="Членство в Союзе" description="Как вступить в ТПП, преимущества и реестр членов." />} />
-          <Route path="/ved" element={<PagePlaceholder title="ВЭД и Китай" description="Поиск партнеров, бизнес-миссии и сопровождение контрактов." />} />
+          <Route path="/ved" element={<VedPage />} /> {/* ✅ Страница ВЭД */}
           <Route path="/news" element={<PagePlaceholder title="Пресс-центр" description="Новости, анонсы мероприятий и отчеты о деятельности." />} />
 
-          {/* СТРАНИЦЫ ИЗ ФУТЕРА */}
+          {/* СТРАНИЦЫ УСЛУГ */}
+          <Route path="/services/cert" element={<CertificationPage />} />
+          <Route path="/services/expert" element={<ExpertisePage />} />
+          <Route path="/services/construction" element={<ConstructionPage />} /> {/* ✅ Страница Стройки */}
+          <Route path="/services/customs" element={<CustomsPage />} /> {/* ✅ Страница Таможни */}
+          
+          <Route path="/services/law" element={<PagePlaceholder title="Юридические услуги" description="Консультации, представительство в суде и свидетельствование форс-мажора." />} />
+
+          {/* СЛУЖЕБНЫЕ */}
           <Route path="/about" element={<PagePlaceholder title="Об организации" description="История Палаты, руководство и документы." />} />
           <Route path="/members" element={<PagePlaceholder title="Реестр членов" description="Список компаний, входящих в Союз «ТПП Забайкальского края»." />} />
           <Route path="/committees" element={<PagePlaceholder title="Комитеты и комиссии" description="Отраслевые объединения для решения системных проблем бизнеса." />} />
-          
-          {/* КОНКРЕТНЫЕ УСЛУГИ */}
-          <Route path="/services/cert" element={<CertificationPage />} />
-          <Route path="/services/expert" element={<ExpertisePage />} />
-          <Route path="/services/law" element={<PagePlaceholder title="Юридические услуги" description="Консультации, представительство в суде и свидетельствование форс-мажора." />} />
         </Routes>
       </main>
 
