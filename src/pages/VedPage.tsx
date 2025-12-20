@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { 
   Globe, Handshake, Search, Languages, FileText, 
   Plane, CheckCircle2, Phone, Mail, ChevronDown, 
-  ChevronUp, UploadCloud, Check
+  ChevronUp, UploadCloud, Check, MessageCircle
 } from 'lucide-react';
 import SEO from '../components/SEO';
 
@@ -127,6 +127,7 @@ export const VedPage: React.FC = () => {
                     Оставить заявку на ВЭД
                   </button>
                   <button onClick={scrollToForm} className="border-2 border-slate-600 hover:border-white text-white font-semibold py-4 px-8 rounded-xl transition-all hover:scale-105 flex items-center justify-center gap-2">
+                    <MessageCircle size={20} />
                     Найти партнера
                   </button>
                 </div>
@@ -189,7 +190,8 @@ export const VedPage: React.FC = () => {
                   <div className="p-6 pt-0 text-slate-600 leading-relaxed border-t border-slate-100 mt-2">
                     {item.longDesc}
                     <div className="mt-4">
-                        <button onClick={() => handleOrderClick(item.title)} className="text-sm font-bold text-blue-600 hover:text-yellow-600 underline decoration-dashed underline-offset-4">
+                        {/* ✅ ИСПРАВЛЕНО: Убрано подчеркивание */}
+                        <button onClick={() => handleOrderClick(item.title)} className="text-sm font-bold text-blue-600 hover:text-yellow-600 transition-colors">
                             Заказать услугу →
                         </button>
                     </div>
