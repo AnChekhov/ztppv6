@@ -27,10 +27,10 @@ const Header: React.FC = () => {
           {/* ЛОГОТИП И НАЗВАНИЕ */}
           <Link to="/" className="flex items-center gap-4 group">
             
-            {/* ✅ ИЗМЕНЕНО: Логотип в "гербовом" квадрате */}
             <div className="flex items-center justify-center w-14 h-14 bg-slate-900 border-2 border-yellow-400 rounded-xl shadow-sm transition-transform group-hover:scale-105">
+                {/* ✅ ИСПРАВЛЕНО: Добавлен префикс /ztppv6 к пути */}
                 <img 
-                  src="/images/logo-TPP-white.png" 
+                  src="/ztppv6/images/logo-TPP-white.png" 
                   alt="Logo ZTPP" 
                   className="w-8 h-auto" 
                 />
