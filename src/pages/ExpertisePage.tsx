@@ -64,6 +64,7 @@ export const ExpertisePage: React.FC = () => {
   const scrollToForm = () => {
     const formSection = document.getElementById('order-form');
     if (formSection) {
+      // Центрирование при скролле
       formSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   };
@@ -84,7 +85,8 @@ export const ExpertisePage: React.FC = () => {
     }, 100);
   };
 
-  const faqsItems = [
+  // ✅ ИСПРАВЛЕНО: переименовал faqsItems в faqs, чтобы совпадало с использованием в JSX
+  const faqs = [
     {
       question: "Имеет ли акт экспертизы ТПП юридическую силу в суде?",
       answer: "Да, безусловно. Торгово-промышленная палата имеет статус независимой экспертной организации (Закон РФ «О торгово-промышленных палатах»). Наши акты признаются судами, таможенными органами и страховыми компаниями как официальное доказательство."
@@ -308,7 +310,7 @@ export const ExpertisePage: React.FC = () => {
       </section>
 
       {/* 6. CTA ФОРМА */}
-      {/* ✅ ИСПРАВЛЕНО: Добавлен div-обертка с pt-24 */}
+      {/* ✅ Добавлен wrapper для отступа от хедера при скролле */}
       <div id="order-form" className="pt-24">
         <section className="py-20 bg-slate-900 text-white">
           <div className="max-w-5xl mx-auto px-6 md:px-8">
@@ -335,7 +337,6 @@ export const ExpertisePage: React.FC = () => {
                   </li>
                 </ul>
 
-                {/* Контакты для связи */}
                 <div className="pt-8 border-t border-slate-700">
                   <p className="text-slate-400 text-sm mb-3 font-medium uppercase tracking-wider">
                     Нет времени заполнять форму?
@@ -371,7 +372,7 @@ export const ExpertisePage: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Select: Вид экспертизы */}
+                  {/* Select: Вид экспертизы (связан со стейтом) */}
                   <div>
                      <label className="block text-sm font-bold mb-2">Вид экспертизы</label>
                      <div className="relative">
