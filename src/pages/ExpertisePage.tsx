@@ -64,18 +64,19 @@ export const ExpertisePage: React.FC = () => {
   const scrollToForm = () => {
     const formSection = document.getElementById('order-form');
     if (formSection) {
-      // Центрирование при скролле
       formSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   };
 
-  const handleCardClick = (title: string) => {
+  // Клик по кнопке "Заказать" внутри описания
+  const handleOrderClick = (title: string) => {
     setSelectedExpertise(title);
     scrollToForm();
   };
 
+  // Клик по карточке или "Подробнее" -> Открытие текста
   const handleReadMore = (e: React.MouseEvent, id: string) => {
-    e.stopPropagation();
+    // e.stopPropagation() не нужен здесь, так как мы хотим, чтобы клик по всей карточке работал так же
     setExpandedDetail(id);
     setTimeout(() => {
       const element = document.getElementById(`detail-${id}`);
@@ -85,7 +86,6 @@ export const ExpertisePage: React.FC = () => {
     }, 100);
   };
 
-  // ✅ ИСПРАВЛЕНО: переименовал faqsItems в faqs, чтобы совпадало с использованием в JSX
   const faqs = [
     {
       question: "Имеет ли акт экспертизы ТПП юридическую силу в суде?",
@@ -179,7 +179,8 @@ export const ExpertisePage: React.FC = () => {
             {expertiseServices.map((item) => (
               <div 
                 key={item.id} 
-                onClick={() => handleCardClick(item.title)}
+                /* ✅ ИСПРАВЛЕНО: Клик по карточке открывает описание */
+                onClick={(e) => handleReadMore(e, item.id)}
                 className="bg-white rounded-2xl p-8 shadow-lg shadow-slate-200/50 border border-slate-100 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-blue-900/5 hover:scale-[1.03] flex flex-col h-full cursor-pointer group"
               >
                 <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
@@ -189,7 +190,6 @@ export const ExpertisePage: React.FC = () => {
                 <p className="text-slate-600 text-sm leading-relaxed flex-grow">{item.shortDesc}</p>
                 <div className="mt-6 pt-4 border-t border-slate-100">
                    <button 
-                     onClick={(e) => handleReadMore(e, item.id)}
                      className="text-sm font-bold text-blue-600 hover:text-blue-800 transition-colors flex items-center"
                    >
                      Подробнее <ChevronDown size={16} className="ml-1" />
@@ -230,7 +230,8 @@ export const ExpertisePage: React.FC = () => {
                     {item.longDesc}
                     <div className="mt-4">
                         <button 
-                            onClick={() => handleCardClick(item.title)}
+                            /* ✅ ИСПРАВЛЕНО: Кнопка ведет к форме */
+                            onClick={() => handleOrderClick(item.title)}
                             className="text-sm font-bold text-blue-600 hover:text-yellow-600 underline decoration-dashed underline-offset-4"
                         >
                             Заказать эту экспертизу →
@@ -310,7 +311,6 @@ export const ExpertisePage: React.FC = () => {
       </section>
 
       {/* 6. CTA ФОРМА */}
-      {/* ✅ Добавлен wrapper для отступа от хедера при скролле */}
       <div id="order-form" className="pt-24">
         <section className="py-20 bg-slate-900 text-white">
           <div className="max-w-5xl mx-auto px-6 md:px-8">
@@ -372,7 +372,7 @@ export const ExpertisePage: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Select: Вид экспертизы (связан со стейтом) */}
+                  {/* Select: Вид экспертизы */}
                   <div>
                      <label className="block text-sm font-bold mb-2">Вид экспертизы</label>
                      <div className="relative">
