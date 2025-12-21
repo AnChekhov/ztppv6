@@ -4,8 +4,7 @@ import {
   Container, Hammer, Calculator, Briefcase,
   ShieldCheck, Phone, Mail, UploadCloud,
   CheckCircle2, ChevronDown, ArrowRight,
-  MessageCircle, Leaf, BookOpen, PenTool,
-  MonitorPlay, Coffee // Иконка для переговорной
+  MessageCircle, LayoutGrid, Handshake
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
@@ -162,6 +161,11 @@ export const AllServicesPage: React.FC = () => {
           desc: "Разработка и правовой анализ договоров (в т.ч. внешнеэкономических). Выявление рисков, корректировка условий поставки и ответственности сторон." 
         },
         { 
+          id: "law-mediation", 
+          name: "Медиация (Досудебное урегулирование)", 
+          desc: "Урегулирование споров с участием независимого посредника (медиатора). Помогает сохранить деловые отношения и избежать судебных издержек." 
+        },
+        { 
           id: "law-court", 
           name: "Представительство в суде", 
           desc: "Защита интересов бизнеса в арбитражных судах и судах общей юрисдикции. Взыскание задолженности." 
@@ -235,7 +239,6 @@ export const AllServicesPage: React.FC = () => {
           name: "Предоставление конференц-зала", 
           desc: "Организация мероприятий на площадке ТПП. Оборудованный зал в центре Читы (проектор, звук, ВКС) для проведения семинаров, собраний и переговоров. Техническое сопровождение." 
         },
-        // ✅ НОВАЯ УСЛУГА: Переговорная комната
         { 
           id: "dev-room", 
           name: "Предоставление переговорной комнаты", 
@@ -273,30 +276,57 @@ export const AllServicesPage: React.FC = () => {
         keywords="услуги тпп чита, каталог услуг, оценка бизнеса, переводы китайский, соут чита, регистрация товарного знака, строительная экспертиза, аренда зала чита"
       />
 
-      {/* HERO */}
-      <section className="relative bg-slate-900 text-white min-h-[60vh] flex flex-col justify-center items-center py-20 overflow-hidden">
+      {/* HERO: 2 колонки, центрирование по высоте (как на других страницах) */}
+      <section className="relative bg-slate-900 text-white min-h-[65vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 opacity-30">
              <img src="/ztppv6/images/hero-bg.jpg" alt="Background" className="w-full h-full object-cover" />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/90 to-slate-900"></div>
-        <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 text-center">
-            <h1 className="text-4xl md:text-6xl font-extrabold mb-6">Каталог услуг Палаты</h1>
-            <p className="text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
-              Комплексная поддержка вашего бизнеса на всех этапах: от регистрации товарного знака до выхода на международные рынки.
-            </p>
-            {/* Кнопка скролла к форме */}
-            <div className="mt-8">
-              <button 
-                onClick={() => handleOrderClick('Нужна консультация (общий вопрос)')}
-                className="bg-yellow-400 text-slate-900 font-bold py-3 px-8 rounded-xl hover:bg-yellow-500 transition-colors shadow-lg hover:scale-105 transform duration-200"
-              >
-                Мне нужна консультация, я не знаю что выбрать
-              </button>
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/[0.87] to-slate-900"></div>
+        
+        <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center">
+            
+            <div className="grid lg:grid-cols-12 gap-8 items-center">
+              
+              {/* Левая колонка: Текст */}
+              <div className="lg:col-span-7 max-w-3xl">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
+                   Каталог услуг <span className="text-yellow-400">Палаты</span>
+                </h1>
+                <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl">
+                  Комплексная поддержка вашего бизнеса на всех этапах: от регистрации товарного знака до выхода на международные рынки.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <button 
+                    onClick={() => handleOrderClick('Нужна консультация (общий вопрос)')}
+                    className="bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 px-8 rounded-xl transition-all hover:scale-105 shadow-[0_0_20px_rgba(250,204,21,0.3)]"
+                  >
+                    Получить консультацию
+                  </button>
+                </div>
+              </div>
+
+              {/* Правая колонка: Иконка Каталога */}
+              <div className="hidden lg:flex lg:col-span-5 justify-center items-center relative">
+                <div className="absolute w-80 h-80 bg-blue-600/10 rounded-full blur-3xl"></div>
+                <div className="relative transform transition-transform duration-500 hover:scale-105">
+                   <LayoutGrid 
+                      size={300} 
+                      strokeWidth={1}
+                      className="text-slate-600/70 drop-shadow-2xl" 
+                   />
+                   <LayoutGrid 
+                      size={300} 
+                      strokeWidth={1}
+                      className="absolute top-0 left-0 text-white/10" 
+                   />
+                </div>
+              </div>
+
             </div>
         </div>
       </section>
 
-      {/* 1. НАВИГАЦИОННАЯ СЕТКА */}
+      {/* 1. НАВИГАЦИОННАЯ СЕТКА (МЕНЮ) */}
       <section className="py-16 bg-white border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
            <h2 className="text-2xl font-bold text-slate-900 mb-8">Быстрый переход к разделам:</h2>
@@ -353,7 +383,8 @@ export const AllServicesPage: React.FC = () => {
                   <div 
                     key={service.id} 
                     id={service.id} 
-                    className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow scroll-mt-48"
+                    /* ✅ ИСПРАВЛЕНО: Добавлен border и тень */
+                    className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-lg hover:border-blue-200 transition-all scroll-mt-48"
                   >
                     <h3 className="text-xl font-bold text-slate-900 mb-3">{service.name}</h3>
                     <p className="text-slate-600 leading-relaxed mb-6">
