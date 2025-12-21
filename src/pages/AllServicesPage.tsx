@@ -4,7 +4,7 @@ import {
   Container, Hammer, Calculator, Briefcase,
   ShieldCheck, Phone, Mail, UploadCloud,
   CheckCircle2, ChevronDown, ArrowRight,
-  MessageCircle, LayoutGrid, HelpCircle // Добавил иконку вопроса
+  MessageCircle, LayoutGrid, HelpCircle
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
@@ -122,13 +122,13 @@ export const AllServicesPage: React.FC = () => {
         { id: "dev-sout", name: "СОУТ", desc: "Организация проведения спецоценки рабочих мест." },
       ]
     },
-    // ✅ 8-й БЛОК: Заполнитель пустоты (Ведет к контактам/форме)
+    // ✅ 8-й БЛОК: Заполнитель
     {
       id: "cat-help",
-      title: "Нужна консультация?",
+      title: "Центр поддержки и контакты", // ✅ Изменено название
       icon: HelpCircle,
       color: "bg-slate-100 text-slate-600",
-      isAction: true, // Флаг для особого рендера
+      isAction: true,
       services: [] 
     }
   ];
@@ -141,7 +141,7 @@ export const AllServicesPage: React.FC = () => {
         keywords="услуги тпп чита, каталог услуг, оценка бизнеса, переводы китайский, соут чита, регистрация товарного знака, строительная экспертиза"
       />
 
-      {/* HERO: 2 колонки */}
+      {/* HERO */}
       <section className="relative bg-slate-900 text-white min-h-[65vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 opacity-30">
              <img src="/ztppv6/images/hero-bg.jpg" alt="Background" className="w-full h-full object-cover" />
@@ -153,9 +153,9 @@ export const AllServicesPage: React.FC = () => {
               
               {/* Левая колонка */}
               <div className="lg:col-span-7 max-w-3xl">
-                {/* ✅ ИЗМЕНЕНО: Заголовок */}
+                {/* ✅ ИЗМЕНЕНО: Выделение желтым "Торгово-промышленной палаты" */}
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
-                   Каталог услуг Торгово-промышленной палаты <span className="text-yellow-400">Забайкальского края</span>
+                   Каталог услуг <span className="text-yellow-400">Торгово-промышленной палаты</span> Забайкальского края
                 </h1>
                 <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl">
                   Комплексная поддержка вашего бизнеса на всех этапах: от регистрации товарного знака до выхода на международные рынки.
@@ -170,7 +170,7 @@ export const AllServicesPage: React.FC = () => {
                 </div>
               </div>
 
-              {/* Правая колонка: Иконка */}
+              {/* Правая колонка */}
               <div className="hidden lg:flex lg:col-span-5 justify-center items-center relative">
                 <div className="absolute w-80 h-80 bg-blue-600/10 rounded-full blur-3xl"></div>
                 <div className="relative transform transition-transform duration-500 hover:scale-105">
@@ -191,25 +191,25 @@ export const AllServicesPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 1. НАВИГАЦИОННАЯ СЕТКА (МЕНЮ) */}
+      {/* 1. НАВИГАЦИОННАЯ СЕТКА */}
       <section className="py-20 bg-white border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
            <h2 className="text-2xl font-bold text-slate-900 mb-8">Быстрый переход к разделам:</h2>
            
            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {allCategories.map((cat, idx) => (
-                // ✅ ИЗМЕНЕНО: Стиль карточек как на Главной (border, shadow, scale)
                 <div 
                   key={idx} 
+                  /* ✅ ИЗМЕНЕНО: Добавлена постоянная тень (shadow-xl shadow-slate-200/60) */
                   className={`
                     p-6 rounded-2xl bg-white border border-slate-100 
-                    hover:border-slate-200 hover:shadow-xl hover:shadow-blue-900/5 
+                    shadow-xl shadow-slate-200/60
+                    hover:border-slate-200 hover:shadow-2xl hover:shadow-blue-900/5 
                     hover:scale-[1.02] transition-all duration-300 flex flex-col h-full
                     ${cat.isAction ? 'border-dashed border-slate-300 bg-slate-50/50 justify-center items-center text-center cursor-pointer' : ''}
                   `}
                   onClick={cat.isAction ? () => handleOrderClick('Консультация') : undefined}
                 >
-                    {/* Если это обычная категория */}
                     {!cat.isAction && (
                       <>
                         <button 
@@ -242,12 +242,13 @@ export const AllServicesPage: React.FC = () => {
                       </>
                     )}
 
-                    {/* ✅ 8-й БЛОК: Если это Action блок (заполнитель) */}
+                    {/* 8-й БЛОК: ЗАПОЛНИТЕЛЬ */}
                     {cat.isAction && (
                        <>
                          <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 bg-slate-200 text-slate-500">
                              <HelpCircle size={24} strokeWidth={1.5} />
                          </div>
+                         {/* ✅ Изменено название */}
                          <h3 className="font-bold text-lg text-slate-900 mb-2">{cat.title}</h3>
                          <p className="text-sm text-slate-500 mb-4">Не нашли нужную услугу в списке?</p>
                          <span className="text-sm font-bold text-blue-600 group-hover:text-yellow-600 transition-colors">
