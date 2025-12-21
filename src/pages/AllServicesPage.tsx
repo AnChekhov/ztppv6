@@ -4,7 +4,8 @@ import {
   Container, Hammer, Calculator, Briefcase,
   ShieldCheck, Phone, Mail, UploadCloud,
   CheckCircle2, ChevronDown, ArrowRight,
-  MessageCircle, LayoutGrid, HelpCircle
+  MessageCircle, LayoutGrid, HelpCircle,
+  Map, Laptop2, Landmark
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
@@ -41,11 +42,11 @@ export const AllServicesPage: React.FC = () => {
       icon: FileText,
       color: "bg-blue-50 text-blue-600",
       services: [
-        { id: "cert-st1", name: "Сертификат СТ-1 (СНГ)", desc: "Оформление сертификата формы СТ-1 для беспошлинного экспорта товаров в страны СНГ. Срок оформления от 2 часов." },
-        { id: "cert-general", name: "Сертификат Общей формы", desc: "Подтверждение происхождения товара для экспорта во все страны мира. Необходим для таможенного оформления." },
-        { id: "cert-eav", name: "Сертификат EAV (Вьетнам)", desc: "Сертификат для получения тарифных преференций при экспорте во Вьетнам." },
-        { id: "cert-st2", name: "Сертификат СТ-2 (Сербия)", desc: "Документ для беспошлинного ввоза российских товаров в Республику Сербия." },
-        { id: "cert-expert", name: "Экспертиза происхождения", desc: "Проведение экспертизы для определения страны происхождения товара с выдачей акта." },
+        { id: "cert-st1", name: "Сертификат СТ-1 (СНГ)", desc: "Оформление сертификата формы СТ-1 для беспошлинного экспорта товаров в страны СНГ. Работаем дистанционно с экспортерами из любых регионов." },
+        { id: "cert-general", name: "Сертификат Общей формы", desc: "Подтверждение происхождения товара для экспорта во все страны мира. Электронная выдача и отправка оригиналов экспресс-почтой." },
+        { id: "cert-eav", name: "Сертификат EAV (Вьетнам)", desc: "Сертификат для получения тарифных преференций при экспорте во Вьетнам. Полное соответствие требованиям соглашения ЕАЭС." },
+        { id: "cert-st2", name: "Сертификат СТ-2 (Сербия)", desc: "Документ для беспошлинного ввоза российских товаров в Республику Сербия. Быстрое оформление для логистических компаний." },
+        { id: "cert-expert", name: "Экспертиза происхождения", desc: "Проведение экспертизы для определения страны происхождения товара с выдачей акта. Необходима, если завод находится в другом регионе." },
       ]
     },
     {
@@ -54,46 +55,11 @@ export const AllServicesPage: React.FC = () => {
       icon: ShieldCheck,
       color: "bg-emerald-50 text-emerald-600",
       services: [
-        { id: "exp-quality", name: "Приемка по качеству", desc: "Независимая приемка партий товара. Фиксация брака, недостачи, пересортицы. Акт для претензии." },
-        { id: "exp-44fz", name: "Экспертиза по 44-ФЗ", desc: "Внешняя экспертиза исполнения госконтрактов. Обязательна для приемки товаров бюджетными учреждениями." },
-        { id: "exp-customs", name: "Таможенная экспертиза", desc: "Идентификация товаров, описание характеристик, состава. Помощь в спорах с ФТС по кодам ТН ВЭД." },
-        { id: "exp-damage", name: "Оценка ущерба", desc: "Оценка ущерба грузу при перевозке, товаров при заливе или пожаре. Расчет стоимости утраты товарного вида." },
-        { id: "exp-judicial", name: "Судебная экспертиза", desc: "Экспертиза по определению суда. Рецензирование заключений. Споры о защите прав потребителей." },
-      ]
-    },
-    {
-      id: "cat-build",
-      title: "Строительство",
-      icon: Hammer,
-      color: "bg-orange-50 text-orange-600",
-      services: [
-        { id: "str-quality", name: "Качество строительных работ", desc: "Контроль качества СМР. Выявление дефектов в новостройках и после ремонта." },
-        { id: "str-smeta", name: "Сметная экспертиза", desc: "Проверка сметной документации, актов КС-2/КС-3. Выявление завышения объемов и стоимости." },
-        { id: "str-house", name: "Обследование зданий", desc: "Оценка технического состояния несущих конструкций. Признание домов аварийными." },
-        { id: "str-flat", name: "Приемка квартир", desc: "Помощь в приемке жилья от застройщика. Составление дефектной ведомости." },
-      ]
-    },
-    {
-      id: "cat-law",
-      title: "Юридическая поддержка",
-      icon: Scale,
-      color: "bg-indigo-50 text-indigo-600",
-      services: [
-        { id: "law-force", name: "Форс-мажор", desc: "Выдача заключений об обстоятельствах непреодолимой силы (санкции, стихийные бедствия)." },
-        { id: "law-arbitr", name: "Международный арбитраж", desc: "Представительство интересов бизнеса в МКАС при ТПП РФ. Взыскание долгов, споры." },
-        { id: "law-contract", name: "Экспертиза контрактов", desc: "Разработка и правовой анализ договоров. Минимизация рисков, согласование разногласий." },
-        { id: "law-mediation", name: "Медиация", desc: "Досудебное урегулирование споров с участием нейтрального посредника." },
-      ]
-    },
-    {
-      id: "cat-val",
-      title: "Оценка собственности",
-      icon: Calculator,
-      color: "bg-amber-50 text-amber-600",
-      services: [
-        { id: "val-realty", name: "Оценка недвижимости", desc: "Оценка рыночной стоимости квартир, домов, участков (для ипотеки, залога)." },
-        { id: "val-business", name: "Оценка бизнеса", desc: "Расчет стоимости предприятия, пакетов акций, долей в ООО." },
-        { id: "val-auto", name: "Оценка транспорта", desc: "Оценка автомобилей, спецтехники и оборудования. Для лизинга или продажи." },
+        { id: "exp-quality", name: "Приемка по качеству", desc: "Независимая приемка партий товара на складах Забайкальска и Читы. Фиксация брака и недостачи для заказчиков из ЦФО и других регионов." },
+        { id: "exp-44fz", name: "Экспертиза по 44-ФЗ", desc: "Внешняя экспертиза исполнения госконтрактов. Обязательна для приемки товаров бюджетными учреждениями. Выдаем официальное заключение." },
+        { id: "exp-customs", name: "Таможенная экспертиза", desc: "Идентификация товаров на таможенных постах (МАПП Забайкальск), описание характеристик. Помощь в спорах с ФТС по кодам ТН ВЭД." },
+        { id: "exp-damage", name: "Оценка ущерба", desc: "Оценка ущерба грузу при перевозке (ж/д, авто), товаров при заливе или пожаре. Акт для страховой компании и суда." },
+        { id: "exp-judicial", name: "Судебная экспертиза", desc: "Экспертиза по определению суда. Рецензирование заключений. Наши эксперты выезжают в суды других регионов (онлайн-заседания)." },
       ]
     },
     {
@@ -102,11 +68,46 @@ export const AllServicesPage: React.FC = () => {
       icon: Globe,
       color: "bg-red-50 text-red-600",
       services: [
-        { id: "ved-search", name: "Поиск поставщиков", desc: "Подбор заводов в КНР по ТЗ. Исключение посредников, запрос образцов." },
-        { id: "ved-check", name: "Проверка контрагентов", desc: "Проверка китайских компаний по реестрам: лицензии, суды, капитал." },
-        { id: "ved-trans", name: "Переводы", desc: "Письменный перевод контрактов, инструкций. Устный перевод на переговорах." },
-        { id: "ved-customs", name: "Таможенное консультирование", desc: "Подбор кодов ТН ВЭД, расчет платежей, проверка документов." },
-        { id: "ved-missions", name: "Бизнес-миссии", desc: "Деловые поездки в Китай. Посещение выставок, B2B переговоры." },
+        { id: "ved-search", name: "Поиск поставщиков в Китае", desc: "Подбор заводов в КНР по вашему ТЗ. Мы находимся на границе, знаем менталитет и реальную ситуацию на рынке." },
+        { id: "ved-check", name: "Проверка контрагентов", desc: "Проверка китайских компаний по официальным реестрам: лицензии, суды, капитал. Отчет на русском языке за 24 часа." },
+        { id: "ved-trans", name: "Переводы", desc: "Письменный перевод контрактов, инструкций. Устный перевод на переговорах (в том числе по ВКС)." },
+        { id: "ved-customs", name: "Таможенное консультирование", desc: "Подбор кодов ТН ВЭД, расчет платежей, проверка документов перед подачей декларации. Минимизация рисков на границе." },
+        { id: "ved-missions", name: "Бизнес-миссии", desc: "Организация деловых поездок в Китай. Встретим вашу делегацию в Чите и сопроводим в Маньчжурию, Пекин, Харбин." },
+      ]
+    },
+    {
+      id: "cat-law",
+      title: "Юридическая поддержка",
+      icon: Scale,
+      color: "bg-indigo-50 text-indigo-600",
+      services: [
+        { id: "law-force", name: "Форс-мажор", desc: "Выдача заключений об обстоятельствах непреодолимой силы. Действительно на всей территории РФ и для внешнеторговых сделок." },
+        { id: "law-arbitr", name: "Международный арбитраж", desc: "Представительство интересов бизнеса в МКАС при ТПП РФ. Споры с китайскими и монгольскими партнерами." },
+        { id: "law-contract", name: "Экспертиза контрактов", desc: "Дистанционная разработка и анализ ВЭД-контрактов. Защитим ваши интересы до подписания сделки." },
+        { id: "law-mediation", name: "Медиация", desc: "Досудебное урегулирование споров с участием нейтрального посредника. Экономия на судебных издержках." },
+      ]
+    },
+    {
+      id: "cat-build",
+      title: "Строительство",
+      icon: Hammer,
+      color: "bg-orange-50 text-orange-600",
+      services: [
+        { id: "str-quality", name: "Качество строительных работ", desc: "Контроль качества СМР на объектах в Забайкальском крае. Отчеты для инвесторов из других регионов." },
+        { id: "str-smeta", name: "Сметная экспертиза", desc: "Удаленная проверка сметной документации, актов КС-2/КС-3. Выявление завышения объемов и стоимости." },
+        { id: "str-house", name: "Обследование зданий", desc: "Оценка технического состояния несущих конструкций. Инструментальное обследование недвижимости перед покупкой." },
+        { id: "str-flat", name: "Приемка квартир", desc: "Помощь в приемке жилья от застройщика. Составление дефектной ведомости для устранения недостатков." },
+      ]
+    },
+    {
+      id: "cat-val",
+      title: "Оценка собственности",
+      icon: Calculator,
+      color: "bg-amber-50 text-amber-600",
+      services: [
+        { id: "val-realty", name: "Оценка недвижимости", desc: "Оценка рыночной стоимости квартир, домов, участков для ипотеки и залога. Аккредитация в банках." },
+        { id: "val-business", name: "Оценка бизнеса", desc: "Расчет стоимости предприятия, пакетов акций, долей в ООО. Дистанционная оценка для целей продажи или наследства." },
+        { id: "val-auto", name: "Оценка транспорта", desc: "Оценка автомобилей, спецтехники и оборудования. Определение рыночной стоимости для лизинга." },
       ]
     },
     {
@@ -115,17 +116,17 @@ export const AllServicesPage: React.FC = () => {
       icon: Users,
       color: "bg-purple-50 text-purple-600",
       services: [
-        { id: "dev-hall", name: "Конференц-зал", desc: "Организация мероприятий. Оборудованный зал в центре Читы." },
-        { id: "dev-room", name: "Переговорная комната", desc: "Комната для конфиденциальных встреч и подписания контрактов." },
-        { id: "dev-ip", name: "Товарные знаки", desc: "Проверка бренда, подача заявки в Роспатент, регистрация." },
-        { id: "dev-eco", name: "Экология", desc: "Разработка паспортов отходов, проектов ПДВ, отчетность." },
-        { id: "dev-sout", name: "СОУТ", desc: "Организация проведения спецоценки рабочих мест." },
+        { id: "dev-hall", name: "Конференц-зал", desc: "Организация мероприятий на площадке ТПП. Оборудованный зал в центре Читы для ваших выездных семинаров и презентаций." },
+        { id: "dev-room", name: "Переговорная комната", desc: "Комфортная комната для конфиденциальных встреч. Проведите переговоры с партнерами в официальной обстановке." },
+        { id: "dev-ip", name: "Товарные знаки", desc: "Проверка бренда, подача заявки в Роспатент, полное сопровождение регистрации. Работаем со всей Россией." },
+        { id: "dev-eco", name: "Экология", desc: "Разработка паспортов отходов, проектов ПДВ, отчетность. Аутсорсинг экологической безопасности." },
+        { id: "dev-sout", name: "СОУТ", desc: "Организация проведения спецоценки рабочих мест в соответствии с законодательством." },
       ]
     },
-    // ✅ 8-й БЛОК: Заполнитель
+    // 8-й БЛОК: Заполнитель
     {
       id: "cat-help",
-      title: "Центр поддержки и контакты", // ✅ Изменено название
+      title: "Центр поддержки и контакты",
       icon: HelpCircle,
       color: "bg-slate-100 text-slate-600",
       isAction: true,
@@ -135,10 +136,11 @@ export const AllServicesPage: React.FC = () => {
 
   return (
     <div className="font-sans text-slate-900 bg-white">
+      {/* ✅ УСИЛЕННОЕ SEO ДЛЯ РЕГИОНОВ */}
       <SEO 
-        title="Каталог услуг Торгово-промышленной палаты Забайкальского края"
-        description="Полный перечень услуг: сертификация, экспертиза, оценка, юридическая помощь, переводы, ВЭД с Китаем. Единое окно для предпринимателей."
-        keywords="услуги тпп чита, каталог услуг, оценка бизнеса, переводы китайский, соут чита, регистрация товарного знака, строительная экспертиза"
+        title="Каталог услуг ТПП Забайкальского края | Работаем по всей России"
+        description="Услуги для бизнеса из любых регионов РФ: таможенное оформление в Забайкальске, экспертиза грузов, поиск партнеров в Китае, сертификация. Ваш представитель на границе."
+        keywords="услуги тпп чита, представитель в забайкальске, таможня маньчжурия, сертификат ст-1 дистанционно, экспертиза груза забайкальск"
       />
 
       {/* HERO */}
@@ -153,12 +155,11 @@ export const AllServicesPage: React.FC = () => {
               
               {/* Левая колонка */}
               <div className="lg:col-span-7 max-w-3xl">
-                {/* ✅ ИЗМЕНЕНО: Выделение желтым "Торгово-промышленной палаты" */}
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
                    Каталог услуг <span className="text-yellow-400">Торгово-промышленной палаты</span> Забайкальского края
                 </h1>
                 <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl">
-                  Комплексная поддержка вашего бизнеса на всех этапах: от регистрации товарного знака до выхода на международные рынки.
+                  Комплексная поддержка вашего бизнеса: от регистрации товарного знака до выхода на международные рынки. Работаем с компаниями по всей России.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button 
@@ -200,7 +201,6 @@ export const AllServicesPage: React.FC = () => {
               {allCategories.map((cat, idx) => (
                 <div 
                   key={idx} 
-                  /* ✅ ИЗМЕНЕНО: Добавлена постоянная тень (shadow-xl shadow-slate-200/60) */
                   className={`
                     p-6 rounded-2xl bg-white border border-slate-100 
                     shadow-xl shadow-slate-200/60
@@ -248,7 +248,6 @@ export const AllServicesPage: React.FC = () => {
                          <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 bg-slate-200 text-slate-500">
                              <HelpCircle size={24} strokeWidth={1.5} />
                          </div>
-                         {/* ✅ Изменено название */}
                          <h3 className="font-bold text-lg text-slate-900 mb-2">{cat.title}</h3>
                          <p className="text-sm text-slate-500 mb-4">Не нашли нужную услугу в списке?</p>
                          <span className="text-sm font-bold text-blue-600 group-hover:text-yellow-600 transition-colors">
@@ -262,13 +261,56 @@ export const AllServicesPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. ПОДРОБНОЕ ОПИСАНИЕ */}
+      {/* ✅ НОВАЯ СЕКЦИЯ: РАБОТА С РЕГИОНАМИ (SEO) */}
       <section className="py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+            <div className="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-slate-100 flex flex-col md:flex-row gap-12 items-center">
+                <div className="md:w-1/2">
+                    <h2 className="text-3xl font-extrabold text-slate-900 mb-6">
+                        Работаем с бизнесом по всей России
+                    </h2>
+                    <p className="text-slate-600 text-lg leading-relaxed mb-6 text-justify">
+                        Торгово-промышленная палата Забайкальского края — ваш надежный представитель на границе с Китаем. Мы помогаем компаниям из <strong>Москвы, Санкт-Петербурга, Новосибирска, Иркутска</strong> и других регионов решать задачи ВЭД, логистики и сертификации без необходимости отправлять сотрудников в командировки.
+                    </p>
+                    <ul className="space-y-4">
+                        <li className="flex items-start gap-3">
+                            <Map className="text-blue-600 shrink-0 mt-1" />
+                            <span className="text-slate-700"><strong>Присутствие на границе:</strong> Наши эксперты работают в Чите и Забайкальске (МАПП).</span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                            <Laptop2 className="text-blue-600 shrink-0 mt-1" />
+                            <span className="text-slate-700"><strong>Дистанционный формат:</strong> Обмен документами по ЭДО, отправка оригиналов экспресс-почтой.</span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                            <Landmark className="text-blue-600 shrink-0 mt-1" />
+                            <span className="text-slate-700"><strong>Официальный статус:</strong> Гарантия качества и признания документов государственными органами.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div className="md:w-1/2 relative">
+                    <div className="absolute inset-0 bg-blue-600/5 rounded-3xl transform rotate-3"></div>
+                    <img 
+                        src="/ztppv6/images/hero-bg.jpg" 
+                        alt="Работа с регионами" 
+                        className="relative rounded-3xl shadow-lg object-cover h-80 w-full"
+                    />
+                    <div className="absolute -bottom-6 -left-6 bg-yellow-400 p-6 rounded-2xl shadow-xl max-w-xs">
+                        <p className="font-bold text-slate-900 text-sm">
+                            «Мы стираем границы между регионами, предоставляя качественный сервис там, где это необходимо вашему бизнесу»
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </section>
+
+      {/* 2. ПОДРОБНОЕ ОПИСАНИЕ (ЭНЦИКЛОПЕДИЯ) */}
+      <section className="py-20 bg-white">
         <div className="max-w-5xl mx-auto px-6 md:px-8 space-y-20">
           
           {allCategories.filter(c => !c.isAction).map((cat, catIdx) => (
             <div key={catIdx} id={cat.id} className="scroll-mt-32">
-              <div className="flex items-center gap-4 mb-8 sticky top-20 bg-slate-50/95 backdrop-blur py-4 z-10 border-b border-slate-200">
+              <div className="flex items-center gap-4 mb-8 sticky top-20 bg-white/95 backdrop-blur py-4 z-10 border-b border-slate-200">
                 <div className={`p-3 rounded-xl ${cat.color}`}>
                   <cat.icon size={32} />
                 </div>
@@ -280,7 +322,7 @@ export const AllServicesPage: React.FC = () => {
                   <div 
                     key={service.id} 
                     id={service.id} 
-                    className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow scroll-mt-48"
+                    className="bg-slate-50 p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow scroll-mt-48"
                   >
                     <h3 className="text-xl font-bold text-slate-900 mb-3">{service.name}</h3>
                     <p className="text-slate-600 leading-relaxed mb-6">
@@ -290,7 +332,7 @@ export const AllServicesPage: React.FC = () => {
                       onClick={() => handleOrderClick(service.name)}
                       className="text-sm font-bold text-blue-600 hover:text-yellow-600 transition-colors flex items-center"
                     >
-                      Заказать услугу <ArrowRight size={16} className="ml-2" />
+                      Заказать эту услугу <ArrowRight size={16} className="ml-2" />
                     </button>
                   </div>
                 ))}
@@ -327,6 +369,7 @@ export const AllServicesPage: React.FC = () => {
                     <input type="tel" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="+7 (___) ___-__-__" />
                   </div>
 
+                  {/* Умный Select */}
                   <div>
                      <label className="block text-sm font-bold mb-2">Интересующая услуга</label>
                      <div className="relative">
