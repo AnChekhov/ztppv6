@@ -4,7 +4,7 @@ import {
   Container, Hammer, Calculator, Briefcase,
   ShieldCheck, Phone, Mail, UploadCloud,
   CheckCircle2, ChevronDown, ArrowRight,
-  MessageCircle, LayoutGrid, Handshake
+  MessageCircle, LayoutGrid, HelpCircle // Добавил иконку вопроса
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
@@ -37,40 +37,15 @@ export const AllServicesPage: React.FC = () => {
   const allCategories = [
     {
       id: "cat-cert",
-      title: "Сертификация и Экспертиза происхождения",
+      title: "Сертификация и ВЭД",
       icon: FileText,
       color: "bg-blue-50 text-blue-600",
       services: [
-        { 
-          id: "cert-st1", 
-          name: "Сертификат СТ-1 (СНГ)", 
-          desc: "Оформление сертификата формы СТ-1 для беспошлинного экспорта товаров в страны СНГ. Срок оформления от 2 часов при наличии документов." 
-        },
-        { 
-          id: "cert-general", 
-          name: "Сертификат Общей формы", 
-          desc: "Подтверждение происхождения товара для экспорта во все страны мира (кроме СНГ/Сербии/Вьетнама). Необходим для таможенного оформления." 
-        },
-        { 
-          id: "cert-eav", 
-          name: "Сертификат EAV (Вьетнам)", 
-          desc: "Сертификат для получения тарифных преференций при экспорте во Вьетнам в рамках зоны свободной торговли ЕАЭС." 
-        },
-        { 
-          id: "cert-st2", 
-          name: "Сертификат СТ-2 (Сербия)", 
-          desc: "Документ для беспошлинного ввоза российских товаров в Республику Сербия." 
-        },
-        { 
-          id: "cert-forma", 
-          name: "Сертификат Форма А (Form A)", 
-          desc: "Оформление сертификата для получения преференций в рамках Генеральной системы (в основном для Черногории)." 
-        },
-        { 
-          id: "cert-expert", 
-          name: "Экспертиза страны происхождения", 
-          desc: "Проведение экспертизы для определения страны происхождения товара (если нет прямых документов от завода) с выдачей акта." 
-        },
+        { id: "cert-st1", name: "Сертификат СТ-1 (СНГ)", desc: "Оформление сертификата формы СТ-1 для беспошлинного экспорта товаров в страны СНГ. Срок оформления от 2 часов." },
+        { id: "cert-general", name: "Сертификат Общей формы", desc: "Подтверждение происхождения товара для экспорта во все страны мира. Необходим для таможенного оформления." },
+        { id: "cert-eav", name: "Сертификат EAV (Вьетнам)", desc: "Сертификат для получения тарифных преференций при экспорте во Вьетнам." },
+        { id: "cert-st2", name: "Сертификат СТ-2 (Сербия)", desc: "Документ для беспошлинного ввоза российских товаров в Республику Сербия." },
+        { id: "cert-expert", name: "Экспертиза происхождения", desc: "Проведение экспертизы для определения страны происхождения товара с выдачей акта." },
       ]
     },
     {
@@ -79,64 +54,23 @@ export const AllServicesPage: React.FC = () => {
       icon: ShieldCheck,
       color: "bg-emerald-50 text-emerald-600",
       services: [
-        { 
-          id: "exp-quality", 
-          name: "Приемка по количеству и качеству", 
-          desc: "Независимая приемка партий товара на складе получателя. Фиксация брака, недостачи, пересортицы. Акт экспертизы для выставления претензии поставщику." 
-        },
-        { 
-          id: "exp-44fz", 
-          name: "Экспертиза по 44-ФЗ", 
-          desc: "Внешняя экспертиза исполнения государственных контрактов. Обязательна для приемки товаров бюджетными учреждениями." 
-        },
-        { 
-          id: "exp-customs", 
-          name: "Таможенная экспертиза (Идентификация)", 
-          desc: "Идентификация товаров для таможенных целей, описание характеристик, состава, материала. Помощь в спорах с ФТС по кодам ТН ВЭД." 
-        },
-        { 
-          id: "exp-damage", 
-          name: "Оценка ущерба (Страховая)", 
-          desc: "Оценка ущерба грузу при перевозке, товаров при заливе, пожаре или стихийных бедствиях. Расчет стоимости утраты товарного вида." 
-        },
-        { 
-          id: "exp-judicial", 
-          name: "Судебная товароведческая экспертиза", 
-          desc: "Экспертиза по определению суда. Рецензирование заключений сторонних экспертов. Споры о защите прав потребителей." 
-        },
-        { 
-          id: "exp-equip", 
-          name: "Техническая экспертиза оборудования", 
-          desc: "Оценка состояния машин, станков и производственных линий. Определение причин выхода из строя (эксплуатация или брак)." 
-        },
+        { id: "exp-quality", name: "Приемка по качеству", desc: "Независимая приемка партий товара. Фиксация брака, недостачи, пересортицы. Акт для претензии." },
+        { id: "exp-44fz", name: "Экспертиза по 44-ФЗ", desc: "Внешняя экспертиза исполнения госконтрактов. Обязательна для приемки товаров бюджетными учреждениями." },
+        { id: "exp-customs", name: "Таможенная экспертиза", desc: "Идентификация товаров, описание характеристик, состава. Помощь в спорах с ФТС по кодам ТН ВЭД." },
+        { id: "exp-damage", name: "Оценка ущерба", desc: "Оценка ущерба грузу при перевозке, товаров при заливе или пожаре. Расчет стоимости утраты товарного вида." },
+        { id: "exp-judicial", name: "Судебная экспертиза", desc: "Экспертиза по определению суда. Рецензирование заключений. Споры о защите прав потребителей." },
       ]
     },
     {
       id: "cat-build",
-      title: "Строительство и Недвижимость",
+      title: "Строительство",
       icon: Hammer,
       color: "bg-orange-50 text-orange-600",
       services: [
-        { 
-          id: "str-quality", 
-          name: "Строительно-техническая экспертиза", 
-          desc: "Контроль качества строительно-монтажных работ. Выявление дефектов в новостройках и после ремонта." 
-        },
-        { 
-          id: "str-smeta", 
-          name: "Сметная экспертиза", 
-          desc: "Проверка сметной документации, актов КС-2/КС-3. Выявление завышения объемов и стоимости работ." 
-        },
-        { 
-          id: "str-house", 
-          name: "Обследование зданий и сооружений", 
-          desc: "Оценка технического состояния несущих конструкций. Признание домов аварийными или ветхими." 
-        },
-        { 
-          id: "str-flat", 
-          name: "Приемка квартир от застройщика", 
-          desc: "Помощь в приемке жилья. Составление дефектной ведомости для устранения недостатков застройщиком." 
-        },
+        { id: "str-quality", name: "Качество строительных работ", desc: "Контроль качества СМР. Выявление дефектов в новостройках и после ремонта." },
+        { id: "str-smeta", name: "Сметная экспертиза", desc: "Проверка сметной документации, актов КС-2/КС-3. Выявление завышения объемов и стоимости." },
+        { id: "str-house", name: "Обследование зданий", desc: "Оценка технического состояния несущих конструкций. Признание домов аварийными." },
+        { id: "str-flat", name: "Приемка квартир", desc: "Помощь в приемке жилья от застройщика. Составление дефектной ведомости." },
       ]
     },
     {
@@ -145,31 +79,10 @@ export const AllServicesPage: React.FC = () => {
       icon: Scale,
       color: "bg-indigo-50 text-indigo-600",
       services: [
-        { 
-          id: "law-force", 
-          name: "Свидетельствование форс-мажора", 
-          desc: "Выдача заключений об обстоятельствах непреодолимой силы для освобождения от ответственности за неисполнение контрактов (санкции, стихийные бедствия)." 
-        },
-        { 
-          id: "law-arbitr", 
-          name: "Международный коммерческий арбитраж", 
-          desc: "Представительство интересов бизнеса в МКАС при ТПП РФ, арбитражных судах и судах общей юрисдикции. Взыскание долгов, корпоративные споры." 
-        },
-        { 
-          id: "law-contract", 
-          name: "Экспертиза контрактов", 
-          desc: "Разработка и правовой анализ договоров (в т.ч. внешнеэкономических). Выявление рисков, корректировка условий поставки и ответственности сторон." 
-        },
-        { 
-          id: "law-mediation", 
-          name: "Медиация (Досудебное урегулирование)", 
-          desc: "Урегулирование споров с участием независимого посредника (медиатора). Помогает сохранить деловые отношения и избежать судебных издержек." 
-        },
-        { 
-          id: "law-court", 
-          name: "Представительство в суде", 
-          desc: "Защита интересов бизнеса в арбитражных судах и судах общей юрисдикции. Взыскание задолженности." 
-        },
+        { id: "law-force", name: "Форс-мажор", desc: "Выдача заключений об обстоятельствах непреодолимой силы (санкции, стихийные бедствия)." },
+        { id: "law-arbitr", name: "Международный арбитраж", desc: "Представительство интересов бизнеса в МКАС при ТПП РФ. Взыскание долгов, споры." },
+        { id: "law-contract", name: "Экспертиза контрактов", desc: "Разработка и правовой анализ договоров. Минимизация рисков, согласование разногласий." },
+        { id: "law-mediation", name: "Медиация", desc: "Досудебное урегулирование споров с участием нейтрального посредника." },
       ]
     },
     {
@@ -178,21 +91,9 @@ export const AllServicesPage: React.FC = () => {
       icon: Calculator,
       color: "bg-amber-50 text-amber-600",
       services: [
-        { 
-          id: "val-realty", 
-          name: "Оценка недвижимости", 
-          desc: "Оценка рыночной стоимости квартир, домов, земельных участков, коммерческих помещений (для ипотеки, залога, продажи)." 
-        },
-        { 
-          id: "val-business", 
-          name: "Оценка бизнеса и долей", 
-          desc: "Расчет стоимости действующего предприятия, пакетов акций, долей в ООО для продажи или наследства." 
-        },
-        { 
-          id: "val-auto", 
-          name: "Оценка транспорта и оборудования", 
-          desc: "Оценка автомобилей, спецтехники, станков и производственных линий. Для лизинга, списания или продажи." 
-        },
+        { id: "val-realty", name: "Оценка недвижимости", desc: "Оценка рыночной стоимости квартир, домов, участков (для ипотеки, залога)." },
+        { id: "val-business", name: "Оценка бизнеса", desc: "Расчет стоимости предприятия, пакетов акций, долей в ООО." },
+        { id: "val-auto", name: "Оценка транспорта", desc: "Оценка автомобилей, спецтехники и оборудования. Для лизинга или продажи." },
       ]
     },
     {
@@ -201,31 +102,11 @@ export const AllServicesPage: React.FC = () => {
       icon: Globe,
       color: "bg-red-50 text-red-600",
       services: [
-        { 
-          id: "ved-search", 
-          name: "Поиск поставщиков в Китае", 
-          desc: "Подбор заводов-производителей в КНР по вашему ТЗ. Исключение посредников, запрос каталогов и образцов." 
-        },
-        { 
-          id: "ved-check", 
-          name: "Проверка контрагентов (Китай)", 
-          desc: "Проверка китайских компаний по официальным реестрам: лицензии, суды, уставной капитал, реальность адреса." 
-        },
-        { 
-          id: "ved-trans", 
-          name: "Переводы (Китайский/Английский)", 
-          desc: "Письменный перевод контрактов, инструкций, этикеток. Устный перевод на переговорах и в судах." 
-        },
-        { 
-          id: "ved-customs", 
-          name: "Таможенное консультирование", 
-          desc: "Подбор кодов ТН ВЭД, расчет таможенных платежей, проверка пакета документов для импорта/экспорта." 
-        },
-        { 
-          id: "ved-missions", 
-          name: "Организация бизнес-миссий", 
-          desc: "Деловые поездки в Китай (Маньчжурия, Харбин, Пекин, Гуанчжоу). Посещение выставок, B2B переговоры под ключ." 
-        },
+        { id: "ved-search", name: "Поиск поставщиков", desc: "Подбор заводов в КНР по ТЗ. Исключение посредников, запрос образцов." },
+        { id: "ved-check", name: "Проверка контрагентов", desc: "Проверка китайских компаний по реестрам: лицензии, суды, капитал." },
+        { id: "ved-trans", name: "Переводы", desc: "Письменный перевод контрактов, инструкций. Устный перевод на переговорах." },
+        { id: "ved-customs", name: "Таможенное консультирование", desc: "Подбор кодов ТН ВЭД, расчет платежей, проверка документов." },
+        { id: "ved-missions", name: "Бизнес-миссии", desc: "Деловые поездки в Китай. Посещение выставок, B2B переговоры." },
       ]
     },
     {
@@ -234,49 +115,33 @@ export const AllServicesPage: React.FC = () => {
       icon: Users,
       color: "bg-purple-50 text-purple-600",
       services: [
-        { 
-          id: "dev-hall", 
-          name: "Предоставление конференц-зала", 
-          desc: "Организация мероприятий на площадке ТПП. Оборудованный зал в центре Читы (проектор, звук, ВКС) для проведения семинаров, собраний и переговоров. Техническое сопровождение." 
-        },
-        { 
-          id: "dev-room", 
-          name: "Предоставление переговорной комнаты", 
-          desc: "Комфортная комната для конфиденциальных деловых встреч, подписания контрактов и переговоров с партнерами. Вместимость до 10 человек. Чай/кофе, Wi-Fi." 
-        },
-        { 
-          id: "dev-ip", 
-          name: "Регистрация товарных знаков", 
-          desc: "Проверка бренда на уникальность, подача заявки в Роспатент, полное сопровождение регистрации бренда. Защита интеллектуальной собственности." 
-        },
-        { 
-          id: "dev-eco", 
-          name: "Экологическое проектирование", 
-          desc: "Разработка паспортов отходов, проектов ПДВ, сдача экологической отчетности для предприятий." 
-        },
-        { 
-          id: "dev-sout", 
-          name: "Специальная оценка условий труда (СОУТ)", 
-          desc: "Организация проведения спецоценки рабочих мест в соответствии с требованиями трудового законодательства. Помощь в оформлении деклараций." 
-        },
-        { 
-          id: "dev-mem", 
-          name: "Членство в ТПП", 
-          desc: "Вступление в союз. Получение преференций, участие в закрытых мероприятиях и GR-поддержка." 
-        },
+        { id: "dev-hall", name: "Конференц-зал", desc: "Организация мероприятий. Оборудованный зал в центре Читы." },
+        { id: "dev-room", name: "Переговорная комната", desc: "Комната для конфиденциальных встреч и подписания контрактов." },
+        { id: "dev-ip", name: "Товарные знаки", desc: "Проверка бренда, подача заявки в Роспатент, регистрация." },
+        { id: "dev-eco", name: "Экология", desc: "Разработка паспортов отходов, проектов ПДВ, отчетность." },
+        { id: "dev-sout", name: "СОУТ", desc: "Организация проведения спецоценки рабочих мест." },
       ]
     },
+    // ✅ 8-й БЛОК: Заполнитель пустоты (Ведет к контактам/форме)
+    {
+      id: "cat-help",
+      title: "Нужна консультация?",
+      icon: HelpCircle,
+      color: "bg-slate-100 text-slate-600",
+      isAction: true, // Флаг для особого рендера
+      services: [] 
+    }
   ];
 
   return (
     <div className="font-sans text-slate-900 bg-white">
       <SEO 
-        title="Полный каталог услуг Забайкальской ТПП | Реестр 2025"
-        description="Более 45 видов услуг для бизнеса в Чите: сертификация, экспертиза, оценка, юридическая помощь, переводы, ВЭД с Китаем. Единое окно для предпринимателей."
-        keywords="услуги тпп чита, каталог услуг, оценка бизнеса, переводы китайский, соут чита, регистрация товарного знака, строительная экспертиза, аренда зала чита"
+        title="Каталог услуг Торгово-промышленной палаты Забайкальского края"
+        description="Полный перечень услуг: сертификация, экспертиза, оценка, юридическая помощь, переводы, ВЭД с Китаем. Единое окно для предпринимателей."
+        keywords="услуги тпп чита, каталог услуг, оценка бизнеса, переводы китайский, соут чита, регистрация товарного знака, строительная экспертиза"
       />
 
-      {/* HERO: 2 колонки, центрирование по высоте (как на других страницах) */}
+      {/* HERO: 2 колонки */}
       <section className="relative bg-slate-900 text-white min-h-[65vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 opacity-30">
              <img src="/ztppv6/images/hero-bg.jpg" alt="Background" className="w-full h-full object-cover" />
@@ -284,13 +149,13 @@ export const AllServicesPage: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/[0.87] to-slate-900"></div>
         
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center">
-            
             <div className="grid lg:grid-cols-12 gap-8 items-center">
               
-              {/* Левая колонка: Текст */}
+              {/* Левая колонка */}
               <div className="lg:col-span-7 max-w-3xl">
+                {/* ✅ ИЗМЕНЕНО: Заголовок */}
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
-                   Каталог услуг <span className="text-yellow-400">Палаты</span>
+                   Каталог услуг Торгово-промышленной палаты <span className="text-yellow-400">Забайкальского края</span>
                 </h1>
                 <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl">
                   Комплексная поддержка вашего бизнеса на всех этапах: от регистрации товарного знака до выхода на международные рынки.
@@ -298,14 +163,14 @@ export const AllServicesPage: React.FC = () => {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button 
                     onClick={() => handleOrderClick('Нужна консультация (общий вопрос)')}
-                    className="bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 px-8 rounded-xl transition-all hover:scale-105 shadow-[0_0_20px_rgba(250,204,21,0.3)]"
+                    className="bg-yellow-400 text-slate-900 font-bold py-4 px-8 rounded-xl hover:bg-yellow-500 transition-all hover:scale-105 shadow-[0_0_20px_rgba(250,204,21,0.3)]"
                   >
                     Получить консультацию
                   </button>
                 </div>
               </div>
 
-              {/* Правая колонка: Иконка Каталога */}
+              {/* Правая колонка: Иконка */}
               <div className="hidden lg:flex lg:col-span-5 justify-center items-center relative">
                 <div className="absolute w-80 h-80 bg-blue-600/10 rounded-full blur-3xl"></div>
                 <div className="relative transform transition-transform duration-500 hover:scale-105">
@@ -327,49 +192,81 @@ export const AllServicesPage: React.FC = () => {
       </section>
 
       {/* 1. НАВИГАЦИОННАЯ СЕТКА (МЕНЮ) */}
-      <section className="py-16 bg-white border-b border-slate-100">
+      <section className="py-20 bg-white border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
            <h2 className="text-2xl font-bold text-slate-900 mb-8">Быстрый переход к разделам:</h2>
+           
            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {allCategories.map((cat, idx) => (
-                <div key={idx} className="space-y-4">
-                    <button 
-                      onClick={() => scrollToCategory(cat.id)}
-                      className="flex items-center gap-3 mb-4 group w-full text-left"
-                    >
-                        <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${cat.color} group-hover:scale-105 transition-transform`}>
-                            <cat.icon size={20} strokeWidth={2} />
-                        </div>
-                        <h3 className="font-bold text-lg text-slate-900 group-hover:text-blue-600 transition-colors">
-                          {cat.title}
-                        </h3>
-                    </button>
-                    
-                    <ul className="space-y-2">
-                        {cat.services.map((service) => (
-                            <li key={service.id}>
-                                <button 
-                                    onClick={() => scrollToDescription(service.id)}
-                                    className="text-sm text-slate-600 hover:text-blue-600 text-left transition-colors border-b border-transparent hover:border-blue-200"
-                                >
-                                    {service.name}
-                                </button>
-                            </li>
-                        ))}
-                    </ul>
+                // ✅ ИЗМЕНЕНО: Стиль карточек как на Главной (border, shadow, scale)
+                <div 
+                  key={idx} 
+                  className={`
+                    p-6 rounded-2xl bg-white border border-slate-100 
+                    hover:border-slate-200 hover:shadow-xl hover:shadow-blue-900/5 
+                    hover:scale-[1.02] transition-all duration-300 flex flex-col h-full
+                    ${cat.isAction ? 'border-dashed border-slate-300 bg-slate-50/50 justify-center items-center text-center cursor-pointer' : ''}
+                  `}
+                  onClick={cat.isAction ? () => handleOrderClick('Консультация') : undefined}
+                >
+                    {/* Если это обычная категория */}
+                    {!cat.isAction && (
+                      <>
+                        <button 
+                          onClick={() => scrollToCategory(cat.id)}
+                          className="flex items-center gap-3 mb-4 group w-full text-left"
+                        >
+                            <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${cat.color} group-hover:scale-110 transition-transform`}>
+                                <cat.icon size={20} strokeWidth={2} />
+                            </div>
+                            <h3 className="font-bold text-lg text-slate-900 group-hover:text-blue-600 transition-colors">
+                              {cat.title}
+                            </h3>
+                        </button>
+                        
+                        <ul className="space-y-2 flex-grow">
+                            {cat.services.slice(0, 5).map((service) => (
+                                <li key={service.id}>
+                                    <button 
+                                        onClick={() => scrollToDescription(service.id)}
+                                        className="text-sm text-slate-600 hover:text-blue-600 text-left transition-colors border-b border-transparent hover:border-blue-200"
+                                    >
+                                        {service.name}
+                                    </button>
+                                </li>
+                            ))}
+                            {cat.services.length > 5 && (
+                                <li className="text-xs text-slate-400 pt-1">и еще {cat.services.length - 5}...</li>
+                            )}
+                        </ul>
+                      </>
+                    )}
+
+                    {/* ✅ 8-й БЛОК: Если это Action блок (заполнитель) */}
+                    {cat.isAction && (
+                       <>
+                         <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 bg-slate-200 text-slate-500">
+                             <HelpCircle size={24} strokeWidth={1.5} />
+                         </div>
+                         <h3 className="font-bold text-lg text-slate-900 mb-2">{cat.title}</h3>
+                         <p className="text-sm text-slate-500 mb-4">Не нашли нужную услугу в списке?</p>
+                         <span className="text-sm font-bold text-blue-600 group-hover:text-yellow-600 transition-colors">
+                            Связаться с нами →
+                         </span>
+                       </>
+                    )}
                 </div>
               ))}
            </div>
         </div>
       </section>
 
-      {/* 2. ПОДРОБНОЕ ОПИСАНИЕ (ЭНЦИКЛОПЕДИЯ) */}
+      {/* 2. ПОДРОБНОЕ ОПИСАНИЕ */}
       <section className="py-20 bg-slate-50">
         <div className="max-w-5xl mx-auto px-6 md:px-8 space-y-20">
           
-          {allCategories.map((cat, catIdx) => (
+          {allCategories.filter(c => !c.isAction).map((cat, catIdx) => (
             <div key={catIdx} id={cat.id} className="scroll-mt-32">
-              {/* Заголовок категории */}
               <div className="flex items-center gap-4 mb-8 sticky top-20 bg-slate-50/95 backdrop-blur py-4 z-10 border-b border-slate-200">
                 <div className={`p-3 rounded-xl ${cat.color}`}>
                   <cat.icon size={32} />
@@ -377,14 +274,12 @@ export const AllServicesPage: React.FC = () => {
                 <h2 className="text-3xl font-extrabold text-slate-900">{cat.title}</h2>
               </div>
 
-              {/* Список услуг в категории */}
               <div className="grid gap-6">
                 {cat.services.map((service) => (
                   <div 
                     key={service.id} 
                     id={service.id} 
-                    /* ✅ ИСПРАВЛЕНО: Добавлен border и тень */
-                    className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-lg hover:border-blue-200 transition-all scroll-mt-48"
+                    className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow scroll-mt-48"
                   >
                     <h3 className="text-xl font-bold text-slate-900 mb-3">{service.name}</h3>
                     <p className="text-slate-600 leading-relaxed mb-6">
@@ -394,7 +289,7 @@ export const AllServicesPage: React.FC = () => {
                       onClick={() => handleOrderClick(service.name)}
                       className="text-sm font-bold text-blue-600 hover:text-yellow-600 transition-colors flex items-center"
                     >
-                      Заказать эту услугу <ArrowRight size={16} className="ml-2" />
+                      Заказать услугу <ArrowRight size={16} className="ml-2" />
                     </button>
                   </div>
                 ))}
@@ -431,7 +326,6 @@ export const AllServicesPage: React.FC = () => {
                     <input type="tel" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="+7 (___) ___-__-__" />
                   </div>
 
-                  {/* Умный Select */}
                   <div>
                      <label className="block text-sm font-bold mb-2">Интересующая услуга</label>
                      <div className="relative">
@@ -441,8 +335,7 @@ export const AllServicesPage: React.FC = () => {
                           className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none appearance-none cursor-pointer"
                        >
                          <option value="" disabled>Выберите из списка...</option>
-                         {/* Генерируем опции из всех категорий */}
-                         {allCategories.map(cat => (
+                         {allCategories.filter(c => !c.isAction).map(cat => (
                             <optgroup key={cat.title} label={cat.title}>
                               {cat.services.map(s => (
                                 <option key={s.id} value={s.name}>{s.name}</option>
