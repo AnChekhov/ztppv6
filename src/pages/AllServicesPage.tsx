@@ -13,33 +13,60 @@ import SEO from '../components/SEO';
 export const AllServicesPage: React.FC = () => {
   const [selectedService, setSelectedService] = useState<string>('');
 
+  // ✅ ФУНКЦИЯ СУПЕР-ПЛАВНОГО СКРОЛЛА (Custom smooth scroll)
+  const smoothScrollTo = (targetId: string, duration: number = 1500) => {
+    const target = document.getElementById(targetId);
+    if (!target) return;
+
+    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+    let startTime: number | null = null;
+
+    function animation(currentTime: number) {
+      if (startTime === null) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
+      
+      // Функция плавности (Ease In Out Quad)
+      const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
+      
+      window.scrollTo(0, run);
+
+      if (timeElapsed < duration) requestAnimationFrame(animation);
+    }
+
+    function easeInOutQuad(t: number, b: number, c: number, d: number) {
+      t /= d / 2;
+      if (t < 1) return c / 2 * t * t + b;
+      t--;
+      return -c / 2 * (t * (t - 2) - 1) + b;
+    }
+
+    requestAnimationFrame(animation);
+  };
+
+
   const handleOrderClick = (serviceName: string) => {
     setSelectedService(serviceName);
-    const formSection = document.getElementById('order-form');
-    if (formSection) {
-      formSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
+    // Используем плавный скролл (1.5 секунды)
+    smoothScrollTo('order-form', 1500);
   };
 
   const scrollToDescription = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
+    // Используем плавный скролл (1.5 секунды)
+    smoothScrollTo(id, 1500);
   };
 
   const scrollToCategory = (catId: string) => {
-    const element = document.getElementById(catId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    // Используем плавный скролл (1.2 секунды)
+    smoothScrollTo(catId, 1200);
   };
 
   const allCategories = [
     {
       id: "cat-cert",
       title: "Сертификация и ВЭД",
-      icon: FileText,
+      icon: Globe,
       color: "bg-blue-50 text-blue-600",
       services: [
         { id: "cert-st1", name: "Сертификат СТ-1 (СНГ)", desc: "Оформление сертификата формы СТ-1 для беспошлинного экспорта товаров в страны СНГ. Работаем дистанционно с экспортерами из любых регионов." },
@@ -123,7 +150,7 @@ export const AllServicesPage: React.FC = () => {
         { id: "dev-sout", name: "СОУТ", desc: "Организация проведения спецоценки рабочих мест в соответствии с законодательством." },
       ]
     },
-    // 8-й БЛОК: Заполнитель
+    // 8-й БЛОК
     {
       id: "cat-help",
       title: "Центр поддержки и контакты",
@@ -136,7 +163,6 @@ export const AllServicesPage: React.FC = () => {
 
   return (
     <div className="font-sans text-slate-900 bg-white">
-      {/* ✅ УСИЛЕННОЕ SEO ДЛЯ РЕГИОНОВ */}
       <SEO 
         title="Каталог услуг ТПП Забайкальского края | Работаем по всей России"
         description="Услуги для бизнеса из любых регионов РФ: таможенное оформление в Забайкальске, экспертиза грузов, поиск партнеров в Китае, сертификация. Ваш представитель на границе."
@@ -159,7 +185,7 @@ export const AllServicesPage: React.FC = () => {
                    Каталог услуг <span className="text-yellow-400">Торгово-промышленной палаты</span> Забайкальского края
                 </h1>
                 <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl">
-                  Комплексная поддержка вашего бизнеса: от регистрации товарного знака до выхода на международные рынки. Работаем с компаниями по всей России.
+                  Комплексная поддержка вашего бизнеса на всех этапах: от регистрации товарного знака до выхода на международные рынки.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button 
@@ -242,7 +268,7 @@ export const AllServicesPage: React.FC = () => {
                       </>
                     )}
 
-                    {/* 8-й БЛОК: ЗАПОЛНИТЕЛЬ */}
+                    {/* 8-й БЛОК */}
                     {cat.isAction && (
                        <>
                          <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 bg-slate-200 text-slate-500">
@@ -261,7 +287,7 @@ export const AllServicesPage: React.FC = () => {
         </div>
       </section>
 
-      {/* ✅ НОВАЯ СЕКЦИЯ: РАБОТА С РЕГИОНАМИ (SEO) */}
+      {/* SEO: РАБОТА С РЕГИОНАМИ */}
       <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
             <div className="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-slate-100 flex flex-col md:flex-row gap-12 items-center">
@@ -304,7 +330,7 @@ export const AllServicesPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. ПОДРОБНОЕ ОПИСАНИЕ (ЭНЦИКЛОПЕДИЯ) */}
+      {/* 2. ПОДРОБНОЕ ОПИСАНИЕ */}
       <section className="py-20 bg-white">
         <div className="max-w-5xl mx-auto px-6 md:px-8 space-y-20">
           
