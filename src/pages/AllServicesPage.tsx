@@ -4,7 +4,8 @@ import {
   Container, Hammer, Calculator, Briefcase,
   ShieldCheck, Phone, Mail, UploadCloud,
   CheckCircle2, ChevronDown, ArrowRight,
-  MessageCircle, Leaf, BookOpen, PenTool
+  MessageCircle, Leaf, BookOpen, PenTool,
+  MonitorPlay, Coffee // Иконка для переговорной
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
@@ -12,7 +13,6 @@ import SEO from '../components/SEO';
 export const AllServicesPage: React.FC = () => {
   const [selectedService, setSelectedService] = useState<string>('');
 
-  // Функция скролла к форме с выбором услуги
   const handleOrderClick = (serviceName: string) => {
     setSelectedService(serviceName);
     const formSection = document.getElementById('order-form');
@@ -21,7 +21,6 @@ export const AllServicesPage: React.FC = () => {
     }
   };
 
-  // Функция скролла к описанию услуги (из верхнего меню)
   const scrollToDescription = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -29,9 +28,16 @@ export const AllServicesPage: React.FC = () => {
     }
   };
 
-  // === ПОЛНАЯ БАЗА УСЛУГ (SEO SKYSCRAPER) ===
+  const scrollToCategory = (catId: string) => {
+    const element = document.getElementById(catId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   const allCategories = [
     {
+      id: "cat-cert",
       title: "Сертификация и Экспертиза происхождения",
       icon: FileText,
       color: "bg-blue-50 text-blue-600",
@@ -69,6 +75,7 @@ export const AllServicesPage: React.FC = () => {
       ]
     },
     {
+      id: "cat-expert",
       title: "Товарная экспертиза",
       icon: ShieldCheck,
       color: "bg-emerald-50 text-emerald-600",
@@ -76,7 +83,7 @@ export const AllServicesPage: React.FC = () => {
         { 
           id: "exp-quality", 
           name: "Приемка по количеству и качеству", 
-          desc: "Независимая приемка партий товара на складе получателя. Фиксация брака, недостачи, пересортицы. Акт для претензии поставщику." 
+          desc: "Независимая приемка партий товара на складе получателя. Фиксация брака, недостачи, пересортицы. Акт экспертизы для выставления претензии поставщику." 
         },
         { 
           id: "exp-44fz", 
@@ -86,7 +93,7 @@ export const AllServicesPage: React.FC = () => {
         { 
           id: "exp-customs", 
           name: "Таможенная экспертиза (Идентификация)", 
-          desc: "Идентификация товаров для таможенных целей, описание характеристик, состава, материала. Помощь в спорах с ФТС." 
+          desc: "Идентификация товаров для таможенных целей, описание характеристик, состава, материала. Помощь в спорах с ФТС по кодам ТН ВЭД." 
         },
         { 
           id: "exp-damage", 
@@ -106,6 +113,86 @@ export const AllServicesPage: React.FC = () => {
       ]
     },
     {
+      id: "cat-build",
+      title: "Строительство и Недвижимость",
+      icon: Hammer,
+      color: "bg-orange-50 text-orange-600",
+      services: [
+        { 
+          id: "str-quality", 
+          name: "Строительно-техническая экспертиза", 
+          desc: "Контроль качества строительно-монтажных работ. Выявление дефектов в новостройках и после ремонта." 
+        },
+        { 
+          id: "str-smeta", 
+          name: "Сметная экспертиза", 
+          desc: "Проверка сметной документации, актов КС-2/КС-3. Выявление завышения объемов и стоимости работ." 
+        },
+        { 
+          id: "str-house", 
+          name: "Обследование зданий и сооружений", 
+          desc: "Оценка технического состояния несущих конструкций. Признание домов аварийными или ветхими." 
+        },
+        { 
+          id: "str-flat", 
+          name: "Приемка квартир от застройщика", 
+          desc: "Помощь в приемке жилья. Составление дефектной ведомости для устранения недостатков застройщиком." 
+        },
+      ]
+    },
+    {
+      id: "cat-law",
+      title: "Юридическая поддержка",
+      icon: Scale,
+      color: "bg-indigo-50 text-indigo-600",
+      services: [
+        { 
+          id: "law-force", 
+          name: "Свидетельствование форс-мажора", 
+          desc: "Выдача заключений об обстоятельствах непреодолимой силы для освобождения от ответственности за неисполнение контрактов (санкции, стихийные бедствия)." 
+        },
+        { 
+          id: "law-arbitr", 
+          name: "Международный коммерческий арбитраж", 
+          desc: "Представительство интересов бизнеса в МКАС при ТПП РФ, арбитражных судах и судах общей юрисдикции. Взыскание долгов, корпоративные споры." 
+        },
+        { 
+          id: "law-contract", 
+          name: "Экспертиза контрактов", 
+          desc: "Разработка и правовой анализ договоров (в т.ч. внешнеэкономических). Выявление рисков, корректировка условий поставки и ответственности сторон." 
+        },
+        { 
+          id: "law-court", 
+          name: "Представительство в суде", 
+          desc: "Защита интересов бизнеса в арбитражных судах и судах общей юрисдикции. Взыскание задолженности." 
+        },
+      ]
+    },
+    {
+      id: "cat-val",
+      title: "Оценка собственности",
+      icon: Calculator,
+      color: "bg-amber-50 text-amber-600",
+      services: [
+        { 
+          id: "val-realty", 
+          name: "Оценка недвижимости", 
+          desc: "Оценка рыночной стоимости квартир, домов, земельных участков, коммерческих помещений (для ипотеки, залога, продажи)." 
+        },
+        { 
+          id: "val-business", 
+          name: "Оценка бизнеса и долей", 
+          desc: "Расчет стоимости действующего предприятия, пакетов акций, долей в ООО для продажи или наследства." 
+        },
+        { 
+          id: "val-auto", 
+          name: "Оценка транспорта и оборудования", 
+          desc: "Оценка автомобилей, спецтехники, станков и производственных линий. Для лизинга, списания или продажи." 
+        },
+      ]
+    },
+    {
+      id: "cat-ved",
       title: "ВЭД и Китай",
       icon: Globe,
       color: "bg-red-50 text-red-600",
@@ -138,90 +225,26 @@ export const AllServicesPage: React.FC = () => {
       ]
     },
     {
-      title: "Строительство и Недвижимость",
-      icon: Hammer,
-      color: "bg-orange-50 text-orange-600",
-      services: [
-        { 
-          id: "str-quality", 
-          name: "Строительно-техническая экспертиза", 
-          desc: "Контроль качества строительно-монтажных работ. Выявление дефектов в новостройках и после ремонта." 
-        },
-        { 
-          id: "str-smeta", 
-          name: "Сметная экспертиза", 
-          desc: "Проверка сметной документации, актов КС-2/КС-3. Выявление завышения объемов и стоимости работ." 
-        },
-        { 
-          id: "str-house", 
-          name: "Обследование зданий и сооружений", 
-          desc: "Оценка технического состояния несущих конструкций. Признание домов аварийными или ветхими." 
-        },
-        { 
-          id: "str-flat", 
-          name: "Приемка квартир от застройщика", 
-          desc: "Помощь в приемке жилья. Составление дефектной ведомости для устранения недостатков застройщиком." 
-        },
-      ]
-    },
-    {
-      title: "Юридические услуги",
-      icon: Scale,
-      color: "bg-indigo-50 text-indigo-600",
-      services: [
-        { 
-          id: "law-force", 
-          name: "Свидетельствование форс-мажора", 
-          desc: "Выдача заключений об обстоятельствах непреодолимой силы по внутрироссийским и внешнеторговым контрактам." 
-        },
-        { 
-          id: "law-arbitr", 
-          name: "Международный коммерческий арбитраж", 
-          desc: "Представительство в МКАС при ТПП РФ. Разрешение споров с иностранными партнерами." 
-        },
-        { 
-          id: "law-contract", 
-          name: "Экспертиза контрактов", 
-          desc: "Разработка и правовой анализ договоров. Минимизация рисков, согласование протоколов разногласий." 
-        },
-        { 
-          id: "law-court", 
-          name: "Представительство в суде", 
-          desc: "Защита интересов бизнеса в арбитражных судах и судах общей юрисдикции. Взыскание задолженности." 
-        },
-      ]
-    },
-    {
-      title: "Оценка собственности",
-      icon: Calculator,
-      color: "bg-amber-50 text-amber-600",
-      services: [
-        { 
-          id: "val-realty", 
-          name: "Оценка недвижимости", 
-          desc: "Оценка рыночной стоимости квартир, домов, земельных участков, коммерческих помещений (для ипотеки, залога, продажи)." 
-        },
-        { 
-          id: "val-business", 
-          name: "Оценка бизнеса и долей", 
-          desc: "Расчет стоимости действующего предприятия, пакетов акций, долей в ООО для продажи или наследства." 
-        },
-        { 
-          id: "val-auto", 
-          name: "Оценка транспорта и оборудования", 
-          desc: "Оценка автомобилей, спецтехники, станков и производственных линий. Для лизинга, списания или продажи." 
-        },
-      ]
-    },
-    {
-      title: "Развитие и Прочее",
+      id: "cat-dev",
+      title: "Развитие бизнеса",
       icon: Users,
       color: "bg-purple-50 text-purple-600",
       services: [
         { 
+          id: "dev-hall", 
+          name: "Предоставление конференц-зала", 
+          desc: "Организация мероприятий на площадке ТПП. Оборудованный зал в центре Читы (проектор, звук, ВКС) для проведения семинаров, собраний и переговоров. Техническое сопровождение." 
+        },
+        // ✅ НОВАЯ УСЛУГА: Переговорная комната
+        { 
+          id: "dev-room", 
+          name: "Предоставление переговорной комнаты", 
+          desc: "Комфортная комната для конфиденциальных деловых встреч, подписания контрактов и переговоров с партнерами. Вместимость до 10 человек. Чай/кофе, Wi-Fi." 
+        },
+        { 
           id: "dev-ip", 
           name: "Регистрация товарных знаков", 
-          desc: "Проверка бренда на уникальность, подача заявки в Роспатент, получение свидетельства. Защита интеллектуальной собственности." 
+          desc: "Проверка бренда на уникальность, подача заявки в Роспатент, полное сопровождение регистрации бренда. Защита интеллектуальной собственности." 
         },
         { 
           id: "dev-eco", 
@@ -231,7 +254,7 @@ export const AllServicesPage: React.FC = () => {
         { 
           id: "dev-sout", 
           name: "Специальная оценка условий труда (СОУТ)", 
-          desc: "Организация проведения спецоценки рабочих мест. Помощь в оформлении деклараций." 
+          desc: "Организация проведения спецоценки рабочих мест в соответствии с требованиями трудового законодательства. Помощь в оформлении деклараций." 
         },
         { 
           id: "dev-mem", 
@@ -247,11 +270,11 @@ export const AllServicesPage: React.FC = () => {
       <SEO 
         title="Полный каталог услуг Забайкальской ТПП | Реестр 2025"
         description="Более 45 видов услуг для бизнеса в Чите: сертификация, экспертиза, оценка, юридическая помощь, переводы, ВЭД с Китаем. Единое окно для предпринимателей."
-        keywords="услуги тпп чита, каталог услуг, оценка бизнеса, переводы китайский, соут чита, регистрация товарного знака, строительная экспертиза"
+        keywords="услуги тпп чита, каталог услуг, оценка бизнеса, переводы китайский, соут чита, регистрация товарного знака, строительная экспертиза, аренда зала чита"
       />
 
       {/* HERO */}
-      <section className="relative bg-slate-900 text-white py-24 md:py-32 overflow-hidden">
+      <section className="relative bg-slate-900 text-white min-h-[60vh] flex flex-col justify-center items-center py-20 overflow-hidden">
         <div className="absolute inset-0 opacity-30">
              <img src="/ztppv6/images/hero-bg.jpg" alt="Background" className="w-full h-full object-cover" />
         </div>
@@ -261,7 +284,7 @@ export const AllServicesPage: React.FC = () => {
             <p className="text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
               Комплексная поддержка вашего бизнеса на всех этапах: от регистрации товарного знака до выхода на международные рынки.
             </p>
-            {/* Кнопка скролла к форме для ленивых */}
+            {/* Кнопка скролла к форме */}
             <div className="mt-8">
               <button 
                 onClick={() => handleOrderClick('Нужна консультация (общий вопрос)')}
@@ -273,19 +296,25 @@ export const AllServicesPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 1. НАВИГАЦИОННАЯ СЕТКА (МЕНЮ) */}
+      {/* 1. НАВИГАЦИОННАЯ СЕТКА */}
       <section className="py-16 bg-white border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
            <h2 className="text-2xl font-bold text-slate-900 mb-8">Быстрый переход к разделам:</h2>
            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {allCategories.map((cat, idx) => (
                 <div key={idx} className="space-y-4">
-                    <div className="flex items-center gap-3 mb-4">
-                        <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${cat.color}`}>
+                    <button 
+                      onClick={() => scrollToCategory(cat.id)}
+                      className="flex items-center gap-3 mb-4 group w-full text-left"
+                    >
+                        <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${cat.color} group-hover:scale-105 transition-transform`}>
                             <cat.icon size={20} strokeWidth={2} />
                         </div>
-                        <h3 className="font-bold text-lg text-slate-900">{cat.title}</h3>
-                    </div>
+                        <h3 className="font-bold text-lg text-slate-900 group-hover:text-blue-600 transition-colors">
+                          {cat.title}
+                        </h3>
+                    </button>
+                    
                     <ul className="space-y-2">
                         {cat.services.map((service) => (
                             <li key={service.id}>
@@ -309,7 +338,7 @@ export const AllServicesPage: React.FC = () => {
         <div className="max-w-5xl mx-auto px-6 md:px-8 space-y-20">
           
           {allCategories.map((cat, catIdx) => (
-            <div key={catIdx}>
+            <div key={catIdx} id={cat.id} className="scroll-mt-32">
               {/* Заголовок категории */}
               <div className="flex items-center gap-4 mb-8 sticky top-20 bg-slate-50/95 backdrop-blur py-4 z-10 border-b border-slate-200">
                 <div className={`p-3 rounded-xl ${cat.color}`}>
@@ -324,7 +353,7 @@ export const AllServicesPage: React.FC = () => {
                   <div 
                     key={service.id} 
                     id={service.id} 
-                    className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow scroll-mt-32"
+                    className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow scroll-mt-48"
                   >
                     <h3 className="text-xl font-bold text-slate-900 mb-3">{service.name}</h3>
                     <p className="text-slate-600 leading-relaxed mb-6">
@@ -371,7 +400,7 @@ export const AllServicesPage: React.FC = () => {
                     <input type="tel" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="+7 (___) ___-__-__" />
                   </div>
 
-                  {/* Умный Select: Предустановленное значение */}
+                  {/* Умный Select */}
                   <div>
                      <label className="block text-sm font-bold mb-2">Интересующая услуга</label>
                      <div className="relative">
