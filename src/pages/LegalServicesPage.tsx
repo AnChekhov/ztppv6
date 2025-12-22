@@ -144,7 +144,8 @@ export const LegalServicesPage: React.FC = () => {
       </section>
 
       {/* SERVICES GRID */}
-      <section className="pt-12 pb-20 bg-white">
+      {/* ✅ ИЗМЕНЕНО: pb-12 вместо pb-20 */}
+      <section className="pt-12 pb-12 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Наши юридические услуги</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -171,9 +172,10 @@ export const LegalServicesPage: React.FC = () => {
       </section>
 
       {/* SEO ACCORDION */}
-      <section className="py-20 bg-slate-50 border-y border-slate-200">
+      {/* ✅ ИЗМЕНЕНО: py-12 и mb-12 */}
+      <section className="py-12 bg-slate-50 border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">Детально о правовой поддержке</h2>
+          <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Детально о правовой поддержке</h2>
           <div className="space-y-4">
             {services.map((item) => (
               <div key={item.id} id={`detail-${item.id}`} className={`bg-white rounded-2xl border transition-all duration-500 overflow-hidden ${expandedDetail === item.id ? 'border-blue-500 shadow-md' : 'border-slate-200'}`}>
@@ -250,8 +252,8 @@ export const LegalServicesPage: React.FC = () => {
         </section>
       </div>
 
-      {/* ✅ ИЗМЕНЕНО: pt-6 (меньше отступ до FAQ) */}
-      <section className="pt-6 pb-20 bg-white">
+      {/* ✅ ИЗМЕНЕНО: pt-12 и mb-12 (Симметрия) */}
+      <section className="pt-12 pb-20 bg-white">
         <div className="max-w-3xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Часто задаваемые вопросы</h2>
           <div className="space-y-4">
