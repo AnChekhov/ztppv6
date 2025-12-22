@@ -13,6 +13,7 @@ export const ExpertisePage: React.FC = () => {
   const [expandedDetail, setExpandedDetail] = useState<string | null>(null);
 
   const expertiseServices = [
+    // ... (массив без изменений) ...
     {
       id: 'quality',
       title: 'Приемка по количеству и качеству',
@@ -222,14 +223,13 @@ export const ExpertisePage: React.FC = () => {
                   {expandedDetail === item.id ? <ChevronUp className="text-blue-600"/> : <ChevronDown className="text-slate-400"/>}
                 </button>
                 
-                {/* ✅ ИСПРАВЛЕНО: Убрано пунктирное подчеркивание */}
                 <div className={`transition-all duration-300 ease-in-out ${expandedDetail === item.id ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
                   <div className="p-6 pt-0 text-slate-600 leading-relaxed border-t border-slate-100 mt-2">
                     {item.longDesc}
                     <div className="mt-4">
                         <button 
                             onClick={() => handleOrderClick(item.title)}
-                            className="text-sm font-bold text-blue-600 hover:text-yellow-600 transition-colors"
+                            className="text-sm font-bold text-blue-600 hover:text-yellow-600 underline decoration-dashed underline-offset-4"
                         >
                             Заказать эту экспертизу →
                         </button>
@@ -315,92 +315,45 @@ export const ExpertisePage: React.FC = () => {
               
               {/* Левая колонка */}
               <div>
-                <h2 className="text-3xl md:text-4xl font-extrabold mb-6">Закажите экспертизу онлайн</h2>
+                <h2 className="text-3xl md:text-4xl font-extrabold mb-6">Оставьте заявку на экспертизу</h2>
                 <p className="text-slate-300 text-lg mb-8">
-                  Оставьте заявку, и мы рассчитаем стоимость работ и согласуем время выезда эксперта.
+                  Мы перезвоним, уточним детали объекта и рассчитаем стоимость работ.
                 </p>
-                <ul className="space-y-4 mb-10 text-slate-300">
-                  <li className="flex items-center gap-3">
-                    <CheckCircle2 className="text-yellow-400 shrink-0" />
-                    <span>Выезд эксперта в течение 24 часов</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <CheckCircle2 className="text-yellow-400 shrink-0" />
-                    <span>Официальный акт установленного образца</span>
-                  </li>
-                   <li className="flex items-center gap-3">
-                    <CheckCircle2 className="text-yellow-400 shrink-0" />
-                    <span>Бесплатная консультация</span>
-                  </li>
-                </ul>
-
-                {/* Контакты для связи */}
                 <div className="pt-8 border-t border-slate-700">
-                  <p className="text-slate-400 text-sm mb-3 font-medium uppercase tracking-wider">
-                    Нет времени заполнять форму?
+                  <p className="text-slate-300 text-base mb-4 font-medium">
+                    Или просто позвоните и мы поможем решить Ваш вопрос:
                   </p>
-                  <p className="text-slate-300 text-base mb-4">
-                    Решим ваш вопрос по телефону прямо сейчас:
-                  </p>
-                  <a href="tel:+79243733330" className="block text-3xl md:text-4xl font-extrabold text-white hover:text-yellow-400 transition-colors mb-4">
-                    +7 (924) 373-33-30
-                  </a>
-                  <a href="mailto:info@zabtpp.ru" className="inline-flex items-center gap-2 text-blue-400 hover:text-white transition-colors text-lg font-medium">
-                    <Mail size={20} /> info@zabtpp.ru
-                  </a>
+                  <a href="tel:+79243733330" className="block text-3xl md:text-4xl font-extrabold text-white hover:text-yellow-400 transition-colors mb-4">+7 (924) 373-33-30</a>
+                  <a href="mailto:expert@ztpp.ru" className="inline-flex items-center gap-2 text-blue-400 hover:text-white transition-colors text-lg font-medium"><Mail size={20} /> expert@ztpp.ru</a>
                 </div>
               </div>
 
               {/* Правая колонка: Форма */}
               <div className="bg-white rounded-3xl p-8 text-slate-900 shadow-2xl">
                 <form className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-bold mb-2">Название организации</label>
-                    <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="ООО 'Пример'" />
-                  </div>
-                  
+                  <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Организация / ФИО" />
                   <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-bold mb-2">Контактное лицо</label>
-                      <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="Имя" />
-                    </div>
-                     <div>
-                      <label className="block text-sm font-bold mb-2">Телефон</label>
-                      <input type="tel" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="+7 (___) ___-__-__" />
-                    </div>
+                    <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Имя" />
+                    <input type="tel" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="+7 (___) ___-__-__" />
                   </div>
-
-                  {/* Select: Вид экспертизы */}
-                  <div>
-                     <label className="block text-sm font-bold mb-2">Вид экспертизы</label>
-                     <div className="relative">
-                       <select 
-                          value={selectedExpertise}
-                          onChange={(e) => setSelectedExpertise(e.target.value)}
-                          className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all cursor-pointer appearance-none text-slate-700"
-                       >
-                         {expertiseServices.map(s => (
-                           <option key={s.id} value={s.title}>{s.title}</option>
-                         ))}
-                         <option value="Другое">Другое / Нужна консультация</option>
-                       </select>
-                       <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-slate-500">
-                          <ChevronDown size={20} />
-                       </div>
+                  <div className="relative">
+                     <select 
+                        value={selectedExpertise}
+                        onChange={(e) => setSelectedExpertise(e.target.value)}
+                        className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none appearance-none cursor-pointer"
+                     >
+                       {expertiseServices.map(s => <option key={s.id} value={s.title}>{s.title}</option>)}
+                       <option>Другое</option>
+                     </select>
+                     <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-slate-500"><ChevronDown size={20} /></div>
+                   </div>
+                  <div className="pt-2">
+                     <div className="border-2 border-dashed border-slate-300 rounded-xl p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-slate-50 transition-colors group">
+                       <UploadCloud className="text-slate-400 group-hover:text-blue-500 mb-2" size={32} />
+                       <span className="text-sm text-slate-500">Прикрепить фото или документы</span>
                      </div>
                   </div>
-
-                  <div className="pt-2">
-                    <label className="block text-sm font-bold mb-2">Документы (если есть)</label>
-                    <div className="border-2 border-dashed border-slate-300 rounded-xl p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-slate-50 transition-colors group">
-                      <UploadCloud className="text-slate-400 group-hover:text-blue-500 mb-2 transition-colors" size={32} />
-                      <span className="text-sm text-slate-500 font-medium">Загрузить контракт или фото</span>
-                    </div>
-                  </div>
-
-                  <button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all mt-4">
-                    Отправить заявку
-                  </button>
+                  <button className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all mt-4">Вызвать эксперта</button>
                   <p className="text-xs text-center text-slate-400 mt-3">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
                 </form>
               </div>
@@ -414,35 +367,21 @@ export const ExpertisePage: React.FC = () => {
       <section className="py-20 bg-white">
         <div className="max-w-3xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Часто задаваемые вопросы</h2>
-          
           <div className="space-y-4">
             {faqs.map((faq, index) => (
               <div key={index} className="border-b border-slate-200 last:border-0">
-                <button 
-                  onClick={() => toggleFaq(index)}
-                  className="w-full flex justify-between items-center py-6 text-left group"
-                >
-                  <span className={`text-lg font-bold transition-colors ${openFaq === index ? 'text-blue-600' : 'text-slate-900 group-hover:text-blue-600'}`}>
-                    {faq.question}
-                  </span>
-                  <ChevronDown 
-                    className={`text-slate-400 transition-transform duration-300 ${openFaq === index ? 'rotate-180 text-blue-600' : ''}`} 
-                    size={24} 
-                  />
+                <button onClick={() => toggleFaq(index)} className="w-full flex justify-between items-center py-6 text-left group">
+                  <span className={`text-lg font-bold transition-colors ${openFaq === index ? 'text-blue-600' : 'text-slate-900 group-hover:text-blue-600'}`}>{faq.question}</span>
+                  <ChevronDown className={`text-slate-400 transition-transform duration-300 ${openFaq === index ? 'rotate-180 text-blue-600' : ''}`} size={24} />
                 </button>
-                <div 
-                  className={`overflow-hidden transition-all duration-300 ease-in-out ${openFaq === index ? 'max-h-96 opacity-100 pb-6' : 'max-h-0 opacity-0'}`}
-                >
-                  <p className="text-slate-600 leading-relaxed text-base">
-                    {faq.answer}
-                  </p>
+                <div className={`overflow-hidden transition-all duration-300 ease-in-out ${openFaq === index ? 'max-h-96 opacity-100 pb-6' : 'max-h-0 opacity-0'}`}>
+                  <p className="text-slate-600 leading-relaxed text-base">{faq.answer}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
       </section>
-
     </div>
   );
 };
