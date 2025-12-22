@@ -212,7 +212,7 @@ export const LegalServicesPage: React.FC = () => {
                 <p className="text-slate-300 text-lg mb-8">
                   Оставьте заявку, и наш юрист свяжется с вами для обсуждения вашей правовой задачи.
                 </p>
-                {/* ✅ ИЗМЕНЕНО: Желтый телефон + текст */}
+                {/* ✅ ИЗМЕНЕНО: Желтый телефон + Текст */}
                 <div className="pt-8 border-t border-slate-700">
                   <p className="text-slate-300 text-base mb-4 font-medium">
                     Просто позвоните, и мы поможем решить Ваш вопрос:
@@ -250,8 +250,8 @@ export const LegalServicesPage: React.FC = () => {
         </section>
       </div>
 
-      {/* ✅ ИЗМЕНЕНО: pt-10 для уменьшения отступа */}
-      <section className="pt-10 pb-20 bg-white">
+      {/* ✅ ИЗМЕНЕНО: pt-6 (меньше отступ до FAQ) */}
+      <section className="pt-6 pb-20 bg-white">
         <div className="max-w-3xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Часто задаваемые вопросы</h2>
           <div className="space-y-4">
