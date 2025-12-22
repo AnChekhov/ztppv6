@@ -13,7 +13,6 @@ export const ExpertisePage: React.FC = () => {
   const [expandedDetail, setExpandedDetail] = useState<string | null>(null);
 
   const expertiseServices = [
-    // ... (массив без изменений) ...
     {
       id: 'quality',
       title: 'Приемка по количеству и качеству',
@@ -319,12 +318,17 @@ export const ExpertisePage: React.FC = () => {
                 <p className="text-slate-300 text-lg mb-8">
                   Мы перезвоним, уточним детали объекта и рассчитаем стоимость работ.
                 </p>
+                {/* ✅ ИЗМЕНЕНО: Номер телефона желтым */}
                 <div className="pt-8 border-t border-slate-700">
                   <p className="text-slate-300 text-base mb-4 font-medium">
                     Или просто позвоните и мы поможем решить Ваш вопрос:
                   </p>
-                  <a href="tel:+79243733330" className="block text-3xl md:text-4xl font-extrabold text-white hover:text-yellow-400 transition-colors mb-4">+7 (924) 373-33-30</a>
-                  <a href="mailto:expert@ztpp.ru" className="inline-flex items-center gap-2 text-blue-400 hover:text-white transition-colors text-lg font-medium"><Mail size={20} /> expert@ztpp.ru</a>
+                  <a href="tel:+79243733330" className="block text-3xl md:text-4xl font-extrabold text-yellow-400 hover:text-white transition-colors mb-4">
+                    +7 (924) 373-33-30
+                  </a>
+                  <a href="mailto:expert@ztpp.ru" className="inline-flex items-center gap-2 text-blue-400 hover:text-white transition-colors text-lg font-medium">
+                    <Mail size={20} /> expert@ztpp.ru
+                  </a>
                 </div>
               </div>
 
@@ -342,8 +346,10 @@ export const ExpertisePage: React.FC = () => {
                         onChange={(e) => setSelectedExpertise(e.target.value)}
                         className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none appearance-none cursor-pointer"
                      >
-                       {expertiseServices.map(s => <option key={s.id} value={s.title}>{s.title}</option>)}
-                       <option>Другое</option>
+                       {expertiseServices.map(s => (
+                         <option key={s.id} value={s.title}>{s.title}</option>
+                       ))}
+                       <option value="Другое">Другое / Нужна консультация</option>
                      </select>
                      <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-slate-500"><ChevronDown size={20} /></div>
                    </div>
@@ -382,6 +388,7 @@ export const ExpertisePage: React.FC = () => {
           </div>
         </div>
       </section>
+
     </div>
   );
 };
