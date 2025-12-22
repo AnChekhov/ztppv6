@@ -212,10 +212,12 @@ export const EventsPage: React.FC = () => {
                 <p className="text-slate-300 text-lg mb-8">
                   Заполните форму, и мы свяжемся с вами, чтобы рассказать о мероприятиях, актуальных для вашего бизнеса.
                 </p>
+                {/* ✅ ИЗМЕНЕНО: Номер телефона желтым + текст */}
                 <div className="pt-8 border-t border-slate-700">
                   <p className="text-slate-300 text-base mb-4 font-medium">
                     Просто позвоните, и мы поможем решить Ваш вопрос:
                   </p>
+                  {/* ✅ ЖЕЛТЫЙ ЦВЕТ */}
                   <a href="tel:+79243733330" className="block text-3xl md:text-4xl font-extrabold text-yellow-400 hover:text-white transition-colors mb-4">+7 (924) 373-33-30</a>
                   <a href="mailto:info@zabtpp.ru" className="inline-flex items-center gap-2 text-blue-400 hover:text-white transition-colors text-lg font-medium"><Mail size={20} /> info@zabtpp.ru</a>
                 </div>
@@ -249,8 +251,8 @@ export const EventsPage: React.FC = () => {
         </section>
       </div>
 
-      {/* ✅ ИЗМЕНЕНО: pt-10 для уменьшения отступа */}
-      <section className="pt-10 pb-20 bg-white">
+      {/* ✅ ИЗМЕНЕНО: pt-6 (меньше отступ до FAQ) */}
+      <section className="pt-6 pb-20 bg-white">
         <div className="max-w-3xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Часто задаваемые вопросы</h2>
           <div className="space-y-4">
