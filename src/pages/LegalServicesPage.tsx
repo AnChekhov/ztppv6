@@ -144,7 +144,7 @@ export const LegalServicesPage: React.FC = () => {
       </section>
 
       {/* SERVICES GRID */}
-      {/* ✅ ИЗМЕНЕНО: pb-12 вместо pb-20 (уменьшен нижний отступ) */}
+      {/* Уменьшил нижний отступ pb-12, чтобы подтянуть серый блок */}
       <section className="pt-12 pb-12 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Наши юридические услуги</h2>
@@ -172,10 +172,13 @@ export const LegalServicesPage: React.FC = () => {
       </section>
 
       {/* SEO ACCORDION */}
-      {/* ✅ ИЗМЕНЕНО: py-12 (компактная серая секция) и mb-12 у заголовка */}
-      <section className="py-12 bg-slate-50 border-y border-slate-200">
+      {/* ✅ ОПТИЧЕСКАЯ КОРРЕКЦИЯ: pt-20 (большой отступ сверху) для компенсации теней карточек */}
+      <section className="pt-20 pb-12 bg-slate-50 border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Детально о правовой поддержке</h2>
+          {/* ✅ leading-tight и mb-10 для компактности заголовка */}
+          <h2 className="text-3xl font-extrabold text-slate-900 mb-10 mt-2 text-center leading-tight">
+            Детально о правовой поддержке
+          </h2>
           <div className="space-y-4">
             {services.map((item) => (
               <div key={item.id} id={`detail-${item.id}`} className={`bg-white rounded-2xl border transition-all duration-500 overflow-hidden ${expandedDetail === item.id ? 'border-blue-500 shadow-md' : 'border-slate-200'}`}>
