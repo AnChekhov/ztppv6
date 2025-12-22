@@ -318,10 +318,10 @@ export const ExpertisePage: React.FC = () => {
                 <p className="text-slate-300 text-lg mb-8">
                   Мы перезвоним, уточним детали объекта и рассчитаем стоимость работ.
                 </p>
-                {/* ✅ ИЗМЕНЕНО: Номер телефона желтым */}
+                {/* ✅ ИЗМЕНЕНО: Номер телефона желтым + текст */}
                 <div className="pt-8 border-t border-slate-700">
                   <p className="text-slate-300 text-base mb-4 font-medium">
-                    Или просто позвоните и мы поможем решить Ваш вопрос:
+                    Просто позвоните, и мы поможем решить Ваш вопрос:
                   </p>
                   <a href="tel:+79243733330" className="block text-3xl md:text-4xl font-extrabold text-yellow-400 hover:text-white transition-colors mb-4">
                     +7 (924) 373-33-30
@@ -346,10 +346,8 @@ export const ExpertisePage: React.FC = () => {
                         onChange={(e) => setSelectedExpertise(e.target.value)}
                         className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none appearance-none cursor-pointer"
                      >
-                       {expertiseServices.map(s => (
-                         <option key={s.id} value={s.title}>{s.title}</option>
-                       ))}
-                       <option value="Другое">Другое / Нужна консультация</option>
+                       {expertiseServices.map(s => <option key={s.id} value={s.title}>{s.title}</option>)}
+                       <option>Другое</option>
                      </select>
                      <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-slate-500"><ChevronDown size={20} /></div>
                    </div>
