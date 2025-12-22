@@ -144,8 +144,8 @@ export const EventsPage: React.FC = () => {
       </section>
 
       {/* SERVICES GRID */}
-      {/* ✅ ИЗМЕНЕНО: pb-12 вместо pb-20 (отступ снизу уменьшен) */}
-      <section className="pt-12 pb-12 bg-white">
+      {/* ✅ ИЗМЕНЕНО: pb-20 */}
+      <section className="pt-12 pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Форматы нашего взаимодействия</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -172,10 +172,9 @@ export const EventsPage: React.FC = () => {
       </section>
 
       {/* SEO ACCORDION */}
-      {/* ✅ ИЗМЕНЕНО: py-12 вместо py-20 (симметричные отступы сверху и снизу 48px) */}
+      {/* ✅ ИЗМЕНЕНО: py-12 (компактный серый блок) */}
       <section className="py-12 bg-slate-50 border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
-          {/* ✅ ИЗМЕНЕНО: mb-12 (отступ до аккордеона) */}
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Подробная информация о мероприятиях</h2>
           <div className="space-y-4">
             {services.map((item) => (
@@ -252,9 +251,10 @@ export const EventsPage: React.FC = () => {
         </section>
       </div>
 
-      <section className="pt-12 pb-20 bg-white">
+      {/* FAQ: pt-6 (как было, чтобы не отлетать от формы) */}
+      <section className="pt-6 pb-20 bg-white">
         <div className="max-w-3xl mx-auto px-6 md:px-8">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Часто задаваемые вопросы</h2>
+          <h2 className="text-3xl font-extrabold text-slate-900 mb-6 text-center">Часто задаваемые вопросы</h2>
           <div className="space-y-4">
             {faqs.map((faq, index) => (
               <div key={index} className="border-b border-slate-200 last:border-0">
