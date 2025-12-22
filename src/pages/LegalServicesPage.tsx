@@ -38,7 +38,6 @@ export const LegalServicesPage: React.FC = () => {
     }, 100);
   };
 
-  // ✅ ИЗМЕНЕНО: Порядок услуг (1. Форс-мажор, 2. Защита, 3. Договоры)
   const services = [
     {
       id: 'force-majeure',
@@ -191,10 +190,7 @@ export const LegalServicesPage: React.FC = () => {
                   <div className="p-6 pt-0 text-slate-600 leading-relaxed border-t border-slate-100 mt-2">
                     {item.longDesc}
                     <div className="mt-4">
-                        <button 
-                          onClick={() => handleOrderClick(item.title)} 
-                          className="text-sm font-bold text-blue-600 hover:text-yellow-600 transition-colors"
-                        >
+                        <button onClick={() => handleOrderClick(item.title)} className="text-sm font-bold text-blue-600 hover:text-yellow-600 transition-colors">
                             Получить консультацию →
                         </button>
                     </div>
@@ -221,12 +217,8 @@ export const LegalServicesPage: React.FC = () => {
                   <p className="text-slate-300 text-base mb-4 font-medium">
                     Просто позвоните, и мы поможем решить Ваш вопрос:
                   </p>
-                  <a href="tel:+79243733330" className="block text-3xl md:text-4xl font-extrabold text-yellow-400 hover:text-white transition-colors mb-4">
-                    +7 (924) 373-33-30
-                  </a>
-                  <a href="mailto:info@zabtpp.ru" className="inline-flex items-center gap-2 text-blue-400 hover:text-white transition-colors text-lg font-medium">
-                    <Mail size={20} /> info@zabtpp.ru
-                  </a>
+                  <a href="tel:+79243733330" className="block text-3xl md:text-4xl font-extrabold text-yellow-400 hover:text-white transition-colors mb-4">+7 (924) 373-33-30</a>
+                  <a href="mailto:info@zabtpp.ru" className="inline-flex items-center gap-2 text-blue-400 hover:text-white transition-colors text-lg font-medium"><Mail size={20} /> info@zabtpp.ru</a>
                 </div>
               </div>
               <div className="bg-white rounded-3xl p-8 text-slate-900 shadow-2xl">
@@ -258,7 +250,8 @@ export const LegalServicesPage: React.FC = () => {
         </section>
       </div>
 
-      <section className="py-20 bg-white">
+      {/* ✅ ИЗМЕНЕНО: pt-10 для уменьшения отступа */}
+      <section className="pt-10 pb-20 bg-white">
         <div className="max-w-3xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Часто задаваемые вопросы</h2>
           <div className="space-y-4">
