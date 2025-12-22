@@ -144,8 +144,8 @@ export const LegalServicesPage: React.FC = () => {
       </section>
 
       {/* SERVICES GRID */}
-      {/* ✅ ИЗМЕНЕНО: pb-20 (80px) */}
-      <section className="pt-12 pb-20 bg-white">
+      {/* ✅ ИЗМЕНЕНО: pb-12 вместо pb-20 (уменьшен нижний отступ) */}
+      <section className="pt-12 pb-12 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Наши юридические услуги</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -172,7 +172,7 @@ export const LegalServicesPage: React.FC = () => {
       </section>
 
       {/* SEO ACCORDION */}
-      {/* ✅ ИЗМЕНЕНО: py-12 (48px) */}
+      {/* ✅ ИЗМЕНЕНО: py-12 (компактная серая секция) и mb-12 у заголовка */}
       <section className="py-12 bg-slate-50 border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Детально о правовой поддержке</h2>
@@ -214,7 +214,6 @@ export const LegalServicesPage: React.FC = () => {
                 <p className="text-slate-300 text-lg mb-8">
                   Оставьте заявку, и наш юрист свяжется с вами для обсуждения вашей правовой задачи.
                 </p>
-                {/* ✅ ИЗМЕНЕНО: Желтый телефон + Текст */}
                 <div className="pt-8 border-t border-slate-700">
                   <p className="text-slate-300 text-base mb-4 font-medium">
                     Просто позвоните, и мы поможем решить Ваш вопрос:
@@ -252,10 +251,9 @@ export const LegalServicesPage: React.FC = () => {
         </section>
       </div>
 
-      {/* FAQ: pt-6 */}
       <section className="pt-6 pb-20 bg-white">
         <div className="max-w-3xl mx-auto px-6 md:px-8">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-6 text-center">Часто задаваемые вопросы</h2>
+          <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Часто задаваемые вопросы</h2>
           <div className="space-y-4">
             {faqs.map((faq, index) => (
               <div key={index} className="border-b border-slate-200 last:border-0">
