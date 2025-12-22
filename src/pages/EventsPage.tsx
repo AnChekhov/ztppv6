@@ -143,7 +143,7 @@ export const EventsPage: React.FC = () => {
         </div>
       </section>
 
-      {/* SERVICES GRID */}
+      {/* SERVICES GRID (ЭТАЛОН: pt-12, mb-12) */}
       <section className="pt-12 pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Форматы нашего взаимодействия</h2>
@@ -173,7 +173,8 @@ export const EventsPage: React.FC = () => {
       {/* SEO ACCORDION */}
       <section className="py-20 bg-slate-50 border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">Подробная информация о мероприятиях</h2>
+          {/* ✅ ИЗМЕНЕНО: mb-12 */}
+          <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Подробная информация о мероприятиях</h2>
           <div className="space-y-4">
             {services.map((item) => (
               <div key={item.id} id={`detail-${item.id}`} className={`bg-white rounded-2xl border transition-all duration-500 overflow-hidden ${expandedDetail === item.id ? 'border-blue-500 shadow-md' : 'border-slate-200'}`}>
@@ -249,11 +250,11 @@ export const EventsPage: React.FC = () => {
         </section>
       </div>
 
-      {/* ✅ ИЗМЕНЕНО: pt-6 (симметрия отступов вокруг заголовка) */}
-      <section className="pt-6 pb-20 bg-white">
+      {/* FAQ */}
+      {/* ✅ ИЗМЕНЕНО: pt-12 (как в эталоне) и mb-12 (как в эталоне) */}
+      <section className="pt-12 pb-20 bg-white">
         <div className="max-w-3xl mx-auto px-6 md:px-8">
-          {/* ✅ ИЗМЕНЕНО: mb-6 (теперь отступ снизу равен отступу сверху) */}
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-6 text-center">Часто задаваемые вопросы</h2>
+          <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Часто задаваемые вопросы</h2>
           <div className="space-y-4">
             {faqs.map((faq, index) => (
               <div key={index} className="border-b border-slate-200 last:border-0">
