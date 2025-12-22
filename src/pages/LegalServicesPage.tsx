@@ -144,8 +144,8 @@ export const LegalServicesPage: React.FC = () => {
       </section>
 
       {/* SERVICES GRID */}
-      {/* ✅ A = pb-[100px] */}
-      <section className="pt-12 pb-[100px] bg-white">
+      {/* ✅ ИСПРАВЛЕНО: А = pb-16 (64px) */}
+      <section className="pt-12 pb-16 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Наши юридические услуги</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -172,11 +172,11 @@ export const LegalServicesPage: React.FC = () => {
       </section>
 
       {/* SEO ACCORDION */}
-      {/* ✅ B = pt-[100px] */}
-      <section className="pt-[100px] pb-[100px] bg-slate-50 border-y border-slate-200">
+      {/* ✅ ИСПРАВЛЕНО: Б = py-16 (64px) */}
+      <section className="py-16 bg-slate-50 border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
-          {/* ✅ C = mb-[100px] + mt-0 + leading-none */}
-          <h2 className="text-3xl font-extrabold text-slate-900 mt-0 mb-[100px] leading-none text-center">
+          {/* ✅ ИСПРАВЛЕНО: В = mb-16 (64px), mt-0, leading-none */}
+          <h2 className="text-3xl font-extrabold text-slate-900 mt-0 mb-16 leading-none text-center">
             Детально о правовой поддержке
           </h2>
           <div className="space-y-4">
