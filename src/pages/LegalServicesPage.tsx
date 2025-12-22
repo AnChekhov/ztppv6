@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { 
-  Gavel, Scale, FileText, Briefcase, DollarSign,
+  Gavel, Scale, FileText, Handshake, Briefcase, DollarSign,
   Phone, Mail, CheckCircle, ChevronDown, UploadCloud, 
   ChevronUp, MessageCircle, CheckCircle2, Shield, Calculator
 } from 'lucide-react';
@@ -8,7 +8,7 @@ import SEO from '../components/SEO';
 
 export const LegalServicesPage: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [selectedService, setSelectedService] = useState<string>('Свидетельствование форс-мажора'); // Поменял дефолт
+  const [selectedService, setSelectedService] = useState<string>('Свидетельствование форс-мажора');
   const [expandedDetail, setExpandedDetail] = useState<string | null>(null);
 
   const toggleFaq = (index: number) => {
@@ -38,7 +38,7 @@ export const LegalServicesPage: React.FC = () => {
     }, 100);
   };
 
-  // ✅ ИЗМЕНЕНО: Новый порядок карточек
+  // ✅ ИЗМЕНЕНО: Порядок услуг (1. Форс-мажор, 2. Защита, 3. Договоры)
   const services = [
     {
       id: 'force-majeure',
@@ -102,16 +102,18 @@ export const LegalServicesPage: React.FC = () => {
   return (
     <div className="font-sans text-slate-900 bg-white">
       <SEO 
-        title="Юридические услуги для бизнеса | Форс-мажор, Защита прав, Арбитраж | ТПП Чита"
-        description="Комплексные юридические услуги: свидетельствование форс-мажора, защита интересов бизнеса в госорганах, договорное право ВЭД, международный арбитраж."
-        keywords="юридические услуги чита, форс-мажор, защита бизнеса, арбитраж ВЭД, взыскание долгов"
+        title="Юридические услуги для бизнеса | Международный арбитраж, Форс-мажор | ТПП Чита"
+        description="Комплексные юридические услуги: международный арбитраж, свидетельствование форс-мажора, защита интересов бизнеса, взыскание долгов, налоговые консультации."
+        keywords="юридические услуги чита, арбитраж ВЭД, форс-мажор, защита бизнеса, налоговые консультации"
       />
 
+      {/* HERO SECTION */}
       <section className="relative bg-slate-900 text-white overflow-hidden min-h-[65vh] flex items-center justify-center">
         <div className="absolute inset-0 opacity-40">
             <img src="/ztppv6/images/hero-bg.jpg" alt="Background" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/[0.87] to-slate-900"></div>
+        
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center">
             <div className="grid lg:grid-cols-12 gap-8 items-center">
               <div className="lg:col-span-7 max-w-3xl">
@@ -119,7 +121,7 @@ export const LegalServicesPage: React.FC = () => {
                   Надежная юридическая защита <span className="text-yellow-400">вашего бизнеса</span>
                 </h1>
                 <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl">
-                  Свидетельствование форс-мажора, защита интересов в судах и госорганах, международный арбитраж.
+                  Международный коммерческий арбитраж, свидетельствование форс-мажора, защита интересов в судах и госорганах.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button onClick={scrollToForm} className="bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 px-8 rounded-xl transition-all hover:scale-105 shadow-lg">
@@ -142,6 +144,7 @@ export const LegalServicesPage: React.FC = () => {
         </div>
       </section>
 
+      {/* SERVICES GRID */}
       <section className="pt-12 pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Наши юридические услуги</h2>
@@ -168,6 +171,7 @@ export const LegalServicesPage: React.FC = () => {
         </div>
       </section>
 
+      {/* SEO ACCORDION */}
       <section className="py-20 bg-slate-50 border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">Детально о правовой поддержке</h2>
@@ -183,8 +187,6 @@ export const LegalServicesPage: React.FC = () => {
                   </div>
                   {expandedDetail === item.id ? <ChevronUp className="text-blue-600"/> : <ChevronDown className="text-slate-400"/>}
                 </button>
-                
-                {/* ✅ ИСПРАВЛЕНО: Убрано пунктирное подчеркивание (underline decoration-dashed) */}
                 <div className={`transition-all duration-300 ease-in-out ${expandedDetail === item.id ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
                   <div className="p-6 pt-0 text-slate-600 leading-relaxed border-t border-slate-100 mt-2">
                     {item.longDesc}
@@ -214,10 +216,17 @@ export const LegalServicesPage: React.FC = () => {
                 <p className="text-slate-300 text-lg mb-8">
                   Оставьте заявку, и наш юрист свяжется с вами для обсуждения вашей правовой задачи.
                 </p>
+                {/* ✅ ИЗМЕНЕНО: Желтый телефон + текст */}
                 <div className="pt-8 border-t border-slate-700">
-                  <p className="text-slate-400 text-sm mb-3 font-medium uppercase tracking-wider">Контакты юридического отдела</p>
-                  <a href="tel:+79243733330" className="block text-3xl md:text-4xl font-extrabold text-white hover:text-yellow-400 transition-colors mb-4">+7 (924) 373-33-30</a>
-                  <a href="mailto:info@zabtpp.ru" className="inline-flex items-center gap-2 text-blue-400 hover:text-white transition-colors text-lg font-medium"><Mail size={20} /> info@zabtpp.ru</a>
+                  <p className="text-slate-300 text-base mb-4 font-medium">
+                    Просто позвоните, и мы поможем решить Ваш вопрос:
+                  </p>
+                  <a href="tel:+79243733330" className="block text-3xl md:text-4xl font-extrabold text-yellow-400 hover:text-white transition-colors mb-4">
+                    +7 (924) 373-33-30
+                  </a>
+                  <a href="mailto:info@zabtpp.ru" className="inline-flex items-center gap-2 text-blue-400 hover:text-white transition-colors text-lg font-medium">
+                    <Mail size={20} /> info@zabtpp.ru
+                  </a>
                 </div>
               </div>
               <div className="bg-white rounded-3xl p-8 text-slate-900 shadow-2xl">
