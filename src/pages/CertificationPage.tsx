@@ -92,7 +92,6 @@ export const CertificationPage: React.FC = () => {
 
   return (
     <div className="font-sans text-slate-900 bg-white">
-      
       <SEO 
         title="Сертификаты происхождения товаров (СТ-1, Общая форма) в Чите"
         description="Оформление сертификатов происхождения товаров (СТ-1, EAV, Общая форма) в Забайкальском крае. Срочная выдача для экспорта в Китай. Консультации экспертов ТПП."
@@ -102,19 +101,11 @@ export const CertificationPage: React.FC = () => {
       {/* 1. HERO SECTION */}
       <section className="relative bg-slate-900 text-white overflow-hidden min-h-[65vh] flex items-center justify-center">
         <div className="absolute inset-0 opacity-40">
-            <img 
-              src="/ztppv6/images/hero-bg.jpg" 
-              alt="Background" 
-              className="w-full h-full object-cover"
-            />
+            <img src="/ztppv6/images/hero-bg.jpg" alt="Background" className="w-full h-full object-cover" />
         </div>
-        
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/[0.87] to-slate-900"></div>
-        
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center">
-            
             <div className="grid lg:grid-cols-12 gap-8 items-center">
-              
               <div className="lg:col-span-7 max-w-3xl">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
                   Заказать сертификат происхождения товара в <span className="text-yellow-400">Забайкальской ТПП</span>
@@ -123,47 +114,30 @@ export const CertificationPage: React.FC = () => {
                   Оформите ключевой документ для экспорта онлайн. Получите льготы и преференции для вашего бизнеса. Гарантия прохождения таможни.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <button 
-                    onClick={scrollToForm}
-                    className="bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 px-8 rounded-xl transition-all hover:scale-105 shadow-[0_0_20px_rgba(250,204,21,0.3)]"
-                  >
+                  <button onClick={scrollToForm} className="bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 px-8 rounded-xl transition-all hover:scale-105 shadow-[0_0_20px_rgba(250,204,21,0.3)]">
                     Заказать сертификат
                   </button>
-                  <button 
-                    onClick={scrollToForm}
-                    className="border-2 border-slate-600 hover:border-white text-white font-semibold py-4 px-8 rounded-xl transition-colors flex items-center justify-center gap-2 group"
-                  >
+                  <button onClick={scrollToForm} className="border-2 border-slate-600 hover:border-white text-white font-semibold py-4 px-8 rounded-xl transition-colors flex items-center justify-center gap-2 group">
                     <MessageCircle size={20} />
                     Проконсультироваться
                   </button>
                 </div>
               </div>
-
               <div className="hidden lg:flex lg:col-span-5 justify-center items-center relative">
                 <div className="absolute w-80 h-80 bg-blue-600/10 rounded-full blur-3xl"></div>
                 <div className="relative transform transition-transform duration-500 hover:scale-105">
-                   <FileCheck 
-                      size={300} 
-                      strokeWidth={1}
-                      className="text-slate-600/70 drop-shadow-2xl" 
-                   />
-                   <FileCheck 
-                      size={300} 
-                      strokeWidth={1}
-                      className="absolute top-0 left-0 text-white/10" 
-                   />
+                   <FileCheck size={300} strokeWidth={1} className="text-slate-600/70 drop-shadow-2xl" />
+                   <FileCheck size={300} strokeWidth={1} className="absolute top-0 left-0 text-white/10" />
                 </div>
               </div>
-
             </div>
         </div>
       </section>
 
-      {/* 2. ТИПЫ СЕРТИФИКАТОВ (GRID) */}
+      {/* 2. ТИПЫ СЕРТИФИКАТОВ */}
       <section className="pt-12 pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Выберите нужный Вам тип сертификата</h2>
-          
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {certTypes.map((item) => (
               <div 
@@ -184,10 +158,7 @@ export const CertificationPage: React.FC = () => {
                   <div className="text-sm text-slate-600 leading-snug">{item.purpose}</div>
                 </div>
                 <div className="mt-auto pt-3 border-t border-slate-100">
-                   <button 
-                     /* Убран e.stopPropagation, т.к. клик по всей карте работает */
-                     className="text-xs font-bold text-blue-600 hover:text-blue-800 transition-colors flex items-center"
-                   >
+                   <button className="text-xs font-bold text-blue-600 hover:text-blue-800 transition-colors flex items-center">
                      Подробнее <ChevronDown size={14} className="ml-1" />
                    </button>
                 </div>
@@ -205,21 +176,14 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. ИНФОРМАЦИЯ О СЕРТИФИКАТАХ (Аккордеон) */}
+      {/* 3. ИНФОРМАЦИЯ О СЕРТИФИКАТАХ */}
       <section className="py-20 bg-slate-50 border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">Информация о сертификатах</h2>
           <div className="space-y-4">
             {certTypes.map((item) => (
-              <div 
-                key={item.id} 
-                id={`detail-${item.id}`} 
-                className={`bg-white rounded-2xl border transition-all duration-500 overflow-hidden ${expandedDetail === item.id ? 'border-blue-500 shadow-md' : 'border-slate-200'}`}
-              >
-                <button 
-                  onClick={() => setExpandedDetail(expandedDetail === item.id ? null : item.id)}
-                  className="w-full flex items-center justify-between p-6 text-left"
-                >
+              <div key={item.id} id={`detail-${item.id}`} className={`bg-white rounded-2xl border transition-all duration-500 overflow-hidden ${expandedDetail === item.id ? 'border-blue-500 shadow-md' : 'border-slate-200'}`}>
+                <button onClick={() => setExpandedDetail(expandedDetail === item.id ? null : item.id)} className="w-full flex items-center justify-between p-6 text-left">
                   <div className="flex items-center gap-4">
                     <div className={`p-2 rounded-lg ${expandedDetail === item.id ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-500'}`}>
                        <FileCheck size={24} />
@@ -228,17 +192,13 @@ export const CertificationPage: React.FC = () => {
                   </div>
                   {expandedDetail === item.id ? <ChevronUp className="text-blue-600"/> : <ChevronDown className="text-slate-400"/>}
                 </button>
-                
-                {/* ✅ ИСПРАВЛЕНО: Убрано пунктирное подчеркивание */}
                 <div className={`transition-all duration-300 ease-in-out ${expandedDetail === item.id ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
                   <div className="p-6 pt-0 text-slate-600 leading-relaxed border-t border-slate-100 mt-2">
                     {item.longDesc}
                     <div className="mt-4">
-                        <button 
-                            onClick={() => handleOrderClick(item.type)}
-                            className="text-sm font-bold text-blue-600 hover:text-yellow-600 transition-colors"
-                        >
-                            Оформить сертификат {item.type} →
+                        {/* ✅ ИЗМЕНЕНО: Заказать */}
+                        <button onClick={() => handleOrderClick(item.type)} className="text-sm font-bold text-blue-600 hover:text-yellow-600 transition-colors">
+                            Заказать сертификат {item.type} →
                         </button>
                     </div>
                   </div>
@@ -260,7 +220,6 @@ export const CertificationPage: React.FC = () => {
               </div>
               <p className="text-slate-500 mt-2">Стоимость услуги<br/><span className="text-sm">(зависит от вида товара)</span></p>
             </div>
-            
             <div className="text-center px-4 pt-4 md:pt-0">
               <Clock className="mx-auto text-blue-600 mb-4 h-10 w-10" />
               <div className="text-4xl font-extrabold text-slate-900 mb-2 relative inline-block">
@@ -268,7 +227,6 @@ export const CertificationPage: React.FC = () => {
               </div>
               <p className="text-slate-500 mt-2">Срок оформления<br/><span className="text-sm">(после подачи документов)</span></p>
             </div>
-            
             <div className="text-center px-4 pt-4 md:pt-0">
               <Calendar className="mx-auto text-blue-600 mb-4 h-10 w-10" />
               <div className="text-4xl font-extrabold text-slate-900 mb-2 relative inline-block">
@@ -277,7 +235,6 @@ export const CertificationPage: React.FC = () => {
               <p className="text-slate-500 mt-2">Срок действия<br/><span className="text-sm">(с даты выдачи)</span></p>
             </div>
           </div>
-
           <div className="mt-12 max-w-4xl mx-auto text-left">
             <p className="text-sm text-slate-400 leading-relaxed">
               <span className="text-lg align-middle mr-1">*</span> 
@@ -287,42 +244,12 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. ШАГИ */}
-      <section className="py-20 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-16 text-center">Как получить сертификат: просто и понятно</h2>
-          <div className="relative">
-            <div className="hidden md:block absolute top-6 left-0 w-full h-1 bg-slate-200 rounded">
-                <div className="h-full bg-blue-200 w-3/4 rounded"></div>
-            </div>
-            <div className="grid md:grid-cols-4 gap-8">
-              {[
-                { title: 'Подготовка', desc: 'Соберите пакет документов по нашему чек-листу. Скачайте и заполните бланк заявления.' },
-                { title: 'Подача заявки', desc: 'Отправьте заявку и сканы документов онлайн через форму ниже или предоставьте в офис.' },
-                { title: 'Экспертиза', desc: 'Наши специалисты проверят документы и, при необходимости, проведут экспертизу.' },
-                { title: 'Получение', desc: 'Получите готовый сертификат на защищенном бланке в офисе Палаты.' },
-              ].map((step, idx) => (
-                <div key={idx} className="relative pt-8 md:pt-16 group">
-                  <div className="absolute top-0 left-0 md:left-1/2 md:-translate-x-1/2 w-12 h-12 bg-white border-4 border-blue-600 text-blue-600 rounded-full flex items-center justify-center font-bold text-xl z-10 shadow-md group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                    {idx + 1}
-                  </div>
-                  <div className="bg-white p-6 rounded-2xl md:text-center h-full hover:shadow-lg transition-all border border-slate-100">
-                    <h3 className="font-bold text-lg mb-2">{step.title}</h3>
-                    <p className="text-slate-500 text-sm leading-relaxed">{step.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 6. ДОКУМЕНТЫ */}
-      <section className="py-20 bg-white">
+      {/* 5. ДОКУМЕНТЫ */}
+      <section className="py-20 bg-slate-50 border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Все, что нужно для подачи заявки</h2>
-            <p className="text-slate-500">Мы подготовили для вас полный список и шаблоны, чтобы избежать ошибок</p>
+            <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Документы для проведения экспертизы</h2>
+            <p className="text-slate-500">Минимальный пакет документов для начала работы</p>
           </div>
 
           <div className="bg-white rounded-3xl shadow-sm overflow-hidden border border-slate-100">
@@ -358,7 +285,7 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 7. CTA ФОРМА */}
+      {/* 6. CTA ФОРМА */}
       <div id="order-form" className="pt-24">
         <section className="py-20 bg-slate-900 text-white">
           <div className="max-w-5xl mx-auto px-6 md:px-8">
@@ -385,13 +312,10 @@ export const CertificationPage: React.FC = () => {
                   </li>
                 </ul>
 
-                {/* Контакты для связи */}
+                {/* ✅ ИЗМЕНЕНО: Универсальный текст */}
                 <div className="pt-8 border-t border-slate-700">
-                  <p className="text-slate-400 text-sm mb-3 font-medium uppercase tracking-wider">
-                    Нет времени заполнять форму?
-                  </p>
-                  <p className="text-slate-300 text-base mb-4">
-                    Решим ваш вопрос по телефону прямо сейчас:
+                  <p className="text-slate-300 text-base mb-4 font-medium">
+                    Или просто позвоните и мы поможем решить Ваш вопрос:
                   </p>
                   <a href="tel:+79243733330" className="block text-3xl md:text-4xl font-extrabold text-white hover:text-yellow-400 transition-colors mb-4">
                     +7 (924) 373-33-30
@@ -421,7 +345,11 @@ export const CertificationPage: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Select: Тип сертификата */}
+                  <div>
+                     <label className="block text-sm font-bold mb-2">Контактное лицо</label>
+                     <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="Иванов Иван" />
+                  </div>
+
                   <div>
                      <label className="block text-sm font-bold mb-2">Тип сертификата</label>
                      <div className="relative">
@@ -461,7 +389,7 @@ export const CertificationPage: React.FC = () => {
         </section>
       </div>
 
-      {/* 8. FAQ */}
+      {/* 7. FAQ */}
       <section className="py-20 bg-white">
         <div className="max-w-3xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Часто задаваемые вопросы</h2>
