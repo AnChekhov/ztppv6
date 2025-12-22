@@ -231,6 +231,7 @@ export const CertificationPage: React.FC = () => {
                   <div className="p-6 pt-0 text-slate-600 leading-relaxed border-t border-slate-100 mt-2">
                     {item.longDesc}
                     <div className="mt-4">
+                        {/* ✅ ИЗМЕНЕНО: Кнопка "Заказать" */}
                         <button 
                             onClick={() => handleOrderClick(item.type)}
                             className="text-sm font-bold text-blue-600 hover:text-yellow-600 transition-colors"
@@ -352,10 +353,10 @@ export const CertificationPage: React.FC = () => {
                   </li>
                 </ul>
 
-                {/* ✅ ИЗМЕНЕНО: Номер телефона желтым */}
+                {/* ✅ ИЗМЕНЕНО: Номер телефона желтым + текст */}
                 <div className="pt-8 border-t border-slate-700">
                   <p className="text-slate-300 text-base mb-4 font-medium">
-                    Или просто позвоните и мы поможем решить Ваш вопрос:
+                    Просто позвоните, и мы поможем решить Ваш вопрос:
                   </p>
                   <a href="tel:+79243733330" className="block text-3xl md:text-4xl font-extrabold text-yellow-400 hover:text-white transition-colors mb-4">
                     +7 (924) 373-33-30
@@ -383,11 +384,6 @@ export const CertificationPage: React.FC = () => {
                       <label className="block text-sm font-bold mb-2">Телефон</label>
                       <input type="tel" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="+7 (___) ___-__-__" />
                     </div>
-                  </div>
-
-                  <div>
-                     <label className="block text-sm font-bold mb-2">Контактное лицо</label>
-                     <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="Иванов Иван" />
                   </div>
 
                   {/* Select: Тип сертификата */}
