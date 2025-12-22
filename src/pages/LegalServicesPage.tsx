@@ -144,8 +144,8 @@ export const LegalServicesPage: React.FC = () => {
       </section>
 
       {/* SERVICES GRID */}
-      {/* ✅ A = pb-20 (80px) */}
-      <section className="pt-12 pb-20 bg-white">
+      {/* ✅ A = pb-[100px] */}
+      <section className="pt-12 pb-[100px] bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Наши юридические услуги</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -172,11 +172,13 @@ export const LegalServicesPage: React.FC = () => {
       </section>
 
       {/* SEO ACCORDION */}
-      {/* ✅ Б = py-20 (80px сверху) */}
-      <section className="py-20 bg-slate-50 border-y border-slate-200">
+      {/* ✅ B = pt-[100px] */}
+      <section className="pt-[100px] pb-[100px] bg-slate-50 border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
-          {/* ✅ В = mb-20 (80px снизу от текста) */}
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-20 text-center">Детально о правовой поддержке</h2>
+          {/* ✅ C = mb-[100px] + mt-0 + leading-none */}
+          <h2 className="text-3xl font-extrabold text-slate-900 mt-0 mb-[100px] leading-none text-center">
+            Детально о правовой поддержке
+          </h2>
           <div className="space-y-4">
             {services.map((item) => (
               <div key={item.id} id={`detail-${item.id}`} className={`bg-white rounded-2xl border transition-all duration-500 overflow-hidden ${expandedDetail === item.id ? 'border-blue-500 shadow-md' : 'border-slate-200'}`}>
