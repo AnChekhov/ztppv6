@@ -190,7 +190,6 @@ export const EventsPage: React.FC = () => {
                   <div className="p-6 pt-0 text-slate-600 leading-relaxed border-t border-slate-100 mt-2">
                     {item.longDesc}
                     <div className="mt-4">
-                        {/* ✅ ИСПРАВЛЕНО: Убрано подчеркивание */}
                         <button onClick={() => handleOrderClick(item.title)} className="text-sm font-bold text-blue-600 hover:text-yellow-600 transition-colors">
                             Участвовать →
                         </button>
@@ -213,12 +212,21 @@ export const EventsPage: React.FC = () => {
                 <p className="text-slate-300 text-lg mb-8">
                   Заполните форму, и мы свяжемся с вами, чтобы рассказать о мероприятиях, актуальных для вашего бизнеса.
                 </p>
+                
+                {/* ✅ ИЗМЕНЕНО: Номер телефона желтым + текст */}
                 <div className="pt-8 border-t border-slate-700">
-                  <p className="text-slate-400 text-sm mb-3 font-medium uppercase tracking-wider">Контакты отдела мероприятий</p>
-                  <a href="tel:+79243733330" className="block text-3xl md:text-4xl font-extrabold text-white hover:text-yellow-400 transition-colors mb-4">+7 (924) 373-33-30</a>
-                  <a href="mailto:info@zabtpp.ru" className="inline-flex items-center gap-2 text-blue-400 hover:text-white transition-colors text-lg font-medium"><Mail size={20} /> info@zabtpp.ru</a>
+                  <p className="text-slate-300 text-base mb-4 font-medium">
+                    Просто позвоните, и мы поможем решить Ваш вопрос:
+                  </p>
+                  <a href="tel:+79243733330" className="block text-3xl md:text-4xl font-extrabold text-yellow-400 hover:text-white transition-colors mb-4">
+                    +7 (924) 373-33-30
+                  </a>
+                  <a href="mailto:info@zabtpp.ru" className="inline-flex items-center gap-2 text-blue-400 hover:text-white transition-colors text-lg font-medium">
+                    <Mail size={20} /> info@zabtpp.ru
+                  </a>
                 </div>
               </div>
+              
               <div className="bg-white rounded-3xl p-8 text-slate-900 shadow-2xl">
                 <form className="space-y-4">
                   <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Название организации" />
