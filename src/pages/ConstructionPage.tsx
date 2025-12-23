@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { 
   Hammer, Ruler, Home, Building2, FileCheck, 
   Phone, Mail, CheckCircle2, ChevronDown, 
-  ChevronUp, UploadCloud, MessageCircle
+  ChevronUp, UploadCloud, MessageCircle, MapPin, Globe
 } from 'lucide-react';
 import SEO from '../components/SEO';
 
@@ -42,36 +42,36 @@ export const ConstructionPage: React.FC = () => {
     {
       id: 'quality',
       title: 'Экспертиза качества работ',
-      shortDesc: 'Проверка соответствия выполненных работ СНиП, ГОСТ и проектной документации.',
-      longDesc: 'Выявление дефектов строительства и ремонта (трещины, протечки, кривизна стен, нарушение технологий). Определение причин их возникновения (ошибка подрядчика или проектная ошибка). Составление дефектной ведомости для суда или претензии застройщику.',
+      shortDesc: 'Проверка соответствия выполненных работ СНиП, ГОСТ и проектной документации для суда и претензий.',
+      longDesc: 'Выявление дефектов строительства и ремонта (трещины, протечки, кривизна стен, нарушение технологий). Определение причин их возникновения (ошибка подрядчика или проектная ошибка). Составление дефектной ведомости для судов Забайкальского края, Бурятии и других регионов РФ.',
       icon: Hammer
     },
     {
       id: 'smeta',
-      title: 'Сметная экспертиза',
-      shortDesc: 'Проверка объемов и стоимости выполненных работ (КС-2, КС-3).',
-      longDesc: 'Анализ сметной документации на предмет завышения стоимости материалов и работ. Контрольный обмер объемов фактически выполненных работ. Помогает заказчику сэкономить бюджет и не платить за "воздух".',
+      title: 'Проверка строительных смет',
+      shortDesc: 'Анализ объемов и стоимости выполненных работ (КС-2, КС-3). Выявление завышения цен.',
+      longDesc: 'Анализ сметной документации на предмет завышения стоимости материалов и работ. Контрольный обмер объемов фактически выполненных работ. Помогает заказчику сэкономить бюджет при работе с подрядчиками из Москвы, Новосибирска и других городов.',
       icon: FileCheck
     },
     {
       id: 'condition',
-      title: 'Обследование зданий',
-      shortDesc: 'Оценка технического состояния несущих конструкций, признание аварийности.',
-      longDesc: 'Инструментальное обследование фундаментов, стен, перекрытий. Оценка физического износа и возможности дальнейшей эксплуатации здания. Выдача заключений для признания дома ветхим или аварийным.',
+      title: 'Обследование зданий и сооружений',
+      shortDesc: 'Оценка технического состояния несущих конструкций, признание домов аварийными.',
+      longDesc: 'Инструментальное обследование фундаментов, стен, перекрытий. Оценка физического износа и возможности дальнейшей эксплуатации здания. Выдача заключений для признания дома ветхим или аварийным в соответствии с федеральными стандартами.',
       icon: Building2
     },
     {
       id: 'judicial',
       title: 'Судебная строительная экспертиза',
-      shortDesc: 'Экспертиза по определению суда в рамках гражданских и арбитражных споров.',
-      longDesc: 'Раздел недвижимости в натуре (выдел доли), споры по границам земельных участков, определение стоимости восстановительного ремонта после залива или пожара. Эксперты имеют все необходимые допуски и квалификацию.',
+      shortDesc: 'Экспертиза по определению суда в рамках гражданских и арбитражных споров по всей России.',
+      longDesc: 'Раздел недвижимости в натуре (выдел доли), споры по границам земельных участков, определение стоимости восстановительного ремонта после залива или пожара. Наши экспертные заключения имеют юридическую силу во всех судах РФ.',
       icon: Ruler
     },
     {
       id: 'acceptance',
-      title: 'Приемка квартир',
-      shortDesc: 'Помощь в приемке квартир и помещений от застройщика.',
-      longDesc: 'Профессиональный осмотр новой квартиры перед подписанием акта приема-передачи. Фиксация всех недоделок (окна, вентиляция, стяжка, электрика) в смотровом листе. Застройщик обязан устранить их бесплатно.',
+      title: 'Приемка квартир в новостройках',
+      shortDesc: 'Профессиональная помощь в приемке квартир от застройщика. Поиск скрытых дефектов.',
+      longDesc: 'Профессиональный осмотр новой квартиры перед подписанием акта приема-передачи. Фиксация всех недоделок (окна, вентиляция, стяжка, электрика) в смотровом листе. Застройщик обязан устранить их бесплатно по закону РФ.',
       icon: Home
     },
   ];
@@ -79,38 +79,39 @@ export const ConstructionPage: React.FC = () => {
   const faqs = [
     {
       question: "Является ли заключение ТПП доказательством в суде?",
-      answer: "Да, экспертное заключение ТПП является официальным документом и принимается судами всех инстанций в качестве доказательства."
+      answer: "Да, экспертное заключение ТПП является официальным документом и принимается арбитражными судами и судами общей юрисдикции во всех регионах России, включая Москву, Иркутск и Улан-Удэ."
     },
     {
-      question: "Нужен ли доступ на объект для проведения экспертизы?",
-      answer: "Для качественной экспертизы осмотр объекта обязателен. Эксперт выезжает на место с необходимым оборудованием для замеров и фотофиксации."
+      question: "Работаете ли вы с объектами в соседних регионах?",
+      answer: "Да, эксперты Забайкальской ТПП проводят выездные строительные экспертизы в Республике Бурятия и Иркутской области. Также возможен дистанционный анализ проектной и сметной документации для заказчиков со всей страны."
     },
     {
       question: "Как быстро выезжает эксперт?",
-      answer: "Обычно выезд осуществляется в течение 1-2 дней после получения заявки и оплаты счета. Срочный выезд возможен по договоренности."
+      answer: "Обычно выезд осуществляется в течение 1-2 дней после получения заявки. Для объектов в Чите и пригороде возможен выезд в день обращения."
     }
   ];
 
   return (
     <div className="font-sans text-slate-900 bg-white">
       <SEO 
-        title="Строительно-техническая экспертиза: Забайкалье и вся Россия | Реестр ТПП"
-        description="Независимая строительная экспертиза качества работ, смет и обследование зданий. Работаем в Забайкальском крае, Бурятии, Иркутской обл. и с федеральными клиентами по всей РФ."
-        keywords="строительная экспертиза, проверка качества работ, проверка сметы, судебная строительная экспертиза, Забайкалье, Чита, Иркутск, Бурятия, Москва, услуги ТПП"
+        title="Независимая строительная экспертиза: Чита, Улан-Удэ, Иркутск, Москва | ТПП"
+        description="Судебная и досудебная строительно-техническая экспертиза от официального органа. Проверка качества работ, смет и обследование зданий. Работаем по Забайкалью, ДФО и всей России."
+        keywords="строительная экспертиза чита, строительная экспертиза улан-удэ, строительная экспертиза иркутск, проверка сметы москва, судебная экспертиза строительство рф, независимая экспертиза зданий"
       />
 
       {/* 1. HERO SECTION */}
       <section className="relative bg-slate-900 text-white min-h-[65vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 opacity-30">
-             <img src="/ztppv6/images/hero-bg.jpg" alt="Background" className="w-full h-full object-cover" />
+             <img src="/ztppv6/images/hero-bg.jpg" alt="Независимая строительная экспертиза" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/90 to-slate-900"></div>
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center text-center">
             <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
-               Строительная экспертиза <span className="text-yellow-400">ТПП Забайкальского края</span>
+               Строительная экспертиза: <br/>
+               <span className="text-yellow-400 text-3xl md:text-5xl">Забайкалье, ДФО и вся Россия</span>
             </h1>
-            <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl mx-auto">
-              Проверка качества работ, смет и материалов. Поможем в спорах с подрядчиками, застройщиками и при разделе недвижимости. Работаем со всеми регионами России.
+            <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-3xl mx-auto">
+              Независимая проверка качества строительства, анализ смет и обследование зданий. Официальные заключения ТПП для судов в <strong>Чите, Иркутске, Улан-Удэ, Москве</strong> и других городах РФ.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
               <button 
@@ -124,7 +125,7 @@ export const ConstructionPage: React.FC = () => {
                 className="border-2 border-slate-600 hover:border-white text-white font-semibold py-3 px-8 rounded-xl transition-colors flex items-center justify-center gap-2 group"
               >
                 <MessageCircle size={20} />
-                Консультация
+                Консультация эксперта
               </button>
             </div>
         </div>
@@ -157,10 +158,45 @@ export const ConstructionPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. SEO ACCORDION */}
-      <section className="pt-0 pb-20 bg-slate-50 border-y border-slate-200">
+      {/* 3. ГЕОГРАФИЯ (SEO БЛОК) */}
+      <section className="py-16 bg-slate-50 border-y border-slate-200">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+            <div className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 flex flex-col md:flex-row gap-10 items-center">
+                <div className="md:w-1/2">
+                    <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-4">География наших услуг</h2>
+                    <p className="text-slate-600 mb-6 leading-relaxed">
+                        Мы являемся официальным экспертным органом системы Торгово-промышленных палат РФ. Наши специалисты проводят строительный аудит и техническое обследование объектов не только в <strong>Забайкальском крае (Чита, Краснокаменск, Борзя)</strong>, но и по всему Дальнему Востоку и Сибири.
+                    </p>
+                    <div className="grid grid-cols-2 gap-4">
+                        <div className="flex items-center gap-2 text-sm text-slate-700 font-medium">
+                            <MapPin size={16} className="text-blue-600" /> Республика Бурятия
+                        </div>
+                        <div className="flex items-center gap-2 text-sm text-slate-700 font-medium">
+                            <MapPin size={16} className="text-blue-600" /> Иркутская область
+                        </div>
+                        <div className="flex items-center gap-2 text-sm text-slate-700 font-medium">
+                            <MapPin size={16} className="text-blue-600" /> Амурская область
+                        </div>
+                        <div className="flex items-center gap-2 text-sm text-slate-700 font-medium">
+                            <Globe size={16} className="text-blue-600" /> Дистанционно по РФ
+                        </div>
+                    </div>
+                </div>
+                <div className="md:w-1/2 bg-blue-600 rounded-2xl p-8 text-white relative overflow-hidden">
+                    <div className="relative z-10">
+                        <p className="text-xl font-bold mb-2">Работаем с федеральными судами</p>
+                        <p className="text-blue-100 text-sm">Наши эксперты включены в реестры рекомендуемых организаций для проведения судебных экспертиз в арбитражных судах крупнейших регионов России.</p>
+                    </div>
+                    <Globe size={150} className="absolute -bottom-10 -right-10 text-white/10" />
+                </div>
+            </div>
+        </div>
+      </section>
+
+      {/* 4. ПОДРОБНОЕ ОПИСАНИЕ */}
+      <section className="pt-12 pb-20 bg-white">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
-          <h2 className="text-3xl font-extrabold text-slate-900 py-14 text-center">Подробно об услугах</h2>
+          <h2 className="text-3xl font-extrabold text-slate-900 py-14 text-center">Подробно о строительном аудите</h2>
           <div className="space-y-4">
             {services.map((item) => (
               <div key={item.id} id={`detail-${item.id}`} className={`bg-white rounded-2xl border transition-all duration-500 overflow-hidden ${expandedDetail === item.id ? 'border-blue-500 shadow-md' : 'border-slate-200'}`}>
@@ -189,7 +225,7 @@ export const ConstructionPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. ДОКУМЕНТЫ */}
+      {/* 5. ДОКУМЕНТЫ */}
       <section className="pt-0 pb-20 bg-slate-50 border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <div className="text-center py-14">
@@ -229,7 +265,7 @@ export const ConstructionPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. CTA FORM */}
+      {/* 6. CTA FORM */}
       <section id="order-form" className="py-20 bg-slate-900 text-white scroll-mt-[72px]">
         <div className="max-w-5xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-start">
