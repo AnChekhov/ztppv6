@@ -6,11 +6,39 @@ import {
   CheckCircle2, MessageCircle, ChevronUp, Info
 } from 'lucide-react';
 import SEO from '../components/SEO';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 export const ExpertisePage: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [selectedExpertise, setSelectedExpertise] = useState<string>('Приемка по количеству и качеству');
   const [expandedDetail, setExpandedDetail] = useState<string | null>(null);
+
+  const toggleFaq = (index: number) => {
+    setOpenFaq(openFaq === index ? null : index);
+  };
+
+  const scrollToForm = () => {
+    const formSection = document.getElementById('order-form');
+    if (formSection) {
+      formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  const handleOrderClick = (title: string) => {
+    setSelectedExpertise(title);
+    scrollToForm();
+  };
+
+  const handleReadMore = (e: React.MouseEvent, id: string) => {
+    e.stopPropagation();
+    setExpandedDetail(id);
+    setTimeout(() => {
+      const element = document.getElementById(`detail-${id}`);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }, 100);
+  };
 
   const expertiseServices = [
     {
@@ -57,33 +85,6 @@ export const ExpertisePage: React.FC = () => {
     },
   ];
 
-  const toggleFaq = (index: number) => {
-    setOpenFaq(openFaq === index ? null : index);
-  };
-
-  const scrollToForm = () => {
-    const formSection = document.getElementById('order-form');
-    if (formSection) {
-      formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
-
-  const handleOrderClick = (title: string) => {
-    setSelectedExpertise(title);
-    scrollToForm();
-  };
-
-  const handleReadMore = (e: React.MouseEvent, id: string) => {
-    e.stopPropagation();
-    setExpandedDetail(id);
-    setTimeout(() => {
-      const element = document.getElementById(`detail-${id}`);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    }, 100);
-  };
-
   const faqs = [
     {
       question: "Имеет ли акт экспертизы ТПП юридическую силу в суде?",
@@ -111,15 +112,27 @@ export const ExpertisePage: React.FC = () => {
       {/* 1. HERO SECTION */}
       <section className="relative bg-slate-900 text-white min-h-[65vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 opacity-30">
-             <img src="/ztppv6/images/hero-bg.jpg" alt="Expertise Background" className="w-full h-full object-cover" />
+             <img src="/ztppv6/images/hero-bg.jpg" alt="Независимая товарная экспертиза" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/90 to-slate-900"></div>
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center text-center">
+            
+            <div className="flex justify-center mb-6">
+              <Breadcrumbs 
+                isDark={true}
+                items={[
+                  { label: 'Услуги', path: '/services' },
+                  { label: 'Товарная экспертиза' }
+                ]} 
+              />
+            </div>
+
             <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
-               Независимая товарная экспертиза в <span className="text-yellow-400">Забайкальском крае</span>
+               Независимая товарная экспертиза <br/>
+               <span className="text-yellow-400 text-3xl md:text-5xl">В Забайкальском крае и ДФО</span>
             </h1>
-            <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl mx-auto">
-              Защитите свой бизнес от убытков. Профессиональная приемка товаров, выявление брака и оценка ущерба. Акты ТПП признаются судами и таможней.
+            <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-3xl mx-auto">
+              Защитите свой бизнес от убытков. Профессиональная приемка товаров, выявление брака и оценка ущерба. Акты ТПП признаются судами и таможней по всей России.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
               <button 
@@ -169,7 +182,7 @@ export const ExpertisePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. ПОДРОБНОЕ ОПИСАНИЕ (SEO Блок) */}
+      {/* 3. ПОДРОБНОЕ ОПИСАНИЕ (АККОРДЕОНЫ) */}
       <section className="pt-0 pb-20 bg-slate-50 border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 py-14 text-center">Подробная информация об услугах</h2>
@@ -199,9 +212,9 @@ export const ExpertisePage: React.FC = () => {
                     <div className="mt-4">
                         <button 
                             onClick={() => handleOrderClick(item.title)}
-                            className="text-sm font-bold text-blue-600 hover:text-yellow-600 underline decoration-dashed underline-offset-4"
+                            className="text-sm font-bold text-blue-600 hover:text-yellow-600 transition-colors"
                         >
-                            Заказать экспертизу →
+                            Заказать экспертизу -{'>'}
                         </button>
                     </div>
                   </div>
@@ -269,7 +282,7 @@ export const ExpertisePage: React.FC = () => {
                     Скачать бланк
                   </a>
                 ) : (
-                   <div className="mt-4 md:mt-0 text-blue-600 font-bold text-xl select-none px-6 py-2">—</div>
+                   <div className="mt-4 md:mt-0 text-blue-600 font-bold text-xl select-none px-6 py-2">-</div>
                 )}
               </div>
             ))}
