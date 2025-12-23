@@ -176,12 +176,12 @@ export const CertificationPage: React.FC = () => {
       </section>
 
       {/* 3. ИНФОРМАЦИЯ О СЕРТИФИКАТАХ */}
-      <section className="py-20 bg-slate-50 border-y border-slate-200">
+      <section className="pt-0 pb-20 bg-slate-50 border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">Информация о сертификатах</h2>
+          <h2 className="text-3xl font-extrabold text-slate-900 py-14 text-center">
+            Информация о сертификатах
+          </h2>
           <div className="space-y-4">
-            {certTypes.map((item) => (
-              <div 
                 key={item.id} 
                 id={`detail-${item.id}`} 
                 className={`bg-white rounded-2xl border transition-all duration-500 overflow-hidden ${expandedDetail === item.id ? 'border-blue-500 shadow-md' : 'border-slate-200'}`}
