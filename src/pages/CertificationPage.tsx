@@ -103,6 +103,27 @@ export const CertificationPage: React.FC = () => {
         description="Официальная выдача сертификатов происхождения (СТ-1, EAV, Общая форма) для экспорта в Китай, СНГ и Вьетнам. Тарифы ТПП РФ. Работаем с Бурятией, Иркутском и всей Россией дистанционно."
         keywords="сертификат происхождения товара цена, оформить ст-1 чита, сертификат происхождения москва, ст-1 иркутск, экспорт в китай документы, сертификат происхождения вьетнам, услуги тпп сертификация, таможенное оформление экспорт"
       />
+
+      {/* JSON-LD Микроразметка для SEO */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "GovernmentService",
+          "name": "Оформление сертификата происхождения товара",
+          "provider": {
+            "@type": "GovernmentOrganization",
+            "name": "Забайкальская ТПП",
+            "address": "г. Чита"
+          },
+          "areaServed": ["Забайкальский край", "Республика Бурятия", "Китай", "Монголия", "РФ"],
+          "audience": "Участники ВЭД, экспортеры",
+          "offers": {
+            "@type": "Offer",
+            "price": "2288",
+            "priceCurrency": "RUB"
+          }
+        })}
+      </script>
       
       {/* 1. HERO SECTION */}
       <section className="relative bg-slate-900 text-white min-h-[65vh] flex items-center justify-center overflow-hidden">
@@ -222,7 +243,7 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. ЦИФРЫ И СРОКИ (ВОССТАНОВЛЕННЫЙ БЛОК) */}
+      {/* 4. ЦИФРЫ И СРОКИ */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-200">
@@ -276,7 +297,7 @@ export const CertificationPage: React.FC = () => {
               { name: 'Документы от производителя', req: 'Паспорта качества, ТУ или сертификаты', link: true },
               { name: 'ИНН и ОГРН компании', req: 'Копии при первом обращении', link: false },
             ].map((doc, idx) => (
-              <div key={idx} className="flex flex-col md:flex-row items-start md:items-center justify-between p-6 border-b border-slate-100 last:border-0 hover:bg-blue-50/30 transition-colors">
+              <div key={idx} className="flex flex-col md:flex-row items-start md:items-center justify-between p-6 border-b border-white last:border-0 hover:bg-blue-50/30 transition-colors">
                 <div className="flex items-start gap-4">
                   <div className="p-2 bg-blue-100 text-blue-600 rounded-lg mt-1 md:mt-0">
                     <Check size={20} strokeWidth={3} />
@@ -395,7 +416,40 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 7. ГЕОГРАФИЯ (В САМОМ НИЗУ) */}
+      {/* 7. FAQ */}
+      <section className="pt-8 pb-20 bg-white">
+        <div className="max-w-3xl mx-auto px-6 md:px-8">
+          <h2 className="text-3xl font-extrabold text-slate-900 mb-6 text-center">Часто задаваемые вопросы</h2>
+          
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
+              <div key={index} className="border-b border-slate-200 last:border-0">
+                <button 
+                  onClick={() => toggleFaq(index)}
+                  className="w-full flex justify-between items-center py-6 text-left group"
+                >
+                  <span className={`text-lg font-bold transition-colors ${openFaq === index ? 'text-blue-600' : 'text-slate-900 group-hover:text-blue-600'}`}>
+                    {faq.question}
+                  </span>
+                  <ChevronDown 
+                    className={`text-slate-400 transition-transform duration-300 ${openFaq === index ? 'rotate-180 text-blue-600' : ''}`} 
+                    size={24} 
+                  />
+                </button>
+                <div 
+                  className={`overflow-hidden transition-all duration-300 ease-in-out ${openFaq === index ? 'max-h-96 opacity-100 pb-6' : 'max-h-0 opacity-0'}`}
+                >
+                  <p className="text-slate-600 leading-relaxed text-base">
+                    {faq.answer}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 8. ГЕОГРАФИЯ (ТЕПЕРЬ В САМОМ НИЗУ) */}
       <section className="py-16 bg-slate-50 border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
             <div className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 flex flex-col md:flex-row gap-10 items-center">
@@ -427,39 +481,6 @@ export const CertificationPage: React.FC = () => {
                     <Globe size={150} className="absolute -bottom-10 -right-10 text-white/10" />
                 </div>
             </div>
-        </div>
-      </section>
-
-      {/* 8. FAQ */}
-      <section className="pt-8 pb-20 bg-white">
-        <div className="max-w-3xl mx-auto px-6 md:px-8">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-6 text-center">Часто задаваемые вопросы экспортеров</h2>
-          
-          <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <div key={index} className="border-b border-slate-200 last:border-0">
-                <button 
-                  onClick={() => toggleFaq(index)}
-                  className="w-full flex justify-between items-center py-6 text-left group"
-                >
-                  <span className={`text-lg font-bold transition-colors ${openFaq === index ? 'text-blue-600' : 'text-slate-900 group-hover:text-blue-600'}`}>
-                    {faq.question}
-                  </span>
-                  <ChevronDown 
-                    className={`text-slate-400 transition-transform duration-300 ${openFaq === index ? 'rotate-180 text-blue-600' : ''}`} 
-                    size={24} 
-                  />
-                </button>
-                <div 
-                  className={`overflow-hidden transition-all duration-300 ease-in-out ${openFaq === index ? 'max-h-96 opacity-100 pb-6' : 'max-h-0 opacity-0'}`}
-                >
-                  <p className="text-slate-600 leading-relaxed text-base">
-                    {faq.answer}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
