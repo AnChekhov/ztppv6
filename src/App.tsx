@@ -22,27 +22,28 @@ import MembershipPage from './pages/MembershipPage';
 import KnowledgePage from './pages/KnowledgePage';
 import AboutPage from './pages/AboutPage';
 import NewsPage from './pages/NewsPage';
-import ArticleDetailPage from './pages/ArticleDetailPage'; // ✅ Добавлен импорт
+import ArticleDetailPage from './pages/ArticleDetailPage';
 
 const ScrollToTop = () => {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
+
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    if (!hash) {
+      window.scrollTo(0, 0);
+    } else {
+      const id = hash.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        // Небольшая задержка, чтобы страница успела загрузиться
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+    }
+  }, [pathname, hash]);
+
   return null;
 };
-
-const PagePlaceholder: React.FC<{ title: string; description?: string }> = ({ title, description }) => (
-  <div className="pt-32 pb-24 px-6 max-w-4xl mx-auto min-h-[60vh]">
-    <div className="inline-block px-3 py-1 mb-6 text-xs font-bold tracking-wider text-blue-600 uppercase bg-blue-50 rounded-full">
-      Раздел в разработке
-    </div>
-    <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">{title}</h1>
-    <p className="text-xl text-slate-600 leading-relaxed border-l-4 border-yellow-500 pl-6">
-      {description || "Мы работаем над наполнением этого раздела. Актуальную информацию вы можете получить по телефону +7 (924) 373-33-30."}
-    </p>
-  </div>
-);
 
 const HomePage = () => {
   return (
@@ -70,13 +71,9 @@ const App: React.FC = () => {
           <Route path="/ved" element={<VedPage />} />
           <Route path="/knowledge" element={<KnowledgePage />} />
           <Route path="/news" element={<NewsPage />} /> 
-          
-          {/* ✅ Маршрут для отдельной статьи */}
           <Route path="/news/:id" element={<ArticleDetailPage />} />
-          
           <Route path="/about" element={<AboutPage />} />
 
-          {/* Услуги */}
           <Route path="/services/cert" element={<CertificationPage />} />
           <Route path="/services/expert" element={<ExpertisePage />} />
           <Route path="/services/construction" element={<ConstructionPage />} />
@@ -84,9 +81,8 @@ const App: React.FC = () => {
           <Route path="/services/law" element={<LegalServicesPage />} />
           <Route path="/services/events" element={<EventsPage />} /> 
 
-          {/* Дополнительные разделы */}
-          <Route path="/members" element={<PagePlaceholder title="Реестр членов" description="Список компаний, входящих в Союз ТПП Забайкальского края." />} />
-          <Route path="/committees" element={<PagePlaceholder title="Комитеты и комиссии" description="Отраслевые объединения для решения системных проблем бизнеса." />} />
+          <Route path="/members" element={<div className="pt-32 px-6">Раздел в разработке</div>} />
+          <Route path="/committees" element={<div className="pt-32 px-6">Раздел в разработке</div>} />
         </Routes>
       </main>
 
