@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { 
-  Users, Calendar, Briefcase, TrendingUp, Handshake, BookOpen,
-  Phone, Mail, CheckCircle, ChevronDown, UploadCloud, 
-  ChevronUp, MessageCircle, CheckCircle2
+  Users, Presentation, Laptop, Coffee, 
+  MapPin, Clock, Phone, Mail, ChevronDown, 
+  ChevronUp, MessageCircle, CheckCircle2, Layout, Video,
+  Briefcase, BookOpen, TrendingUp, Handshake
 } from 'lucide-react';
 import SEO from '../components/SEO';
 
 export const EventsPage: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [selectedService, setSelectedService] = useState<string>('Организация бизнес-завтраков');
+  const [selectedService, setSelectedService] = useState<string>('Конференц-зал');
   const [expandedDetail, setExpandedDetail] = useState<string | null>(null);
 
   const toggleFaq = (index: number) => {
@@ -18,7 +19,7 @@ export const EventsPage: React.FC = () => {
   const scrollToForm = () => {
     const formSection = document.getElementById('order-form');
     if (formSection) {
-      formSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
@@ -40,114 +41,110 @@ export const EventsPage: React.FC = () => {
 
   const services = [
     {
-      id: 'breakfasts',
-      title: 'Организация бизнес-завтраков',
-      shortDesc: 'Ежемесячные встречи с экспертами, представителями власти и коллегами.',
-      longDesc: 'Регулярные неформальные встречи для обсуждения актуальных проблем бизнеса, обмена опытом и налаживания новых деловых контактов. Выступают ведущие эксперты, представители администрации Забайкальского края и федеральных структур. Для членов ТПП участие бесплатное.',
-      icon: Briefcase
+      id: 'hall',
+      title: 'Конференц-зал',
+      shortDesc: 'Современная площадка в центре Читы для семинаров, презентаций и форумов (до 50 человек).',
+      longDesc: 'Предоставление оборудованного конференц-зала для проведения статусных деловых мероприятий. В стоимость входит: проектор, большой экран, современная система ВКС для видеоконференций, микрофоны и звуковое оборудование. Идеальное место для обучающих семинаров, пресс-конференций и общих собраний в самом центре города.',
+      icon: Presentation
     },
     {
-      id: 'committees',
-      title: 'Отраслевые комитеты',
-      shortDesc: 'Участие в комитетах Палаты для решения системных проблем отрасли.',
-      longDesc: 'Присоединяйтесь к работе профильных комитетов (например, по транспорту, строительству, туризму), чтобы напрямую влиять на развитие вашей отрасли. Разработка предложений по улучшению бизнес-климата, участие в оценке регулирующего воздействия законопроектов.',
+      id: 'meeting-room',
+      title: 'Переговорная комната',
+      shortDesc: 'Приватное пространство для деловых встреч, медиаций и подписания контрактов (до 10 человек).',
+      longDesc: 'Комфортабельное помещение для конфиденциальных переговоров. Оборудована круглым столом, эргономичными креслами и скоростным Wi-Fi. Подходит для встреч с партнерами, проведения собеседований или консультаций, где важен официальный статус и тишина.',
       icon: Users
+    },
+    {
+      id: 'seminars',
+      title: 'Обучающие мероприятия',
+      shortDesc: 'Семинары и мастер-классы от ведущих экспертов по ВЭД, налогам и праву.',
+      longDesc: 'Организация и проведение тренингов для сотрудников и руководителей. Мы приглашаем профильных экспертов федерального уровня для разбора актуальных изменений в законодательстве, таможенных правилах и маркетинге.',
+      icon: BookOpen
     },
     {
       id: 'missions',
       title: 'Бизнес-миссии',
-      shortDesc: 'Организация деловых поездок по России и за рубеж (Китай, страны СНГ).',
-      longDesc: 'Сопровождение в деловых поездках: поиск партнеров, организация B2B-встреч, посещение выставок. Визовая поддержка, услуги переводчиков и логистика. Для расширения рынков сбыта и поиска новых поставщиков.',
-      icon: Calendar
-    },
-    {
-      id: 'seminars',
-      title: 'Обучающие семинары и тренинги',
-      shortDesc: 'Повышение квалификации сотрудников и актуализация знаний по ВЭД, праву, налогам.',
-      longDesc: 'Регулярные семинары и мастер-классы от ведущих специалистов по внешнеэкономической деятельности, таможенному законодательству, налогообложению, управлению персоналом и маркетингу. Актуальные изменения в законодательстве, практические кейсы, ответы на вопросы участников.',
-      icon: BookOpen
+      shortDesc: 'Организация деловых поездок и B2B-встреч в Китае и регионах России.',
+      longDesc: 'Полное сопровождение деловых делегаций: от поиска партнеров в КНР до логистики и визовой поддержки. Помогаем расширить географию сбыта вашей продукции и найти новых поставщиков оборудования.',
+      icon: Briefcase
     },
     {
       id: 'conferences',
-      title: 'Конференции и форумы',
-      shortDesc: 'Участие в региональных и федеральных деловых мероприятиях.',
-      longDesc: 'Организация и проведение крупных деловых форумов и конференций по ключевым вопросам развития экономики Забайкальского края. Участие представителей власти, крупного бизнеса и международных партнеров. Возможность выступить с докладом и представить свою компанию.',
+      title: 'Форумы и конференции',
+      shortDesc: 'Организация масштабных отраслевых событий под ключ.',
+      longDesc: 'Профессиональная подготовка и проведение крупных деловых форумов. Обеспечиваем привлечение спикеров, техническое сопровождение, регистрацию участников и взаимодействие со СМИ.',
       icon: TrendingUp
     },
     {
-      id: 'club',
-      title: 'Закрытые мероприятия для членов палаты',
-      shortDesc: 'Эксклюзивный нетворкинг и встречи с представителями власти для членов сообщества.',
-      longDesc: 'Формат закрытых встреч для членов Палаты. Обмен контактами, неформальное общение с коллегами и представителями региональной власти. Расширение круга деловых знакомств, поиск инвесторов и партнеров в комфортной обстановке.',
+      id: 'networking',
+      title: 'Деловой нетворкинг',
+      shortDesc: 'Закрытые встречи предпринимателей и GR-коммуникации для членов ТПП.',
+      longDesc: 'Формат бизнес-завтраков и тематических встреч для обмена опытом. Помогаем выстроить прямой диалог между бизнесом и представителями власти Забайкальского края.',
       icon: Handshake
     },
   ];
 
   const faqs = [
     {
-      question: "Как узнать о предстоящих мероприятиях?",
-      answer: "Все анонсы мероприятий публикуются на нашем сайте в разделе 'Пресс-центр' и в Telegram-канале Палаты. Члены ТПП получают персональные приглашения по электронной почте."
+      question: "Как забронировать конференц-зал или переговорную?",
+      answer: "Вам достаточно оставить заявку на сайте или позвонить нам. Мы уточним свободные даты, формат вашего мероприятия и необходимое техническое оборудование."
     },
     {
-      question: "Можно ли предложить тему для семинара?",
-      answer: "Да, мы всегда открыты к предложениям от наших членов. Вы можете отправить заявку на проведение семинара или предложить актуальную тему для обсуждения."
+      question: "Входит ли настройка оборудования в стоимость предоставления площадки?",
+      answer: "Да, наши технические специалисты помогут подключить ваш ноутбук, настроить проектор или запустить систему видеосвязи (ВКС) перед началом мероприятия."
     },
     {
-      question: "Как стать спикером на мероприятии Палаты?",
-      answer: "Если у вас есть экспертные знания и опыт, которыми вы готовы поделиться, свяжитесь с нами. Мы рассмотрим вашу кандидатуру для выступления на наших площадках."
+      question: "Работаете ли вы с компаниями из других регионов?",
+      answer: "Да, мы часто предоставляем площадки для федеральных компаний из Москвы, Новосибирска и Иркутска, которым необходимо провести презентацию или встречу с партнерами в Чите."
     }
   ];
 
   return (
     <div className="font-sans text-slate-900 bg-white">
+      
       <SEO 
-        title="Мероприятия ТПП Забайкальского края | Бизнес-миссии, Семинары"
-        description="Организация деловых мероприятий, бизнес-завтраков, обучающих семинаров, участие в отраслевых комитетах и бизнес-миссиях для членов ТПП Забайкальского края."
-        keywords="мероприятия тпп чита, бизнес-миссии китай, семинары вэд, отраслевые комитеты, нетворкинг чита"
+        title="Деловое пространство и конференц-зал в Чите | Забайкальская ТПП"
+        description="Предоставление оборудованных площадок для бизнеса в центре Читы: конференц-зал, комната переговоров. Организация семинаров, бизнес-миссий и форумов."
+        keywords="конференц-зал чита, зал для мероприятий чита, переговорная комната чита, площадка для семинара, арендовать зал чита, ТПП мероприятия, бизнес пространство забайкалье"
       />
-
-      {/* HERO SECTION */}
-      <section className="relative bg-slate-900 text-white overflow-hidden min-h-[65vh] flex items-center justify-center">
-        <div className="absolute inset-0 opacity-40">
-            <img src="/ztppv6/images/hero-bg.jpg" alt="Background" className="w-full h-full object-cover" />
+      
+      {/* 1. HERO SECTION */}
+      <section className="relative bg-slate-900 text-white min-h-[65vh] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 opacity-30">
+             <img src="/ztppv6/images/hero-bg.jpg" alt="Деловое пространство ТПП" className="w-full h-full object-cover" />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/[0.87] to-slate-900"></div>
-        
-        <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center">
-            <div className="grid lg:grid-cols-12 gap-8 items-center">
-              <div className="lg:col-span-7 max-w-3xl">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
-                  Мероприятия сообщества <span className="text-yellow-400">для развития бизнеса</span>
-                </h1>
-                <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl">
-                  Бизнес-завтраки, отраслевые комитеты, обучающие семинары и деловые миссии. Расширьте круг контактов и получите новые знания.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <button onClick={scrollToForm} className="bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 px-8 rounded-xl transition-all hover:scale-105 shadow-lg">
-                    Узнать о ближайших событиях
-                  </button>
-                  <button onClick={scrollToForm} className="border-2 border-slate-600 hover:border-white text-white font-semibold py-4 px-8 rounded-xl transition-all hover:scale-105 flex items-center justify-center gap-2">
-                    <MessageCircle size={20} />
-                    Задать вопрос
-                  </button>
-                </div>
-              </div>
-              <div className="hidden lg:flex lg:col-span-5 justify-center items-center relative">
-                <div className="absolute w-80 h-80 bg-blue-600/10 rounded-full blur-3xl"></div>
-                <div className="relative transform transition-transform duration-500 hover:scale-105">
-                   <Users size={300} strokeWidth={1} className="text-slate-600/70 drop-shadow-2xl" />
-                   <Users size={300} strokeWidth={1} className="absolute top-0 left-0 text-white/10" />
-                </div>
-              </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/90 to-slate-900"></div>
+        <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center text-center">
+            <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+               Деловое пространство <br/>
+               <span className="text-yellow-400 text-3xl md:text-5xl">Площадки и события для бизнеса</span>
+            </h1>
+            <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-3xl mx-auto">
+              Оборудованные залы в центре Читы для ваших переговоров и семинаров. Организация профессиональных бизнес-событий, форумов и деловых миссий.
+            </p>
+            <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
+              <button 
+                onClick={scrollToForm}
+                className="bg-yellow-400 text-slate-900 font-bold py-3 px-8 rounded-xl hover:bg-yellow-500 transition-colors shadow-lg hover:scale-105 transform duration-200"
+              >
+                Забронировать площадку
+              </button>
+              <button 
+                onClick={scrollToForm}
+                className="border-2 border-slate-600 hover:border-white text-white font-semibold py-3 px-8 rounded-xl transition-colors flex items-center justify-center gap-2 group"
+              >
+                <MessageCircle size={20} />
+                Узнать о мероприятиях
+              </button>
             </div>
         </div>
       </section>
 
-      {/* SERVICES GRID */}
-      {/* ✅ ИЗМЕНЕНО: pb-20 */}
+      {/* 2. SERVICES GRID */}
       <section className="pt-12 pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Форматы нашего взаимодействия</h2>
+          <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Выберите нужный формат</h2>
+          
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((item) => (
               <div 
@@ -161,7 +158,9 @@ export const EventsPage: React.FC = () => {
                 <h3 className="text-xl font-bold text-slate-900 mb-3">{item.title}</h3>
                 <p className="text-slate-600 text-sm leading-relaxed flex-grow">{item.shortDesc}</p>
                 <div className="mt-6 pt-4 border-t border-slate-100">
-                   <button className="text-sm font-bold text-blue-600 hover:text-blue-800 transition-colors flex items-center">
+                   <button 
+                     className="text-sm font-bold text-blue-600 hover:text-blue-800 transition-colors flex items-center"
+                   >
                      Подробнее <ChevronDown size={16} className="ml-1" />
                    </button>
                 </div>
@@ -171,15 +170,21 @@ export const EventsPage: React.FC = () => {
         </div>
       </section>
 
-      {/* SEO ACCORDION */}
-      {/* ✅ ИЗМЕНЕНО: py-12 (компактный серый блок) */}
-      <section className="py-12 bg-slate-50 border-y border-slate-200">
+      {/* 3. ПОДРОБНОЕ ОПИСАНИЕ */}
+      <section className="pt-0 pb-20 bg-slate-50 border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Подробная информация о мероприятиях</h2>
+          <h2 className="text-3xl font-extrabold text-slate-900 py-14 text-center">Конференц-сервис и события</h2>
           <div className="space-y-4">
             {services.map((item) => (
-              <div key={item.id} id={`detail-${item.id}`} className={`bg-white rounded-2xl border transition-all duration-500 overflow-hidden ${expandedDetail === item.id ? 'border-blue-500 shadow-md' : 'border-slate-200'}`}>
-                <button onClick={() => setExpandedDetail(expandedDetail === item.id ? null : item.id)} className="w-full flex items-center justify-between p-6 text-left">
+              <div 
+                key={item.id} 
+                id={`detail-${item.id}`} 
+                className={`bg-white rounded-2xl border transition-all duration-500 overflow-hidden ${expandedDetail === item.id ? 'border-blue-500 shadow-md' : 'border-slate-200'}`}
+              >
+                <button 
+                  onClick={() => setExpandedDetail(expandedDetail === item.id ? null : item.id)}
+                  className="w-full flex items-center justify-between p-6 text-left"
+                >
                   <div className="flex items-center gap-4">
                     <div className={`p-2 rounded-lg ${expandedDetail === item.id ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-500'}`}>
                        <item.icon size={24} />
@@ -188,12 +193,16 @@ export const EventsPage: React.FC = () => {
                   </div>
                   {expandedDetail === item.id ? <ChevronUp className="text-blue-600"/> : <ChevronDown className="text-slate-400"/>}
                 </button>
+                
                 <div className={`transition-all duration-300 ease-in-out ${expandedDetail === item.id ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
                   <div className="p-6 pt-0 text-slate-600 leading-relaxed border-t border-slate-100 mt-2">
                     {item.longDesc}
                     <div className="mt-4">
-                        <button onClick={() => handleOrderClick(item.title)} className="text-sm font-bold text-blue-600 hover:text-yellow-600 transition-colors">
-                            Участвовать →
+                        <button 
+                            onClick={() => handleOrderClick(item.title)}
+                            className="text-sm font-bold text-blue-600 hover:text-yellow-600 transition-colors"
+                        >
+                            Оставить заявку →
                         </button>
                     </div>
                   </div>
@@ -204,72 +213,94 @@ export const EventsPage: React.FC = () => {
         </div>
       </section>
 
-      {/* CTA FORM */}
-      <div id="order-form" className="pt-24">
-        <section className="py-20 bg-slate-900 text-white">
-          <div className="max-w-5xl mx-auto px-6 md:px-8">
-            <div className="grid md:grid-cols-2 gap-12 items-start">
-              <div>
-                <h2 className="text-3xl md:text-4xl font-extrabold mb-6">Узнайте о ближайших событиях</h2>
-                <p className="text-slate-300 text-lg mb-8">
-                  Заполните форму, и мы свяжемся с вами, чтобы рассказать о мероприятиях, актуальных для вашего бизнеса.
+      {/* 4. CTA ФОРМА */}
+      <section id="order-form" className="py-20 bg-slate-900 text-white scroll-mt-[72px]">
+        <div className="max-w-5xl mx-auto px-6 md:px-8">
+          <div className="grid md:grid-cols-2 gap-12 items-start">
+            
+            <div>
+              <h2 className="text-3xl md:text-4xl font-extrabold mb-6">Запланируйте мероприятие</h2>
+              <p className="text-slate-300 text-lg mb-8">
+                Оставьте контакты, и мы свяжемся с вами для уточнения деталей, свободных дат и стоимости сопровождения.
+              </p>
+              <div className="pt-8 border-t border-slate-700">
+                <p className="text-slate-300 text-base mb-4 font-medium">
+                  Связаться с менеджером:
                 </p>
-                <div className="pt-8 border-t border-slate-700">
-                  <p className="text-slate-300 text-base mb-4 font-medium">
-                    Просто позвоните, и мы поможем решить Ваш вопрос:
-                  </p>
-                  <a href="tel:+79243733330" className="block text-3xl md:text-4xl font-extrabold text-yellow-400 hover:text-white transition-colors mb-4">+7 (924) 373-33-30</a>
-                  <a href="mailto:info@zabtpp.ru" className="inline-flex items-center gap-2 text-blue-400 hover:text-white transition-colors text-lg font-medium"><Mail size={20} /> info@zabtpp.ru</a>
-                </div>
+                <a href="tel:+79243733330" className="block text-3xl md:text-4xl font-extrabold text-yellow-400 hover:text-white transition-colors mb-4">
+                  +7 (924) 373-33-30
+                </a>
+                <a href="mailto:info@zabtpp.ru" className="inline-flex items-center gap-2 text-blue-400 hover:text-white transition-colors text-lg font-medium">
+                  <Mail size={20} /> info@zabtpp.ru
+                </a>
               </div>
-              <div className="bg-white rounded-3xl p-8 text-slate-900 shadow-2xl">
-                <form className="space-y-4">
-                  <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Название организации" />
-                  <div className="grid grid-cols-2 gap-4">
-                    <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Имя" />
-                    <input type="tel" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="+7 (___) ___-__-__" />
-                  </div>
-                  <div className="relative">
-                     <select value={selectedService} onChange={(e) => setSelectedService(e.target.value)} className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none appearance-none cursor-pointer">
+            </div>
+
+            <div className="bg-white rounded-3xl p-8 text-slate-900 shadow-2xl">
+              <form className="space-y-4">
+                <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Название организации" />
+                <div className="grid grid-cols-2 gap-4">
+                  <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Имя" />
+                  <input type="tel" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="+7 (___) ___-__-__" />
+                </div>
+
+                <div>
+                   <label className="block text-sm font-bold mb-2">Что вас интересует?</label>
+                   <div className="relative">
+                     <select 
+                        value={selectedService}
+                        onChange={(e) => setSelectedService(e.target.value)}
+                        className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none appearance-none cursor-pointer text-slate-700"
+                     >
                        {services.map(s => <option key={s.id} value={s.title}>{s.title}</option>)}
-                       <option>Другое</option>
+                       <option>Другой вопрос</option>
                      </select>
                      <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-slate-500"><ChevronDown size={20} /></div>
                    </div>
-                  <div className="pt-2">
-                     <div className="border-2 border-dashed border-slate-300 rounded-xl p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-slate-50 transition-colors group">
-                       <UploadCloud className="text-slate-400 group-hover:text-blue-500 mb-2" size={32} />
-                       <span className="text-sm text-slate-500">Прикрепить ТЗ или вопрос</span>
-                     </div>
-                  </div>
-                  <button className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all mt-4">Отправить заявку</button>
-                  <p className="text-xs text-center text-slate-400 mt-3">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
-                </form>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
+                </div>
 
-      {/* FAQ: pt-6 (как было, чтобы не отлетать от формы) */}
-      <section className="pt-6 pb-20 bg-white">
+                <button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all mt-4">Отправить заявку</button>
+                <p className="text-xs text-center text-slate-400 mt-3">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 5. FAQ */}
+      <section className="pt-8 pb-20 bg-white">
         <div className="max-w-3xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-6 text-center">Часто задаваемые вопросы</h2>
+          
           <div className="space-y-4">
             {faqs.map((faq, index) => (
               <div key={index} className="border-b border-slate-200 last:border-0">
-                <button onClick={() => toggleFaq(index)} className="w-full flex justify-between items-center py-6 text-left group">
-                  <span className={`text-lg font-bold transition-colors ${openFaq === index ? 'text-blue-600' : 'text-slate-900 group-hover:text-blue-600'}`}>{faq.question}</span>
-                  <ChevronDown className={`text-slate-400 transition-transform duration-300 ${openFaq === index ? 'rotate-180 text-blue-600' : ''}`} size={24} />
+                <button 
+                  onClick={() => toggleFaq(index)}
+                  className="w-full flex justify-between items-center py-6 text-left group"
+                >
+                  <span className={`text-lg font-bold transition-colors ${openFaq === index ? 'text-blue-600' : 'text-slate-900 group-hover:text-blue-600'}`}>
+                    {faq.question}
+                  </span>
+                  <ChevronDown 
+                    className={`text-slate-400 transition-transform duration-300 ${openFaq === index ? 'rotate-180 text-blue-600' : ''}`} 
+                    size={24} 
+                  />
                 </button>
-                <div className={`overflow-hidden transition-all duration-300 ease-in-out ${openFaq === index ? 'max-h-96 opacity-100 pb-6' : 'max-h-0 opacity-0'}`}>
-                  <p className="text-slate-600 leading-relaxed text-base">{faq.answer}</p>
+                <div 
+                  className={`overflow-hidden transition-all duration-300 ease-in-out ${openFaq === index ? 'max-h-96 opacity-100 pb-6' : 'max-h-0 opacity-0'}`}
+                >
+                  <p className="text-slate-600 leading-relaxed text-base">
+                    {faq.answer}
+                  </p>
                 </div>
               </div>
             ))}
           </div>
         </div>
       </section>
+
     </div>
   );
 };
