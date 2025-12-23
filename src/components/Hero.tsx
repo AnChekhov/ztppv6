@@ -30,6 +30,7 @@ const ServiceCard: React.FC<{ icon: React.ReactNode, title: string, subtitle: st
 
 export const Hero: React.FC = () => {
   
+  // Функция скролла к "Другие услуги"
   const scrollToOtherServices = (e: React.MouseEvent) => {
     e.preventDefault();
     const element = document.getElementById('other-services');
@@ -38,6 +39,7 @@ export const Hero: React.FC = () => {
     }
   };
 
+  // Скролл к блоку контактов на текущей странице (для кнопки Станьте партнером)
   const scrollToContact = () => {
     const element = document.getElementById('contact-form');
     if (element) {
@@ -71,7 +73,6 @@ export const Hero: React.FC = () => {
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
                         
-                        {/* ✅ ИСПРАВЛЕНО: Прямая ссылка на блок заявки страницы сертификации */}
                         <Link to="/services/cert#order-form" className="w-full sm:w-auto">
                             <Button 
                                 variant="lime" 
@@ -96,7 +97,7 @@ export const Hero: React.FC = () => {
                         <ServiceCard 
                             icon={<FileText size={24} />} 
                             title="Сертификаты происхождения"
-                            subtitle="Для экспорта и импорта. Оформим за 1 день."
+                            subtitle="Для экспорта и импорта. Оформим за 2 часа."
                             link="/services/cert"
                         />
                         <ServiceCard 
