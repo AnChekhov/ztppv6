@@ -22,6 +22,7 @@ import MembershipPage from './pages/MembershipPage';
 import KnowledgePage from './pages/KnowledgePage';
 import AboutPage from './pages/AboutPage';
 import NewsPage from './pages/NewsPage';
+import ArticleDetailPage from './pages/ArticleDetailPage'; // ✅ Добавлен импорт
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -69,6 +70,10 @@ const App: React.FC = () => {
           <Route path="/ved" element={<VedPage />} />
           <Route path="/knowledge" element={<KnowledgePage />} />
           <Route path="/news" element={<NewsPage />} /> 
+          
+          {/* ✅ Маршрут для отдельной статьи */}
+          <Route path="/news/:id" element={<ArticleDetailPage />} />
+          
           <Route path="/about" element={<AboutPage />} />
 
           {/* Услуги */}
