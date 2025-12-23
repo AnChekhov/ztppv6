@@ -18,7 +18,10 @@ import CustomsPage from './pages/CustomsPage';
 import LegalServicesPage from './pages/LegalServicesPage';
 import EventsPage from './pages/EventsPage';
 import AllServicesPage from './pages/AllServicesPage';
-import MembershipPage from './pages/MembershipPage'; // ✅ Добавлен импорт
+import MembershipPage from './pages/MembershipPage';
+import KnowledgePage from './pages/KnowledgePage';
+import AboutPage from './pages/AboutPage';
+import NewsPage from './pages/NewsPage';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -62,13 +65,13 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/services" element={<AllServicesPage />} />
-          
-          {/* ✅ Теперь здесь полноценный компонент страницы членства */}
           <Route path="/membership" element={<MembershipPage />} />
-          
           <Route path="/ved" element={<VedPage />} />
-          <Route path="/news" element={<PagePlaceholder title="Пресс-центр" description="Новости экономики региона и анонсы событий Палаты." />} /> 
+          <Route path="/knowledge" element={<KnowledgePage />} />
+          <Route path="/news" element={<NewsPage />} /> 
+          <Route path="/about" element={<AboutPage />} />
 
+          {/* Услуги */}
           <Route path="/services/cert" element={<CertificationPage />} />
           <Route path="/services/expert" element={<ExpertisePage />} />
           <Route path="/services/construction" element={<ConstructionPage />} />
@@ -76,8 +79,8 @@ const App: React.FC = () => {
           <Route path="/services/law" element={<LegalServicesPage />} />
           <Route path="/services/events" element={<EventsPage />} /> 
 
-          <Route path="/about" element={<PagePlaceholder title="Об организации" description="История Палаты, руководство и документы." />} />
-          <Route path="/members" element={<PagePlaceholder title="Реестр членов" description="Список компаний, входящих в Союз «ТПП Забайкальского края»." />} />
+          {/* Дополнительные разделы */}
+          <Route path="/members" element={<PagePlaceholder title="Реестр членов" description="Список компаний, входящих в Союз ТПП Забайкальского края." />} />
           <Route path="/committees" element={<PagePlaceholder title="Комитеты и комиссии" description="Отраслевые объединения для решения системных проблем бизнеса." />} />
         </Routes>
       </main>
