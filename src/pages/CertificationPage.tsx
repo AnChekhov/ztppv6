@@ -100,64 +100,36 @@ export const CertificationPage: React.FC = () => {
       />
       
       {/* 1. HERO SECTION */}
-      <section className="relative bg-slate-900 text-white overflow-hidden min-h-[65vh] flex items-center justify-center">
-        <div className="absolute inset-0 opacity-40">
-            <img 
-              src="/ztppv6/images/hero-bg.jpg" 
-              alt="Background" 
-              className="w-full h-full object-cover"
-            />
+      <section className="relative bg-slate-900 text-white min-h-[65vh] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 opacity-30">
+             <img src="/ztppv6/images/hero-bg.jpg" alt="Background" className="w-full h-full object-cover" />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/[0.87] to-slate-900"></div>
-        
-        <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center">
-            
-            <div className="grid lg:grid-cols-12 gap-8 items-center">
-              
-              <div className="lg:col-span-7 max-w-3xl">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
-                  Заказать сертификат происхождения товара в <span className="text-yellow-400">Забайкальской ТПП</span>
-                </h1>
-                <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl">
-                  Оформите ключевой документ для экспорта онлайн. Получите льготы и преференции для вашего бизнеса. Гарантия прохождения таможни.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <button 
-                    onClick={scrollToForm}
-                    className="bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 px-8 rounded-xl transition-all hover:scale-105 shadow-[0_0_20px_rgba(250,204,21,0.3)]"
-                  >
-                    Заказать сертификат
-                  </button>
-                  <button 
-                    onClick={scrollToForm}
-                    className="border-2 border-slate-600 hover:border-white text-white font-semibold py-4 px-8 rounded-xl transition-colors flex items-center justify-center gap-2 group"
-                  >
-                    <MessageCircle size={20} />
-                    Проконсультироваться
-                  </button>
-                </div>
-              </div>
-
-              <div className="hidden lg:flex lg:col-span-5 justify-center items-center relative">
-                <div className="absolute w-80 h-80 bg-blue-600/10 rounded-full blur-3xl"></div>
-                <div className="relative transform transition-transform duration-500 hover:scale-105">
-                   <FileCheck 
-                      size={300} 
-                      strokeWidth={1}
-                      className="text-slate-600/70 drop-shadow-2xl" 
-                   />
-                   <FileCheck 
-                      size={300} 
-                      strokeWidth={1}
-                      className="absolute top-0 left-0 text-white/10" 
-                   />
-                </div>
-              </div>
-
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/90 to-slate-900"></div>
+        <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center text-center">
+            <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+               Сертификаты происхождения в <span className="text-yellow-400">Забайкальской ТПП</span>
+            </h1>
+            <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl mx-auto">
+              Оформите ключевой документ для экспорта онлайн. Получите льготы и преференции для вашего бизнеса. Гарантия прохождения таможни.
+            </p>
+            <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
+              <button 
+                onClick={scrollToForm}
+                className="bg-yellow-400 text-slate-900 font-bold py-3 px-8 rounded-xl hover:bg-yellow-500 transition-colors shadow-lg hover:scale-105 transform duration-200"
+              >
+                Заказать сертификат
+              </button>
+              <button 
+                onClick={scrollToForm}
+                className="border-2 border-slate-600 hover:border-white text-white font-semibold py-3 px-8 rounded-xl transition-colors flex items-center justify-center gap-2 group"
+              >
+                <MessageCircle size={20} />
+                Проконсультироваться
+              </button>
             </div>
         </div>
       </section>
-
+      
       {/* 2. ТИПЫ СЕРТИФИКАТОВ */}
       <section className="pt-12 pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
