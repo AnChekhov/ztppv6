@@ -8,7 +8,7 @@ import CallToAction from './components/CallToAction';
 import NewsSection from './components/NewsSection';
 import SeoTextSection from './components/SeoTextSection';
 import Footer from './components/Footer';
-import ScrollToTopButton from './components/ScrollToTopButton'; // ✅ Импорт
+import ScrollToTopButton from './components/ScrollToTopButton';
 
 import CertificationPage from './pages/CertificationPage'; 
 import ExpertisePage from './pages/ExpertisePage';
@@ -34,7 +34,7 @@ const PagePlaceholder: React.FC<{ title: string; description?: string }> = ({ ti
     </div>
     <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">{title}</h1>
     <p className="text-xl text-slate-600 leading-relaxed border-l-4 border-yellow-500 pl-6">
-      {description || "Мы работаем над наполнением этого раздела. Актуальную информацию вы можете получить по телефону +7 (3022) 12-34-56."}
+      {description || "Мы работаем над наполнением этого раздела. Актуальную информацию вы можете получить по телефону +7 (924) 373-33-30."}
     </p>
   </div>
 );
@@ -63,13 +63,14 @@ const App: React.FC = () => {
           <Route path="/services" element={<AllServicesPage />} />
           <Route path="/membership" element={<PagePlaceholder title="Членство в Союзе" description="Как вступить в ТПП, преимущества и реестр членов." />} />
           <Route path="/ved" element={<VedPage />} />
-          <Route path="/news" element={<EventsPage />} /> 
+          <Route path="/news" element={<PagePlaceholder title="Пресс-центр" description="Новости экономики региона и анонсы событий Палаты." />} /> 
 
           <Route path="/services/cert" element={<CertificationPage />} />
           <Route path="/services/expert" element={<ExpertisePage />} />
           <Route path="/services/construction" element={<ConstructionPage />} />
           <Route path="/services/customs" element={<CustomsPage />} />
           <Route path="/services/law" element={<LegalServicesPage />} />
+          <Route path="/services/events" element={<EventsPage />} /> 
 
           <Route path="/about" element={<PagePlaceholder title="Об организации" description="История Палаты, руководство и документы." />} />
           <Route path="/members" element={<PagePlaceholder title="Реестр членов" description="Список компаний, входящих в Союз «ТПП Забайкальского края»." />} />
@@ -78,7 +79,7 @@ const App: React.FC = () => {
       </main>
 
       <Footer />
-      <ScrollToTopButton /> {/* ✅ Кнопка добавлена здесь */}
+      <ScrollToTopButton />
     </div>
   );
 };
