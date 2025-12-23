@@ -4,6 +4,7 @@ import {
   MessageCircle, Mail, ChevronDown, 
   Newspaper, Bell, Camera, MapPin
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 
 const NewsPage: React.FC = () => {
@@ -60,30 +61,32 @@ const NewsPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
             {newsItems.map((news) => (
-              <article key={news.id} className="bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-xl transition-all flex flex-col group cursor-pointer">
-                <div className="aspect-video bg-slate-200 relative overflow-hidden">
-                   <div className="absolute inset-0 flex items-center justify-center text-slate-400 group-hover:scale-110 transition-transform">
-                      <Camera size={48} strokeWidth={1} />
-                   </div>
-                   <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold text-blue-600 uppercase tracking-widest shadow-sm">
-                      {news.category}
-                   </div>
-                </div>
-                <div className="p-8 flex-grow">
-                  <div className="flex items-center gap-2 text-slate-400 text-xs mb-4">
-                    <Calendar size={14} /> {news.date}
+              <Link to={`/news/${news.id}`} key={news.id} className="flex flex-col group">
+                <article className="bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-xl transition-all flex flex-col h-full cursor-pointer">
+                  <div className="aspect-video bg-slate-200 relative overflow-hidden">
+                    <div className="absolute inset-0 flex items-center justify-center text-slate-400 group-hover:scale-110 transition-transform">
+                        <Camera size={48} strokeWidth={1} />
+                    </div>
+                    <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold text-blue-600 uppercase tracking-widest shadow-sm">
+                        {news.category}
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-blue-600 transition-colors leading-tight">
-                    {news.title}
-                  </h3>
-                  <p className="text-slate-600 text-sm leading-relaxed mb-6">
-                    {news.desc}
-                  </p>
-                  <div className="flex items-center text-blue-600 font-bold text-sm mt-auto">
-                    Подробнее <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
+                  <div className="p-8 flex-grow flex flex-col">
+                    <div className="flex items-center gap-2 text-slate-400 text-xs mb-4">
+                      <Calendar size={14} /> {news.date}
+                    </div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-blue-600 transition-colors leading-tight">
+                      {news.title}
+                    </h3>
+                    <p className="text-slate-600 text-sm leading-relaxed mb-6">
+                      {news.desc}
+                    </p>
+                    <div className="flex items-center text-blue-600 font-bold text-sm mt-auto">
+                      Подробнее <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
+                    </div>
                   </div>
-                </div>
-              </article>
+                </article>
+              </Link>
             ))}
           </div>
           
