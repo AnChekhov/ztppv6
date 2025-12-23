@@ -94,9 +94,9 @@ export const CertificationPage: React.FC = () => {
     <div className="font-sans text-slate-900 bg-white">
       
       <SEO 
-        title="Сертификаты происхождения товаров (СТ-1, Общая форма) в Чите"
-        description="Оформление сертификатов происхождения товаров (СТ-1, EAV, Общая форма) в Забайкальском крае. Срочная выдача для экспорта в Китай. Консультации экспертов ТПП."
-        keywords="сертификат происхождения чита, ст-1 забайкальск, экспорт в китай документы, тпп чита услуги"
+        title="Сертификат происхождения (СТ-1, EAV, Общая форма) | ТПП - РФ и СНГ"
+        description="Официальное оформление сертификатов происхождения для экспорта в Китай, страны СНГ и Европу. Выдача от 2-х часов. Работаем с компаниями по всей России: Москва, Новосибирск, Иркутск, Чита."
+        keywords="сертификат происхождения товара, сертификат ст-1, общая форма сертификата, экспорт в китай документы, ТПП услуги, Забайкалье, Иркутск, Бурятия, Москва, Новосибирск, Владивосток, таможенное оформление"
       />
       
       {/* 1. HERO SECTION */}
@@ -107,10 +107,10 @@ export const CertificationPage: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/90 to-slate-900"></div>
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center text-center">
             <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
-               Сертификаты происхождения в <span className="text-yellow-400">Забайкальской ТПП</span>
+               Сертификаты происхождения <span className="text-yellow-400">ТПП Забайкальского края</span>
             </h1>
             <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl mx-auto">
-              Оформите ключевой документ для экспорта онлайн. Получите льготы и преференции для вашего бизнеса. Гарантия прохождения таможни.
+              Официальное подтверждение страны происхождения для экспорта. Получите налоговые льготы и преференции. Работаем дистанционно со всеми регионами РФ.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
               <button 
@@ -310,7 +310,7 @@ export const CertificationPage: React.FC = () => {
             <div>
               <h2 className="text-3xl md:text-4xl font-extrabold mb-6">Закажите сертификат онлайн</h2>
               <p className="text-slate-300 text-lg mb-8">
-                Оставьте заявку, и мы подготовим все необходимые документы для получения сертификата происхождения.
+                Оставьте заявку, и мы подготовим все необходимые документы для получения сертификата происхождения. Работаем с экспортерами со всей РФ.
               </p>
               <ul className="space-y-4 mb-10 text-slate-300">
                 <li className="flex items-center gap-3">
