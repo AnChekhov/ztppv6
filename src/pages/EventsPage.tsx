@@ -3,7 +3,7 @@ import {
   Users, Presentation, Laptop, Coffee, 
   MapPin, Clock, Phone, Mail, ChevronDown, 
   ChevronUp, MessageCircle, CheckCircle2, Layout, Video,
-  Briefcase, BookOpen, TrendingUp, Handshake
+  Briefcase, BookOpen, TrendingUp, Handshake, Globe, Building
 } from 'lucide-react';
 import SEO from '../components/SEO';
 
@@ -51,8 +51,8 @@ export const EventsPage: React.FC = () => {
       id: 'meeting-room',
       title: 'Переговорная комната',
       shortDesc: 'Официальное место для статусных встреч, подписания контрактов и приватных переговоров.',
-      longDesc: 'Комфортабельное деловое пространство для проведения конфиденциальных встреч, медиаций и совещаний. Помещение обеспечивает полную приватность и рабочую атмосферу. В распоряжении гостей: круглый стол, эргономичная мебель, высокоскоростной Wi-Fi и офисная техника. Это лучшее решение, если вам нужна площадка для переговоров в самом центре Читы с возможностью организации кофе-брейков.',
-      icon: Users
+      longDesc: 'Комфортабельное деловое пространство для проведения конфиденциальных встреч, медиаций и совещаний. Помещение обеспечивает полную приватность и рабочую атмосферу в центре города. В распоряжении гостей: круглый стол, эргономичная мебель, высокоскоростной Wi-Fi и офисная техника. Это лучшее решение, если вам нужна площадка для бизнес-встреч с возможностью организации кофе-брейков.',
+      icon: Coffee
     },
     {
       id: 'seminars',
@@ -64,8 +64,8 @@ export const EventsPage: React.FC = () => {
     {
       id: 'missions',
       title: 'Бизнес-миссии',
-      shortDesc: 'Организация деловых поездок, B2B-встреч и посещение выставок в Китае и по России.',
-      longDesc: 'Полное сопровождение делегаций предпринимателей: поиск партнеров в КНР, визовая поддержка, логистика и услуги переводчиков. Помогаем компаниям Забайкалья и соседних регионов находить новые рынки сбыта и поставщиков оборудования.',
+      shortDesc: 'Организация деловых поездок и B2B-встреч в Китае и регионах России.',
+      longDesc: 'Полное сопровождение делегаций предпринимателей: поиск партнеров в КНР, визовая поддержка, логистика и услуги переводчиков. Помогаем компаниям Забайкалья, Бурятии и других регионов находить новые рынки сбыта и поставщиков.',
       icon: Briefcase
     },
     {
@@ -87,15 +87,15 @@ export const EventsPage: React.FC = () => {
   const faqs = [
     {
       question: "Как забронировать зал или переговорную комнату в Чите?",
-      answer: "Вы можете оставить заявку через форму на сайте или связаться с нами по телефону. Мы забронируем за вами нужную дату, уточним количество участников и требования к расстановке мебели и оборудованию."
+      answer: "Вы можете оставить заявку через форму на сайте или связаться с нами по телефону. Мы забронируем за вами нужную дату, уточним количество участников и требования к оборудованию."
     },
     {
       question: "Какое техническое оборудование предоставляется?",
-      answer: "В стандартный пакет входит проектор, экран, ноутбук для презентаций, звуковое оборудование (колонки и микрофоны), флипчарт. Также доступна система видеоконференцсвязи для подключения удаленных участников."
+      answer: "В стандартный пакет входит проектор, экран, ноутбук для презентаций, звуковое оборудование (колонки и микрофоны). Также доступна система видеосвязи для удаленных участников."
     },
     {
-      question: "Возможна ли долгосрочная бронь для проведения курсов?",
-      answer: "Да, мы предоставляем площадки для цикличных мероприятий, таких как курсы повышения квалификации или регулярные тренинги. При длительном сотрудничестве действуют специальные условия."
+      question: "Работаете ли вы с компаниями из других регионов?",
+      answer: "Да, мы предоставляем площадки для федеральных компаний из Москвы, Новосибирска и Иркутска, которым необходимо провести презентацию или встречу с партнерами в Чите."
     }
   ];
 
@@ -103,24 +103,24 @@ export const EventsPage: React.FC = () => {
     <div className="font-sans text-slate-900 bg-white">
       
       <SEO 
-        title="Конференц-зал и переговорная комната в Чите | Деловое пространство ТПП"
-        description="Предоставление оборудованных площадок для бизнеса в центре Читы. Зал для семинаров, тренингов и презентаций с поддержкой ВКС. Переговорная комната для VIP-встреч."
+        title="Конференц-зал и площадки для бизнеса в Чите | Деловое пространство ТПП"
+        description="Предоставление оборудованных площадок для бизнеса в центре Читы. Зал для семинаров, тренингов и презентаций. Переговорная комната для бизнес-встреч. Весь спектр бизнес-событий."
         keywords="конференц-зал чита, помещение для семинара чита, зал для тренинга, арендовать переговорную чита, площадка для презентаций, бизнес центр чита, ТПП мероприятия"
       />
       
       {/* 1. HERO SECTION */}
       <section className="relative bg-slate-900 text-white min-h-[65vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 opacity-30">
-             <img src="/ztppv6/images/hero-bg.jpg" alt="Конференц-зал и площадки для бизнеса в Чите" className="w-full h-full object-cover" />
+             <img src="/ztppv6/images/hero-bg.jpg" alt="Деловое пространство ТПП" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/90 to-slate-900"></div>
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center text-center">
             <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
                Деловое пространство <br/>
-               <span className="text-yellow-400 text-3xl md:text-5xl">Залы для ваших презентаций и переговоров</span>
+               <span className="text-yellow-400 text-3xl md:text-5xl">Площадки и события для развития бизнеса</span>
             </h1>
             <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-3xl mx-auto">
-              Оборудованные площадки в центре города для статусных встреч, семинаров и форумов. Техническая поддержка, современные системы видеосвязи и комфорт для вашего бизнеса.
+              Оборудованные залы в центре города для статусных встреч, семинаров и форумов. Техническая поддержка, современные системы видеосвязи и комфорт для вашего бизнеса.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
               <button 
@@ -140,10 +140,10 @@ export const EventsPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. SERVICES GRID */}
+      {/* 2. ВЫБОР ФОРМАТА (GRID) */}
       <section className="pt-12 pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Выберите нужный формат площадки</h2>
+          <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Выберите нужный формат</h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((item) => (
@@ -158,10 +158,8 @@ export const EventsPage: React.FC = () => {
                 <h3 className="text-xl font-bold text-slate-900 mb-3">{item.title}</h3>
                 <p className="text-slate-600 text-sm leading-relaxed flex-grow">{item.shortDesc}</p>
                 <div className="mt-6 pt-4 border-t border-slate-100">
-                   <button 
-                     className="text-sm font-bold text-blue-600 hover:text-blue-800 transition-colors flex items-center"
-                   >
-                     Подробнее об услуге <ChevronDown size={16} className="ml-1" />
+                   <button className="text-sm font-bold text-blue-600 hover:text-blue-800 transition-colors flex items-center">
+                     Подробнее <ChevronDown size={16} className="ml-1" />
                    </button>
                 </div>
               </div>
@@ -170,7 +168,7 @@ export const EventsPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. ПОДРОБНОЕ ОПИСАНИЕ */}
+      {/* 3. ПОДРОБНОЕ ОПИСАНИЕ (АККОРДЕОНЫ) */}
       <section className="pt-0 pb-20 bg-slate-50 border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 py-14 text-center">Конференц-сервис и события</h2>
@@ -202,7 +200,7 @@ export const EventsPage: React.FC = () => {
                             onClick={() => handleOrderClick(item.title)}
                             className="text-sm font-bold text-blue-600 hover:text-yellow-600 transition-colors"
                         >
-                            Заказать услуги площадки →
+                            Заказать услуги площадки -{'>'}
                         </button>
                     </div>
                   </div>
@@ -217,22 +215,15 @@ export const EventsPage: React.FC = () => {
       <section id="order-form" className="py-20 bg-slate-900 text-white scroll-mt-[72px]">
         <div className="max-w-5xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-start">
-            
             <div>
               <h2 className="text-3xl md:text-4xl font-extrabold mb-6">Запланируйте мероприятие</h2>
               <p className="text-slate-300 text-lg mb-8">
-                Оставьте контактные данные, и мы свяжемся с вами для уточнения деталей, свободных дат и стоимости сопровождения.
+                Оставьте контакты, и мы свяжемся с вами для уточнения деталей, свободных дат и стоимости сопровождения.
               </p>
               <div className="pt-8 border-t border-slate-700">
-                <p className="text-slate-300 text-base mb-4 font-medium">
-                  Связаться с менеджером площадки:
-                </p>
-                <a href="tel:+79243733330" className="block text-3xl md:text-4xl font-extrabold text-yellow-400 hover:text-white transition-colors mb-4">
-                  +7 (924) 373-33-30
-                </a>
-                <a href="mailto:info@zabtpp.ru" className="inline-flex items-center gap-2 text-blue-400 hover:text-white transition-colors text-lg font-medium">
-                  <Mail size={20} /> info@zabtpp.ru
-                </a>
+                <p className="text-slate-300 text-base mb-4 font-medium">Связаться с менеджером:</p>
+                <a href="tel:+79243733330" className="block text-3xl md:text-4xl font-extrabold text-yellow-400 hover:text-white transition-colors mb-4">+7 (924) 373-33-30</a>
+                <a href="mailto:info@zabtpp.ru" className="inline-flex items-center gap-2 text-blue-400 hover:text-white transition-colors text-lg font-medium"><Mail size={20} /> info@zabtpp.ru</a>
               </div>
             </div>
 
@@ -243,7 +234,6 @@ export const EventsPage: React.FC = () => {
                   <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Имя" />
                   <input type="tel" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="+7 (___) ___-__-__" />
                 </div>
-
                 <div>
                    <label className="block text-sm font-bold mb-2">Интересующая услуга</label>
                    <div className="relative">
@@ -258,12 +248,10 @@ export const EventsPage: React.FC = () => {
                      <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-slate-500"><ChevronDown size={20} /></div>
                    </div>
                 </div>
-
-                <button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all mt-4">Отправить заявку</button>
+                <button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all mt-4">Отправить заявку</button>
                 <p className="text-xs text-center text-slate-400 mt-3">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
               </form>
             </div>
-
           </div>
         </div>
       </section>
@@ -272,7 +260,6 @@ export const EventsPage: React.FC = () => {
       <section className="pt-8 pb-20 bg-white">
         <div className="max-w-3xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-6 text-center">Часто задаваемые вопросы</h2>
-          
           <div className="space-y-4">
             {faqs.map((faq, index) => (
               <div key={index} className="border-b border-slate-200 last:border-0">
@@ -283,21 +270,49 @@ export const EventsPage: React.FC = () => {
                   <span className={`text-lg font-bold transition-colors ${openFaq === index ? 'text-blue-600' : 'text-slate-900 group-hover:text-blue-600'}`}>
                     {faq.question}
                   </span>
-                  <ChevronDown 
-                    className={`text-slate-400 transition-transform duration-300 ${openFaq === index ? 'rotate-180 text-blue-600' : ''}`} 
-                    size={24} 
-                  />
+                  <ChevronDown className={`text-slate-400 transition-transform duration-300 ${openFaq === index ? 'rotate-180 text-blue-600' : ''}`} size={24} />
                 </button>
-                <div 
-                  className={`overflow-hidden transition-all duration-300 ease-in-out ${openFaq === index ? 'max-h-96 opacity-100 pb-6' : 'max-h-0 opacity-0'}`}
-                >
-                  <p className="text-slate-600 leading-relaxed text-base">
-                    {faq.answer}
-                  </p>
+                <div className={`overflow-hidden transition-all duration-300 ease-in-out ${openFaq === index ? 'max-h-96 opacity-100 pb-6' : 'max-h-0 opacity-0'}`}>
+                  <p className="text-slate-600 leading-relaxed text-base">{faq.answer}</p>
                 </div>
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* 6. ГЕОГРАФИЯ (ДЛЯ SEO) */}
+      <section className="py-16 bg-slate-50 border-y border-slate-200">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+            <div className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 flex flex-col md:flex-row gap-10 items-center">
+                <div className="md:w-1/2">
+                    <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-4">Площадки для бизнеса в Забайкалье</h2>
+                    <p className="text-slate-600 mb-6 leading-relaxed">
+                        Забайкальская ТПП предоставляет современные залы для компаний со всей России. Мы сотрудничаем с бизнесом из <strong>Москвы, Новосибирска, Иркутска и Улан-Удэ</strong>, предоставляя надежную базу для проведения региональных мероприятий в Чите.
+                    </p>
+                    <div className="grid grid-cols-2 gap-4">
+                        <div className="flex items-center gap-2 text-sm text-slate-700 font-medium">
+                            <MapPin size={16} className="text-blue-600" /> Центр Читы
+                        </div>
+                        <div className="flex items-center gap-2 text-sm text-slate-700 font-medium">
+                            <Building size={16} className="text-blue-600" /> Статус ТПП РФ
+                        </div>
+                        <div className="flex items-center gap-2 text-sm text-slate-700 font-medium">
+                            <Globe size={16} className="text-blue-600" /> Поддержка ВКС
+                        </div>
+                        <div className="flex items-center gap-2 text-sm text-slate-700 font-medium">
+                            <Users size={16} className="text-blue-600" /> Весь ДФО и Сибирь
+                        </div>
+                    </div>
+                </div>
+                <div className="md:w-1/2 bg-blue-600 rounded-2xl p-8 text-white relative overflow-hidden">
+                    <div className="relative z-10">
+                        <p className="text-xl font-bold mb-2">Профессиональный конференц-сервис</p>
+                        <p className="text-blue-100 text-sm">Мы обеспечиваем не только помещение, но и полное техническое сопровождение: от настройки звука до организации телемостов с другими регионами.</p>
+                    </div>
+                    <Globe size={150} className="absolute -bottom-10 -right-10 text-white/10" />
+                </div>
+            </div>
         </div>
       </section>
 
