@@ -122,7 +122,6 @@ const AboutPage: React.FC = () => {
               </div>
             </div>
             <div className="md:w-1/2 bg-slate-100 rounded-2xl h-64 flex items-center justify-center text-slate-400 border border-slate-200">
-              {/* Здесь будет iframe карты или изображение */}
               Здесь будет встроена Яндекс.Карта
             </div>
           </div>
