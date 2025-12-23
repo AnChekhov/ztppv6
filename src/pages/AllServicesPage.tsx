@@ -5,7 +5,8 @@ import {
   ShieldCheck, Phone, Mail, UploadCloud,
   CheckCircle2, ChevronDown, ArrowRight,
   MessageCircle, LayoutGrid, HelpCircle,
-  LifeBuoy, Map, Laptop2, Landmark, Search
+  LifeBuoy, Map, Laptop2, Landmark, Search,
+  Building
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
@@ -17,7 +18,7 @@ export const AllServicesPage: React.FC = () => {
     setSelectedService(serviceName);
     const formSection = document.getElementById('order-form');
     if (formSection) {
-      formSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
@@ -228,56 +229,13 @@ export const AllServicesPage: React.FC = () => {
                          <h3 className="font-bold text-lg text-slate-900 mb-2">{cat.title}</h3>
                          <p className="text-sm text-slate-500 mb-4">Не нашли нужную услугу в списке?</p>
                          <span className="text-sm font-bold text-blue-600 group-hover:text-yellow-600 transition-colors">
-                            Связаться с нами →
+                            Связаться с нами -{'>'}
                          </span>
                        </>
                     )}
                 </div>
               ))}
            </div>
-        </div>
-      </section>
-
-      {/* SEO: РАБОТА С РЕГИОНАМИ */}
-      <section className="py-20 bg-slate-50 border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
-            <div className="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-slate-100 flex flex-col md:flex-row gap-12 items-center">
-                <div className="md:w-1/2">
-                    <h2 className="text-3xl font-extrabold text-slate-900 mb-6">
-                        Работаем с бизнесом по всей России
-                    </h2>
-                    <p className="text-slate-600 text-lg leading-relaxed mb-6 text-justify">
-                        Торгово-промышленная палата Забайкальского края — ваш надежный представитель на границе с Китаем. Мы помогаем компаниям из <strong>Москвы, Санкт-Петербурга, Новосибирска, Иркутска</strong> и других регионов решать задачи ВЭД, логистики и сертификации без необходимости отправлять сотрудников в командировки.
-                    </p>
-                    <ul className="space-y-4">
-                        <li className="flex items-start gap-3">
-                            <Map className="text-blue-600 shrink-0 mt-1" />
-                            <span className="text-slate-700"><strong>Присутствие на границе:</strong> Наши эксперты работают в Чите и Забайкальске (МАПП).</span>
-                        </li>
-                        <li className="flex items-start gap-3">
-                            <Laptop2 className="text-blue-600 shrink-0 mt-1" />
-                            <span className="text-slate-700"><strong>Дистанционный формат:</strong> Обмен документами по ЭДО, отправка оригиналов экспресс-почтой.</span>
-                        </li>
-                        <li className="flex items-start gap-3">
-                            <Landmark className="text-blue-600 shrink-0 mt-1" />
-                            <span className="text-slate-700"><strong>Официальный статус:</strong> Гарантия качества и признания документов государственными органами.</span>
-                        </li>
-                    </ul>
-                </div>
-                <div className="md:w-1/2 relative">
-                    <div className="absolute inset-0 bg-blue-600/5 rounded-3xl transform rotate-3"></div>
-                    <img 
-                        src="/ztppv6/images/hero-bg.jpg" 
-                        alt="Работа с регионами" 
-                        className="relative rounded-3xl shadow-lg object-cover h-80 w-full"
-                    />
-                    <div className="absolute -bottom-6 -left-6 bg-yellow-400 p-6 rounded-2xl shadow-xl max-w-xs">
-                        <p className="font-bold text-slate-900 text-sm">
-                            «Мы стираем границы между регионами, предоставляя качественный сервис там, где это необходимо вашему бизнесу»
-                        </p>
-                    </div>
-                </div>
-            </div>
         </div>
       </section>
 
@@ -321,7 +279,7 @@ export const AllServicesPage: React.FC = () => {
       </section>
 
       {/* 3. CTA ФОРМА */}
-      <section id="order-form" className="py-20 bg-slate-900 text-white scroll-mt-32">
+      <section id="order-form" className="py-20 bg-slate-900 text-white scroll-mt-[72px]">
         <div className="max-w-5xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-start">
             
@@ -375,12 +333,52 @@ export const AllServicesPage: React.FC = () => {
                      <span className="text-sm text-slate-500">Прикрепить документы</span>
                    </div>
                 </div>
-                <button type="button" className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all mt-4">Отправить заявку</button>
+                <button type="button" className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transform duration-200 mt-4">Отправить заявку</button>
                 <p className="text-xs text-center text-slate-400 mt-3">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
               </form>
             </div>
 
           </div>
+        </div>
+      </section>
+
+      {/* 4. SEO: РАБОТА С РЕГИОНАМИ (ПЕРЕНЕСЕНО В САМЫЙ НИЗ + ГРАФИКА) */}
+      <section className="py-20 bg-slate-50 border-t border-slate-100">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+            <div className="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-slate-100 flex flex-col md:flex-row gap-12 items-center">
+                <div className="md:w-1/2">
+                    <h2 className="text-3xl font-extrabold text-slate-900 mb-6">
+                        Работаем с бизнесом по всей России
+                    </h2>
+                    <p className="text-slate-600 text-lg leading-relaxed mb-6 text-justify">
+                        Торгово-промышленная палата Забайкальского края - ваш надежный представитель на границе с Китаем. Мы помогаем компаниям из <strong>Москвы, Санкт-Петербурга, Новосибирска, Иркутска</strong> и других регионов решать задачи ВЭД, логистики и сертификации без необходимости отправлять сотрудников в командировки.
+                    </p>
+                    <ul className="space-y-4">
+                        <li className="flex items-start gap-3">
+                            <Map className="text-blue-600 shrink-0 mt-1" />
+                            <span className="text-slate-700"><strong>Присутствие на границе:</strong> Наши эксперты работают в Чите и Забайкальске (МАПП).</span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                            <Laptop2 className="text-blue-600 shrink-0 mt-1" />
+                            <span className="text-slate-700"><strong>Дистанционный формат:</strong> Обмен документами по ЭДО, отправка оригиналов экспресс-почтой.</span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                            <Landmark className="text-blue-600 shrink-0 mt-1" />
+                            <span className="text-slate-700"><strong>Официальный статус:</strong> Гарантия качества и признания документов государственными органами.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div className="md:w-1/2 bg-blue-600 rounded-3xl p-10 text-white relative overflow-hidden h-80 flex flex-col justify-center">
+                    <div className="relative z-10">
+                        <h3 className="text-2xl font-bold mb-4">Федеральный охват услуг</h3>
+                        <p className="text-blue-100 leading-relaxed">
+                            Мы стираем границы между регионами, предоставляя качественный сервис ТПП там, где это необходимо вашему бизнесу. Используйте наши преимущества на границе с КНР из любой точки страны.
+                        </p>
+                    </div>
+                    <Building size={180} className="absolute -bottom-12 -right-12 text-white/10" />
+                    <Globe size={180} className="absolute -top-12 -left-12 text-white/5" />
+                </div>
+            </div>
         </div>
       </section>
 
