@@ -182,8 +182,10 @@ export const CertificationPage: React.FC = () => {
             Информация о сертификатах
           </h2>
           <div className="space-y-4">
+            {certTypes.map((item) => (
+              <div 
                 key={item.id} 
-                id={`detail-${item.id}`} 
+                id={`detail-${item.id}`}
                 className={`bg-white rounded-2xl border transition-all duration-500 overflow-hidden ${expandedDetail === item.id ? 'border-blue-500 shadow-md' : 'border-slate-200'}`}
               >
                 <button 
