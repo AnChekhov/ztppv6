@@ -94,9 +94,9 @@ export const ConstructionPage: React.FC = () => {
   return (
     <div className="font-sans text-slate-900 bg-white">
       <SEO 
-        title="Строительная экспертиза в Чите | Проверка качества, сметы, приемка квартир"
-        description="Независимая строительно-техническая экспертиза. Проверка качества ремонта, приемка квартир от застройщика, судебная экспертиза, обследование зданий."
-        keywords="строительная экспертиза чита, приемка квартиры, проверка сметы, судебная экспертиза строительство, экспертиза дома"
+        title="Строительно-техническая экспертиза: Забайкалье и вся Россия | Реестр ТПП"
+        description="Независимая строительная экспертиза качества работ, смет и обследование зданий. Работаем в Забайкальском крае, Бурятии, Иркутской обл. и с федеральными клиентами по всей РФ."
+        keywords="строительная экспертиза, проверка качества работ, проверка сметы, судебная строительная экспертиза, Забайкалье, Чита, Иркутск, Бурятия, Москва, услуги ТПП"
       />
 
       {/* 1. HERO SECTION */}
@@ -107,10 +107,10 @@ export const ConstructionPage: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/90 to-slate-900"></div>
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center text-center">
             <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
-               Независимая строительная экспертиза <span className="text-yellow-400">в Чите</span>
+               Строительная экспертиза <span className="text-yellow-400">ТПП Забайкальского края</span>
             </h1>
             <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl mx-auto">
-              Проверка качества работ, смет и материалов. Поможем в спорах с подрядчиками, застройщиками и при разделе недвижимости.
+              Проверка качества работ, смет и материалов. Поможем в спорах с подрядчиками, застройщиками и при разделе недвижимости. Работаем со всеми регионами России.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
               <button 
@@ -236,13 +236,13 @@ export const ConstructionPage: React.FC = () => {
             <div>
               <h2 className="text-3xl md:text-4xl font-extrabold mb-6">Оставьте заявку на экспертизу</h2>
               <p className="text-slate-300 text-lg mb-8">
-                Мы перезвоним, уточним детали объекта и рассчитаем стоимость работ.
+                Мы перезвоним, уточним детали объекта и рассчитаем стоимость работ. Работаем дистанционно с любым регионом РФ.
               </p>
               <div className="pt-8 border-t border-slate-700">
                 <p className="text-slate-300 text-base mb-4 font-medium">
                   Просто позвоните, и мы поможем решить Ваш вопрос:
                 </p>
-                <a href="tel:+79243733330" className="block text-3xl md:text-4xl font-extrabold text-white hover:text-yellow-400 transition-colors mb-4">+7 (924) 373-33-30</a>
+                <a href="tel:+79243733330" className="block text-3xl md:text-4xl font-extrabold text-yellow-400 hover:text-white transition-colors mb-4">+7 (924) 373-33-30</a>
                 <a href="mailto:expert@ztpp.ru" className="inline-flex items-center gap-2 text-blue-400 hover:text-white transition-colors text-lg font-medium"><Mail size={20} /> expert@ztpp.ru</a>
               </div>
             </div>
