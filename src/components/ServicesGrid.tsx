@@ -1,7 +1,7 @@
 import React from 'react';
 import { 
   FileText, Globe, Scale, Users, Container, 
-  ChevronRight, ArrowRight, HelpCircle, Hammer, Layout 
+  ChevronRight, ArrowRight, LifeBuoy, Hammer, Layout 
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from './ui/Button';
@@ -166,7 +166,6 @@ const ServicesGrid: React.FC = () => {
             description="Свидетельствование форс-мажора, международный коммерческий арбитраж, медиация и защита интересов бизнеса в органах власти."
             link="/services/law"
           />
-          {/* ✅ ИЗМЕНЕНО: Карточка Делового пространства и мероприятий */}
           <ServiceCard 
             icon={Layout} 
             title="Деловое пространство и события" 
@@ -177,7 +176,7 @@ const ServicesGrid: React.FC = () => {
           <div className="flex flex-col items-center justify-center p-8 rounded-2xl border border-dashed border-slate-300 bg-white/50 text-center h-full hover:bg-white hover:border-blue-300 hover:shadow-xl hover:shadow-blue-100 transition-all duration-300 hover:scale-[1.03] group cursor-pointer">
              <Link to="/services" className="flex flex-col items-center w-full h-full">
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-slate-100 text-slate-500 transition-transform group-hover:scale-110 group-hover:bg-blue-50 group-hover:text-blue-600">
-                    <HelpCircle size={24} strokeWidth={1.5} />
+                    <LifeBuoy size={24} strokeWidth={1.5} />
                 </div>
                 <h4 className="text-lg font-bold text-slate-900 mb-2">Полный список услуг</h4>
                 <p className="text-sm text-slate-500 mb-6 leading-relaxed flex-grow">
