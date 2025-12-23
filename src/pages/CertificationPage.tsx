@@ -300,7 +300,7 @@ export const CertificationPage: React.FC = () => {
       </section>
 
       {/* 6. CTA ФОРМА */}
-      <section id="order-form" className="py-20 bg-slate-900 text-white scroll-mt-32">
+      <section id="order-form" className="py-20 bg-slate-900 text-white scroll-mt-20">
         <div className="max-w-5xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-start">
             
@@ -394,9 +394,9 @@ export const CertificationPage: React.FC = () => {
       </section>
 
       {/* 7. FAQ */}
-      <section className="py-20 bg-white">
+      <section className="pt-12 pb-20 bg-white">
         <div className="max-w-3xl mx-auto px-6 md:px-8">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Часто задаваемые вопросы</h2>
+          <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">Часто задаваемые вопросы</h2>
           
           <div className="space-y-4">
             {faqs.map((faq, index) => (
