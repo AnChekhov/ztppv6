@@ -24,17 +24,14 @@ const Header: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         <div className="flex items-center justify-between">
           
-          {/* ✅ ИЗМЕНЕНО: Логотип и текст в едином блоке */}
           <Link to="/" className="flex items-center gap-4 px-5 py-3 bg-slate-900 rounded-xl transition-transform hover:scale-[1.02] group shadow-sm">
             
-            {/* Картинка */}
             <img 
               src="/ztppv6/images/logo-TPP-white.png" 
               alt="Logo ZTPP" 
               className="w-8 h-auto opacity-90 group-hover:opacity-100 transition-opacity" 
             />
 
-            {/* Текст (теперь внутри блока) */}
             <div className="flex flex-col">
               <span className="text-[10px] font-bold tracking-widest text-white uppercase leading-tight">
                 Торгово-промышленная
@@ -42,14 +39,12 @@ const Header: React.FC = () => {
               <span className="text-[10px] font-bold tracking-widest text-white uppercase leading-tight">
                 палата
               </span>
-              {/* Желтый акцент вместо синего */}
               <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-widest leading-tight">
                 Забайкальского края
               </span>
             </div>
           </Link>
 
-          {/* НАВИГАЦИЯ (DESKTOP) */}
           <nav className="hidden lg:flex items-center gap-8">
             <Link to="/services" className="text-sm font-medium text-slate-600 hover:text-blue-700 transition-colors">Услуги</Link>
             <Link to="/membership" className="text-sm font-medium text-slate-600 hover:text-blue-700 transition-colors">Членство</Link>
@@ -57,7 +52,6 @@ const Header: React.FC = () => {
             <Link to="/news" className="text-sm font-medium text-slate-600 hover:text-blue-700 transition-colors">Пресс-центр</Link>
           </nav>
 
-          {/* КОНТАКТЫ И КНОПКА (DESKTOP) */}
           <div className="hidden lg:flex items-center gap-6">
             <div className="text-right">
               <a href="tel:+79243733330" className="block text-slate-900 font-bold hover:text-blue-700 transition-colors">
@@ -67,12 +61,14 @@ const Header: React.FC = () => {
                 info@zabtpp.ru
               </a>
             </div>
-            <Button variant="lime" className="bg-yellow-400 text-slate-900 hover:bg-yellow-500 font-bold shadow-md">
-              Вступить в палату
-            </Button>
+            {/* ✅ ИЗМЕНЕНО: Добавлена ссылка на страницу членства */}
+            <Link to="/membership">
+              <Button variant="lime" className="bg-yellow-400 text-slate-900 hover:bg-yellow-500 font-bold shadow-md">
+                Вступить в палату
+              </Button>
+            </Link>
           </div>
 
-          {/* МОБИЛЬНОЕ МЕНЮ (КНОПКА) */}
           <button 
             className="lg:hidden text-slate-900"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -82,7 +78,6 @@ const Header: React.FC = () => {
         </div>
       </div>
 
-      {/* МОБИЛЬНОЕ МЕНЮ */}
       {isMobileMenuOpen && (
         <div className="absolute top-full left-0 w-full bg-white border-t border-slate-100 shadow-xl lg:hidden flex flex-col p-6 gap-4">
           <Link to="/services" className="text-lg font-medium text-slate-900" onClick={() => setIsMobileMenuOpen(false)}>Услуги</Link>
@@ -101,9 +96,12 @@ const Header: React.FC = () => {
              </a>
           </div>
           
-          <Button variant="lime" className="bg-yellow-400 text-slate-900 w-full justify-center font-bold">
-            Вступить в палату
-          </Button>
+          {/* ✅ ИЗМЕНЕНО: Добавлена ссылка на страницу членства в мобильном меню */}
+          <Link to="/membership" onClick={() => setIsMobileMenuOpen(false)}>
+            <Button variant="lime" className="bg-yellow-400 text-slate-900 w-full justify-center font-bold">
+              Вступить в палату
+            </Button>
+          </Link>
         </div>
       )}
     </header>
