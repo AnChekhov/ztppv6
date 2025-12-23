@@ -129,6 +129,7 @@ export const AllServicesPage: React.FC = () => {
         { id: "dev-mem", name: "Членство в ТПП", desc: "Вступление в союз. Получение преференций, участие в закрытых мероприятиях и GR-поддержка." },
       ]
     },
+    // 8-й БЛОК
     {
       id: "cat-help",
       title: "Центр поддержки и контакты",
@@ -144,21 +145,23 @@ export const AllServicesPage: React.FC = () => {
       <SEO 
         title="Полный каталог услуг Забайкальской ТПП | Реестр 2025"
         description="Более 45 видов услуг для бизнеса в Чите: сертификация, экспертиза, оценка, юридическая помощь, переводы, ВЭД с Китаем. Единое окно для предпринимателей."
-        keywords="услуги тпп чита, каталог услуг, оценка бизнеса, переводы китайский, соут чита, регистрация товарного знака, строительная экспертиза"
+        keywords="услуги тпп чита, каталог услуг, оценка бизнеса, переводы китайский, соут чита, регистрация товарного знака, строительная экспертиза, аренда зала чита"
       />
 
       {/* HERO */}
-      <section className="relative bg-slate-900 text-white py-24 md:py-32 overflow-hidden">
+      <section className="relative bg-slate-900 text-white min-h-[65vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 opacity-30">
              <img src="/ztppv6/images/hero-bg.jpg" alt="Background" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/90 to-slate-900"></div>
-        <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 text-center">
-            <h1 className="text-4xl md:text-6xl font-extrabold mb-6">Каталог услуг Палаты</h1>
-            <p className="text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center text-center">
+            <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+               Каталог услуг <span className="text-yellow-400">Торгово-промышленной палаты</span> Забайкальского края
+            </h1>
+            <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl mx-auto">
               Комплексная поддержка вашего бизнеса на всех этапах: от регистрации товарного знака до выхода на международные рынки.
             </p>
-            <div className="mt-8">
+            <div className="mt-8 flex justify-center">
               <button 
                 onClick={() => handleOrderClick('Нужна консультация (общий вопрос)')}
                 className="bg-yellow-400 text-slate-900 font-bold py-3 px-8 rounded-xl hover:bg-yellow-500 transition-colors shadow-lg hover:scale-105 transform duration-200"
@@ -173,7 +176,6 @@ export const AllServicesPage: React.FC = () => {
       <section className="py-20 bg-white border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
            <h2 className="text-2xl font-bold text-slate-900 mb-8">Быстрый переход к разделам:</h2>
-           
            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {allCategories.map((cat, idx) => (
                 <div 
@@ -200,7 +202,6 @@ export const AllServicesPage: React.FC = () => {
                               {cat.title}
                             </h3>
                         </button>
-                        
                         <ul className="space-y-2 flex-grow">
                             {cat.services.slice(0, 5).map((service) => (
                                 <li key={service.id}>
@@ -320,66 +321,66 @@ export const AllServicesPage: React.FC = () => {
       </section>
 
       {/* 3. CTA ФОРМА */}
+      {/* ✅ ИСПРАВЛЕНО: scroll-mt-32 на самой секции, div-обертка убрана */}
       <section id="order-form" className="py-20 bg-slate-900 text-white scroll-mt-32">
         <div className="max-w-5xl mx-auto px-6 md:px-8">
-            <div className="grid md:grid-cols-2 gap-12 items-start">
-              
-              <div>
-                <h2 className="text-3xl md:text-4xl font-extrabold mb-6">Оставьте заявку</h2>
-                <p className="text-slate-300 text-lg mb-8">
-                  Мы свяжемся с вами, уточним детали и рассчитаем стоимость услуги.
+          <div className="grid md:grid-cols-2 gap-12 items-start">
+            
+            <div>
+              <h2 className="text-3xl md:text-4xl font-extrabold mb-6">Оставьте заявку</h2>
+              <p className="text-slate-300 text-lg mb-8">
+                Мы свяжемся с вами, уточним детали и рассчитаем стоимость услуги.
+              </p>
+              <div className="pt-8 border-t border-slate-700">
+                <p className="text-slate-300 text-base mb-4 font-medium">
+                  Просто позвоните, и мы поможем решить Ваш вопрос:
                 </p>
-                <div className="pt-8 border-t border-slate-700">
-                  <p className="text-slate-300 text-base mb-4 font-medium">
-                    Просто позвоните, и мы поможем решить Ваш вопрос:
-                  </p>
-                  <a href="tel:+79243733330" className="block text-3xl md:text-4xl font-extrabold text-yellow-400 hover:text-white transition-colors mb-4">+7 (924) 373-33-30</a>
-                  <a href="mailto:info@zabtpp.ru" className="inline-flex items-center gap-2 text-blue-400 hover:text-white transition-colors text-lg font-medium"><Mail size={20} /> info@zabtpp.ru</a>
-                </div>
+                <a href="tel:+79243733330" className="block text-3xl md:text-4xl font-extrabold text-yellow-400 hover:text-white transition-colors mb-4">+7 (924) 373-33-30</a>
+                <a href="mailto:info@zabtpp.ru" className="inline-flex items-center gap-2 text-blue-400 hover:text-white transition-colors text-lg font-medium"><Mail size={20} /> info@zabtpp.ru</a>
               </div>
-
-              <div className="bg-white rounded-3xl p-8 text-slate-900 shadow-2xl">
-                <form className="space-y-4">
-                  <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Название организации" />
-                  <div className="grid grid-cols-2 gap-4">
-                    <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Имя" />
-                    <input type="tel" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="+7 (___) ___-__-__" />
-                  </div>
-
-                  <div>
-                     <label className="block text-sm font-bold mb-2">Интересующая услуга</label>
-                     <div className="relative">
-                       <select 
-                          value={selectedService}
-                          onChange={(e) => setSelectedService(e.target.value)}
-                          className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none appearance-none cursor-pointer"
-                       >
-                         <option value="" disabled>Выберите из списка...</option>
-                         {allCategories.filter(c => !c.isAction).map(cat => (
-                            <optgroup key={cat.title} label={cat.title}>
-                              {cat.services.map(s => (
-                                <option key={s.id} value={s.name}>{s.name}</option>
-                              ))}
-                            </optgroup>
-                         ))}
-                         <option value="Другое">Другой вопрос</option>
-                       </select>
-                       <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-slate-500"><ChevronDown size={20} /></div>
-                     </div>
-                  </div>
-
-                  <div className="pt-2">
-                     <div className="border-2 border-dashed border-slate-300 rounded-xl p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-slate-50 transition-colors group">
-                       <UploadCloud className="text-slate-400 group-hover:text-blue-500 mb-2" size={32} />
-                       <span className="text-sm text-slate-500">Прикрепить документы</span>
-                     </div>
-                  </div>
-                  <button className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all mt-4">Отправить заявку</button>
-                  <p className="text-xs text-center text-slate-400 mt-3">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
-                </form>
-              </div>
-
             </div>
+
+            <div className="bg-white rounded-3xl p-8 text-slate-900 shadow-2xl">
+              <form className="space-y-4">
+                <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Название организации" />
+                <div className="grid grid-cols-2 gap-4">
+                  <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Имя" />
+                  <input type="tel" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="+7 (___) ___-__-__" />
+                </div>
+
+                <div>
+                   <label className="block text-sm font-bold mb-2">Интересующая услуга</label>
+                   <div className="relative">
+                     <select 
+                        value={selectedService}
+                        onChange={(e) => setSelectedService(e.target.value)}
+                        className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none appearance-none cursor-pointer"
+                     >
+                       <option value="" disabled>Выберите из списка...</option>
+                       {allCategories.filter(c => !c.isAction).map(cat => (
+                          <optgroup key={cat.title} label={cat.title}>
+                            {cat.services.map(s => (
+                              <option key={s.id} value={s.name}>{s.name}</option>
+                            ))}
+                          </optgroup>
+                       ))}
+                       <option value="Другое">Другой вопрос</option>
+                     </select>
+                     <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-slate-500"><ChevronDown size={20} /></div>
+                   </div>
+                </div>
+
+                <div className="pt-2">
+                   <div className="border-2 border-dashed border-slate-300 rounded-xl p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-slate-50 transition-colors group">
+                     <UploadCloud className="text-slate-400 group-hover:text-blue-500 mb-2" size={32} />
+                     <span className="text-sm text-slate-500">Прикрепить документы</span>
+                   </div>
+                </div>
+                <button className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all mt-4">Отправить заявку</button>
+                <p className="text-xs text-center text-slate-400 mt-3">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
+              </form>
+            </div>
+
           </div>
         </section>
       </div>
