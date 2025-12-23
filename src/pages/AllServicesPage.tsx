@@ -5,7 +5,7 @@ import {
   ShieldCheck, Phone, Mail, UploadCloud,
   CheckCircle2, ChevronDown, ArrowRight,
   MessageCircle, LayoutGrid, HelpCircle,
-  LifeBuoy, Map, Laptop2, Landmark
+  LifeBuoy, Map, Laptop2, Landmark, Search
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
@@ -112,7 +112,7 @@ export const AllServicesPage: React.FC = () => {
         { id: "ved-check", name: "Проверка контрагентов (Китай)", desc: "Проверка китайских компаний по официальным реестрам: лицензии, суды, капитал." },
         { id: "ved-trans", name: "Переводы (Китайский/Английский)", desc: "Письменный перевод контрактов, инструкций, этикеток. Устный перевод на переговорах и в судах. Консульская легализация." },
         { id: "ved-customs", name: "Таможенное консультирование", desc: "Подбор кодов ТН ВЭД, расчет таможенных платежей, проверка пакета документов для импорта/экспорта." },
-        { id: "ved-missions", name: "Организация бизнес-миссий", desc: "Деловые поездки в Китай (Маньчжурия, Харбин, Пекин, Гуанчжоу). Посещение выставок, B2B переговоры под ключ." },
+        { id: "ved-missions", name: "Организация бизнес-миссий", desc: "Деловые поездки в Китай. Посещение выставок, B2B переговоры под ключ." },
       ]
     },
     {
@@ -202,6 +202,7 @@ export const AllServicesPage: React.FC = () => {
                               {cat.title}
                             </h3>
                         </button>
+                        
                         <ul className="space-y-2 flex-grow">
                             {cat.services.slice(0, 5).map((service) => (
                                 <li key={service.id}>
@@ -321,7 +322,7 @@ export const AllServicesPage: React.FC = () => {
       </section>
 
       {/* 3. CTA ФОРМА */}
-      {/* ✅ ИСПРАВЛЕНО: scroll-mt-32 на самой секции, div-обертка убрана */}
+      {/* ✅ УБРАЛ div-обертку, ID и scroll-mt на секции */}
       <section id="order-form" className="py-20 bg-slate-900 text-white scroll-mt-32">
         <div className="max-w-5xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-start">
