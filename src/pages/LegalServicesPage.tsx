@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { 
   Gavel, Scale, FileText, Handshake, Briefcase, DollarSign,
   Phone, Mail, CheckCircle, ChevronDown, UploadCloud, 
-  ChevronUp, MessageCircle, CheckCircle2, Shield, Calculator
+  ChevronUp, MessageCircle, CheckCircle2, Shield, Calculator, Building, Globe, MapPin
 } from 'lucide-react';
 import SEO from '../components/SEO';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 export const LegalServicesPage: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -109,12 +110,24 @@ export const LegalServicesPage: React.FC = () => {
       {/* 1. HERO SECTION */}
       <section className="relative bg-slate-900 text-white min-h-[65vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 opacity-30">
-             <img src="/ztppv6/images/hero-bg.jpg" alt="Background" className="w-full h-full object-cover" />
+             <img src="/ztppv6/images/hero-bg.jpg" alt="Юридическая защита бизнеса" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/90 to-slate-900"></div>
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center text-center">
+            
+            <div className="flex justify-center mb-6">
+              <Breadcrumbs 
+                isDark={true}
+                items={[
+                  { label: 'Услуги', path: '/services' },
+                  { label: 'Юридические услуги' }
+                ]} 
+              />
+            </div>
+
             <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
-               Надежная юридическая защита <span className="text-yellow-400">вашего бизнеса</span>
+               Надежная юридическая защита <br/>
+               <span className="text-yellow-400 text-3xl md:text-5xl">вашего бизнеса</span>
             </h1>
             <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl mx-auto">
               Международный коммерческий арбитраж, свидетельствование форс-мажора, защита интересов в судах и госорганах.
@@ -187,7 +200,7 @@ export const LegalServicesPage: React.FC = () => {
                     {item.longDesc}
                     <div className="mt-4">
                         <button onClick={() => handleOrderClick(item.title)} className="text-sm font-bold text-blue-600 hover:text-yellow-600 transition-colors">
-                            Заказать юридическую поддержку →
+                            Заказать юридическую поддержку -{'>'}
                         </button>
                     </div>
                   </div>
@@ -217,13 +230,13 @@ export const LegalServicesPage: React.FC = () => {
             </div>
             <div className="bg-white rounded-3xl p-8 text-slate-900 shadow-2xl">
               <form className="space-y-4">
-                <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Название организации" />
+                <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl outline-none" placeholder="Название организации" />
                 <div className="grid grid-cols-2 gap-4">
-                  <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Имя" />
-                  <input type="tel" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="+7 (___) ___-__-__" />
+                  <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl outline-none" placeholder="Имя" />
+                  <input type="tel" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl outline-none" placeholder="+7 (___) ___-__-__" />
                 </div>
                 <div className="relative">
-                   <select value={selectedService} onChange={(e) => setSelectedService(e.target.value)} className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none appearance-none cursor-pointer text-slate-700">
+                   <select value={selectedService} onChange={(e) => setSelectedService(e.target.value)} className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl appearance-none cursor-pointer text-slate-700">
                      {services.map(s => <option key={s.id} value={s.title}>{s.title}</option>)}
                      <option>Другое</option>
                    </select>
@@ -262,6 +275,42 @@ export const LegalServicesPage: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* 6. ГЕОГРАФИЯ (ДЛЯ SEO) */}
+      <section className="py-16 bg-slate-50 border-y border-slate-200">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+            <div className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 flex flex-col md:flex-row gap-10 items-center">
+                <div className="md:w-1/2">
+                    <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-4">Юридическая поддержка по всей РФ</h2>
+                    <p className="text-slate-600 mb-6 leading-relaxed text-justify">
+                        Торгово-промышленная палата Забайкальского края оказывает правовую помощь бизнесу из любого региона. Мы успешно работаем с компаниями из <strong>Москвы, Новосибирска, Иркутска и Улан-Удэ</strong>, представляя их интересы в Забайкалье и в федеральных структурах.
+                    </p>
+                    <div className="grid grid-cols-2 gap-4 text-sm text-slate-700 font-medium">
+                        <div className="flex items-center gap-2">
+                            <MapPin size={16} className="text-blue-600" /> Официальный орган ТПП РФ
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <Landmark size={16} className="text-blue-600" /> Защита в судах
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <Building size={16} className="text-blue-600" /> Сопровождение ВЭД
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <Globe size={16} className="text-blue-600" /> Дистанционно по РФ
+                        </div>
+                    </div>
+                </div>
+                <div className="md:w-1/2 bg-blue-600 rounded-3xl p-10 text-white relative overflow-hidden h-80 flex flex-col justify-center">
+                    <div className="relative z-10 text-center">
+                        <h3 className="text-2xl font-bold mb-4 italic">«Мы обеспечиваем надежный правовой фундамент для вашего бизнеса на границе с Китаем и во всей России»</h3>
+                    </div>
+                    <Building size={180} className="absolute -bottom-12 -right-12 text-white/10" />
+                    <Globe size={180} className="absolute -top-12 -left-12 text-white/5" />
+                </div>
+            </div>
+        </div>
+      </section>
+
     </div>
   );
 };
