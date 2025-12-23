@@ -257,7 +257,7 @@ const MembershipPage: React.FC = () => {
                 <div className="md:w-1/2">
                     <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-4">Развиваем бизнес Забайкалья</h2>
                     <p className="text-slate-600 mb-6 leading-relaxed text-justify">
-                        Торгово-промышленная палата Забайкальского края объединяет сотни успешных компаний в <strong>Чите, Краснокаменске, Борзе и поселке Забайкальск</strong>. Мы выступаем единым голосом бизнеса региона, защищая его интересы как в Забайкалье, так и в федеральных органах власти в <strong>Москве</strong>.
+                        Торгово-промышленная палата Забайкальского края объединяет сотни успешных компаний в <strong>Чите, Краснокаменске, Борзе и Забайкальске</strong>. Мы выступаем единым голосом бизнеса региона, защищая его интересы как в Забайкалье, так и в федеральных органах власти в <strong>Москве</strong>.
                     </p>
                     <div className="grid grid-cols-2 gap-4 text-sm text-slate-700 font-medium">
                         <div className="flex items-center gap-2">
