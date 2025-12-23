@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { 
   Clock, Calendar, Banknote, Download, CheckCircle2, UploadCloud, 
   Phone, Mail, Globe, CheckCircle, ChevronDown, Check, 
-  FileCheck, MessageCircle, ChevronUp, LifeBuoy, MapPin
+  FileCheck, MessageCircle, ChevronUp, LifeBuoy, MapPin, Shield
 } from 'lucide-react';
 import SEO from '../components/SEO';
 
