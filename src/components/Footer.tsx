@@ -42,7 +42,7 @@ const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* 3. ДОКУМЕНТЫ И ПОДДЕРЖКА */}
+          {/* 3. ИНФО-ЦЕНТР */}
           <div>
             <h4 className="text-lg font-bold mb-6 text-white">Инфо-центр</h4>
             <ul className="space-y-4 text-slate-400 text-sm">
@@ -58,23 +58,23 @@ const Footer: React.FC = () => {
             <h4 className="text-lg font-bold mb-6 text-white">Контакты</h4>
             <div className="space-y-4">
               <div className="flex items-start gap-3">
-                <MapPin size={18} className="text-blue-500 mt-1" />
+                <MapPin size={18} className="text-yellow-400 mt-1" />
                 <p className="text-slate-400 text-sm">672000, г. Чита, ул. Бутина, 111, 2 этаж</p>
               </div>
               <div className="flex items-center gap-3">
-                <Phone size={18} className="text-blue-500" />
+                <Phone size={18} className="text-yellow-400" />
                 <a href="tel:+79243733330" className="text-white font-bold hover:text-yellow-400 transition-colors">+7 (924) 373-33-30</a>
               </div>
               <div className="flex items-center gap-3">
-                <Mail size={18} className="text-blue-500" />
+                <Mail size={18} className="text-yellow-400" />
                 <a href="mailto:info@zabtpp.ru" className="text-slate-400 text-sm hover:text-white transition-colors">info@zabtpp.ru</a>
               </div>
               <div className="flex gap-4 pt-4">
-                <a href="https://t.me/chitatpp" target="_blank" rel="noopener noreferrer" className="p-2 bg-slate-800 rounded-lg hover:bg-blue-600 transition-all">
-                  <Send size={18} />
+                <a href="https://t.me/chitatpp" target="_blank" rel="noopener noreferrer" className="p-2 bg-slate-800 rounded-lg hover:bg-yellow-400 transition-all group">
+                  <Send size={18} className="group-hover:text-slate-900 transition-colors" />
                 </a>
-                <a href="https://vk.com/zabtpp" target="_blank" rel="noopener noreferrer" className="p-2 bg-slate-800 rounded-lg hover:bg-blue-700 transition-all text-sm font-bold">
-                  VK
+                <a href="https://vk.com/zabtpp" target="_blank" rel="noopener noreferrer" className="p-2 bg-slate-800 rounded-lg hover:bg-yellow-400 transition-all text-sm font-bold group">
+                  <span className="group-hover:text-slate-900 transition-colors">VK</span>
                 </a>
               </div>
             </div>
