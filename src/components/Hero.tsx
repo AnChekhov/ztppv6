@@ -39,7 +39,7 @@ export const Hero: React.FC = () => {
     }
   };
 
-  // Скролл к блоку контактов на текущей странице
+  // Скролл к блоку контактов на текущей странице (для кнопки Станьте партнером)
   const scrollToContact = () => {
     const element = document.getElementById('contact-form');
     if (element) {
@@ -73,7 +73,7 @@ export const Hero: React.FC = () => {
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
                         
-                        {/* ✅ ИЗМЕНЕНО: Кнопка теперь ведет на форму страницы сертификации */}
+                        {/* ✅ ИЗМЕНЕНО: Кнопка ведет на блок заказа сертификата онлайн */}
                         <Link to="/services/cert#order-form" className="w-full sm:w-auto">
                             <Button 
                                 variant="lime" 
