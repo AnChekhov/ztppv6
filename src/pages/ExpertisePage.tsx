@@ -142,7 +142,7 @@ export const ExpertisePage: React.FC = () => {
       {/* 2. ВИДЫ ЭКСПЕРТИЗ (GRID) */}
       <section className="pt-12 pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Какие задачи мы решаем</h2>
+          <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Выберите нужную экспертизу</h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {expertiseServices.map((item) => (
@@ -170,9 +170,9 @@ export const ExpertisePage: React.FC = () => {
       </section>
 
       {/* 3. ПОДРОБНОЕ ОПИСАНИЕ (SEO Блок) */}
-      <section className="py-20 bg-slate-50 border-y border-slate-200">
+      <section className="pt-0 pb-20 bg-slate-50 border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">Подробная информация об услугах</h2>
+          <h2 className="text-3xl font-extrabold text-slate-900 py-14 text-center">Подробная информация об услугах</h2>
           <div className="space-y-4">
             {expertiseServices.map((item) => (
               <div 
@@ -201,7 +201,7 @@ export const ExpertisePage: React.FC = () => {
                             onClick={() => handleOrderClick(item.title)}
                             className="text-sm font-bold text-blue-600 hover:text-yellow-600 underline decoration-dashed underline-offset-4"
                         >
-                            Заказать эту экспертизу →
+                            Заказать экспертизу →
                         </button>
                     </div>
                   </div>
@@ -326,7 +326,7 @@ export const ExpertisePage: React.FC = () => {
                       <span className="text-sm text-slate-500">Прикрепить фото или документы</span>
                     </div>
                 </div>
-                <button className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all mt-4">Вызвать эксперта</button>
+                <button className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all mt-4">Заказать экспертизу</button>
                 <p className="text-xs text-center text-slate-400 mt-3">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
               </form>
             </div>
@@ -336,7 +336,7 @@ export const ExpertisePage: React.FC = () => {
       </section>
 
       {/* 7. FAQ */}
-      <section className="pt-12 pb-20 bg-white">
+      <section className="pt-8 pb-20 bg-white">
         <div className="max-w-3xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-6 text-center">Часто задаваемые вопросы</h2>
           <div className="space-y-4">
