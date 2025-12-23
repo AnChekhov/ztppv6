@@ -7,7 +7,7 @@ import {
 } from 'lucide-react';
 import SEO from '../components/SEO';
 
-export const EventsPage: React.FC = () => {
+const EventsPage: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [selectedService, setSelectedService] = useState<string>('Конференц-зал');
   const [expandedDetail, setExpandedDetail] = useState<string | null>(null);
@@ -43,22 +43,22 @@ export const EventsPage: React.FC = () => {
     {
       id: 'hall',
       title: 'Конференц-зал в центре Читы',
-      shortDesc: 'Универсальная площадка для проведения семинаров, тренингов, презентаций и форумов.',
+      shortDesc: 'Площадка для проведения обучающих семинаров, тренингов, презентаций и форумов.',
       longDesc: 'Предоставление профессионально оборудованного конференц-зала для деловых мероприятий. Зал идеально подходит для обучающих курсов, пресс-конференций, презентаций новых продуктов и общих собраний. В распоряжении организаторов: большой проекционный экран, мультимедийный проектор высокой четкости, профессиональная акустика с радиомикрофонами и современная система видеоконференцсвязи (ВКС). Расположение в центре города и официальный статус площадки подчеркнут высокий уровень вашего события.',
       icon: Presentation
     },
     {
       id: 'meeting-room',
       title: 'Комната для переговоров',
-      shortDesc: 'Приватное пространство для бизнес-встреч, подписания контрактов и деловых совещаний.',
-      longDesc: 'Комфортабельное деловое пространство для проведения конфиденциальных встреч, медиаций и приватных переговоров. Помещение обеспечивает полную тишину и рабочую атмосферу. Зал укомплектован круглым столом, эргономичной мебелью и высокоскоростным Wi-Fi. Это оптимальное решение, если вам требуется статусная площадка для переговоров в Чите с возможностью организации кофе-брейков и работы с документами.',
+      shortDesc: 'Официальное место для статусных встреч, подписания контрактов и приватных переговоров.',
+      longDesc: 'Комфортабельное деловое пространство для проведения конфиденциальных встреч, медиаций и приватных переговоров. Помещение обеспечивает полную тишину и рабочую атмосферу в центре города. Зал укомплектован круглым столом, эргономичной мебелью и высокоскоростным Wi-Fi. Это оптимальное решение, если вам требуется статусная площадка для переговоров в Чите с возможностью организации кофе-брейков.',
       icon: Coffee
     },
     {
       id: 'seminars',
       title: 'Обучающие мероприятия',
       shortDesc: 'Организация профильных семинаров и мастер-классов от ведущих экспертов ТПП.',
-      longDesc: 'Проведение тренингов для персонала и руководителей. Мы приглашаем профильных специалистов для разбора актуальных изменений в законодательстве, налоговых правил и таможенных процедур. Организуем все этапы мероприятия: от формирования программы и подбора спикеров до регистрации участников.',
+      longDesc: 'Проведение тренингов для персонала и руководителей. Мы приглашаем профильных специалистов для разбора актуальных изменений в законодательстве, налоговых правил и таможенных процедур. Организуем все этапы мероприятия: от формирования программы и подбора спикеров до регистрации участников в Чите и других городах.',
       icon: BookOpen
     },
     {
@@ -72,7 +72,7 @@ export const EventsPage: React.FC = () => {
       id: 'conferences',
       title: 'Форумы и конференции',
       shortDesc: 'Масштабные отраслевые события и съезды предпринимателей под ключ.',
-      longDesc: 'Комплексная организация крупных деловых форумов и съездов: подбор спикеров, техническое оснащение, информационное сопровождение в СМИ и GR-поддержка. Создаем эффективные площадки для прямого диалога бизнеса, региональной власти и международных партнеров.',
+      longDesc: 'Комплексная организация крупных деловых форумов и съездов: подбор спикеров, техническое оснащение, информационное сопровождение в СМИ и GR-поддержка. Создаем эффективные площадки для прямого диалога бизнеса, региональной власти и международных партнеров в ДФО.',
       icon: TrendingUp
     },
     {
@@ -86,7 +86,7 @@ export const EventsPage: React.FC = () => {
 
   const faqs = [
     {
-      question: "Как забронировать зал или переговорную комнату?",
+      question: "Как забронировать зал или переговорную комнату в Чите?",
       answer: "Вы можете оставить заявку через форму на сайте или связаться с нами по телефону. Мы забронируем за вами нужную дату, уточним количество участников и требования к расстановке мебели и оборудованию."
     },
     {
@@ -104,8 +104,8 @@ export const EventsPage: React.FC = () => {
       
       <SEO 
         title="Конференц-зал и площадки для бизнеса в Чите | Деловое пространство ТПП"
-        description="Предоставление оборудованных площадок для бизнеса в центре Читы. Зал для семинаров, тренингов и презентаций. Переговорная комната для бизнес-встреч. Весь спектр бизнес-событий."
-        keywords="конференц-зал чита, помещение для семинара чита, зал для тренинга, арендовать переговорную чита, площадка для презентаций, бизнес центр чита, ТПП мероприятия"
+        description="Предоставление оборудованных площадок для бизнеса в центре Читы. Зал для семинаров, тренингов и презентаций. Переговорная комната для бизнес-встреч. Организация мероприятий в Забайкалье."
+        keywords="конференц-зал чита, помещение для семинара чита, зал для тренинга, арендовать переговорную чита, площадка для презентаций, бизнес центр чита, ТПП мероприятия, Улан-Удэ, Иркутск"
       />
       
       {/* 1. HERO SECTION */}
@@ -125,13 +125,13 @@ export const EventsPage: React.FC = () => {
             <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
               <button 
                 onClick={scrollToForm}
-                className="bg-yellow-400 text-slate-900 font-bold py-3 px-8 rounded-xl hover:bg-yellow-500 transition-colors shadow-lg hover:scale-105 transform duration-200"
+                className="bg-yellow-400 text-slate-900 font-bold py-4 px-8 rounded-xl hover:bg-yellow-500 transition-colors shadow-lg hover:scale-105 transform duration-200"
               >
                 Забронировать площадку
               </button>
               <button 
                 onClick={scrollToForm}
-                className="border-2 border-slate-600 hover:border-white text-white font-semibold py-3 px-8 rounded-xl transition-colors flex items-center justify-center gap-2 group"
+                className="border-2 border-slate-600 hover:border-white text-white font-semibold py-4 px-8 rounded-xl transition-colors flex items-center justify-center gap-2 group"
               >
                 <MessageCircle size={20} />
                 Узнать о событиях
@@ -140,7 +140,7 @@ export const EventsPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. SERVICES GRID */}
+      {/* 2. ВЫБОР ФОРМАТА (GRID) */}
       <section className="pt-12 pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Выберите нужный формат</h2>
@@ -168,7 +168,7 @@ export const EventsPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. ПОДРОБНОЕ ОПИСАНИЕ */}
+      {/* 3. ПОДРОБНОЕ ОПИСАНИЕ (АККОРДЕОНЫ) */}
       <section className="pt-0 pb-20 bg-slate-50 border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 py-14 text-center">Конференц-сервис и события</h2>
@@ -272,7 +272,9 @@ export const EventsPage: React.FC = () => {
                   </span>
                   <ChevronDown className={`text-slate-400 transition-transform duration-300 ${openFaq === index ? 'rotate-180 text-blue-600' : ''}`} size={24} />
                 </button>
-                <div className={`overflow-hidden transition-all duration-300 ease-in-out ${openFaq === index ? 'max-h-96 opacity-100 pb-6' : 'max-h-0 opacity-0'}`}>
+                <div 
+                  className={`overflow-hidden transition-all duration-300 ease-in-out ${openFaq === index ? 'max-h-96 opacity-100 pb-6' : 'max-h-0 opacity-0'}`}
+                >
                   <p className="text-slate-600 leading-relaxed text-base">{faq.answer}</p>
                 </div>
               </div>
