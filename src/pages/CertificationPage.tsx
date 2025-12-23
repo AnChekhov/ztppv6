@@ -18,7 +18,6 @@ export const CertificationPage: React.FC = () => {
   const scrollToForm = () => {
     const formSection = document.getElementById('order-form');
     if (formSection) {
-      // ✅ ИЗМЕНЕНО: block: 'start' позволяет работать scroll-margin-top
       formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
@@ -134,7 +133,7 @@ export const CertificationPage: React.FC = () => {
       {/* 2. ТИПЫ СЕРТИФИКАТОВ */}
       <section className="pt-12 pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Выберите нужный Вам тип сертификата</h2>
+          <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Выберите нужный тип сертификата</h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {certTypes.map((item) => (
@@ -260,9 +259,9 @@ export const CertificationPage: React.FC = () => {
       </section>
 
       {/* 5. ДОКУМЕНТЫ */}
-      <section className="py-20 bg-slate-50 border-y border-slate-200">
+      <section className="pt-0 pb-20 bg-slate-50 border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
-          <div className="text-center mb-12">
+          <div className="text-center py-14">
             <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Документы для проведения экспертизы</h2>
             <p className="text-slate-500">Минимальный пакет документов для начала работы</p>
           </div>
