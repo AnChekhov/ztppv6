@@ -107,8 +107,8 @@ export const ConstructionPage: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/90 to-slate-900"></div>
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center text-center">
             <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
-               Строительная экспертиза: <br/>
-               <span className="text-yellow-400 text-3xl md:text-5xl">Забайкалье, ДФО и вся Россия</span>
+               Строительная экспертиза <br/>
+               <span className="text-yellow-400 text-3xl md:text-5xl">ТПП Забайкальского края</span>
             </h1>
             <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-3xl mx-auto">
               Независимая проверка качества строительства, анализ смет и обследование зданий. Официальные заключения ТПП для судов в <strong>Чите, Иркутске, Улан-Удэ, Москве</strong> и других городах РФ.
@@ -158,43 +158,8 @@ export const ConstructionPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. ГЕОГРАФИЯ (SEO БЛОК) */}
-      <section className="py-16 bg-slate-50 border-y border-slate-200">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
-            <div className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 flex flex-col md:flex-row gap-10 items-center">
-                <div className="md:w-1/2">
-                    <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-4">География наших услуг</h2>
-                    <p className="text-slate-600 mb-6 leading-relaxed">
-                        Мы являемся официальным экспертным органом системы Торгово-промышленных палат РФ. Наши специалисты проводят строительный аудит и техническое обследование объектов не только в <strong>Забайкальском крае (Чита, Краснокаменск, Борзя)</strong>, но и по всему Дальнему Востоку и Сибири.
-                    </p>
-                    <div className="grid grid-cols-2 gap-4">
-                        <div className="flex items-center gap-2 text-sm text-slate-700 font-medium">
-                            <MapPin size={16} className="text-blue-600" /> Республика Бурятия
-                        </div>
-                        <div className="flex items-center gap-2 text-sm text-slate-700 font-medium">
-                            <MapPin size={16} className="text-blue-600" /> Иркутская область
-                        </div>
-                        <div className="flex items-center gap-2 text-sm text-slate-700 font-medium">
-                            <MapPin size={16} className="text-blue-600" /> Амурская область
-                        </div>
-                        <div className="flex items-center gap-2 text-sm text-slate-700 font-medium">
-                            <Globe size={16} className="text-blue-600" /> Дистанционно по РФ
-                        </div>
-                    </div>
-                </div>
-                <div className="md:w-1/2 bg-blue-600 rounded-2xl p-8 text-white relative overflow-hidden">
-                    <div className="relative z-10">
-                        <p className="text-xl font-bold mb-2">Работаем с федеральными судами</p>
-                        <p className="text-blue-100 text-sm">Наши эксперты включены в реестры рекомендуемых организаций для проведения судебных экспертиз в арбитражных судах крупнейших регионов России.</p>
-                    </div>
-                    <Globe size={150} className="absolute -bottom-10 -right-10 text-white/10" />
-                </div>
-            </div>
-        </div>
-      </section>
-
-      {/* 4. ПОДРОБНОЕ ОПИСАНИЕ */}
-      <section className="pt-12 pb-20 bg-white">
+      {/* 3. ПОДРОБНОЕ ОПИСАНИЕ */}
+      <section className="pt-0 pb-20 bg-slate-50 border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 py-14 text-center">Подробно о строительном аудите</h2>
           <div className="space-y-4">
@@ -225,22 +190,22 @@ export const ConstructionPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. ДОКУМЕНТЫ */}
-      <section className="pt-0 pb-20 bg-slate-50 border-y border-slate-200">
+      {/* 4. ДОКУМЕНТЫ */}
+      <section className="pt-0 pb-20 bg-white">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <div className="text-center py-14">
             <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Документы для проведения экспертизы</h2>
             <p className="text-slate-500">Минимальный пакет документов для начала работы</p>
           </div>
 
-          <div className="bg-white rounded-3xl shadow-sm overflow-hidden border border-slate-100">
+          <div className="bg-slate-50 rounded-3xl shadow-sm overflow-hidden border border-slate-100">
             {[
               { name: 'Заявка на проведение экспертизы', req: 'По форме Палаты', link: true },
               { name: 'Правоустанавливающие документы', req: 'Выписка ЕГРН, договор аренды', link: false },
               { name: 'Проектная документация', req: 'При наличии', link: false },
               { name: 'Договор с подрядчиком', req: 'Для экспертизы качества работ', link: false },
             ].map((doc, idx) => (
-              <div key={idx} className="flex flex-col md:flex-row items-start md:items-center justify-between p-6 border-b border-slate-100 last:border-0 hover:bg-blue-50/30 transition-colors">
+              <div key={idx} className="flex flex-col md:flex-row items-start md:items-center justify-between p-6 border-b border-white last:border-0 hover:bg-blue-50/30 transition-colors">
                 <div className="flex items-start gap-4">
                   <div className="p-2 bg-blue-100 text-blue-600 rounded-lg mt-1 md:mt-0">
                     <CheckCircle2 size={20} strokeWidth={3} />
@@ -257,7 +222,7 @@ export const ConstructionPage: React.FC = () => {
                     Скачать бланк
                   </a>
                 ) : (
-                   <div className="mt-4 md:mt-0 text-blue-600 font-bold text-xl select-none px-6 py-2">—</div>
+                   <div className="mt-4 md:mt-0 text-blue-600 font-bold text-xl select-none px-6 py-2">-</div>
                 )}
               </div>
             ))}
@@ -265,7 +230,7 @@ export const ConstructionPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 6. CTA FORM */}
+      {/* 5. CTA FORM */}
       <section id="order-form" className="py-20 bg-slate-900 text-white scroll-mt-[72px]">
         <div className="max-w-5xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-start">
@@ -329,6 +294,42 @@ export const ConstructionPage: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* 7. ГЕОГРАФИЯ (ПЕРЕНЕСЕНО ВНИЗ) */}
+      <section className="py-16 bg-slate-50 border-y border-slate-200">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+            <div className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 flex flex-col md:flex-row gap-10 items-center">
+                <div className="md:w-1/2">
+                    <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-4">География наших услуг</h2>
+                    <p className="text-slate-600 mb-6 leading-relaxed text-justify">
+                        Мы являемся официальным экспертным органом системы Торгово-промышленных палат РФ. Наши специалисты проводят строительный аудит и техническое обследование объектов не только в <strong>Забайкальском крае (Чита, Краснокаменск, Борзя)</strong>, но и в <strong>Республике Бурятия (Улан-Удэ), Иркутской и Амурской областях</strong>.
+                    </p>
+                    <div className="grid grid-cols-2 gap-4">
+                        <div className="flex items-center gap-2 text-sm text-slate-700 font-medium">
+                            <MapPin size={16} className="text-blue-600" /> Официальный статус ТПП
+                        </div>
+                        <div className="flex items-center gap-2 text-sm text-slate-700 font-medium">
+                            <MapPin size={16} className="text-blue-600" /> Признание актов судами РФ
+                        </div>
+                        <div className="flex items-center gap-2 text-sm text-slate-700 font-medium">
+                            <MapPin size={16} className="text-blue-600" /> Весь ДФО и Сибирь
+                        </div>
+                        <div className="flex items-center gap-2 text-sm text-slate-700 font-medium">
+                            <Globe size={16} className="text-blue-600" /> Дистанционно по всей РФ
+                        </div>
+                    </div>
+                </div>
+                <div className="md:w-1/2 bg-blue-600 rounded-2xl p-8 text-white relative overflow-hidden">
+                    <div className="relative z-10">
+                        <p className="text-xl font-bold mb-2">Работаем с федеральными судами</p>
+                        <p className="text-blue-100 text-sm">Наши эксперты включены в реестры рекомендуемых организаций для проведения судебных экспертиз в арбитражных судах крупнейших регионов России.</p>
+                    </div>
+                    <Globe size={150} className="absolute -bottom-10 -right-10 text-white/10" />
+                </div>
+            </div>
+        </div>
+      </section>
+
     </div>
   );
 };
