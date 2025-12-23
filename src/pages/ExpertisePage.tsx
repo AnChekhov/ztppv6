@@ -1,15 +1,61 @@
 import React, { useState } from 'react';
 import { 
-  Clock, Calendar, Banknote, Download, CheckCircle2, UploadCloud, 
-  Phone, Mail, Globe, CheckCircle, ChevronDown, Check, 
-  FileCheck, MessageCircle, ChevronUp, Info
+  ClipboardCheck, Scale, Gavel, Truck, Factory, FileText, 
+  Phone, Mail, CheckCircle, ChevronDown, UploadCloud, 
+  MapPin, Clock, ShieldCheck, Check, Globe, Download, 
+  CheckCircle2, MessageCircle, ChevronUp, Info
 } from 'lucide-react';
 import SEO from '../components/SEO';
 
-export const CertificationPage: React.FC = () => {
+export const ExpertisePage: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [selectedType, setSelectedType] = useState<string>('Общая форма');
+  const [selectedExpertise, setSelectedExpertise] = useState<string>('Приемка по количеству и качеству');
   const [expandedDetail, setExpandedDetail] = useState<string | null>(null);
+
+  const expertiseServices = [
+    {
+      id: 'quality',
+      title: 'Приемка по количеству и качеству',
+      shortDesc: 'Проверка соответствия товара условиям контракта, ГОСТам и спецификациям при поступлении на склад.',
+      longDesc: 'Профессиональная приемка товаров народного потребления, сырья, промышленного оборудования и продуктов питания. Эксперт ТПП фиксирует фактическое количество, комплектность и качество товара в момент выгрузки. Мы выявляем пересортицу, производственный брак, нарушения упаковки и повреждения при транспортировке. Акт экспертизы является юридическим основанием для выставления претензии поставщику (в т.ч. иностранному) и возмещения убытков.',
+      icon: Truck
+    },
+    {
+      id: '44fz',
+      title: 'Экспертиза по 44-ФЗ',
+      shortDesc: 'Обязательная внешняя экспертиза исполнения контрактов для государственных и муниципальных заказчиков.',
+      longDesc: 'Проведение независимой экспертизы результатов, предусмотренных контрактом, в соответствии с ч. 3 ст. 94 Федерального закона № 44-ФЗ. Наши эксперты проверяют соответствие поставленных товаров, работ или услуг условиям государственного контракта. По итогам выдается Заключение экспертизы, которое необходимо для подписания акта приемки и размещения сведений в ЕИС. Работаем со всеми бюджетными учреждениями Забайкальского края.',
+      icon: FileText
+    },
+    {
+      id: 'customs',
+      title: 'Таможенная экспертиза',
+      shortDesc: 'Идентификация товара для целей таможенного оформления, определение кодов ТН ВЭД, страны происхождения.',
+      longDesc: 'Идентификационная экспертиза для таможенных целей. Помогаем правильно определить код ТН ВЭД ЕАЭС, что напрямую влияет на размер таможенных пошлин. Проводим экспертизу для подтверждения страны происхождения товара, характеристик товара (состав, материал, назначение) при возникновении споров с таможенными органами. Акты ТПП принимаются ФТС России как доказательная база.',
+      icon: Globe
+    },
+    {
+      id: 'damage',
+      title: 'Определение ущерба',
+      shortDesc: 'Фиксация повреждений груза при транспортировке, пожаре или затоплении. Оценка стоимости ущерба.',
+      longDesc: 'Независимая оценка ущерба, причиненного имуществу в результате стихийных бедствий (пожар, наводнение), аварий коммунальных систем (затопление), ДТП или противоправных действий третьих лиц. Мы определяем стоимость восстановительного ремонта, размер утраты товарной стоимости (УТС) и реальный ущерб для страховых компаний и судебных исков.',
+      icon: ShieldCheck
+    },
+    {
+      id: 'judicial',
+      title: 'Судебная экспертиза',
+      shortDesc: 'Проведение экспертиз по определению суда или постановлению следователя. Рецензирование заключений.',
+      longDesc: 'Проведение судебных экспертиз по гражданским, арбитражным и уголовным делам. Эксперты Палаты обладают необходимыми допусками и квалификацией для проведения товароведческих, строительно-технических и оценочных экспертиз. Мы готовим объективные заключения, отвечающие на вопросы суда, а также проводим рецензирование экспертиз сторонних организаций.',
+      icon: Gavel
+    },
+    {
+      id: 'equipment',
+      title: 'Экспертиза оборудования',
+      shortDesc: 'Оценка технического состояния, комплектности и производительности промышленного оборудования.',
+      longDesc: 'Техническая экспертиза машин, механизмов и производственных линий. Оценка степени физического износа, определение причин поломки (эксплуатационный или заводской дефект), проверка комплектности и соответствия техническому заданию. Актуально при списании основных средств, купле-продаже б/у оборудования или лизинговых сделках.',
+      icon: Factory
+    },
+  ];
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
@@ -22,12 +68,13 @@ export const CertificationPage: React.FC = () => {
     }
   };
 
-  const handleOrderClick = (type: string) => {
-    setSelectedType(type);
+  const handleOrderClick = (title: string) => {
+    setSelectedExpertise(title);
     scrollToForm();
   };
 
-  const handleDescriptionClick = (id: string) => {
+  const handleReadMore = (e: React.MouseEvent, id: string) => {
+    e.stopPropagation();
     setExpandedDetail(id);
     setTimeout(() => {
       const element = document.getElementById(`detail-${id}`);
@@ -37,56 +84,18 @@ export const CertificationPage: React.FC = () => {
     }, 100);
   };
 
-  const certTypes = [
-    {
-      id: 'general',
-      type: 'Общая форма',
-      countries: 'Все остальные страны',
-      purpose: 'Подтверждение страны происхождения для таможенных целей',
-      longDesc: 'Сертификат происхождения общей формы выдается на товары, экспортируемые во все страны, с которыми у России нет соглашений о преференциях (или если товар не попадает под действие таких соглашений). Этот документ необходим для прохождения таможенного контроля, подтверждения страны происхождения в целях соблюдения мер нетарифного регулирования (эмбарго, санкции), а также по требованию иностранных банков для разблокировки аккредитивов.'
-    },
-    {
-      id: 'st1',
-      type: 'СТ-1',
-      countries: 'Государства-участники СНГ',
-      purpose: 'Получение тарифных преференций (снижение/отмена пошлин)',
-      longDesc: 'Форма СТ-1 - основной документ для беспошлинной торговли со странами СНГ (Азербайджан, Армения, Беларусь, Казахстан, Кыргызстан, Молдова, Таджикистан, Туркменистан, Узбекистан). Наличие этого сертификата позволяет полностью освободиться от уплаты ввозной таможенной пошлины в стране назначения. Для получения сертификата товар должен соответствовать Критериям достаточной переработки (Правила 2009 года).'
-    },
-    {
-      id: 'st2',
-      type: 'СТ-2',
-      countries: 'Сербия',
-      purpose: 'Получение преференций в рамках соглашения о свободной торговле',
-      longDesc: 'Сертификат формы СТ-2 необходим для экспорта товаров в Республику Сербия. Между РФ и Сербией действует Соглашение о зоне свободной торговли, которое позволяет ввозить российские товары без уплаты таможенных пошлин при наличии данного сертификата. Документ заполняется на русском или английском языке.'
-    },
-    {
-      id: 'eav',
-      type: 'EAV',
-      countries: 'Вьетнам',
-      purpose: 'Получение преференций в рамках соглашения о свободной торговле',
-      longDesc: 'Сертификат формы EAV выдается для товаров, экспортируемых в Социалистическую Республику Вьетнам, в рамках Соглашения о свободной торговле между ЕАЭС и Вьетнамом. Позволяет получить значительные скидки на таможенные пошлины или полное освобождение от них. Обязательное условие — соблюдение правил происхождения товаров, установленных Соглашением.'
-    },
-    {
-      id: 'forma',
-      type: 'Форма "А"',
-      countries: 'Черногория',
-      purpose: 'Получение преференций в рамках Генеральной системы',
-      longDesc: 'Сертификат по форме "А" (Form A) используется для получения преференций в рамках Генеральной системы преференций (GSP). На данный момент актуален для экспорта в Черногорию. Ранее использовался для стран ЕС и США/Канады, но сейчас его сфера применения для российских товаров ограничена. Заполняется строго на английском языке.'
-    },
-  ];
-
   const faqs = [
     {
-      question: "Можно ли оформить один сертификат на несколько поставок?",
-      answer: "Обычно сертификат выдается на одну партию товара. Однако, в некоторых случаях и для определенных стран возможна выдача периодического сертификата. Рекомендуем уточнить этот момент у наших специалистов под ваш конкретный контракт."
+      question: "Имеет ли акт экспертизы ТПП юридическую силу в суде?",
+      answer: "Да, безусловно. Торгово-промышленная палата имеет статус независимой экспертной организации (Закон РФ «О торгово-промышленных палатах»). Наши акты признаются судами, таможенными органами и страховыми компаниями как официальное доказательство."
     },
     {
-      question: "Что делать, если в производстве используется импортное сырье?",
-      answer: "Если в производстве используется импортное сырье, необходимо доказать, что товар подвергся достаточной переработке. Критерии переработки (смена кода ТН ВЭД, правило адвалорной доли и др.) зависят от соглашения со страной экспорта."
+      question: "Выезжает ли эксперт на место осмотра?",
+      answer: "Да, наши эксперты оперативно выезжают на склады, СВХ, железнодорожные станции и производства в Чите и по всему Забайкальскому краю. Также возможен выезд в приграничные зоны."
     },
     {
-      question: "Нужен ли оригинал сертификата или достаточно копии?",
-      answer: "Для предоставления в таможенные органы обычно требуется оригинал документа. Копии могут быть использованы для предварительного информирования или внутренних нужд контрагентов, но таможенные преференции предоставляются на основании оригинала."
+      question: "Что делать, если товар пришел с браком?",
+      answer: "Необходимо приостановить приемку, обеспечить сохранность груза и срочно вызвать эксперта ТПП. Не подписывайте чистые накладные без отметки о вызове эксперта. Мы зафиксируем факт брака, составим акт, который станет основанием для претензии поставщику."
     }
   ];
 
@@ -94,30 +103,30 @@ export const CertificationPage: React.FC = () => {
     <div className="font-sans text-slate-900 bg-white">
       
       <SEO 
-        title="Сертификаты происхождения товаров (СТ-1, Общая форма) в Чите"
-        description="Оформление сертификатов происхождения товаров (СТ-1, EAV, Общая форма) в Забайкальском крае. Срочная выдача для экспорта в Китай. Консультации экспертов ТПП."
-        keywords="сертификат происхождения чита, ст-1 забайкальск, экспорт в китай документы, тпп чита услуги"
+        title="Независимая товарная экспертиза в Чите и Забайкальске"
+        description="Проведение независимой экспертизы товаров: приемка по качеству, экспертиза по 44-ФЗ, оценка ущерба, судебная экспертиза. Аккредитованные эксперты ТПП Забайкальского края."
+        keywords="товарная экспертиза чита, экспертиза 44-фз, оценка ущерба, судебная экспертиза забайкалье, акт тпп, независимая экспертиза"
       />
       
       {/* 1. HERO SECTION */}
       <section className="relative bg-slate-900 text-white min-h-[65vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 opacity-30">
-             <img src="/ztppv6/images/hero-bg.jpg" alt="Background" className="w-full h-full object-cover" />
+             <img src="/ztppv6/images/hero-bg.jpg" alt="Expertise Background" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/90 to-slate-900"></div>
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center text-center">
             <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
-               Сертификаты происхождения в <span className="text-yellow-400">Забайкальской ТПП</span>
+               Независимая товарная экспертиза в <span className="text-yellow-400">Забайкальском крае</span>
             </h1>
             <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl mx-auto">
-              Оформите ключевой документ для экспорта онлайн. Получите льготы и преференции для вашего бизнеса. Гарантия прохождения таможни.
+              Защитите свой бизнес от убытков. Профессиональная приемка товаров, выявление брака и оценка ущерба. Акты ТПП признаются судами и таможней.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
               <button 
                 onClick={scrollToForm}
                 className="bg-yellow-400 text-slate-900 font-bold py-3 px-8 rounded-xl hover:bg-yellow-500 transition-colors shadow-lg hover:scale-105 transform duration-200"
               >
-                Заказать сертификат
+                Заказать экспертизу
               </button>
               <button 
                 onClick={scrollToForm}
@@ -130,59 +139,42 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. ТИПЫ СЕРТИФИКАТОВ */}
+      {/* 2. ВИДЫ ЭКСПЕРТИЗ (GRID) */}
       <section className="pt-12 pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Выберите нужный тип сертификата</h2>
+          <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Выберите нужную экспертизу</h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {certTypes.map((item) => (
+            {expertiseServices.map((item) => (
               <div 
                 key={item.id} 
-                onClick={() => handleDescriptionClick(item.id)}
-                className="bg-white rounded-2xl p-5 shadow-lg shadow-slate-200/50 border border-slate-100 hover:shadow-xl transition-all duration-300 ease-out hover:shadow-blue-900/5 hover:scale-[1.03] flex flex-col cursor-pointer group"
+                onClick={(e) => handleReadMore(e, item.id)}
+                className="bg-white rounded-2xl p-8 shadow-lg shadow-slate-200/50 border border-slate-100 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-blue-900/5 hover:scale-[1.03] flex flex-col h-full cursor-pointer group"
               >
-                <div className="flex justify-between items-start mb-3">
-                  <span className="text-xl font-black text-blue-600 bg-blue-50 px-3 py-1 rounded-lg whitespace-nowrap group-hover:bg-blue-600 group-hover:text-white transition-colors">{item.type}</span>
-                  <Globe className="text-slate-300" size={22} />
+                <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                  <item.icon size={28} strokeWidth={1.5} />
                 </div>
-                <div className="mb-3">
-                  <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-1">Назначение</div>
-                  <div className="font-bold text-slate-800 text-sm">{item.countries}</div>
-                </div>
-                <div className="mb-3 flex-grow">
-                  <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-1">Цель</div>
-                  <div className="text-sm text-slate-600 leading-snug">{item.purpose}</div>
-                </div>
-                <div className="mt-auto pt-3 border-t border-slate-100">
+                <h3 className="text-xl font-bold text-slate-900 mb-3">{item.title}</h3>
+                <p className="text-slate-600 text-sm leading-relaxed flex-grow">{item.shortDesc}</p>
+                <div className="mt-6 pt-4 border-t border-slate-100">
                    <button 
-                     className="text-xs font-bold text-blue-600 hover:text-blue-800 transition-colors flex items-center"
+                     className="text-sm font-bold text-blue-600 hover:text-blue-800 transition-colors flex items-center"
                    >
-                     Подробнее <ChevronDown size={14} className="ml-1" />
+                     Подробнее <ChevronDown size={16} className="ml-1" />
                    </button>
                 </div>
               </div>
             ))}
-            
-            <div className="bg-slate-900 rounded-2xl p-5 shadow-sm flex flex-col justify-center items-center text-center transition-all duration-300 ease-out hover:scale-[1.03] hover:shadow-2xl hover:shadow-blue-500/20">
-              <h3 className="text-white font-bold text-lg mb-2">Нужна помощь?</h3>
-              <p className="text-slate-400 text-xs mb-4">Наши эксперты помогут определить нужный тип сертификата для вашего груза.</p>
-              <button onClick={scrollToForm} className="w-full py-3 bg-white text-slate-900 font-bold rounded-lg hover:bg-yellow-400 transition-colors text-sm">
-                Консультация
-              </button>
-            </div>
           </div>
         </div>
       </section>
 
-      {/* 3. ИНФОРМАЦИЯ О СЕРТИФИКАТАХ */}
+      {/* 3. ПОДРОБНОЕ ОПИСАНИЕ (SEO Блок) */}
       <section className="pt-0 pb-20 bg-slate-50 border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
-          <h2 className="text-3xl font-extrabold text-slate-900 py-14 text-center">
-            Информация о сертификатах
-          </h2>
+          <h2 className="text-3xl font-extrabold text-slate-900 py-14 text-center">Подробная информация об услугах</h2>
           <div className="space-y-4">
-            {certTypes.map((item) => (
+            {expertiseServices.map((item) => (
               <div 
                 key={item.id} 
                 id={`detail-${item.id}`} 
@@ -194,9 +186,9 @@ export const CertificationPage: React.FC = () => {
                 >
                   <div className="flex items-center gap-4">
                     <div className={`p-2 rounded-lg ${expandedDetail === item.id ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-500'}`}>
-                       <FileCheck size={24} />
+                       <item.icon size={24} />
                     </div>
-                    <span className="text-lg font-bold text-slate-900">{item.type} - {item.countries}</span>
+                    <span className="text-lg font-bold text-slate-900">{item.title}</span>
                   </div>
                   {expandedDetail === item.id ? <ChevronUp className="text-blue-600"/> : <ChevronDown className="text-slate-400"/>}
                 </button>
@@ -206,10 +198,10 @@ export const CertificationPage: React.FC = () => {
                     {item.longDesc}
                     <div className="mt-4">
                         <button 
-                            onClick={() => handleOrderClick(item.type)}
-                            className="text-sm font-bold text-blue-600 hover:text-yellow-600 transition-colors"
+                            onClick={() => handleOrderClick(item.title)}
+                            className="text-sm font-bold text-blue-600 hover:text-yellow-600 underline decoration-dashed underline-offset-4"
                         >
-                            Заказать сертификат {item.type} →
+                            Заказать экспертизу →
                         </button>
                     </div>
                   </div>
@@ -220,59 +212,45 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. ЦИФРЫ И СРОКИ */}
+      {/* 4. ПОЧЕМУ ТПП */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-200">
             <div className="text-center px-4 pt-4 md:pt-0">
-              <Banknote className="mx-auto text-blue-600 mb-4 h-10 w-10" />
-              <div className="text-4xl font-extrabold text-slate-900 mb-2 relative inline-block">
-                от 2288 ₽ <span className="text-slate-400 text-xl absolute -top-1 -right-4">*</span>
-              </div>
-              <p className="text-slate-500 mt-2">Стоимость услуги<br/><span className="text-sm">(зависит от вида товара)</span></p>
+              <Scale className="mx-auto text-blue-600 mb-4 h-10 w-10" />
+              <div className="text-2xl font-extrabold text-slate-900 mb-2">Независимость</div>
+              <p className="text-slate-500 text-sm leading-relaxed">Мы не зависим от продавцов, покупателей или госорганов. Наш статус закреплен Федеральным законом.</p>
+            </div>
+            
+            <div className="text-center px-4 pt-4 md:pt-0">
+              <MapPin className="mx-auto text-blue-600 mb-4 h-10 w-10" />
+              <div className="text-2xl font-extrabold text-slate-900 mb-2">Оперативность</div>
+              <p className="text-slate-500 text-sm leading-relaxed">Штат экспертов в Чите и представительства в Забайкальске. Выезд на осмотр в день заявки.</p>
             </div>
             
             <div className="text-center px-4 pt-4 md:pt-0">
               <Clock className="mx-auto text-blue-600 mb-4 h-10 w-10" />
-              <div className="text-4xl font-extrabold text-slate-900 mb-2 relative inline-block">
-                за 2 часа <span className="text-slate-400 text-xl absolute -top-1 -right-4">*</span>
-              </div>
-              <p className="text-slate-500 mt-2">Срок оформления<br/><span className="text-sm">(после подачи документов)</span></p>
+              <div className="text-2xl font-extrabold text-slate-900 mb-2">Многолетний опыт</div>
+              <p className="text-slate-500 text-sm leading-relaxed">Более 3000 экспертиз ежегодно. Наши акты проходят любые проверки и суды.</p>
             </div>
-            
-            <div className="text-center px-4 pt-4 md:pt-0">
-              <Calendar className="mx-auto text-blue-600 mb-4 h-10 w-10" />
-              <div className="text-4xl font-extrabold text-slate-900 mb-2 relative inline-block">
-                12 месяцев <span className="text-slate-400 text-xl absolute -top-1 -right-4">*</span>
-              </div>
-              <p className="text-slate-500 mt-2">Срок действия<br/><span className="text-sm">(с даты выдачи)</span></p>
-            </div>
-          </div>
-
-          <div className="mt-12 max-w-4xl mx-auto text-left">
-            <p className="text-sm text-slate-400 leading-relaxed">
-              <span className="text-lg align-middle mr-1">*</span> 
-              Стоимость, сроки оформления и период действия сертификата зависят от номенклатуры товара и страны назначения. Точную информацию уточнит специалист Палаты после анализа документов.
-            </p>
           </div>
         </div>
       </section>
 
       {/* 5. ДОКУМЕНТЫ */}
-      <section className="pt-0 pb-20 bg-slate-50 border-y border-slate-200">
+      <section className="py-20 bg-slate-50 border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
-          <div className="text-center py-14">
+          <div className="text-center mb-12">
             <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Документы для проведения экспертизы</h2>
             <p className="text-slate-500">Минимальный пакет документов для начала работы</p>
           </div>
 
           <div className="bg-white rounded-3xl shadow-sm overflow-hidden border border-slate-100">
             {[
-              { name: 'Заявление на выдачу сертификата', req: 'Заполняется по форме, печать организации', link: true },
-              { name: 'Копия экспортного контракта', req: 'Заверенная печатью и подписью', link: false },
-              { name: 'Копия счета-фактуры (инвойса)', req: 'Заверенная печатью и подписью', link: false },
-              { name: 'Письмо от производителя', req: 'Подтверждение производства в РФ с долей сырья', link: true },
-              { name: 'Учредительные документы', req: 'Копии ОГРН, ИНН, Устава (для первой подачи)', link: false },
+              { name: 'Заявка на проведение экспертизы', req: 'По форме Палаты', link: true },
+              { name: 'Контракт / Договор поставки', req: 'Копия', link: false },
+              { name: 'Товаросопроводительные документы', req: 'Инвойс, накладные, упаковочные листы', link: false },
+              { name: 'Сертификаты качества / Паспорта', req: 'При наличии от производителя', link: false },
             ].map((doc, idx) => (
               <div key={idx} className="flex flex-col md:flex-row items-start md:items-center justify-between p-6 border-b border-slate-100 last:border-0 hover:bg-blue-50/30 transition-colors">
                 <div className="flex items-start gap-4">
@@ -304,26 +282,12 @@ export const CertificationPage: React.FC = () => {
         <div className="max-w-5xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-start">
             
+            {/* Левая колонка */}
             <div>
-              <h2 className="text-3xl md:text-4xl font-extrabold mb-6">Закажите сертификат онлайн</h2>
+              <h2 className="text-3xl md:text-4xl font-extrabold mb-6">Оставьте заявку на экспертизу</h2>
               <p className="text-slate-300 text-lg mb-8">
-                Оставьте заявку, и мы подготовим все необходимые документы для получения сертификата происхождения.
+                Мы перезвоним, уточним детали объекта и рассчитаем стоимость работ.
               </p>
-              <ul className="space-y-4 mb-10 text-slate-300">
-                <li className="flex items-center gap-3">
-                  <CheckCircle2 className="text-yellow-400 shrink-0" />
-                  <span>Быстрая проверка документов</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <CheckCircle2 className="text-yellow-400 shrink-0" />
-                  <span>Расчет точной стоимости</span>
-                </li>
-                 <li className="flex items-center gap-3">
-                  <CheckCircle2 className="text-yellow-400 shrink-0" />
-                  <span>Помощь в заполнении</span>
-                </li>
-              </ul>
-
               <div className="pt-8 border-t border-slate-700">
                 <p className="text-slate-300 text-base mb-4 font-medium">
                   Просто позвоните, и мы поможем решить Ваш вопрос:
@@ -331,60 +295,38 @@ export const CertificationPage: React.FC = () => {
                 <a href="tel:+79243733330" className="block text-3xl md:text-4xl font-extrabold text-yellow-400 hover:text-white transition-colors mb-4">
                   +7 (924) 373-33-30
                 </a>
-                <a href="mailto:info@zabtpp.ru" className="inline-flex items-center gap-2 text-blue-400 hover:text-white transition-colors text-lg font-medium">
-                  <Mail size={20} /> info@zabtpp.ru
+                <a href="mailto:expert@ztpp.ru" className="inline-flex items-center gap-2 text-blue-400 hover:text-white transition-colors text-lg font-medium">
+                  <Mail size={20} /> expert@ztpp.ru
                 </a>
               </div>
             </div>
 
+            {/* Правая колонка: Форма */}
             <div className="bg-white rounded-3xl p-8 text-slate-900 shadow-2xl">
               <form className="space-y-4">
-                <div>
-                  <label className="block text-sm font-bold mb-2">Название организации</label>
-                  <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="ООО 'Пример'" />
-                </div>
-                
+                <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Организация / ФИО" />
                 <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-bold mb-2">ИНН</label>
-                    <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="1234567890" />
-                  </div>
-                   <div>
-                    <label className="block text-sm font-bold mb-2">Телефон</label>
-                    <input type="tel" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="+7 (___) ___-__-__" />
-                  </div>
+                  <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Имя" />
+                  <input type="tel" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="+7 (___) ___-__-__" />
                 </div>
-
-                <div>
-                   <label className="block text-sm font-bold mb-2">Тип сертификата</label>
-                   <div className="relative">
-                     <select 
-                        value={selectedType}
-                        onChange={(e) => setSelectedType(e.target.value)}
-                        className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all cursor-pointer appearance-none text-slate-700"
-                     >
-                       {certTypes.map(c => (
-                         <option key={c.id} value={c.type}>{c.type}</option>
-                       ))}
-                       <option value="Не знаю">Не знаю, нужна консультация</option>
-                     </select>
-                     <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-slate-500">
-                        <ChevronDown size={20} />
-                     </div>
-                   </div>
-                </div>
-
+                <div className="relative">
+                    <select 
+                      value={selectedExpertise}
+                      onChange={(e) => setSelectedExpertise(e.target.value)}
+                      className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none appearance-none cursor-pointer"
+                    >
+                      {expertiseServices.map(s => <option key={s.id} value={s.title}>{s.title}</option>)}
+                      <option>Другое</option>
+                    </select>
+                    <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-slate-500"><ChevronDown size={20} /></div>
+                  </div>
                 <div className="pt-2">
-                  <label className="block text-sm font-bold mb-2">Прикрепите документы</label>
-                  <div className="border-2 border-dashed border-slate-300 rounded-xl p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-slate-50 transition-colors group">
-                    <UploadCloud className="text-slate-400 group-hover:text-blue-500 mb-2 transition-colors" size={32} />
-                    <span className="text-sm text-slate-500 font-medium">Перетащите файлы сюда или нажмите для загрузки</span>
-                  </div>
+                    <div className="border-2 border-dashed border-slate-300 rounded-xl p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-slate-50 transition-colors group">
+                      <UploadCloud className="text-slate-400 group-hover:text-blue-500 mb-2" size={32} />
+                      <span className="text-sm text-slate-500">Прикрепить фото или документы</span>
+                    </div>
                 </div>
-
-                <button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all mt-4">
-                  Отправить заявку
-                </button>
+                <button className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all mt-4">Заказать экспертизу</button>
                 <p className="text-xs text-center text-slate-400 mt-3">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
               </form>
             </div>
@@ -397,28 +339,15 @@ export const CertificationPage: React.FC = () => {
       <section className="pt-8 pb-20 bg-white">
         <div className="max-w-3xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-6 text-center">Часто задаваемые вопросы</h2>
-          
           <div className="space-y-4">
             {faqs.map((faq, index) => (
               <div key={index} className="border-b border-slate-200 last:border-0">
-                <button 
-                  onClick={() => toggleFaq(index)}
-                  className="w-full flex justify-between items-center py-6 text-left group"
-                >
-                  <span className={`text-lg font-bold transition-colors ${openFaq === index ? 'text-blue-600' : 'text-slate-900 group-hover:text-blue-600'}`}>
-                    {faq.question}
-                  </span>
-                  <ChevronDown 
-                    className={`text-slate-400 transition-transform duration-300 ${openFaq === index ? 'rotate-180 text-blue-600' : ''}`} 
-                    size={24} 
-                  />
+                <button onClick={() => toggleFaq(index)} className="w-full flex justify-between items-center py-6 text-left group">
+                  <span className={`text-lg font-bold transition-colors ${openFaq === index ? 'text-blue-600' : 'text-slate-900 group-hover:text-blue-600'}`}>{faq.question}</span>
+                  <ChevronDown className={`text-slate-400 transition-transform duration-300 ${openFaq === index ? 'rotate-180 text-blue-600' : ''}`} size={24} />
                 </button>
-                <div 
-                  className={`overflow-hidden transition-all duration-300 ease-in-out ${openFaq === index ? 'max-h-96 opacity-100 pb-6' : 'max-h-0 opacity-0'}`}
-                >
-                  <p className="text-slate-600 leading-relaxed text-base">
-                    {faq.answer}
-                  </p>
+                <div className={`overflow-hidden transition-all duration-300 ease-in-out ${openFaq === index ? 'max-h-96 opacity-100 pb-6' : 'max-h-0 opacity-0'}`}>
+                  <p className="text-slate-600 leading-relaxed text-base">{faq.answer}</p>
                 </div>
               </div>
             ))}
@@ -430,4 +359,4 @@ export const CertificationPage: React.FC = () => {
   );
 };
 
-export default CertificationPage;
+export default ExpertisePage;
