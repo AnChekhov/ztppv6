@@ -4,8 +4,8 @@ import {
   Container, Hammer, Calculator, Briefcase,
   ShieldCheck, Phone, Mail, UploadCloud,
   CheckCircle2, ChevronDown, ArrowRight,
-  MessageCircle, LayoutGrid, HelpCircle,
-  Map, Laptop2, Landmark, LifeBuoy
+  MessageCircle, LayoutGrid, LifeBuoy,
+  Map, Laptop2, Landmark // ✅ Вернул иконки для секции регионов
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
@@ -88,7 +88,7 @@ export const AllServicesPage: React.FC = () => {
         { id: "law-force", name: "Свидетельствование форс-мажора", desc: "Выдача заключений об обстоятельствах непреодолимой силы (санкции, стихийные бедствия)." },
         { id: "law-arbitr", name: "Международный коммерческий арбитраж", desc: "Представительство интересов бизнеса в МКАС при ТПП РФ. Взыскание долгов, споры." },
         { id: "law-contract", name: "Экспертиза контрактов", desc: "Разработка и правовой анализ договоров. Минимизация рисков, согласование разногласий." },
-        { id: "law-court", name: "Представительство в суде", desc: "Защита интересов бизнеса в арбитражных судах и судах общей юрисдикции. Взыскание задолженности." },
+        { id: "law-mediation", name: "Медиация", desc: "Досудебное урегулирование споров с участием нейтрального посредника." },
       ]
     },
     {
@@ -129,7 +129,7 @@ export const AllServicesPage: React.FC = () => {
         { id: "dev-mem", name: "Членство в ТПП", desc: "Вступление в союз. Получение преференций, участие в закрытых мероприятиях и GR-поддержка." },
       ]
     },
-    // 8-й БЛОК
+    // 8-й БЛОК: Заполнитель
     {
       id: "cat-help",
       title: "Центр поддержки и контакты",
@@ -153,7 +153,7 @@ export const AllServicesPage: React.FC = () => {
         <div className="absolute inset-0 opacity-30">
              <img src="/ztppv6/images/hero-bg.jpg" alt="Background" className="w-full h-full object-cover" />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/90 to-slate-900"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/[0.87] to-slate-900"></div>
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center text-center">
             <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
                Каталог услуг <span className="text-yellow-400">Торгово-промышленной палаты</span> Забайкальского края
@@ -176,7 +176,6 @@ export const AllServicesPage: React.FC = () => {
       <section className="py-20 bg-white border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
            <h2 className="text-2xl font-bold text-slate-900 mb-8">Быстрый переход к разделам:</h2>
-           
            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {allCategories.map((cat, idx) => (
                 <div 
@@ -205,7 +204,7 @@ export const AllServicesPage: React.FC = () => {
                         </button>
                         
                         <ul className="space-y-2 flex-grow">
-                            {cat.services.map((service) => (
+                            {cat.services.slice(0, 5).map((service) => (
                                 <li key={service.id}>
                                     <button 
                                         onClick={() => scrollToDescription(service.id)}
@@ -215,6 +214,9 @@ export const AllServicesPage: React.FC = () => {
                                     </button>
                                 </li>
                             ))}
+                            {cat.services.length > 5 && (
+                                <li className="text-xs text-slate-400 pt-1">и еще {cat.services.length - 5}...</li>
+                            )}
                         </ul>
                       </>
                     )}
@@ -238,7 +240,7 @@ export const AllServicesPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. ПОДРОБНОЕ ОПИСАНИЕ */}
+      {/* 2. ПОДРОБНОЕ ОПИСАНИЕ (ЭНЦИКЛОПЕДИЯ) */}
       <section className="py-20 bg-slate-50">
         <div className="max-w-5xl mx-auto px-6 md:px-8 space-y-20">
           
@@ -277,10 +279,52 @@ export const AllServicesPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. CTA ФОРМА */}
-      <div id="order-form" className="pt-24">
-        <section className="py-20 bg-slate-900 text-white">
-          <div className="max-w-5xl mx-auto px-6 md:px-8">
+      {/* ✅ ВОССТАНОВЛЕНО: SEO-блок "Работа с регионами" */}
+      <section className="py-20 bg-white border-y border-slate-200">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+            <div className="bg-slate-50 rounded-3xl p-8 md:p-12 shadow-sm border border-slate-100 flex flex-col md:flex-row gap-12 items-center">
+                <div className="md:w-1/2">
+                    <h2 className="text-3xl font-extrabold text-slate-900 mb-6">
+                        Работаем с бизнесом по всей России
+                    </h2>
+                    <p className="text-slate-600 text-lg leading-relaxed mb-6 text-justify">
+                        Торгово-промышленная палата Забайкальского края — ваш надежный представитель на границе с Китаем. Мы помогаем компаниям из <strong>Москвы, Санкт-Петербурга, Новосибирска, Иркутска</strong> и других регионов решать задачи ВЭД, логистики и сертификации без необходимости отправлять сотрудников в командировки.
+                    </p>
+                    <ul className="space-y-4">
+                        <li className="flex items-start gap-3">
+                            <Map className="text-blue-600 shrink-0 mt-1" />
+                            <span className="text-slate-700"><strong>Присутствие на границе:</strong> Наши эксперты работают в Чите и Забайкальске (МАПП).</span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                            <Laptop2 className="text-blue-600 shrink-0 mt-1" />
+                            <span className="text-slate-700"><strong>Дистанционный формат:</strong> Обмен документами по ЭДО, отправка оригиналов экспресс-почтой.</span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                            <Landmark className="text-blue-600 shrink-0 mt-1" />
+                            <span className="text-slate-700"><strong>Официальный статус:</strong> Гарантия качества и признания документов государственными органами.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div className="md:w-1/2 relative">
+                    <div className="absolute inset-0 bg-blue-600/5 rounded-3xl transform rotate-3"></div>
+                    <img 
+                        src="/ztppv6/images/hero-bg.jpg" 
+                        alt="Работа с регионами" 
+                        className="relative rounded-3xl shadow-lg object-cover h-80 w-full"
+                    />
+                    <div className="absolute -bottom-6 -left-6 bg-yellow-400 p-6 rounded-2xl shadow-xl max-w-xs">
+                        <p className="font-bold text-slate-900 text-sm">
+                            «Мы стираем границы между регионами, предоставляя качественный сервис там, где это необходимо вашему бизнесу»
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </section>
+
+      {/* ✅ ИСПРАВЛЕНО: CTA ФОРМА без белого отступа */}
+      <section id="order-form" className="py-20 bg-slate-900 text-white scroll-mt-32">
+        <div className="max-w-5xl mx-auto px-6 md:px-8">
             <div className="grid md:grid-cols-2 gap-12 items-start">
               
               <div>
@@ -292,6 +336,7 @@ export const AllServicesPage: React.FC = () => {
                   <p className="text-slate-300 text-base mb-4 font-medium">
                     Просто позвоните, и мы поможем решить Ваш вопрос:
                   </p>
+                  {/* ✅ ЖЕЛТЫЙ ТЕЛЕФОН */}
                   <a href="tel:+79243733330" className="block text-3xl md:text-4xl font-extrabold text-yellow-400 hover:text-white transition-colors mb-4">+7 (924) 373-33-30</a>
                   <a href="mailto:info@zabtpp.ru" className="inline-flex items-center gap-2 text-blue-400 hover:text-white transition-colors text-lg font-medium"><Mail size={20} /> info@zabtpp.ru</a>
                 </div>
