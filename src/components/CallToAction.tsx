@@ -1,9 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from './ui/Button';
 
 const CallToAction: React.FC = () => {
   return (
-    /* ✅ ИЗМЕНЕНО: Добавлен id="contact-form" */
     <section id="contact-form" className="py-24 bg-slate-900 text-white relative overflow-hidden scroll-mt-24">
       {/* Декоративный фон */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-blue-600/10 blur-3xl rounded-full translate-x-1/3"></div>
@@ -38,16 +38,27 @@ const CallToAction: React.FC = () => {
                 </div>
                 
                 <div className="flex flex-col gap-4">
-                    <div className="bg-slate-800/50 p-6 rounded-2xl border border-white/5 mb-4 text-center">
-                        <p className="text-slate-400 text-sm mb-2">Хотите узнать подробнее?</p>
-                        <p className="text-white font-bold text-xl">Получите консультацию по членству</p>
-                    </div>
-                    <Button variant="lime" className="w-full h-14 text-lg font-bold bg-yellow-400 text-slate-900 hover:bg-yellow-500">
-                        Подать заявку онлайн
-                    </Button>
-                    <Button variant="outline" className="w-full h-14 text-lg border-slate-600 hover:border-white text-slate-300 hover:text-white">
-                        Узнать условия членства
-                    </Button>
+                    {/* Кнопка-ссылка 1: Инфо-блок */}
+                    <Link to="/membership" className="block group">
+                        <div className="bg-slate-800/50 p-6 rounded-2xl border border-white/5 mb-4 text-center transition-all group-hover:border-yellow-400/30 group-hover:bg-slate-800">
+                            <p className="text-slate-400 text-sm mb-2">Хотите узнать подробнее?</p>
+                            <p className="text-white font-bold text-xl group-hover:text-yellow-400 transition-colors">Получите консультацию по членству</p>
+                        </div>
+                    </Link>
+
+                    {/* Кнопка-ссылка 2: Основная */}
+                    <Link to="/membership" className="w-full">
+                        <Button variant="lime" className="w-full h-14 text-lg font-bold bg-yellow-400 text-slate-900 hover:bg-yellow-500 shadow-lg shadow-yellow-400/10">
+                            Подать заявку онлайн
+                        </Button>
+                    </Link>
+
+                    {/* Кнопка-ссылка 3: Контурная */}
+                    <Link to="/membership" className="w-full">
+                        <Button variant="outline" className="w-full h-14 text-lg border-slate-600 hover:border-white text-slate-300 hover:text-white transition-all">
+                            Узнать условия членства
+                        </Button>
+                    </Link>
                 </div>
             </div>
         </div>
