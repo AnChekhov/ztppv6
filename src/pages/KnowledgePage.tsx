@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { 
   BookOpen, Search, FileText, ChevronDown, 
   ArrowRight, BookMarked, Lightbulb, MessageCircle,
-  HelpCircle, Globe, ShieldCheck, Gavel
+  HelpCircle, Globe, ShieldCheck, Gavel, Mail, Phone
 } from 'lucide-react';
 import SEO from '../components/SEO';
 
