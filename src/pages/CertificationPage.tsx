@@ -129,7 +129,7 @@ export const CertificationPage: React.FC = () => {
             </div>
         </div>
       </section>
-      
+
       {/* 2. ТИПЫ СЕРТИФИКАТОВ */}
       <section className="pt-12 pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
@@ -185,7 +185,7 @@ export const CertificationPage: React.FC = () => {
             {certTypes.map((item) => (
               <div 
                 key={item.id} 
-                id={`detail-${item.id}`}
+                id={`detail-${item.id}`} 
                 className={`bg-white rounded-2xl border transition-all duration-500 overflow-hidden ${expandedDetail === item.id ? 'border-blue-500 shadow-md' : 'border-slate-200'}`}
               >
                 <button 
@@ -205,7 +205,6 @@ export const CertificationPage: React.FC = () => {
                   <div className="p-6 pt-0 text-slate-600 leading-relaxed border-t border-slate-100 mt-2">
                     {item.longDesc}
                     <div className="mt-4">
-                        {/* ✅ ИЗМЕНЕНО: Кнопка "Заказать" */}
                         <button 
                             onClick={() => handleOrderClick(item.type)}
                             className="text-sm font-bold text-blue-600 hover:text-yellow-600 transition-colors"
@@ -301,104 +300,98 @@ export const CertificationPage: React.FC = () => {
       </section>
 
       {/* 6. CTA ФОРМА */}
-      <div id="order-form" className="pt-24">
-        <section className="py-20 bg-slate-900 text-white">
-          <div className="max-w-5xl mx-auto px-6 md:px-8">
-            <div className="grid md:grid-cols-2 gap-12 items-start">
-              
-              {/* Левая колонка */}
-              <div>
-                <h2 className="text-3xl md:text-4xl font-extrabold mb-6">Закажите сертификат онлайн</h2>
-                <p className="text-slate-300 text-lg mb-8">
-                  Оставьте заявку, и мы подготовим все необходимые документы для получения сертификата происхождения.
+      <section id="order-form" className="py-20 bg-slate-900 text-white scroll-mt-32">
+        <div className="max-w-5xl mx-auto px-6 md:px-8">
+          <div className="grid md:grid-cols-2 gap-12 items-start">
+            
+            <div>
+              <h2 className="text-3xl md:text-4xl font-extrabold mb-6">Закажите сертификат онлайн</h2>
+              <p className="text-slate-300 text-lg mb-8">
+                Оставьте заявку, и мы подготовим все необходимые документы для получения сертификата происхождения.
+              </p>
+              <ul className="space-y-4 mb-10 text-slate-300">
+                <li className="flex items-center gap-3">
+                  <CheckCircle2 className="text-yellow-400 shrink-0" />
+                  <span>Быстрая проверка документов</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle2 className="text-yellow-400 shrink-0" />
+                  <span>Расчет точной стоимости</span>
+                </li>
+                 <li className="flex items-center gap-3">
+                  <CheckCircle2 className="text-yellow-400 shrink-0" />
+                  <span>Помощь в заполнении</span>
+                </li>
+              </ul>
+
+              <div className="pt-8 border-t border-slate-700">
+                <p className="text-slate-300 text-base mb-4 font-medium">
+                  Просто позвоните, и мы поможем решить Ваш вопрос:
                 </p>
-                <ul className="space-y-4 mb-10 text-slate-300">
-                  <li className="flex items-center gap-3">
-                    <CheckCircle2 className="text-yellow-400 shrink-0" />
-                    <span>Быстрая проверка документов</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <CheckCircle2 className="text-yellow-400 shrink-0" />
-                    <span>Расчет точной стоимости</span>
-                  </li>
-                   <li className="flex items-center gap-3">
-                    <CheckCircle2 className="text-yellow-400 shrink-0" />
-                    <span>Помощь в заполнении</span>
-                  </li>
-                </ul>
-
-                {/* ✅ ИЗМЕНЕНО: Номер телефона желтым + текст */}
-                <div className="pt-8 border-t border-slate-700">
-                  <p className="text-slate-300 text-base mb-4 font-medium">
-                    Просто позвоните, и мы поможем решить Ваш вопрос:
-                  </p>
-                  <a href="tel:+79243733330" className="block text-3xl md:text-4xl font-extrabold text-yellow-400 hover:text-white transition-colors mb-4">
-                    +7 (924) 373-33-30
-                  </a>
-                  <a href="mailto:info@zabtpp.ru" className="inline-flex items-center gap-2 text-blue-400 hover:text-white transition-colors text-lg font-medium">
-                    <Mail size={20} /> info@zabtpp.ru
-                  </a>
-                </div>
+                <a href="tel:+79243733330" className="block text-3xl md:text-4xl font-extrabold text-yellow-400 hover:text-white transition-colors mb-4">
+                  +7 (924) 373-33-30
+                </a>
+                <a href="mailto:info@zabtpp.ru" className="inline-flex items-center gap-2 text-blue-400 hover:text-white transition-colors text-lg font-medium">
+                  <Mail size={20} /> info@zabtpp.ru
+                </a>
               </div>
-
-              {/* Правая колонка: Форма */}
-              <div className="bg-white rounded-3xl p-8 text-slate-900 shadow-2xl">
-                <form className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-bold mb-2">Название организации</label>
-                    <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="ООО 'Пример'" />
-                  </div>
-                  
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-bold mb-2">ИНН</label>
-                      <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="1234567890" />
-                    </div>
-                     <div>
-                      <label className="block text-sm font-bold mb-2">Телефон</label>
-                      <input type="tel" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="+7 (___) ___-__-__" />
-                    </div>
-                  </div>
-
-                  {/* Select: Тип сертификата */}
-                  <div>
-                     <label className="block text-sm font-bold mb-2">Тип сертификата</label>
-                     <div className="relative">
-                       <select 
-                          value={selectedType}
-                          onChange={(e) => setSelectedType(e.target.value)}
-                          className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all cursor-pointer appearance-none text-slate-700"
-                       >
-                         {certTypes.map(c => (
-                           <option key={c.id} value={c.type}>{c.type}</option>
-                         ))}
-                         <option value="Не знаю">Не знаю, нужна консультация</option>
-                       </select>
-                       <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-slate-500">
-                          <ChevronDown size={20} />
-                       </div>
-                     </div>
-                  </div>
-
-                  <div className="pt-2">
-                    <label className="block text-sm font-bold mb-2">Прикрепите документы</label>
-                    <div className="border-2 border-dashed border-slate-300 rounded-xl p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-slate-50 transition-colors group">
-                      <UploadCloud className="text-slate-400 group-hover:text-blue-500 mb-2 transition-colors" size={32} />
-                      <span className="text-sm text-slate-500 font-medium">Перетащите файлы сюда или нажмите для загрузки</span>
-                    </div>
-                  </div>
-
-                  <button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all mt-4">
-                    Отправить заявку
-                  </button>
-                  <p className="text-xs text-center text-slate-400 mt-3">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
-                </form>
-              </div>
-
             </div>
+
+            <div className="bg-white rounded-3xl p-8 text-slate-900 shadow-2xl">
+              <form className="space-y-4">
+                <div>
+                  <label className="block text-sm font-bold mb-2">Название организации</label>
+                  <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="ООО 'Пример'" />
+                </div>
+                
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-bold mb-2">ИНН</label>
+                    <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="1234567890" />
+                  </div>
+                   <div>
+                    <label className="block text-sm font-bold mb-2">Телефон</label>
+                    <input type="tel" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="+7 (___) ___-__-__" />
+                  </div>
+                </div>
+
+                <div>
+                   <label className="block text-sm font-bold mb-2">Тип сертификата</label>
+                   <div className="relative">
+                     <select 
+                        value={selectedType}
+                        onChange={(e) => setSelectedType(e.target.value)}
+                        className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all cursor-pointer appearance-none text-slate-700"
+                     >
+                       {certTypes.map(c => (
+                         <option key={c.id} value={c.type}>{c.type}</option>
+                       ))}
+                       <option value="Не знаю">Не знаю, нужна консультация</option>
+                     </select>
+                     <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-slate-500">
+                        <ChevronDown size={20} />
+                     </div>
+                   </div>
+                </div>
+
+                <div className="pt-2">
+                  <label className="block text-sm font-bold mb-2">Прикрепите документы</label>
+                  <div className="border-2 border-dashed border-slate-300 rounded-xl p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-slate-50 transition-colors group">
+                    <UploadCloud className="text-slate-400 group-hover:text-blue-500 mb-2 transition-colors" size={32} />
+                    <span className="text-sm text-slate-500 font-medium">Перетащите файлы сюда или нажмите для загрузки</span>
+                  </div>
+                </div>
+
+                <button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all mt-4">
+                  Отправить заявку
+                </button>
+                <p className="text-xs text-center text-slate-400 mt-3">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
+              </form>
+            </div>
+
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
 
       {/* 7. FAQ */}
       <section className="py-20 bg-white">
