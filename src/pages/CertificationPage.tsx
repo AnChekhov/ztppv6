@@ -5,6 +5,7 @@ import {
   FileCheck, MessageCircle, ChevronUp, LifeBuoy, MapPin, Shield, Building
 } from 'lucide-react';
 import SEO from '../components/SEO';
+import Breadcrumbs from '../components/Breadcrumbs'; // ✅ Добавлен импорт
 
 export const CertificationPage: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -99,12 +100,11 @@ export const CertificationPage: React.FC = () => {
     <div className="font-sans text-slate-900 bg-white">
       
       <SEO 
-        title="Оформить сертификат происхождения СТ-1, Общая форма: Чита, Улан-Удэ, Москва | ТПП"
+        title="Оформить сертификат происхождения СТ-1, Общая форма: Чита, Иркутск, Москва | ТПП"
         description="Официальная выдача сертификатов происхождения (СТ-1, EAV, Общая форма) для экспорта в Китай, СНГ и Вьетнам. Тарифы ТПП РФ. Работаем с Бурятией, Иркутском и всей Россией дистанционно."
         keywords="сертификат происхождения товара цена, оформить ст-1 чита, сертификат происхождения москва, ст-1 иркутск, экспорт в китай документы, сертификат происхождения вьетнам, услуги тпп сертификация, таможенное оформление экспорт"
       />
 
-      {/* JSON-LD Микроразметка для SEO */}
       <script type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",
@@ -132,6 +132,18 @@ export const CertificationPage: React.FC = () => {
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/90 to-slate-900"></div>
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center text-center">
+            
+            {/* ✅ Хлебные крошки добавлены сюда */}
+            <div className="flex justify-center mb-6">
+              <Breadcrumbs 
+                isDark={true}
+                items={[
+                  { label: 'Услуги', path: '/services' },
+                  { label: 'Сертификация' }
+                ]} 
+              />
+            </div>
+
             <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
                Сертификаты происхождения <br/>
                <span className="text-yellow-400 text-3xl md:text-5xl">Экспорт в Китай, СНГ и по всему миру</span>
@@ -297,7 +309,7 @@ export const CertificationPage: React.FC = () => {
               { name: 'Документы от производителя', req: 'Паспорта качества, ТУ или сертификаты', link: true },
               { name: 'ИНН и ОГРН компании', req: 'Копии при первом обращении', link: false },
             ].map((doc, idx) => (
-              <div key={idx} className="flex flex-col md:flex-row items-start md:items-center justify-between p-6 border-b border-white last:border-0 hover:bg-blue-50/30 transition-colors">
+              <div key={idx} className="flex flex-col md:flex-row items-start md:items-center justify-between p-6 border-b border-slate-100 last:border-0 hover:bg-blue-50/30 transition-colors">
                 <div className="flex items-start gap-4">
                   <div className="p-2 bg-blue-100 text-blue-600 rounded-lg mt-1 md:mt-0">
                     <Check size={20} strokeWidth={3} />
@@ -449,7 +461,7 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 8. ГЕОГРАФИЯ (ТЕПЕРЬ В САМОМ НИЗУ) */}
+      {/* 8. ГЕОГРАФИЯ (В САМОМ НИЗУ) */}
       <section className="py-16 bg-slate-50 border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
             <div className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 flex flex-col md:flex-row gap-10 items-center">
