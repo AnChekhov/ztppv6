@@ -4,32 +4,29 @@ import {
   ArrowRight, BookMarked, Lightbulb, MessageCircle,
   HelpCircle, Globe, ShieldCheck, Gavel, Mail, Phone
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 
 const KnowledgePage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'articles' | 'glossary'>('articles');
 
-  const scrollToForm = () => {
-    const formSection = document.getElementById('order-form');
-    if (formSection) {
-      formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
-
   const blogPosts = [
     {
+      id: "check-partner",
       title: "Как проверить контрагента в Китае: пошаговая инструкция",
       category: "ВЭД и Китай",
       date: "20.12.2025",
       desc: "Разбираем официальные реестры КНР и способы проверки благонадежности партнеров перед оплатой."
     },
     {
+      id: "st1-changes",
       title: "Изменения в выдаче сертификатов СТ-1 в 2025 году",
       category: "Сертификация",
       date: "15.12.2025",
       desc: "Новые требования к документам производителя и сроки проведения экспертизы происхождения."
     },
     {
+      id: "construction-errors",
       title: "Судебная строительная экспертиза: типичные ошибки подрядчиков",
       category: "Экспертиза",
       date: "10.12.2025",
@@ -91,18 +88,20 @@ const KnowledgePage: React.FC = () => {
         <section className="py-20 bg-slate-50">
           <div className="max-w-7xl mx-auto px-6 md:px-8">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {blogPosts.map((post, idx) => (
-                <div key={idx} className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 hover:shadow-xl transition-all flex flex-col group cursor-pointer">
-                  <div className="flex justify-between items-start mb-6">
-                    <span className="text-xs font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-full uppercase tracking-wider">{post.category}</span>
-                    <span className="text-xs text-slate-400">{post.date}</span>
+              {blogPosts.map((post) => (
+                <Link to={`/news/${post.id}`} key={post.id} className="flex flex-col group">
+                  <div className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 hover:shadow-xl transition-all flex flex-col h-full cursor-pointer">
+                    <div className="flex justify-between items-start mb-6">
+                      <span className="text-xs font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-full uppercase tracking-wider">{post.category}</span>
+                      <span className="text-xs text-slate-400">{post.date}</span>
+                    </div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-blue-600 transition-colors">{post.title}</h3>
+                    <p className="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">{post.desc}</p>
+                    <div className="flex items-center text-blue-600 font-bold text-sm group-hover:translate-x-1 transition-transform mt-auto">
+                      Читать статью <ArrowRight size={16} className="ml-2" />
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-blue-600 transition-colors">{post.title}</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">{post.desc}</p>
-                  <div className="flex items-center text-blue-600 font-bold text-sm group-hover:translate-x-1 transition-transform">
-                    Читать статью <ArrowRight size={16} className="ml-2" />
-                  </div>
-                </div>
+                </Link>
               ))}
             </div>
             <div className="mt-16 text-center">
