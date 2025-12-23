@@ -142,37 +142,47 @@ const ServicesGrid: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <ServiceCard 
-            icon={Globe} 
-            title="ВЭД и работа с Китаем" 
-            description="Поиск надежных партнеров в КНР, организация бизнес-миссий, проверка контрагентов и сопровождение экспортных контрактов под ключ."
-            link="/ved"
-          />
-          <ServiceCard 
-            icon={Container} 
-            title="Таможенное сопровождение" 
-            description="Помощь в классификации товаров (ТН ВЭД), расчет таможенных платежей, подготовка документов для таможенного оформления."
-            link="/services/customs"
-          />
+          {/* 1. Строительно-техническая */}
           <ServiceCard 
             icon={Hammer} 
             title="Строительно-техническая экспертиза" 
             description="Оценка качества строительных работ, проверка сметной документации, выявление дефектов, приемка квартир и коммерческих помещений."
             link="/services/construction"
           />
+          
+          {/* 2. Таможенное сопровождение */}
+          <ServiceCard 
+            icon={Container} 
+            title="Таможенное сопровождение" 
+            description="Помощь в классификации товаров (ТН ВЭД), расчет таможенных платежей, подготовка документов для таможенного оформления."
+            link="/services/customs"
+          />
+
+          {/* 3. Юридические услуги */}
           <ServiceCard 
             icon={Scale} 
             title="Юридическая защита" 
             description="Свидетельствование форс-мажора, международный коммерческий арбитраж, медиация и защита интересов бизнеса в органах власти."
             link="/services/law"
           />
+
+          {/* 4. Деловое пространство */}
           <ServiceCard 
             icon={Layout} 
             title="Деловое пространство и события" 
             description="Конференц-зал и переговорная комната в центре города. Обучающие семинары, бизнес-миссии и нетворкинг."
             link="/services/events"
           />
+
+          {/* 5. ВЭД */}
+          <ServiceCard 
+            icon={Globe} 
+            title="ВЭД и работа с Китаем" 
+            description="Поиск надежных партнеров в КНР, организация бизнес-миссий, проверка контрагентов и сопровождение экспортных контрактов под ключ."
+            link="/ved"
+          />
           
+          {/* Полный список услуг */}
           <div className="flex flex-col items-center justify-center p-8 rounded-2xl border border-dashed border-slate-300 bg-white/50 text-center h-full hover:bg-white hover:border-blue-300 hover:shadow-xl hover:shadow-blue-100 transition-all duration-300 hover:scale-[1.03] group cursor-pointer">
              <Link to="/services" className="flex flex-col items-center w-full h-full">
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-slate-100 text-slate-500 transition-transform group-hover:scale-110 group-hover:bg-blue-50 group-hover:text-blue-600">
