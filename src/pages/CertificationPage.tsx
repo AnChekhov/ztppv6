@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { 
   Clock, Calendar, Banknote, Download, CheckCircle2, UploadCloud, 
   Phone, Mail, Globe, CheckCircle, ChevronDown, Check, 
-  FileCheck, MessageCircle, ChevronUp, Info
+  FileCheck, MessageCircle, ChevronUp, LifeBuoy
 } from 'lucide-react';
 import SEO from '../components/SEO';
 
@@ -165,6 +165,9 @@ export const CertificationPage: React.FC = () => {
             ))}
             
             <div className="bg-slate-900 rounded-2xl p-5 shadow-sm flex flex-col justify-center items-center text-center transition-all duration-300 ease-out hover:scale-[1.03] hover:shadow-2xl hover:shadow-blue-500/20">
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 bg-blue-500/10 text-blue-400">
+                <LifeBuoy size={28} strokeWidth={1.5} />
+              </div>
               <h3 className="text-white font-bold text-lg mb-2">Нужна помощь?</h3>
               <p className="text-slate-400 text-xs mb-4">Наши эксперты помогут определить нужный тип сертификата для вашего груза.</p>
               <button onClick={scrollToForm} className="w-full py-3 bg-white text-slate-900 font-bold rounded-lg hover:bg-yellow-400 transition-colors text-sm">
