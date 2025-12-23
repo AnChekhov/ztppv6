@@ -1,7 +1,7 @@
 import React from 'react';
 import { 
   FileText, Globe, Scale, Users, Container, 
-  ChevronRight, ArrowRight, HelpCircle, Hammer 
+  ChevronRight, ArrowRight, HelpCircle, Hammer, Layout 
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from './ui/Button';
@@ -132,7 +132,6 @@ const ServicesGrid: React.FC = () => {
           />
         </div>
 
-        {/* ✅ ИЗМЕНЕНО: Добавлен ID и scroll-margin-top */}
         <div id="other-services" className="text-center mb-12 max-w-3xl mx-auto scroll-mt-32">
           <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
             Другие услуги
@@ -167,11 +166,12 @@ const ServicesGrid: React.FC = () => {
             description="Свидетельствование форс-мажора, международный коммерческий арбитраж, медиация и защита интересов бизнеса в органах власти."
             link="/services/law"
           />
+          {/* ✅ ИЗМЕНЕНО: Карточка Делового пространства и мероприятий */}
           <ServiceCard 
-            icon={Users} 
-            title="Мероприятия нашего сообщества" 
-            description="Нетворкинг, деловые обсуждения с представителями органов власти, а также семинары, тренинги и повышение квалификации для сотрудников."
-            link="/news"
+            icon={Layout} 
+            title="Деловое пространство и события" 
+            description="Конференц-зал и переговорная комната в центре города. Обучающие семинары, бизнес-миссии и нетворкинг."
+            link="/services/events"
           />
           
           <div className="flex flex-col items-center justify-center p-8 rounded-2xl border border-dashed border-slate-300 bg-white/50 text-center h-full hover:bg-white hover:border-blue-300 hover:shadow-xl hover:shadow-blue-100 transition-all duration-300 hover:scale-[1.03] group cursor-pointer">
