@@ -18,6 +18,7 @@ import CustomsPage from './pages/CustomsPage';
 import LegalServicesPage from './pages/LegalServicesPage';
 import EventsPage from './pages/EventsPage';
 import AllServicesPage from './pages/AllServicesPage';
+import MembershipPage from './pages/MembershipPage'; // ✅ Добавлен импорт
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -61,7 +62,10 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/services" element={<AllServicesPage />} />
-          <Route path="/membership" element={<PagePlaceholder title="Членство в Союзе" description="Как вступить в ТПП, преимущества и реестр членов." />} />
+          
+          {/* ✅ Теперь здесь полноценный компонент страницы членства */}
+          <Route path="/membership" element={<MembershipPage />} />
+          
           <Route path="/ved" element={<VedPage />} />
           <Route path="/news" element={<PagePlaceholder title="Пресс-центр" description="Новости экономики региона и анонсы событий Палаты." />} /> 
 
