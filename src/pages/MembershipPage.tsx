@@ -3,7 +3,7 @@ import {
   Users, ShieldCheck, TrendingUp, Handshake, FileCheck, 
   Award, Percent, Plane, Shield, Globe, Landmark, 
   Mail, Phone, ChevronDown, ChevronUp, MessageCircle, 
-  CheckCircle2, Building, Briefcase, Zap, Download
+  CheckCircle2, Building, Briefcase, Zap, Download, MapPin
 } from 'lucide-react';
 import SEO from '../components/SEO';
 
@@ -201,8 +201,8 @@ const MembershipPage: React.FC = () => {
               <form className="space-y-4">
                 <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl outline-none" placeholder="Название организации или ИП" />
                 <div className="grid grid-cols-2 gap-4">
-                  <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl outline-none" placeholder="Имя руководителя" />
-                  <input type="tel" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl outline-none" placeholder="+7 (___) ___-__-__" />
+                  <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Имя руководителя" />
+                  <input type="tel" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="+7 (___) ___-__-__" />
                 </div>
                 <div className="pt-2">
                    <div className="border-2 border-dashed border-slate-300 rounded-xl p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-slate-50 transition-colors group">
