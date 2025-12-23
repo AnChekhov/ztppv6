@@ -30,7 +30,7 @@ const ServiceCard: React.FC<{ icon: React.ReactNode, title: string, subtitle: st
 
 export const Hero: React.FC = () => {
   
-  // Функция скролла к "Другие услуги" (ссылка справа)
+  // Функция скролла к "Другие услуги"
   const scrollToOtherServices = (e: React.MouseEvent) => {
     e.preventDefault();
     const element = document.getElementById('other-services');
@@ -39,7 +39,7 @@ export const Hero: React.FC = () => {
     }
   };
 
-  // ✅ НОВАЯ ФУНКЦИЯ: Скролл к блоку контактов (для кнопок Hero)
+  // Скролл к блоку контактов на текущей странице
   const scrollToContact = () => {
     const element = document.getElementById('contact-form');
     if (element) {
@@ -72,14 +72,17 @@ export const Hero: React.FC = () => {
                         Помогаем предпринимателям выходить на рынок Китая, оформляем сертификаты происхождения и защищаем ваши интересы на государственном уровне.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-                        {/* ✅ Кнопки ведут на скролл */}
-                        <Button 
-                            onClick={scrollToContact}
-                            variant="lime" 
-                            className="h-14 px-8 text-lg !rounded-lg shadow-lg shadow-yellow-500/20 bg-yellow-500 text-slate-900 hover:bg-yellow-400 hover:scale-105 transition-transform duration-300 ease-out"
-                        >
-                            Получить консультацию <ArrowRight size={20} className="ml-2"/>
-                        </Button>
+                        
+                        {/* ✅ ИЗМЕНЕНО: Кнопка теперь ведет на форму страницы сертификации */}
+                        <Link to="/services/cert#order-form" className="w-full sm:w-auto">
+                            <Button 
+                                variant="lime" 
+                                className="h-14 px-8 text-lg w-full !rounded-lg shadow-lg shadow-yellow-500/20 bg-yellow-500 text-slate-900 hover:bg-yellow-400 hover:scale-105 transition-transform duration-300 ease-out"
+                            >
+                                Получить консультацию <ArrowRight size={20} className="ml-2"/>
+                            </Button>
+                        </Link>
+
                         <Button 
                             onClick={scrollToContact}
                             variant="outline" 
@@ -107,7 +110,7 @@ export const Hero: React.FC = () => {
                         <ServiceCard 
                             icon={<Shield size={24} />} 
                             title="Юридическая защита"
-                            subtitle="Форсмажор, арбитраж, проверка контрагентов."
+                            subtitle="Форс-мажор, арбитраж, проверка контрагентов."
                             link="/services/law"
                         />
                     </div>
