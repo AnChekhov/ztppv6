@@ -129,7 +129,6 @@ export const AllServicesPage: React.FC = () => {
         { id: "dev-mem", name: "Членство в ТПП", desc: "Вступление в союз. Получение преференций, участие в закрытых мероприятиях и GR-поддержка." },
       ]
     },
-    // 8-й БЛОК
     {
       id: "cat-help",
       title: "Центр поддержки и контакты",
@@ -322,7 +321,6 @@ export const AllServicesPage: React.FC = () => {
       </section>
 
       {/* 3. CTA ФОРМА */}
-      {/* ✅ УБРАЛ div-обертку, ID и scroll-mt на секции */}
       <section id="order-form" className="py-20 bg-slate-900 text-white scroll-mt-32">
         <div className="max-w-5xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-start">
@@ -377,14 +375,14 @@ export const AllServicesPage: React.FC = () => {
                      <span className="text-sm text-slate-500">Прикрепить документы</span>
                    </div>
                 </div>
-                <button className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all mt-4">Отправить заявку</button>
+                <button type="button" className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all mt-4">Отправить заявку</button>
                 <p className="text-xs text-center text-slate-400 mt-3">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
               </form>
             </div>
 
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
 
     </div>
   );
