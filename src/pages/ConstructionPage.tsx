@@ -189,7 +189,47 @@ export const ConstructionPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. CTA FORM */}
+      {/* 4. ДОКУМЕНТЫ */}
+      <section className="pt-0 pb-20 bg-slate-50 border-y border-slate-200">
+        <div className="max-w-4xl mx-auto px-6 md:px-8">
+          <div className="text-center py-14">
+            <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Документы для проведения экспертизы</h2>
+            <p className="text-slate-500">Минимальный пакет документов для начала работы</p>
+          </div>
+
+          <div className="bg-white rounded-3xl shadow-sm overflow-hidden border border-slate-100">
+            {[
+              { name: 'Заявка на проведение экспертизы', req: 'По форме Палаты', link: true },
+              { name: 'Правоустанавливающие документы', req: 'Выписка ЕГРН, договор аренды', link: false },
+              { name: 'Проектная документация', req: 'При наличии', link: false },
+              { name: 'Договор с подрядчиком', req: 'Для экспертизы качества работ', link: false },
+            ].map((doc, idx) => (
+              <div key={idx} className="flex flex-col md:flex-row items-start md:items-center justify-between p-6 border-b border-slate-100 last:border-0 hover:bg-blue-50/30 transition-colors">
+                <div className="flex items-start gap-4">
+                  <div className="p-2 bg-blue-100 text-blue-600 rounded-lg mt-1 md:mt-0">
+                    <CheckCircle2 size={20} strokeWidth={3} />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-slate-900 text-lg">{doc.name}</h4>
+                    <p className="text-slate-500 text-sm">{doc.req}</p>
+                  </div>
+                </div>
+                
+                {doc.link ? (
+                  <a href="#" className="mt-4 md:mt-0 flex items-center text-blue-600 font-bold text-sm hover:text-blue-800 transition-colors whitespace-nowrap bg-blue-50 px-4 py-2 rounded-lg">
+                    <FileCheck size={16} className="mr-2" />
+                    Скачать бланк
+                  </a>
+                ) : (
+                   <div className="mt-4 md:mt-0 text-blue-600 font-bold text-xl select-none px-6 py-2">—</div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. CTA FORM */}
       <section id="order-form" className="py-20 bg-slate-900 text-white scroll-mt-[72px]">
         <div className="max-w-5xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-start">
@@ -199,7 +239,9 @@ export const ConstructionPage: React.FC = () => {
                 Мы перезвоним, уточним детали объекта и рассчитаем стоимость работ.
               </p>
               <div className="pt-8 border-t border-slate-700">
-                <p className="text-slate-400 text-sm mb-3 font-medium uppercase tracking-wider">Контакты экспертов</p>
+                <p className="text-slate-300 text-base mb-4 font-medium">
+                  Просто позвоните, и мы поможем решить Ваш вопрос:
+                </p>
                 <a href="tel:+79243733330" className="block text-3xl md:text-4xl font-extrabold text-white hover:text-yellow-400 transition-colors mb-4">+7 (924) 373-33-30</a>
                 <a href="mailto:expert@ztpp.ru" className="inline-flex items-center gap-2 text-blue-400 hover:text-white transition-colors text-lg font-medium"><Mail size={20} /> expert@ztpp.ru</a>
               </div>
@@ -232,7 +274,7 @@ export const ConstructionPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. FAQ */}
+      {/* 6. FAQ */}
       <section className="pt-8 pb-20 bg-white">
         <div className="max-w-3xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-6 text-center">Часто задаваемые вопросы</h2>
