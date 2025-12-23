@@ -43,7 +43,7 @@ export const CertificationPage: React.FC = () => {
       type: 'Общая форма',
       countries: 'Китай, Монголия, ОАЭ (Весь мир)',
       purpose: 'Экспорт в Китай и страны дальнего зарубежья. Подтверждение для импорта (Пр. №1341).',
-      longDesc: 'Сертификат общей формы — ключевой документ для ВЭД с Китаем. Подтверждает российское происхождение для таможни в Маньчжурии, Тяньцзине и Шанхае. Мы работаем с экспортерами из Москвы, Санкт-Петербурга и Новосибирска, обеспечивая легитимность документов для иностранных банков.',
+      longDesc: 'Сертификат общей формы - ключевой документ для ВЭД с Китаем. Подтверждает российское происхождение для таможни в Маньчжурии, Тяньцзине и Шанхае. Мы работаем с экспортерами из Москвы, Санкт-Петербурга и Новосибирска, обеспечивая легитимность документов для иностранных банков.',
       icon: Globe
     },
     {
@@ -51,7 +51,7 @@ export const CertificationPage: React.FC = () => {
       type: 'СТ-1 (СНГ)',
       countries: 'Казахстан, Беларусь, Узбекистан',
       purpose: 'Беспошлинный ввоз товаров в страны СНГ. Оптимально для поставок из Бурятии и Забайкалья.',
-      longDesc: 'Дает право на полное освобождение от импортных пошлин. Позволяет вашим партнерам в СНГ (Казахстан, Узбекистан) не платить ввозной налог. Выдаем документ на основе официальной экспертизы ТПП в кратчайшие сроки для грузов со всей РФ.',
+      longDesc: 'Дает право на тарифные преференции. Позволяет вашим партнерам в СНГ (Казахстан, Узбекистан) не платить ввозной налог. Выдаем документ на основе официальной экспертизы ТПП в кратчайшие сроки для грузов со всей РФ.',
       icon: FileCheck
     },
     {
@@ -87,11 +87,11 @@ export const CertificationPage: React.FC = () => {
     },
     {
       question: "Подходят ли ваши сертификаты для таможни в Китае и Маньчжурии?",
-      answer: "Да, Забайкальская ТПП — официальный уполномоченный орган системы ТПП РФ. Наши сертификаты полностью признаются таможенными органами КНР и международными банками."
+      answer: "Да, Забайкальская ТПП - официальный уполномоченный орган системы ТПП РФ. Наши сертификаты полностью признаются таможенными органами КНР и международными банками."
     },
     {
       question: "Сколько стоит оформление и от чего зависит цена?",
-      answer: "Стоимость регламентирована тарифами ТПП РФ. Базовая выдача оригинала — 2288 руб. Итоговая цена зависит от количества позиций в инвойсе и сложности экспертизы происхождения."
+      answer: "Стоимость регламентирована тарифами ТПП РФ. Базовая выдача оригинала - 2288 руб. Итоговая цена зависит от количества позиций в инвойсе и сложности экспертизы происхождения."
     }
   ];
 
@@ -101,29 +101,8 @@ export const CertificationPage: React.FC = () => {
       <SEO 
         title="Оформить сертификат происхождения СТ-1, Общая форма: Чита, Улан-Удэ, Москва | ТПП"
         description="Официальная выдача сертификатов происхождения (СТ-1, EAV, Общая форма) для экспорта в Китай, СНГ и Вьетнам. Тарифы ТПП РФ. Работаем с Бурятией, Иркутском и всей Россией дистанционно."
-        keywords="сертификат происхождения товара цена, оформить ст-1 чита, сертификат происхождения москва, ст-1 улан-удэ, экспорт в китай документы, сертификат происхождения вьетнам, услуги тпп сертификация, таможенное оформление экспорт"
+        keywords="сертификат происхождения товара цена, оформить ст-1 чита, сертификат происхождения москва, ст-1 иркутск, экспорт в китай документы, сертификат происхождения вьетнам, услуги тпп сертификация, таможенное оформление экспорт"
       />
-
-      {/* JSON-LD Микроразметка для SEO */}
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "GovernmentService",
-          "name": "Оформление сертификата происхождения товара",
-          "provider": {
-            "@type": "GovernmentOrganization",
-            "name": "Забайкальская ТПП",
-            "address": "г. Чита"
-          },
-          "areaServed": ["Забайкальский край", "Республика Бурятия", "Китай", "Монголия", "РФ"],
-          "audience": "Участники ВЭД, экспортеры",
-          "offers": {
-            "@type": "Offer",
-            "price": "2288",
-            "priceCurrency": "RUB"
-          }
-        })}
-      </script>
       
       {/* 1. HERO SECTION */}
       <section className="relative bg-slate-900 text-white min-h-[65vh] flex items-center justify-center overflow-hidden">
@@ -150,74 +129,7 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. ТАРИФЫ (БЕЗ КАЛЬКУЛЯТОРА) */}
-      <section className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-6 md:px-8">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">Тарифы на оформление</h2>
-          <div className="overflow-hidden border border-slate-100 rounded-2xl shadow-lg">
-            <table className="w-full text-left border-collapse">
-              <thead>
-                <tr className="bg-slate-900 text-white text-sm uppercase tracking-wider">
-                  <th className="px-6 py-5 font-bold">Наименование услуги</th>
-                  <th className="px-6 py-5 font-bold text-right">Стоимость</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100">
-                <tr className="hover:bg-slate-50 transition-colors">
-                  <td className="px-6 py-4 text-slate-700 font-medium">Выдача оригинала сертификата (СТ-1, Общий)</td>
-                  <td className="px-6 py-4 text-right font-bold text-blue-600 whitespace-nowrap">2 288 ₽</td>
-                </tr>
-                <tr className="hover:bg-slate-50 transition-colors">
-                  <td className="px-6 py-4 text-slate-700 font-medium">Выдача дополнительной копии документа</td>
-                  <td className="px-6 py-4 text-right font-bold text-blue-600 whitespace-nowrap">1 171 ₽</td>
-                </tr>
-                <tr className="hover:bg-slate-50 transition-colors">
-                  <td className="px-6 py-4 text-slate-700 font-medium">Экспертиза по определению страны происхождения</td>
-                  <td className="px-6 py-4 text-right font-bold text-blue-600 whitespace-nowrap">от 4 500 ₽</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <p className="mt-6 text-xs text-slate-400 text-center italic leading-relaxed">
-            * Тарифы установлены Приказом ТПП РФ №14. Стоимость экспертизы зависит от сложности номенклатуры товара.
-          </p>
-        </div>
-      </section>
-
-      {/* 3. ГЕОГРАФИЯ (SEO БЛОК) */}
-      <section className="py-16 bg-slate-50 border-y border-slate-200">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
-            <div className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 flex flex-col md:flex-row gap-10 items-center">
-                <div className="md:w-1/2">
-                    <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-4">Работаем с бизнесом по всей России</h2>
-                    <p className="text-slate-600 mb-6 leading-relaxed text-justify">
-                        Забайкальская ТПП — ваш надежный партнер в ключевом логистическом узле на границе с КНР. Мы обеспечиваем быструю выдачу документов для компаний из <strong>Республики Бурятия (Улан-Удэ), Иркутска, Новосибирска, Москвы</strong> и других регионов РФ без необходимости личного присутствия.
-                    </p>
-                    <div className="grid grid-cols-2 gap-4">
-                        <div className="flex items-center gap-2 text-sm text-slate-700 font-medium">
-                            <MapPin size={16} className="text-blue-600" /> Официальный орган ТПП РФ
-                        </div>
-                        <div className="flex items-center gap-2 text-sm text-slate-700 font-medium">
-                            <Shield size={16} className="text-blue-600" /> Соответствие Пр. №1341
-                        </div>
-                        <div className="flex items-center gap-2 text-sm text-slate-700 font-medium">
-                            <Building size={16} className="text-blue-600" /> Аккредитованные эксперты
-                        </div>
-                        <Globe size={16} className="text-blue-600" /> Дистанционно по всей РФ
-                    </div>
-                </div>
-                <div className="md:w-1/2 bg-blue-600 rounded-2xl p-8 text-white relative overflow-hidden">
-                    <div className="relative z-10">
-                        <p className="text-xl font-bold mb-2">Логистика Забайкальск — Маньчжурия</p>
-                        <p className="text-blue-100 text-sm">Нахождение в приграничном регионе позволяет нашим экспертам знать все нюансы требований китайской таможни, что гарантирует успешное прохождение груза.</p>
-                    </div>
-                    <Globe size={150} className="absolute -bottom-10 -right-10 text-white/10" />
-                </div>
-            </div>
-        </div>
-      </section>
-
-      {/* 4. ТИПЫ СЕРТИФИКАТОВ */}
+      {/* 2. ТИПЫ СЕРТИФИКАТОВ */}
       <section className="pt-12 pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Выберите нужный тип сертификата</h2>
@@ -265,7 +177,7 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. ИНФОРМАЦИЯ О СЕРТИФИКАТАХ */}
+      {/* 3. ИНФОРМАЦИЯ О СЕРТИФИКАТАХ */}
       <section className="pt-0 pb-20 bg-slate-50 border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 py-14 text-center">
@@ -286,7 +198,7 @@ export const CertificationPage: React.FC = () => {
                     <div className={`p-2 rounded-lg ${expandedDetail === item.id ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-500'}`}>
                        <FileCheck size={24} />
                     </div>
-                    <span className="text-lg font-bold text-slate-900">{item.type} — {item.countries}</span>
+                    <span className="text-lg font-bold text-slate-900">{item.type} - {item.countries}</span>
                   </div>
                   {expandedDetail === item.id ? <ChevronUp className="text-blue-600"/> : <ChevronDown className="text-slate-400"/>}
                 </button>
@@ -310,15 +222,53 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 6. ДОКУМЕНТЫ */}
-      <section className="pt-0 pb-20 bg-white">
+      {/* 4. ЦИФРЫ И СРОКИ (ВОССТАНОВЛЕННЫЙ БЛОК) */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+          <div className="grid md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-200">
+            <div className="text-center px-4 pt-4 md:pt-0">
+              <Banknote className="mx-auto text-blue-600 mb-4 h-10 w-10" />
+              <div className="text-4xl font-extrabold text-slate-900 mb-2 relative inline-block">
+                от 2288 ₽ <span className="text-slate-400 text-xl absolute -top-1 -right-4">*</span>
+              </div>
+              <p className="text-slate-500 mt-2">Стоимость услуги<br/><span className="text-sm">(согласно тарифам ТПП РФ)</span></p>
+            </div>
+            
+            <div className="text-center px-4 pt-4 md:pt-0">
+              <Clock className="mx-auto text-blue-600 mb-4 h-10 w-10" />
+              <div className="text-4xl font-extrabold text-slate-900 mb-2 relative inline-block">
+                за 2 часа <span className="text-slate-400 text-xl absolute -top-1 -right-4">*</span>
+              </div>
+              <p className="text-slate-500 mt-2">Срок оформления<br/><span className="text-sm">(после подачи документов)</span></p>
+            </div>
+            
+            <div className="text-center px-4 pt-4 md:pt-0">
+              <Calendar className="mx-auto text-blue-600 mb-4 h-10 w-10" />
+              <div className="text-4xl font-extrabold text-slate-900 mb-2 relative inline-block">
+                12 месяцев <span className="text-slate-400 text-xl absolute -top-1 -right-4">*</span>
+              </div>
+              <p className="text-slate-500 mt-2">Срок действия<br/><span className="text-sm">(с даты выдачи)</span></p>
+            </div>
+          </div>
+
+          <div className="mt-12 max-w-4xl mx-auto text-left">
+            <p className="text-sm text-slate-400 leading-relaxed">
+              <span className="text-lg align-middle mr-1">*</span> 
+              Стоимость и сроки регламентированы Приказом ТПП РФ №14. Итоговые условия зависят от номенклатуры товара и страны назначения. Точную информацию уточнит специалист после анализа документов.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. ДОКУМЕНТЫ */}
+      <section className="pt-0 pb-20 bg-slate-50 border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <div className="text-center py-14">
             <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Документы для получения сертификата</h2>
             <p className="text-slate-500">Минимальный перечень документов для экспертизы ТПП</p>
           </div>
 
-          <div className="bg-slate-50 rounded-3xl shadow-sm overflow-hidden border border-slate-100">
+          <div className="bg-white rounded-3xl shadow-sm overflow-hidden border border-slate-100">
             {[
               { name: 'Заявление на выдачу сертификата', req: 'По форме Палаты, с печатью организации', link: true },
               { name: 'Копия экспортного контракта', req: 'Заверенная печатью и подписью', link: false },
@@ -326,7 +276,7 @@ export const CertificationPage: React.FC = () => {
               { name: 'Документы от производителя', req: 'Паспорта качества, ТУ или сертификаты', link: true },
               { name: 'ИНН и ОГРН компании', req: 'Копии при первом обращении', link: false },
             ].map((doc, idx) => (
-              <div key={idx} className="flex flex-col md:flex-row items-start md:items-center justify-between p-6 border-b border-white last:border-0 hover:bg-blue-50/30 transition-colors">
+              <div key={idx} className="flex flex-col md:flex-row items-start md:items-center justify-between p-6 border-b border-slate-100 last:border-0 hover:bg-blue-50/30 transition-colors">
                 <div className="flex items-start gap-4">
                   <div className="p-2 bg-blue-100 text-blue-600 rounded-lg mt-1 md:mt-0">
                     <Check size={20} strokeWidth={3} />
@@ -343,7 +293,7 @@ export const CertificationPage: React.FC = () => {
                     Скачать бланк
                   </a>
                 ) : (
-                   <div className="mt-4 md:mt-0 text-blue-600 font-bold text-xl select-none px-6 py-2">—</div>
+                   <div className="mt-4 md:mt-0 text-blue-600 font-bold text-xl select-none px-6 py-2">-</div>
                 )}
               </div>
             ))}
@@ -351,7 +301,7 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 7. CTA ФОРМА */}
+      {/* 6. CTA ФОРМА */}
       <section id="order-form" className="py-20 bg-slate-900 text-white scroll-mt-[72px]">
         <div className="max-w-5xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-start">
@@ -442,6 +392,41 @@ export const CertificationPage: React.FC = () => {
             </div>
 
           </div>
+        </div>
+      </section>
+
+      {/* 7. ГЕОГРАФИЯ (В САМОМ НИЗУ) */}
+      <section className="py-16 bg-slate-50 border-y border-slate-200">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+            <div className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 flex flex-col md:flex-row gap-10 items-center">
+                <div className="md:w-1/2">
+                    <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-4">География обслуживания экспортеров</h2>
+                    <p className="text-slate-600 mb-6 leading-relaxed text-justify">
+                        Торгово-промышленная палата Забайкальского края - стратегический партнер для участников ВЭД. Мы находимся в ключевом транспортном узле на границе с КНР (МАПП Забайкальск), что позволяет нам оперативно решать вопросы сертификации для компаний из <strong>Москвы, Санкт-Петербурга, Новосибирска, Иркутска и Улан-Удэ</strong>. 
+                    </p>
+                    <div className="grid grid-cols-2 gap-4">
+                        <div className="flex items-center gap-2 text-sm text-slate-700 font-medium">
+                            <MapPin size={16} className="text-blue-600" /> Официальный орган ТПП РФ
+                        </div>
+                        <div className="flex items-center gap-2 text-sm text-slate-700 font-medium">
+                            <MapPin size={16} className="text-blue-600" /> Весь спектр ВЭД услуг
+                        </div>
+                        <div className="flex items-center gap-2 text-sm text-slate-700 font-medium">
+                            <MapPin size={16} className="text-blue-600" /> Работа через ЭДО / Скан-копии
+                        </div>
+                        <div className="flex items-center gap-2 text-sm text-slate-700 font-medium">
+                            <Globe size={16} className="text-blue-600" /> Экспресс-доставка оригиналов
+                        </div>
+                    </div>
+                </div>
+                <div className="md:w-1/2 bg-blue-600 rounded-2xl p-8 text-white relative overflow-hidden">
+                    <div className="relative z-10">
+                        <p className="text-xl font-bold mb-2">Почему выбирают нас?</p>
+                        <p className="text-blue-100 text-sm">Мы находимся в ключевом регионе для торговли с КНР. Наши эксперты знают специфику китайской таможни и помогают правильно оформить документы даже для самых сложных категорий товаров.</p>
+                    </div>
+                    <Globe size={150} className="absolute -bottom-10 -right-10 text-white/10" />
+                </div>
+            </div>
         </div>
       </section>
 
