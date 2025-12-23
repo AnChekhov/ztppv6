@@ -238,9 +238,9 @@ export const ExpertisePage: React.FC = () => {
       </section>
 
       {/* 5. ДОКУМЕНТЫ */}
-      <section className="py-20 bg-slate-50 border-y border-slate-200">
+      <section className="pt-0 pb-20 bg-slate-50 border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
-          <div className="text-center mb-12">
+          <div className="text-center py-14">
             <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Документы для проведения экспертизы</h2>
             <p className="text-slate-500">Минимальный пакет документов для начала работы</p>
           </div>
