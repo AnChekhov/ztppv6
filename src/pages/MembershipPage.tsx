@@ -6,6 +6,7 @@ import {
   CheckCircle2, Building, Briefcase, Zap, Download, MapPin
 } from 'lucide-react';
 import SEO from '../components/SEO';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 const MembershipPage: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -86,6 +87,22 @@ const MembershipPage: React.FC = () => {
         description="Вступите в крупнейшее бизнес-сообщество региона. Скидки от S7, АльфаСтрахование, Контур. Юридическая защита и нетворкинг. Развивайте бизнес с нами."
         keywords="вступить в тпп чита, преимущества членства тпп, поддержка бизнеса забайкалье, скидки для бизнеса, нетворкинг чита"
       />
+
+      {/* JSON-LD Микроразметка */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "GovernmentService",
+          "name": "Вступление в члены Торгово-промышленной палаты",
+          "provider": {
+            "@type": "GovernmentOrganization",
+            "name": "Забайкальская ТПП",
+            "address": "г. Чита"
+          },
+          "areaServed": "Забайкальский край",
+          "serviceType": "Поддержка предпринимательства"
+        })}
+      </script>
       
       {/* 1. HERO SECTION */}
       <section className="relative bg-slate-900 text-white min-h-[65vh] flex items-center justify-center overflow-hidden">
@@ -94,6 +111,14 @@ const MembershipPage: React.FC = () => {
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/90 to-slate-900"></div>
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center text-center">
+            
+            <div className="flex justify-center mb-6">
+              <Breadcrumbs 
+                isDark={true}
+                items={[{ label: 'Членство' }]} 
+              />
+            </div>
+
             <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
                Сила сообщества <br/>
                <span className="text-yellow-400 text-3xl md:text-5xl">Для вашего успеха на рынке</span>
@@ -134,7 +159,7 @@ const MembershipPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. ПРОГРАММА ЛОЯЛЬНОСТИ (СЕРАЯ СЕКЦИЯ) */}
+      {/* 3. ПРОГРАММА ЛОЯЛЬНОСТИ */}
       <section className="pt-0 pb-20 bg-slate-50 border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 py-14 text-center">Федеральные преференции партнеров</h2>
@@ -250,7 +275,7 @@ const MembershipPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 7. ГЕОГРАФИЯ (ДЛЯ SEO) */}
+      {/* 7. ГЕОГРАФИЯ */}
       <section className="py-16 bg-slate-50 border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
             <div className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 flex flex-col md:flex-row gap-10 items-center">
