@@ -58,7 +58,7 @@ const MembershipPage: React.FC = () => {
   const partnerDiscounts = [
     { partner: "S7 Profi", offer: "Скидка 10% на авиаперелеты и 500 бонусных баллов.", icon: Plane },
     { partner: "СКБ Контур", offer: "Скидка 50% на Контур.Экстерн и спецпредложения на софт.", icon: Zap },
-    { partner: "АльфаСтрахование", offer: "Скидка до 20% на КАСКО и гражданскую ответственность.", icon: Shield },
+    { partner: "АО АльфаСтрахование", offer: "Скидка до 20% на КАСКО и гражданскую ответственность.", icon: Shield },
     { partner: "ГазпромНефть", offer: "Скидка на автомобильное топливо при заключении договора.", icon: Briefcase },
     { partner: "Авито", offer: "Бонусы на продвижение и развитие бизнеса в системе.", icon: Globe },
     { partner: "Гарант", offer: "2 месяца бесплатного тестирования онлайн-версии системы.", icon: FileCheck }
@@ -88,7 +88,6 @@ const MembershipPage: React.FC = () => {
         keywords="вступить в тпп чита, преимущества членства тпп, поддержка бизнеса забайкалье, скидки для бизнеса, нетворкинг чита"
       />
 
-      {/* JSON-LD Микроразметка */}
       <script type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",
@@ -217,7 +216,8 @@ const MembershipPage: React.FC = () => {
                 Оставьте заявку, и мы вышлем вам полный пакет документов для оформления членства и проконсультируем по всем вопросам.
               </p>
               <div className="pt-8 border-t border-slate-700">
-                <p className="text-slate-300 text-base mb-4 font-medium">Консультация по вступлению:</p>
+                {/* ✅ ИЗМЕНЕНО: Стандартная надпись */}
+                <p className="text-slate-300 text-base mb-4 font-medium">Просто позвоните, и мы поможем решить Ваш вопрос:</p>
                 <a href="tel:+79243733330" className="block text-3xl md:text-4xl font-extrabold text-yellow-400 hover:text-white transition-colors mb-4">+7 (924) 373-33-30</a>
                 <a href="mailto:info@zabtpp.ru" className="inline-flex items-center gap-2 text-blue-400 hover:text-white transition-colors text-lg font-medium"><Mail size={20} /> info@zabtpp.ru</a>
               </div>
