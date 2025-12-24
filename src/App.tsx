@@ -2,14 +2,10 @@ import React, { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
 import Header from './components/Header';
-import Hero from './components/Hero';
-import ServicesGrid from './components/ServicesGrid';
-import CallToAction from './components/CallToAction';
-import NewsSection from './components/NewsSection';
-import SeoTextSection from './components/SeoTextSection';
 import Footer from './components/Footer';
 import ScrollToTopButton from './components/ScrollToTopButton';
 
+import HomePage from './pages/HomePage'; // ✅ Новый импорт
 import CertificationPage from './pages/CertificationPage'; 
 import ExpertisePage from './pages/ExpertisePage';
 import VedPage from './pages/VedPage';
@@ -23,6 +19,7 @@ import KnowledgePage from './pages/KnowledgePage';
 import AboutPage from './pages/AboutPage';
 import NewsPage from './pages/NewsPage';
 import ArticleDetailPage from './pages/ArticleDetailPage';
+import ApecCardPage from './pages/ApecCardPage'; // ✅ Импорт карты АТЭС
 
 const ScrollToTop = () => {
   const { pathname, hash } = useLocation();
@@ -34,7 +31,6 @@ const ScrollToTop = () => {
       const id = hash.replace('#', '');
       const element = document.getElementById(id);
       if (element) {
-        // Небольшая задержка, чтобы страница успела загрузиться
         setTimeout(() => {
           element.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }, 100);
@@ -43,18 +39,6 @@ const ScrollToTop = () => {
   }, [pathname, hash]);
 
   return null;
-};
-
-const HomePage = () => {
-  return (
-    <>
-      <Hero />
-      <ServicesGrid />
-      <CallToAction />
-      <NewsSection />
-      <SeoTextSection />
-    </>
-  );
 };
 
 const App: React.FC = () => {
@@ -74,15 +58,18 @@ const App: React.FC = () => {
           <Route path="/news/:id" element={<ArticleDetailPage />} />
           <Route path="/about" element={<AboutPage />} />
 
+          {/* Услуги */}
           <Route path="/services/cert" element={<CertificationPage />} />
           <Route path="/services/expert" element={<ExpertisePage />} />
           <Route path="/services/construction" element={<ConstructionPage />} />
           <Route path="/services/customs" element={<CustomsPage />} />
           <Route path="/services/law" element={<LegalServicesPage />} />
           <Route path="/services/events" element={<EventsPage />} /> 
+          <Route path="/services/apec" element={<ApecCardPage />} />
 
-          <Route path="/members" element={<div className="pt-32 px-6">Раздел в разработке</div>} />
-          <Route path="/committees" element={<div className="pt-32 px-6">Раздел в разработке</div>} />
+          {/* Заглушки для оставшихся разделов */}
+          <Route path="/members" element={<div className="pt-32 px-6">Реестр членов в разработке</div>} />
+          <Route path="/committees" element={<div className="pt-32 px-6">Комитеты в разработке</div>} />
         </Routes>
       </main>
 
