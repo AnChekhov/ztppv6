@@ -6,16 +6,24 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 const KnowledgePage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'articles' | 'glossary'>('articles');
+
+  const scrollToForm = () => {
+    const formSection = document.getElementById('order-form');
+    if (formSection) {
+      formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 
   const blogPosts = [
     {
       id: "check-partner",
       title: "Как проверить контрагента в Китае: пошаговая инструкция",
       category: "ВЭД и Китай",
-      date: "20.12.2025",
+      date: "24.12.2025",
       desc: "Разбираем официальные реестры КНР и способы проверки благонадежности партнеров перед оплатой."
     },
     {
@@ -49,6 +57,20 @@ const KnowledgePage: React.FC = () => {
         keywords="бизнес статьи чита, база знаний вэд, термины таможня, советы предпринимателям забайкалья, блог тпп"
       />
 
+      {/* JSON-LD для Блога/Справочника */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": "База знаний Забайкальской ТПП",
+          "description": "Экспертные статьи и глоссарий для участников ВЭД и предпринимателей",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Забайкальская ТПП"
+          }
+        })}
+      </script>
+
       {/* 1. HERO SECTION */}
       <section className="relative bg-slate-900 text-white min-h-[50vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 opacity-20">
@@ -56,6 +78,14 @@ const KnowledgePage: React.FC = () => {
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/90 to-slate-900"></div>
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center text-center">
+            
+            <div className="flex justify-center mb-6">
+              <Breadcrumbs 
+                isDark={true}
+                items={[{ label: 'База знаний' }]} 
+              />
+            </div>
+
             <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
                База знаний <span className="text-yellow-400">для бизнеса</span>
             </h1>
