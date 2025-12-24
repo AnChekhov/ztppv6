@@ -3,7 +3,7 @@ import {
   ClipboardCheck, Scale, Gavel, Truck, Factory, FileText, 
   Phone, Mail, CheckCircle, ChevronDown, UploadCloud, 
   MapPin, Clock, ShieldCheck, Check, Globe, Download, 
-  CheckCircle2, MessageCircle, ChevronUp, Info, Building
+  CheckCircle2, MessageCircle, ChevronUp, Info, Building, LifeBuoy
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import Breadcrumbs from '../components/Breadcrumbs';
@@ -78,17 +78,6 @@ export const ExpertisePage: React.FC = () => {
     },
   ];
 
-  const faqs = [
-    {
-      question: "Имеет ли акт экспертизы ТПП юридическую силу в суде?",
-      answer: "Да. Согласно Закону РФ «О торгово-промышленных палатах», экспертное подразделение ТПП является независимым органом. Наши акты признаются судами, таможней и страховыми компаниями как официальные доказательства."
-    },
-    {
-      question: "Выезжает ли эксперт на склады временного хранения (СВХ)?",
-      answer: "Да, мы обеспечиваем оперативный выезд экспертов на склады временного хранения, железнодорожные станции и приграничные зоны в Чите и Забайкальске (МАПП) в день подачи заявки."
-    }
-  ];
-
   return (
     <div className="font-sans text-slate-900 bg-white">
       
@@ -98,7 +87,6 @@ export const ExpertisePage: React.FC = () => {
         keywords="товарная экспертиза чита, экспертиза 44-фз заказать, оценка ущерба после дтп чита, идентификация тн вэд, акт тпп приемка товаров"
       />
 
-      {/* JSON-LD Микроразметка */}
       <script type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",
