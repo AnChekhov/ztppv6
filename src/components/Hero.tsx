@@ -66,8 +66,8 @@ export const Hero: React.FC = () => {
                         Укрепляем позиции <br />
                         Вашего бизнеса
                     </h1>
-                    <p className="text-xl text-slate-300 mb-8 max-w-xl leading-relaxed">
-                        Помогаем предпринимателям Забайкалья и всей России выходить на рынки Китая и Азии. Оформляем сертификаты происхождения и карты АТЭС для безвизовых поездок.
+                    <p className="text-xl text-slate-300 mb-8 max-w-xl leading-relaxed text-justify md:text-left">
+                        Помогаем предпринимателям Забайкалья и всей России выходить на рынки Китая и стран АТР. Оформляем сертификаты происхождения и карты АТЭС для безвизовых поездок.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
                         <Link to="/services/cert#order-form" className="w-full sm:w-auto">
@@ -91,24 +91,26 @@ export const Hero: React.FC = () => {
                 
                 <div className="md:col-span-5 w-full mt-10 md:mt-0 pt-0 flex-shrink-0 self-center"> 
                     <div className="space-y-4">
-                        {/* Флагманская услуга №1 */}
-                        <ServiceCard 
-                            icon={<CreditCard size={24} />} 
-                            title="Карты АТЭС"
-                            subtitle="Безвизовый въезд в 18 стран на 5 лет."
-                            link="/services/apec"
-                        />
+                        {/* 1. Сертификаты */}
                         <ServiceCard 
                             icon={<FileText size={24} />} 
                             title="Сертификаты происхождения"
                             subtitle="Для экспорта в Китай и СНГ за 2 часа."
                             link="/services/cert"
                         />
+                        {/* 2. Экспертиза */}
                         <ServiceCard 
                             icon={<Scale size={24} />} 
                             title="Товарная экспертиза"
                             subtitle="Оценка качества и ущерба по всей РФ."
                             link="/services/expert"
+                        />
+                        {/* 3. АТЭС (Теперь внизу) */}
+                        <ServiceCard 
+                            icon={<CreditCard size={24} />} 
+                            title="Карты АТЭС"
+                            subtitle="Безвизовый въезд в 18 стран на 5 лет."
+                            link="/services/apec"
                         />
                     </div>
                     
