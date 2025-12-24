@@ -6,6 +6,7 @@ import {
   MapPin, Building, CheckCircle2
 } from 'lucide-react';
 import SEO from '../components/SEO';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 export const CustomsPage: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -90,6 +91,22 @@ export const CustomsPage: React.FC = () => {
         keywords="таможенное оформление чита, подбор кода тн вэд, расчет таможенных пошлин, таможенные споры ктс, ТПП забайкальск, услуги вэд москва, экспорт в китай"
       />
 
+      {/* JSON-LD Микроразметка */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "GovernmentService",
+          "name": "Таможенное консультирование и сопровождение",
+          "provider": {
+            "@type": "GovernmentOrganization",
+            "name": "Забайкальская ТПП",
+            "address": "г. Чита"
+          },
+          "areaServed": ["Забайкальский край", "Республика Бурятия", "РФ"],
+          "audience": "Участники ВЭД, логистические компании"
+        })}
+      </script>
+
       {/* 1. HERO SECTION */}
       <section className="relative bg-slate-900 text-white min-h-[65vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 opacity-30">
@@ -97,9 +114,20 @@ export const CustomsPage: React.FC = () => {
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/90 to-slate-900"></div>
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center text-center">
+            
+            <div className="flex justify-center mb-6">
+              <Breadcrumbs 
+                isDark={true}
+                items={[
+                  { label: 'Услуги', path: '/services' },
+                  { label: 'Таможенное сопровождение' }
+                ]} 
+              />
+            </div>
+
             <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
                Таможенное сопровождение <br/>
-               <span className="text-yellow-400 text-3xl md:text-5xl">Профессиональное консультирование участников ВЭД</span>
+               <span className="text-yellow-400 text-3xl md:text-5xl">Консультирование участников ВЭД</span>
             </h1>
             <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-4xl mx-auto">
               Минимизируем риски на границе. Правильная классификация товаров, расчет платежей и аудит документов для компаний из <strong>Москвы, Новосибирска, Иркутска, Улан-Удэ</strong> и всего Забайкалья.
@@ -150,7 +178,7 @@ export const CustomsPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. ПОДРОБНОЕ ОПИСАНИЕ (АККОРДЕОНЫ) */}
+      {/* 3. ПОДРОБНОЕ ОПИСАНИЕ */}
       <section className="pt-0 pb-20 bg-slate-50 border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 py-14 text-center">Детальная информация</h2>
@@ -257,7 +285,9 @@ export const CustomsPage: React.FC = () => {
                   </span>
                   <ChevronDown className={`text-slate-400 transition-transform duration-300 ${openFaq === index ? 'rotate-180 text-blue-600' : ''}`} size={24} />
                 </button>
-                <div className={`overflow-hidden transition-all duration-300 ease-in-out ${openFaq === index ? 'max-h-96 opacity-100 pb-6' : 'max-h-0 opacity-0'}`}>
+                <div 
+                  className={`overflow-hidden transition-all duration-300 ease-in-out ${openFaq === index ? 'max-h-96 opacity-100 pb-6' : 'max-h-0 opacity-0'}`}
+                >
                   <p className="text-slate-600 leading-relaxed text-base">{faq.answer}</p>
                 </div>
               </div>
