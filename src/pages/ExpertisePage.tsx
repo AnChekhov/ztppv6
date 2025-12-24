@@ -3,7 +3,7 @@ import {
   ClipboardCheck, Scale, Gavel, Truck, Factory, FileText, 
   Phone, Mail, CheckCircle, ChevronDown, UploadCloud, 
   MapPin, Clock, ShieldCheck, Check, Globe, Download, 
-  CheckCircle2, MessageCircle, ChevronUp, Info
+  CheckCircle2, MessageCircle, ChevronUp, Info, Building
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import Breadcrumbs from '../components/Breadcrumbs';
@@ -44,43 +44,36 @@ export const ExpertisePage: React.FC = () => {
     {
       id: 'quality',
       title: 'Приемка по количеству и качеству',
-      shortDesc: 'Проверка соответствия товара условиям контракта, ГОСТам и спецификациям при поступлении на склад.',
-      longDesc: 'Профессиональная приемка товаров народного потребления, сырья, промышленного оборудования и продуктов питания. Эксперт ТПП фиксирует фактическое количество, комплектность и качество товара в момент выгрузки. Мы выявляем пересортицу, производственный брак, нарушения упаковки и повреждения при транспортировке. Акт экспертизы является юридическим основанием для выставления претензии поставщику (в т.ч. иностранному) и возмещения убытков.',
+      shortDesc: 'Фиксация фактического состояния груза при выгрузке на СВХ или складе получателя.',
+      longDesc: 'Независимая приемка товаров народного потребления, оборудования и сырья. Эксперт фиксирует повреждения упаковки, пересортицу и брак в момент выгрузки. Акт экспертизы ТПП является безальтернативным доказательством для выставления претензии поставщику (в т.ч. иностранному) и страхового возмещения.',
       icon: Truck
     },
     {
       id: '44fz',
-      title: 'Экспертиза по 44-ФЗ',
-      shortDesc: 'Обязательная внешняя экспертиза исполнения контрактов для государственных и муниципальных заказчиков.',
-      longDesc: 'Проведение независимой экспертизы результатов, предусмотренных контрактом, в соответствии с ч. 3 ст. 94 Федерального закона № 44-ФЗ. Наши эксперты проверяют соответствие поставленных товаров, работ или услуг условиям государственного контракта. По итогам выдается Заключение экспертизы, которое необходимо для подписания акта приемки и размещения сведений в ЕИС. Работаем со всеми бюджетными учреждениями Забайкальского края.',
+      title: 'Экспертиза по 44-ФЗ и 223-ФЗ',
+      shortDesc: 'Внешняя экспертиза исполнения госконтрактов для бюджетных учреждений региона.',
+      longDesc: 'Обязательный этап приемки товаров, работ или услуг для государственных заказчиков согласно ч. 3 ст. 94 Федерального закона № 44-ФЗ. Наши эксперты верифицируют соответствие поставки условиям технического задания, гарантируя целевое использование бюджетных средств.',
       icon: FileText
     },
     {
       id: 'customs',
-      title: 'Таможенная экспертиза',
-      shortDesc: 'Идентификация товара для целей таможенного оформления, определение кодов ТН ВЭД, страны происхождения.',
-      longDesc: 'Идентификационная экспертиза для таможенных целей. Помогаем правильно определить код ТН ВЭД ЕАЭС, что напрямую влияет на размер таможенных пошлин. Проводим экспертизу для подтверждения страны происхождения товара, характеристик товара (состав, материал, назначение) при возникновении споров с таможенными органами. Акты ТПП принимаются ФТС России как доказательная база.',
+      title: 'Таможенная экспертиза (ТН ВЭД)',
+      shortDesc: 'Идентификация товара для таможенных целей, описание характеристик и состава.',
+      longDesc: 'Идентификационная экспертиза для целей таможенного оформления. Помогаем правильно определить код ТН ВЭД ЕАЭС, что влияет на размер пошлин. Проводим оценку износа б/у оборудования и подтверждаем технические характеристики для ФТС России.',
       icon: Globe
     },
     {
       id: 'damage',
-      title: 'Определение ущерба',
-      shortDesc: 'Фиксация повреждений груза при транспортировке, пожаре или затоплении. Оценка стоимости ущерба.',
-      longDesc: 'Независимая оценка ущерба, причиненного имуществу в результате стихийных бедствий (пожар, наводнение), аварий коммунальных систем (затопление), ДТП или противоправных действий третьих лиц. Мы определяем стоимость восстановительного ремонта, размер утраты товарной стоимости (УТС) и реальный ущерб для страховых компаний и судебных исков.',
+      title: 'Оценка ущерба (Судебная)',
+      shortDesc: 'Фиксация повреждений имущества при ДТП, пожаре, заливе или перевозке.',
+      longDesc: 'Профессиональная оценка стоимости восстановительного ремонта и размера реального ущерба. Заключения экспертов Палаты принимаются судами всех инстанций Забайкальского края и Бурятии как официальное доказательство.',
       icon: ShieldCheck
-    },
-    {
-      id: 'judicial',
-      title: 'Судебная экспертиза',
-      shortDesc: 'Проведение экспертиз по определению суда или постановлению следователя. Рецензирование заключений.',
-      longDesc: 'Проведение судебных экспертиз по гражданским, арбитражным и уголовным делам. Эксперты Палаты обладают необходимыми допусками и квалификацией для проведения товароведческих, строительно-технических и оценочных экспертиз. Мы готовим объективные заключения, отвечающие на вопросы суда, а также проводим рецензирование экспертиз сторонних организаций.',
-      icon: Gavel
     },
     {
       id: 'equipment',
       title: 'Экспертиза оборудования',
-      shortDesc: 'Оценка технического состояния, комплектности и производительности промышленного оборудования.',
-      longDesc: 'Техническая экспертиза машин, механизмов и производственных линий. Оценка степени физического износа, определение причин поломки (эксплуатационный или заводской дефект), проверка комплектности и соответствия техническому заданию. Актуально при списании основных средств, купле-продаже б/у оборудования или лизинговых сделках.',
+      shortDesc: 'Техническое состояние машин для списания, продажи или передачи в лизинг.',
+      longDesc: 'Техническая экспертиза производственных линий, сельхозтехники и машин. Определение причин поломок (заводской дефект или нарушение эксплуатации) и расчет степени физического износа основных средств.',
       icon: Factory
     },
   ];
@@ -88,15 +81,11 @@ export const ExpertisePage: React.FC = () => {
   const faqs = [
     {
       question: "Имеет ли акт экспертизы ТПП юридическую силу в суде?",
-      answer: "Да, безусловно. Торгово-промышленная палата имеет статус независимой экспертной организации (Закон РФ «О торгово-промышленных палатах»). Наши акты признаются судами, таможенными органами и страховыми компаниями как официальное доказательство."
+      answer: "Да. Согласно Закону РФ «О торгово-промышленных палатах», экспертное подразделение ТПП является независимым органом. Наши акты признаются судами, таможней и страховыми компаниями как официальные доказательства."
     },
     {
-      question: "Выезжает ли эксперт на место осмотра?",
-      answer: "Да, наши эксперты оперативно выезжают на склады, СВХ, железнодорожные станции и производства в Чите и по всему Забайкальскому краю. Также возможен выезд в приграничные зоны."
-    },
-    {
-      question: "Что делать, если товар пришел с браком?",
-      answer: "Необходимо приостановить приемку, обеспечить сохранность груза и срочно вызвать эксперта ТПП. Не подписывайте чистые накладные без отметки о вызове эксперта. Мы зафиксируем факт брака, составим акт, который станет основанием для претензии поставщику."
+      question: "Выезжает ли эксперт на склады временного хранения (СВХ)?",
+      answer: "Да, мы обеспечиваем оперативный выезд экспертов на склады временного хранения, железнодорожные станции и приграничные зоны в Чите и Забайкальске (МАПП) в день подачи заявки."
     }
   ];
 
@@ -104,9 +93,9 @@ export const ExpertisePage: React.FC = () => {
     <div className="font-sans text-slate-900 bg-white">
       
       <SEO 
-        title="Независимая товарная экспертиза в Чите и Забайкальске"
-        description="Проведение независимой экспертизы товаров: приемка по качеству, экспертиза по 44-ФЗ, оценка ущерба, судебная экспертиза. Аккредитованные эксперты ТПП Забайкальского края."
-        keywords="товарная экспертиза чита, экспертиза 44-фз, оценка ущерба, судебная экспертиза забайкалье, акт тпп, независимая экспертиза"
+        title="Товарная экспертиза по 44-ФЗ, ТН ВЭД, Приемка товаров | ТПП Забайкалье"
+        description="Проведение независимой экспертизы товаров: приемка по качеству, экспертиза госконтрактов 44-ФЗ, оценка ущерба имущества. Аккредитованные эксперты ТПП РФ."
+        keywords="товарная экспертиза чита, экспертиза 44-фз заказать, оценка ущерба после дтп чита, идентификация тн вэд, акт тпп приемка товаров"
       />
 
       {/* JSON-LD Микроразметка */}
@@ -121,7 +110,7 @@ export const ExpertisePage: React.FC = () => {
             "address": "г. Чита"
           },
           "areaServed": ["Забайкальский край", "Республика Бурятия", "Иркутская область"],
-          "audience": "Предприниматели, участники ВЭД"
+          "audience": "Государственные заказчики, участники ВЭД"
         })}
       </script>
       
@@ -145,10 +134,10 @@ export const ExpertisePage: React.FC = () => {
 
             <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
                Независимая товарная экспертиза <br/>
-               <span className="text-yellow-400 text-3xl md:text-5xl">В Забайкальском крае и ДФО</span>
+               <span className="text-yellow-400 text-3xl md:text-5xl">Профессиональный аудит для бизнеса и государства</span>
             </h1>
             <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-3xl mx-auto">
-              Защитите свой бизнес от убытков. Профессиональная приемка товаров, выявление брака и оценка ущерба. Акты ТПП признаются судами и таможней по всей России.
+              Защитите свой бизнес от убытков. Профессиональная приемка товаров, верификация госконтрактов по <strong>44-ФЗ</strong> и оценка ущерба. Официальные акты ТПП для судов и таможни.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
               <button 
@@ -168,29 +157,24 @@ export const ExpertisePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. ВИДЫ ЭКСПЕРТИЗ (GRID) */}
+      {/* 2. ВИДЫ ЭКСПЕРТИЗ */}
       <section className="pt-12 pb-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Выберите нужную экспертизу</h2>
-          
+        <div className="max-w-7xl mx-auto px-6 md:px-8 text-center">
+          <h2 className="text-3xl font-extrabold text-slate-900 mb-12">Выберите нужную экспертизу</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {expertiseServices.map((item) => (
               <div 
                 key={item.id} 
                 onClick={(e) => handleReadMore(e, item.id)}
-                className="bg-white rounded-2xl p-8 shadow-lg shadow-slate-200/50 border border-slate-100 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-blue-900/5 hover:scale-[1.03] flex flex-col h-full cursor-pointer group"
+                className="bg-white rounded-2xl p-8 shadow-lg shadow-slate-200/50 border border-slate-100 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-blue-900/5 hover:scale-[1.03] flex flex-col h-full cursor-pointer group text-left"
               >
                 <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
                   <item.icon size={28} strokeWidth={1.5} />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3">{item.title}</h3>
                 <p className="text-slate-600 text-sm leading-relaxed flex-grow">{item.shortDesc}</p>
-                <div className="mt-6 pt-4 border-t border-slate-100">
-                   <button 
-                     className="text-sm font-bold text-blue-600 hover:text-blue-800 transition-colors flex items-center"
-                   >
-                     Подробнее <ChevronDown size={16} className="ml-1" />
-                   </button>
+                <div className="mt-6 pt-4 border-t border-slate-100 flex items-center text-blue-600 font-bold text-sm">
+                   Подробнее <ChevronDown size={16} className="ml-1" />
                 </div>
               </div>
             ))}
@@ -198,7 +182,7 @@ export const ExpertisePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. ПОДРОБНОЕ ОПИСАНИЕ (АККОРДЕОНЫ) */}
+      {/* 3. ПОДРОБНОЕ ОПИСАНИЕ */}
       <section className="pt-0 pb-20 bg-slate-50 border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 py-14 text-center">Подробная информация об услугах</h2>
@@ -242,25 +226,25 @@ export const ExpertisePage: React.FC = () => {
       </section>
 
       {/* 4. ПОЧЕМУ ТПП */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-200">
             <div className="text-center px-4 pt-4 md:pt-0">
               <Scale className="mx-auto text-blue-600 mb-4 h-10 w-10" />
               <div className="text-2xl font-extrabold text-slate-900 mb-2">Независимость</div>
-              <p className="text-slate-500 text-sm leading-relaxed">Мы не зависим от продавцов, покупателей или госорганов. Наш статус закреплен Федеральным законом.</p>
+              <p className="text-slate-500 text-sm leading-relaxed">Мы не зависим от продавцов или покупателей. Наш статус закреплен Федеральным законом № 5340-1.</p>
             </div>
             
             <div className="text-center px-4 pt-4 md:pt-0">
               <MapPin className="mx-auto text-blue-600 mb-4 h-10 w-10" />
               <div className="text-2xl font-extrabold text-slate-900 mb-2">Оперативность</div>
-              <p className="text-slate-500 text-sm leading-relaxed">Штат экспертов в Чите и представительства в Забайкальске. Выезд на осмотр в день заявки.</p>
+              <p className="text-slate-500 text-sm leading-relaxed">Штат экспертов в Чите и представительство в Забайкальске. Выезд на осмотр в день заявки.</p>
             </div>
             
             <div className="text-center px-4 pt-4 md:pt-0">
               <Clock className="mx-auto text-blue-600 mb-4 h-10 w-10" />
               <div className="text-2xl font-extrabold text-slate-900 mb-2">Многолетний опыт</div>
-              <p className="text-slate-500 text-sm leading-relaxed">Более 3000 экспертиз ежегодно. Наши акты проходят любые проверки и суды.</p>
+              <p className="text-slate-500 text-sm leading-relaxed">Более 3000 экспертиз ежегодно. Наши акты проходят любые проверки ФТС и судебные разбирательства.</p>
             </div>
           </div>
         </div>
@@ -277,9 +261,9 @@ export const ExpertisePage: React.FC = () => {
           <div className="bg-white rounded-3xl shadow-sm overflow-hidden border border-slate-100">
             {[
               { name: 'Заявка на проведение экспертизы', req: 'По форме Палаты', link: true },
-              { name: 'Контракт / Договор поставки', req: 'Копия', link: false },
+              { name: 'Контракт / Договор поставки', req: 'Копия со спецификациями', link: false },
               { name: 'Товаросопроводительные документы', req: 'Инвойс, накладные, упаковочные листы', link: false },
-              { name: 'Сертификаты качества / Паспорта', req: 'При наличии от производителя', link: false },
+              { name: 'Сертификаты качества / Паспорта', req: 'При наличии от завода-изготовителя', link: false },
             ].map((doc, idx) => (
               <div key={idx} className="flex flex-col md:flex-row items-start md:items-center justify-between p-6 border-b border-slate-100 last:border-0 hover:bg-blue-50/30 transition-colors">
                 <div className="flex items-start gap-4">
@@ -314,13 +298,11 @@ export const ExpertisePage: React.FC = () => {
             {/* Левая колонка */}
             <div>
               <h2 className="text-3xl md:text-4xl font-extrabold mb-6">Оставьте заявку на экспертизу</h2>
-              <p className="text-slate-300 text-lg mb-8">
-                Мы перезвоним, уточним детали объекта и рассчитаем стоимость работ.
+              <p className="text-slate-300 text-lg mb-8 leading-relaxed">
+                Мы перезвоним, уточним детали объекта и рассчитаем стоимость работ. Официальное представительство на границе в Забайкальске.
               </p>
               <div className="pt-8 border-t border-slate-700">
-                <p className="text-slate-300 text-base mb-4 font-medium">
-                  Просто позвоните, и мы поможем решить Ваш вопрос:
-                </p>
+                <p className="text-slate-300 text-base mb-4 font-medium">Просто позвоните, и мы поможем решить Ваш вопрос:</p>
                 <a href="tel:+79243733330" className="block text-3xl md:text-4xl font-extrabold text-yellow-400 hover:text-white transition-colors mb-4">
                   +7 (924) 373-33-30
                 </a>
@@ -342,7 +324,7 @@ export const ExpertisePage: React.FC = () => {
                     <select 
                       value={selectedExpertise}
                       onChange={(e) => setSelectedExpertise(e.target.value)}
-                      className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none appearance-none cursor-pointer"
+                      className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none appearance-none cursor-pointer text-slate-700"
                     >
                       {expertiseServices.map(s => <option key={s.id} value={s.title}>{s.title}</option>)}
                       <option>Другое</option>
@@ -351,12 +333,12 @@ export const ExpertisePage: React.FC = () => {
                   </div>
                 <div className="pt-2">
                     <div className="border-2 border-dashed border-slate-300 rounded-xl p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-slate-50 transition-colors group">
-                      <UploadCloud className="text-slate-400 group-hover:text-blue-500 mb-2" size={32} />
+                      <UploadCloud className="text-slate-400 group-hover:text-blue-500 mb-2 transition-colors" size={32} />
                       <span className="text-sm text-slate-500">Прикрепить фото или документы</span>
                     </div>
                 </div>
                 <button className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all mt-4">Заказать экспертизу</button>
-                <p className="text-xs text-center text-slate-400 mt-3">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
+                <p className="text-xs text-center text-slate-400 mt-3 text-center">Нажимая кнопку, вы соглашаетесь с обработкой данных</p>
               </form>
             </div>
 
@@ -366,9 +348,9 @@ export const ExpertisePage: React.FC = () => {
 
       {/* 7. FAQ */}
       <section className="pt-8 pb-20 bg-white">
-        <div className="max-w-3xl mx-auto px-6 md:px-8">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-6 text-center">Часто задаваемые вопросы</h2>
-          <div className="space-y-4">
+        <div className="max-w-3xl mx-auto px-6 md:px-8 text-center">
+          <h2 className="text-3xl font-extrabold text-slate-900 mb-6">Часто задаваемые вопросы</h2>
+          <div className="space-y-4 text-left">
             {faqs.map((faq, index) => (
               <div key={index} className="border-b border-slate-200 last:border-0">
                 <button onClick={() => toggleFaq(index)} className="w-full flex justify-between items-center py-6 text-left group">
@@ -381,6 +363,42 @@ export const ExpertisePage: React.FC = () => {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* 8. ГЕОГРАФИЯ */}
+      <section className="py-16 bg-slate-50 border-y border-slate-200">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+            <div className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 flex flex-col md:flex-row gap-10 items-center">
+                <div className="md:w-1/2">
+                    <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-4">География наших услуг</h2>
+                    <p className="text-slate-600 mb-6 leading-relaxed text-justify text-sm md:text-base">
+                        Мы являемся официальным экспертным органом системы Торгово-промышленных палат РФ. Наши специалисты проводят строительный аудит и техническое обследование объектов не только в <strong>Забайкальском крае (Чита, Краснокаменск, Борзя)</strong>, но и в <strong>Республике Бурятия (Улан-Удэ), Иркутской и Амурской областях</strong>.
+                    </p>
+                    <div className="grid grid-cols-2 gap-4">
+                        <div className="flex items-center gap-2 text-sm text-slate-700 font-medium">
+                            <MapPin size={16} className="text-blue-600" /> Официальный статус ТПП
+                        </div>
+                        <div className="flex items-center gap-2 text-sm text-slate-700 font-medium">
+                            <MapPin size={16} className="text-blue-600" /> Признание актов судами РФ
+                        </div>
+                        <div className="flex items-center gap-2 text-sm text-slate-700 font-medium">
+                            <MapPin size={16} className="text-blue-600" /> Весь ДФО и Сибирь
+                        </div>
+                        <div className="flex items-center gap-2 text-sm text-slate-700 font-medium">
+                            <Globe size={16} className="text-blue-600" /> Дистанционно по всей РФ
+                        </div>
+                    </div>
+                </div>
+                <div className="md:w-1/2 bg-blue-600 rounded-2xl p-8 text-white relative overflow-hidden h-80 flex flex-col justify-center shadow-inner">
+                    <div className="relative z-10">
+                        <p className="text-xl font-bold mb-2">Работаем с федеральными судами</p>
+                        <p className="text-blue-100 text-sm">Наши эксперты включены в реестры рекомендуемых организаций для проведения судебных экспертиз в арбитражных судах крупнейших регионов России.</p>
+                    </div>
+                    <Building size={150} className="absolute -bottom-10 -right-10 text-white/10" />
+                    <Globe size={150} className="absolute -top-10 -left-10 text-white/5" />
+                </div>
+            </div>
         </div>
       </section>
 
