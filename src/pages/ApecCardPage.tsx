@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { 
   Globe, Plane, ShieldCheck, Clock, CheckCircle2, 
   ChevronDown, ChevronUp, Mail, Phone, MapPin, 
-  Building, MessageCircle, CreditCard, Passport,
+  Building, MessageCircle, CreditCard, 
   Zap, FileText, Landmark, UserCheck, Download, AlertCircle
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -83,7 +83,6 @@ const ApecCardPage: React.FC = () => {
         keywords="карта атэс оформить чита, бизнес виза китай на 5 лет, карта апек цена, безвизовый въезд китай предприниматели, забайкальская тпп услуги вэд, мапп забайкальск fast track"
       />
 
-      {/* JSON-LD Микроразметка */}
       <script type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",
@@ -183,7 +182,7 @@ const ApecCardPage: React.FC = () => {
                    </div>
                    <div className="flex gap-4">
                       <div className="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center shrink-0 text-blue-600">
-                         <Passport size={24} />
+                         <FileText size={24} />
                       </div>
                       <div>
                         <h4 className="font-bold text-lg mb-1">Загранпаспорт РФ</h4>
@@ -215,7 +214,7 @@ const ApecCardPage: React.FC = () => {
                 </div>
              </div>
              
-             <div className="lg:w-1/2 bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-100 sticky top-24">
+             <div className="lg:w-1/2 bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-100 lg:sticky lg:top-24">
                 <h3 className="text-2xl font-bold mb-6">Необходимые документы</h3>
                 <div className="space-y-4 mb-8">
                    {[
@@ -291,9 +290,9 @@ const ApecCardPage: React.FC = () => {
             </div>
             <div className="bg-white rounded-3xl p-8 text-slate-900 shadow-2xl">
               <form className="space-y-4">
-                <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl outline-none" placeholder="Организация или ИНН" />
+                <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl outline-none" placeholder="ФИО или Название организации" />
                 <div className="grid grid-cols-2 gap-4">
-                  <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl outline-none" placeholder="Имя" />
+                  <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl outline-none" placeholder="Должность" />
                   <input type="tel" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl outline-none" placeholder="+7 (___) ___-__-__" />
                 </div>
                 <button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg transition-all mt-4">Получить условия оформления</button>
