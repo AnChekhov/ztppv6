@@ -5,21 +5,21 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import ScrollToTopButton from './components/ScrollToTopButton';
 
-import HomePage from './pages/HomePage'; // ✅ Новый импорт
-import CertificationPage from './pages/CertificationPage'; 
-import ExpertisePage from './pages/ExpertisePage';
-import VedPage from './pages/VedPage';
-import ConstructionPage from './pages/ConstructionPage';
-import CustomsPage from './pages/CustomsPage';
-import LegalServicesPage from './pages/LegalServicesPage';
-import EventsPage from './pages/EventsPage';
-import AllServicesPage from './pages/AllServicesPage';
+import HomePage from './pages/HomePage';
+import { CertificationPage } from './pages/CertificationPage'; 
+import { ExpertisePage } from './pages/ExpertisePage';
+import { VedPage } from './pages/VedPage';
+import { ConstructionPage } from './pages/ConstructionPage';
+import { CustomsPage } from './pages/CustomsPage';
+import { LegalServicesPage } from './pages/LegalServicesPage';
+import { EventsPage } from './pages/EventsPage';
+import { AllServicesPage } from './pages/AllServicesPage';
 import MembershipPage from './pages/MembershipPage';
 import KnowledgePage from './pages/KnowledgePage';
 import AboutPage from './pages/AboutPage';
 import NewsPage from './pages/NewsPage';
 import ArticleDetailPage from './pages/ArticleDetailPage';
-import ApecCardPage from './pages/ApecCardPage'; // ✅ Импорт карты АТЭС
+import ApecCardPage from './pages/ApecCardPage';
 
 const ScrollToTop = () => {
   const { pathname, hash } = useLocation();
