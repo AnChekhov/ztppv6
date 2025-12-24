@@ -6,25 +6,26 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 const NewsPage: React.FC = () => {
   const newsItems = [
     {
-      id: 1,
+      id: "1",
       title: "Забайкальская ТПП подвела итоги года на встрече с предпринимателями",
       date: "22.12.2025",
       category: "События",
       desc: "В Чите состоялось итоговое заседание Правления Палаты. Обсудили результаты работы по поддержке экспортеров Забайкалья и Бурятии, а также планы на 2026 год."
     },
     {
-      id: 2,
+      id: "2",
       title: "Новые возможности для экспорта в Китай через МАПП Забайкальск",
       date: "18.12.2025",
       category: "ВЭД",
       desc: "Эксперты Палаты приняли участие в рабочей встрече по вопросам ускорения таможенного оформления грузов на границе. Актуально для логистов из Иркутска и Москвы."
     },
     {
-      id: 3,
+      id: "3",
       title: "Старт приема заявок на региональный этап премии «Золотой Меркурий»",
       date: "10.12.2025",
       category: "Конкурсы",
@@ -40,6 +41,20 @@ const NewsPage: React.FC = () => {
         keywords="новости тпп чита, события для бизнеса забайкалье, золотой меркурий чита, мероприятия для предпринимателей, бизнес новости бурятия"
       />
 
+      {/* JSON-LD Микроразметка для новостной ленты */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": "Новости и события Забайкальской ТПП",
+          "description": "Лента актуальных новостей бизнеса, ВЭД и мероприятий в Забайкальском крае и ДФО",
+          "publisher": {
+            "@type": "GovernmentOrganization",
+            "name": "Забайкальская ТПП"
+          }
+        })}
+      </script>
+
       {/* 1. HERO SECTION */}
       <section className="relative bg-slate-900 text-white min-h-[50vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 opacity-20">
@@ -47,6 +62,14 @@ const NewsPage: React.FC = () => {
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/90 to-slate-900"></div>
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center text-center">
+            
+            <div className="flex justify-center mb-6">
+              <Breadcrumbs 
+                isDark={true}
+                items={[{ label: 'Новости' }]} 
+              />
+            </div>
+
             <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
                Новости <span className="text-yellow-400">и события</span>
             </h1>
