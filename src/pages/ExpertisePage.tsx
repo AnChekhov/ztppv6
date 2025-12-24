@@ -25,8 +25,12 @@ export const ExpertisePage: React.FC = () => {
   };
 
   const handleOrderClick = (title: string) => {
-    setSelectedExpertise(title);
+    setSelectedService(title);
     scrollToForm();
+  };
+
+  const setSelectedService = (title: string) => {
+    setSelectedExpertise(title);
   };
 
   const handleReadMore = (e: React.MouseEvent, id: string) => {
@@ -71,11 +75,26 @@ export const ExpertisePage: React.FC = () => {
     },
     {
       id: 'equipment',
-      title: 'Экспертиза оборудования',
+      title: 'Техническая экспертиза оборудования',
       shortDesc: 'Техническое состояние машин для списания, продажи или передачи в лизинг.',
       longDesc: 'Техническая экспертиза производственных линий, сельхозтехники и машин. Определение причин поломок (заводской дефект или нарушение эксплуатации) и расчет степени физического износа основных средств.',
       icon: Factory
     },
+  ];
+
+  const faqs = [
+    {
+      question: "Имеет ли акт экспертизы ТПП юридическую силу в суде?",
+      answer: "Да. Согласно Закону РФ «О торгово-промышленных палатах», экспертное подразделение ТПП является независимым органом. Наши акты признаются судами, таможней и страховыми компаниями как официальные доказательства."
+    },
+    {
+      question: "Выезжает ли эксперт на склады временного хранения (СВХ)?",
+      answer: "Да, мы обеспечиваем оперативный выезд экспертов на склады временного хранения, железнодорожные станции и приграничные зоны в Чите и Забайкальске (МАПП) в день подачи заявки."
+    },
+    {
+      question: "Как быстро я получу акт экспертизы?",
+      answer: "Первичный акт составляется сразу после осмотра товара. Итоговое заключение с печатью Палаты выдается в течение 1-2 рабочих дней после завершения всех исследований."
+    }
   ];
 
   return (
@@ -124,13 +143,13 @@ export const ExpertisePage: React.FC = () => {
                Независимая товарная экспертиза <br/>
                <span className="text-yellow-400 text-3xl md:text-5xl">Профессиональный аудит для бизнеса и государства</span>
             </h1>
-            <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-3xl mx-auto text-center">
               Защитите свой бизнес от убытков. Профессиональная приемка товаров, верификация госконтрактов по <strong>44-ФЗ</strong> и оценка ущерба. Официальные акты ТПП для судов и таможни.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
               <button 
                 onClick={scrollToForm}
-                className="bg-yellow-400 text-slate-900 font-bold py-3 px-8 rounded-xl hover:bg-yellow-500 transition-colors shadow-lg hover:scale-105 transform duration-200"
+                className="bg-yellow-400 text-slate-900 font-bold py-4 px-10 rounded-xl hover:bg-yellow-500 transition-colors shadow-lg hover:scale-105 transform duration-200"
               >
                 Заказать экспертизу
               </button>
@@ -220,19 +239,19 @@ export const ExpertisePage: React.FC = () => {
             <div className="text-center px-4 pt-4 md:pt-0">
               <Scale className="mx-auto text-blue-600 mb-4 h-10 w-10" />
               <div className="text-2xl font-extrabold text-slate-900 mb-2">Независимость</div>
-              <p className="text-slate-500 text-sm leading-relaxed">Мы не зависим от продавцов или покупателей. Наш статус закреплен Федеральным законом № 5340-1.</p>
+              <p className="text-slate-500 text-sm leading-relaxed text-center">Мы не зависим от продавцов или покупателей. Наш статус закреплен Федеральным законом № 5340-1.</p>
             </div>
             
             <div className="text-center px-4 pt-4 md:pt-0">
               <MapPin className="mx-auto text-blue-600 mb-4 h-10 w-10" />
               <div className="text-2xl font-extrabold text-slate-900 mb-2">Оперативность</div>
-              <p className="text-slate-500 text-sm leading-relaxed">Штат экспертов в Чите и представительство в Забайкальске. Выезд на осмотр в день заявки.</p>
+              <p className="text-slate-500 text-sm leading-relaxed text-center">Штат экспертов в Чите и представительство в Забайкальске. Выезд на осмотр в день заявки.</p>
             </div>
             
             <div className="text-center px-4 pt-4 md:pt-0">
               <Clock className="mx-auto text-blue-600 mb-4 h-10 w-10" />
               <div className="text-2xl font-extrabold text-slate-900 mb-2">Многолетний опыт</div>
-              <p className="text-slate-500 text-sm leading-relaxed">Более 3000 экспертиз ежегодно. Наши акты проходят любые проверки ФТС и судебные разбирательства.</p>
+              <p className="text-slate-500 text-sm leading-relaxed text-center">Более 3000 экспертиз ежегодно. Наши акты проходят любые проверки ФТС и судебные разбирательства.</p>
             </div>
           </div>
         </div>
@@ -243,7 +262,7 @@ export const ExpertisePage: React.FC = () => {
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <div className="text-center py-14">
             <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Документы для проведения экспертизы</h2>
-            <p className="text-slate-500">Минимальный пакет документов для начала работы</p>
+            <p className="text-slate-500 text-center">Минимальный пакет документов для начала работы</p>
           </div>
 
           <div className="bg-white rounded-3xl shadow-sm overflow-hidden border border-slate-100">
@@ -283,24 +302,22 @@ export const ExpertisePage: React.FC = () => {
         <div className="max-w-5xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-start">
             
-            {/* Левая колонка */}
             <div>
               <h2 className="text-3xl md:text-4xl font-extrabold mb-6">Оставьте заявку на экспертизу</h2>
-              <p className="text-slate-300 text-lg mb-8 leading-relaxed">
+              <p className="text-slate-300 text-lg mb-8 leading-relaxed text-justify">
                 Мы перезвоним, уточним детали объекта и рассчитаем стоимость работ. Официальное представительство на границе в Забайкальске.
               </p>
               <div className="pt-8 border-t border-slate-700">
-                <p className="text-slate-300 text-base mb-4 font-medium">Просто позвоните, и мы поможем решить Ваш вопрос:</p>
-                <a href="tel:+79243733330" className="block text-3xl md:text-4xl font-extrabold text-yellow-400 hover:text-white transition-colors mb-4">
+                <p className="text-slate-300 text-base mb-4 font-medium text-center md:text-left">Просто позвоните, и мы поможем решить Ваш вопрос:</p>
+                <a href="tel:+79243733330" className="block text-3xl md:text-4xl font-extrabold text-yellow-400 hover:text-white transition-colors mb-4 text-center md:text-left">
                   +7 (924) 373-33-30
                 </a>
-                <a href="mailto:expert@ztpp.ru" className="inline-flex items-center gap-2 text-blue-400 hover:text-white transition-colors text-lg font-medium">
+                <a href="mailto:expert@ztpp.ru" className="inline-flex items-center gap-2 text-blue-400 hover:text-white transition-colors text-lg font-medium w-full justify-center md:justify-start">
                   <Mail size={20} /> expert@ztpp.ru
                 </a>
               </div>
             </div>
 
-            {/* Правая колонка: Форма */}
             <div className="bg-white rounded-3xl p-8 text-slate-900 shadow-2xl">
               <form className="space-y-4">
                 <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Организация / ФИО" />
@@ -325,7 +342,7 @@ export const ExpertisePage: React.FC = () => {
                       <span className="text-sm text-slate-500">Прикрепить фото или документы</span>
                     </div>
                 </div>
-                <button className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all mt-4">Заказать экспертизу</button>
+                <button className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all mt-4 text-center">Заказать экспертизу</button>
                 <p className="text-xs text-center text-slate-400 mt-3 text-center">Нажимая кнопку, вы соглашаетесь с обработкой данных</p>
               </form>
             </div>
@@ -339,7 +356,7 @@ export const ExpertisePage: React.FC = () => {
         <div className="max-w-3xl mx-auto px-6 md:px-8 text-center">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-6">Часто задаваемые вопросы</h2>
           <div className="space-y-4 text-left">
-            {faqs.map((faq, index) => (
+            {faqs.map((faq: { question: string; answer: string }, index: number) => (
               <div key={index} className="border-b border-slate-200 last:border-0">
                 <button onClick={() => toggleFaq(index)} className="w-full flex justify-between items-center py-6 text-left group">
                   <span className={`text-lg font-bold transition-colors ${openFaq === index ? 'text-blue-600' : 'text-slate-900 group-hover:text-blue-600'}`}>{faq.question}</span>
@@ -358,8 +375,8 @@ export const ExpertisePage: React.FC = () => {
       <section className="py-16 bg-slate-50 border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
             <div className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 flex flex-col md:flex-row gap-10 items-center">
-                <div className="md:w-1/2">
-                    <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-4">География наших услуг</h2>
+                <div className="md:w-1/2 text-left">
+                    <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-4 text-center md:text-left">География наших услуг</h2>
                     <p className="text-slate-600 mb-6 leading-relaxed text-justify text-sm md:text-base">
                         Мы являемся официальным экспертным органом системы Торгово-промышленных палат РФ. Наши специалисты проводят строительный аудит и техническое обследование объектов не только в <strong>Забайкальском крае (Чита, Краснокаменск, Борзя)</strong>, но и в <strong>Республике Бурятия (Улан-Удэ), Иркутской и Амурской областях</strong>.
                     </p>
@@ -379,7 +396,7 @@ export const ExpertisePage: React.FC = () => {
                     </div>
                 </div>
                 <div className="md:w-1/2 bg-blue-600 rounded-2xl p-8 text-white relative overflow-hidden h-80 flex flex-col justify-center shadow-inner">
-                    <div className="relative z-10">
+                    <div className="relative z-10 text-center">
                         <p className="text-xl font-bold mb-2">Работаем с федеральными судами</p>
                         <p className="text-blue-100 text-sm">Наши эксперты включены в реестры рекомендуемых организаций для проведения судебных экспертиз в арбитражных судах крупнейших регионов России.</p>
                     </div>
