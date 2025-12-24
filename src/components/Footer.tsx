@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
                 <span className="text-yellow-400 text-[10px] font-bold uppercase tracking-widest">Забайкальского края</span>
               </div>
             </div>
-            <p className="text-slate-400 text-sm leading-relaxed">
+            <p className="text-slate-400 text-sm leading-relaxed text-justify">
               Официальное бизнес-сообщество региона. Поддержка предпринимательства, экспертиза и развитие ВЭД.
             </p>
             <div className="text-[10px] text-slate-500 space-y-1">
@@ -67,7 +67,8 @@ const Footer: React.FC = () => {
               </div>
               <div className="flex items-center gap-3">
                 <Mail size={18} className="text-yellow-400" />
-                <a href="mailto:info@zabtpp.ru" className="text-slate-400 text-sm hover:text-white transition-colors">info@zabtpp.ru</a>
+                {/* ✅ ИЗМЕНЕНО: Цвет почты теперь голубой */}
+                <a href="mailto:info@zabtpp.ru" className="text-blue-400 font-medium hover:text-white transition-colors">info@zabtpp.ru</a>
               </div>
               <div className="flex gap-4 pt-4">
                 <a href="https://t.me/chitatpp" target="_blank" rel="noopener noreferrer" className="p-2 bg-slate-800 rounded-lg hover:bg-yellow-400 transition-all group">
