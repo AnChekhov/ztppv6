@@ -108,6 +108,22 @@ export const ExpertisePage: React.FC = () => {
         description="Проведение независимой экспертизы товаров: приемка по качеству, экспертиза по 44-ФЗ, оценка ущерба, судебная экспертиза. Аккредитованные эксперты ТПП Забайкальского края."
         keywords="товарная экспертиза чита, экспертиза 44-фз, оценка ущерба, судебная экспертиза забайкалье, акт тпп, независимая экспертиза"
       />
+
+      {/* JSON-LD Микроразметка */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "GovernmentService",
+          "name": "Независимая товарная экспертиза",
+          "provider": {
+            "@type": "GovernmentOrganization",
+            "name": "Забайкальская ТПП",
+            "address": "г. Чита"
+          },
+          "areaServed": ["Забайкальский край", "Республика Бурятия", "Иркутская область"],
+          "audience": "Предприниматели, участники ВЭД"
+        })}
+      </script>
       
       {/* 1. HERO SECTION */}
       <section className="relative bg-slate-900 text-white min-h-[65vh] flex items-center justify-center overflow-hidden">
