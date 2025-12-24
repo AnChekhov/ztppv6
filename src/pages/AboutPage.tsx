@@ -2,9 +2,10 @@ import React from 'react';
 import { 
   Building2, FileText, MapPin, Phone, Mail, 
   Download, CheckCircle2, Globe, Users, Landmark,
-  ShieldCheck, Award, MessageCircle, Clock
+  ShieldCheck, Award, MessageCircle, Clock, Building
 } from 'lucide-react';
 import SEO from '../components/SEO';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 const AboutPage: React.FC = () => {
   const documents = [
@@ -28,6 +29,26 @@ const AboutPage: React.FC = () => {
         keywords="тпп чита контакты, устав забайкальской тпп, руководство палаты, документы тпп, адрес палаты чита"
       />
 
+      {/* JSON-LD Микроразметка для организации */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "GovernmentOrganization",
+          "name": "Союз «Забайкальская торгово-промышленная палата»",
+          "alternateName": "Забайкальская ТПП",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "ул. Бутина, 111, 2 этаж",
+            "addressLocality": "Чита",
+            "postalCode": "672000",
+            "addressCountry": "RU"
+          },
+          "telephone": "+7-924-373-33-30",
+          "email": "info@zabtpp.ru",
+          "url": "https://zabtpp.ru"
+        })}
+      </script>
+
       {/* 1. HERO SECTION */}
       <section className="relative bg-slate-900 text-white min-h-[50vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 opacity-30">
@@ -35,6 +56,14 @@ const AboutPage: React.FC = () => {
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/90 to-slate-900"></div>
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center text-center">
+            
+            <div className="flex justify-center mb-6">
+              <Breadcrumbs 
+                isDark={true}
+                items={[{ label: 'О палате' }]} 
+              />
+            </div>
+
             <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
                Об организации <br/>
                <span className="text-yellow-400 text-3xl md:text-5xl">ТПП Забайкальского края</span>
