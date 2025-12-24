@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 export const AllServicesPage: React.FC = () => {
   const [selectedService, setSelectedService] = useState<string>('');
@@ -144,22 +145,44 @@ export const AllServicesPage: React.FC = () => {
     <div className="font-sans text-slate-900 bg-white">
       <SEO 
         title="Полный каталог услуг Забайкальской ТПП | Реестр 2025"
-        description="Более 45 видов услуг для бизнеса в Чите: сертификация, экспертиза, оценка, юридическая помощь, переводы, ВЭД с Китаем. Единое окно для предпринимателей."
+        description="Более 45 видов услуг для бизнеса в Чите, Улан-Удэ и Иркутске: сертификация, экспертиза, оценка, юридическая помощь, ВЭД с Китаем. Единое окно для предпринимателей."
         keywords="услуги тпп чита, каталог услуг, оценка бизнеса, переводы китайский, соут чита, регистрация товарного знака, строительная экспертиза, аренда зала чита"
       />
+
+      {/* JSON-LD Микроразметка каталога */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": "Каталог услуг Забайкальской ТПП",
+          "description": "Полный перечень экспертных, юридических и ВЭД услуг для бизнеса в Забайкальском крае и ДФО",
+          "publisher": {
+            "@type": "GovernmentOrganization",
+            "name": "Забайкальская ТПП"
+          }
+        })}
+      </script>
 
       {/* HERO */}
       <section className="relative bg-slate-900 text-white min-h-[65vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 opacity-30">
-             <img src="/ztppv6/images/hero-bg.jpg" alt="Background" className="w-full h-full object-cover" />
+             <img src="/ztppv6/images/hero-bg.jpg" alt="Каталог услуг ТПП" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/90 to-slate-900"></div>
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center text-center">
+            
+            <div className="flex justify-center mb-6">
+              <Breadcrumbs 
+                isDark={true}
+                items={[{ label: 'Услуги' }]} 
+              />
+            </div>
+
             <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
                Каталог услуг <span className="text-yellow-400">Торгово-промышленной палаты</span> Забайкальского края
             </h1>
-            <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl mx-auto">
-              Комплексная поддержка вашего бизнеса на всех этапах: от регистрации товарного знака до выхода на международные рынки.
+            <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-3xl mx-auto">
+              Комплексная поддержка вашего бизнеса на всех этапах: от регистрации товарного знака до выхода на международные рынки. Работаем по всей России.
             </p>
             <div className="mt-8 flex justify-center">
               <button 
@@ -342,7 +365,7 @@ export const AllServicesPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. SEO: РАБОТА С РЕГИОНАМИ (ПЕРЕНЕСЕНО В САМЫЙ НИЗ + ГРАФИКА) */}
+      {/* 4. SEO: РАБОТА С РЕГИОНАМИ */}
       <section className="py-20 bg-slate-50 border-t border-slate-100">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
             <div className="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-slate-100 flex flex-col md:flex-row gap-12 items-center">
@@ -351,7 +374,7 @@ export const AllServicesPage: React.FC = () => {
                         Работаем с бизнесом по всей России
                     </h2>
                     <p className="text-slate-600 text-lg leading-relaxed mb-6 text-justify">
-                        Торгово-промышленная палата Забайкальского края - ваш надежный представитель на границе с Китаем. Мы помогаем компаниям из <strong>Москвы, Санкт-Петербурга, Новосибирска, Иркутска</strong> и других регионов решать задачи ВЭД, логистики и сертификации без необходимости отправлять сотрудников в командировки.
+                        Торгово-промышленная палата Забайкальского края - ваш надежный представитель на границе с Китаем. Мы помогаем компаниям из <strong>Москвы, Санкт-Петербурга, Новосибирска, Иркутска и Республики Бурятия (Улан-Удэ)</strong> решать задачи ВЭД, логистики и сертификации без необходимости отправлять сотрудников в командировки.
                     </p>
                     <ul className="space-y-4">
                         <li className="flex items-start gap-3">
