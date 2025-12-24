@@ -6,14 +6,14 @@ import Footer from './components/Footer';
 import ScrollToTopButton from './components/ScrollToTopButton';
 
 import HomePage from './pages/HomePage';
-import { CertificationPage } from './pages/CertificationPage'; 
-import { ExpertisePage } from './pages/ExpertisePage';
-import { VedPage } from './pages/VedPage';
-import { ConstructionPage } from './pages/ConstructionPage';
-import { CustomsPage } from './pages/CustomsPage';
-import { LegalServicesPage } from './pages/LegalServicesPage';
-import { EventsPage } from './pages/EventsPage';
-import { AllServicesPage } from './pages/AllServicesPage';
+import CertificationPage from './pages/CertificationPage'; 
+import ExpertisePage from './pages/ExpertisePage';
+import VedPage from './pages/VedPage';
+import ConstructionPage from './pages/ConstructionPage';
+import CustomsPage from './pages/CustomsPage';
+import LegalServicesPage from './pages/LegalServicesPage';
+import EventsPage from './pages/EventsPage';
+import AllServicesPage from './pages/AllServicesPage';
 import MembershipPage from './pages/MembershipPage';
 import KnowledgePage from './pages/KnowledgePage';
 import AboutPage from './pages/AboutPage';
@@ -58,7 +58,6 @@ const App: React.FC = () => {
           <Route path="/news/:id" element={<ArticleDetailPage />} />
           <Route path="/about" element={<AboutPage />} />
 
-          {/* Услуги */}
           <Route path="/services/cert" element={<CertificationPage />} />
           <Route path="/services/expert" element={<ExpertisePage />} />
           <Route path="/services/construction" element={<ConstructionPage />} />
@@ -67,7 +66,6 @@ const App: React.FC = () => {
           <Route path="/services/events" element={<EventsPage />} /> 
           <Route path="/services/apec" element={<ApecCardPage />} />
 
-          {/* Заглушки для оставшихся разделов */}
           <Route path="/members" element={<div className="pt-32 px-6">Реестр членов в разработке</div>} />
           <Route path="/committees" element={<div className="pt-32 px-6">Комитеты в разработке</div>} />
         </Routes>
