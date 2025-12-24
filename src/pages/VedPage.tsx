@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { 
   Globe, Handshake, Search, Languages, FileText, 
   Plane, CheckCircle2, Phone, Mail, ChevronDown, 
-  ChevronUp, UploadCloud, Check, MessageCircle
+  ChevronUp, UploadCloud, Check, MessageCircle, MapPin, Building
 } from 'lucide-react';
 import SEO from '../components/SEO';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 export const VedPage: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -106,13 +107,40 @@ export const VedPage: React.FC = () => {
         keywords="ВЭД Китай, поиск поставщика Китай, проверка контрагента Китай, бизнес-миссия Маньчжурия, переводчик китайского Чита"
       />
 
+      {/* JSON-LD Микроразметка */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "GovernmentService",
+          "name": "ВЭД и работа с Китаем",
+          "provider": {
+            "@type": "GovernmentOrganization",
+            "name": "Забайкальская ТПП",
+            "address": "г. Чита"
+          },
+          "areaServed": ["Забайкальский край", "Республика Бурятия", "КНР", "Монголия"],
+          "audience": "Экспортеры, импортеры"
+        })}
+      </script>
+
       {/* 1. HERO SECTION */}
       <section className="relative bg-slate-900 text-white min-h-[65vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 opacity-30">
-             <img src="/ztppv6/images/hero-bg.jpg" alt="Background" className="w-full h-full object-cover" />
+             <img src="/ztppv6/images/hero-bg.jpg" alt="Работа с Китаем" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/90 to-slate-900"></div>
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center text-center">
+            
+            <div className="flex justify-center mb-6">
+              <Breadcrumbs 
+                isDark={true}
+                items={[
+                  { label: 'Услуги', path: '/services' },
+                  { label: 'ВЭД и Китай' }
+                ]} 
+              />
+            </div>
+
             <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
                Ваш надежный партнер <br/><span className="text-yellow-400">в работе с Китаем</span>
             </h1>
@@ -187,7 +215,7 @@ export const VedPage: React.FC = () => {
                     {item.longDesc}
                     <div className="mt-4">
                         <button onClick={() => handleOrderClick(item.title)} className="text-sm font-bold text-blue-600 hover:text-yellow-600 transition-colors">
-                            Заказать услугу →
+                            Заказать услугу -{'>'}
                         </button>
                     </div>
                   </div>
@@ -217,13 +245,13 @@ export const VedPage: React.FC = () => {
             </div>
             <div className="bg-white rounded-3xl p-8 text-slate-900 shadow-2xl">
               <form className="space-y-4">
-                <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Название организации" />
+                <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl outline-none" placeholder="Название организации" />
                 <div className="grid grid-cols-2 gap-4">
-                  <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Имя" />
-                  <input type="tel" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="+7 (___) ___-__-__" />
+                  <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl outline-none" placeholder="Имя" />
+                  <input type="tel" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl outline-none" placeholder="+7 (___) ___-__-__" />
                 </div>
                 <div className="relative">
-                   <select value={selectedService} onChange={(e) => setSelectedService(e.target.value)} className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none appearance-none cursor-pointer text-slate-700">
+                   <select value={selectedService} onChange={(e) => setSelectedService(e.target.value)} className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl appearance-none cursor-pointer text-slate-700">
                      {services.map(s => <option key={s.id} value={s.title}>{s.title}</option>)}
                      <option>Другое</option>
                    </select>
@@ -235,7 +263,7 @@ export const VedPage: React.FC = () => {
                      <span className="text-sm text-slate-500">Прикрепить документы (ТЗ, контракт)</span>
                    </div>
                 </div>
-                <button className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all mt-4">Отправить заявку</button>
+                <button className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all mt-4">Отправить заявку</button>
                 <p className="text-xs text-center text-slate-400 mt-3">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
               </form>
             </div>
@@ -254,7 +282,9 @@ export const VedPage: React.FC = () => {
                   <span className={`text-lg font-bold transition-colors ${openFaq === index ? 'text-blue-600' : 'text-slate-900 group-hover:text-blue-600'}`}>{faq.question}</span>
                   <ChevronDown className={`text-slate-400 transition-transform duration-300 ${openFaq === index ? 'rotate-180 text-blue-600' : ''}`} size={24} />
                 </button>
-                <div className={`overflow-hidden transition-all duration-300 ease-in-out ${openFaq === index ? 'max-h-96 opacity-100 pb-6' : 'max-h-0 opacity-0'}`}>
+                <div 
+                  className={`overflow-hidden transition-all duration-300 ease-in-out ${openFaq === index ? 'max-h-96 opacity-100 pb-6' : 'max-h-0 opacity-0'}`}
+                >
                   <p className="text-slate-600 leading-relaxed text-base">{faq.answer}</p>
                 </div>
               </div>
