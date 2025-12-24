@@ -6,8 +6,9 @@ import {
   Briefcase, BookOpen, TrendingUp, Handshake, Globe, Building
 } from 'lucide-react';
 import SEO from '../components/SEO';
+import Breadcrumbs from '../components/Breadcrumbs';
 
-const EventsPage: React.FC = () => {
+export const EventsPage: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [selectedService, setSelectedService] = useState<string>('Конференц-зал');
   const [expandedDetail, setExpandedDetail] = useState<string | null>(null);
@@ -86,12 +87,12 @@ const EventsPage: React.FC = () => {
 
   const faqs = [
     {
-      question: "Как забронировать зал или переговорную комнату?",
-      answer: "Вы можете оставить заявку через форму на сайте или связаться с нами по телефону. Мы забронируем за вами нужную дату, уточним количество участников и требования к расстановке мебели и оборудованию."
+      question: "Как забронировать зал или переговорную комнату в Чите?",
+      answer: "Вы можете оставить заявку через форму на сайте или связаться с нами по телефону. Мы забронируем за вами нужную дату, уточним количество участников и требования к оборудованию."
     },
     {
       question: "Какое техническое оборудование уже включено в услугу?",
-      answer: "В стандартный пакет входит использование проектора, экрана, ноутбука для презентаций, звукового оборудования (колонки и микрофоны), а также доступ к Wi-Fi. Система ВКС подключается по предварительному запросу."
+      answer: "В стандартный пакет входит использование проектора, экрана, ноутбука для презентаций, звукового оборудования (колонки и микрофоны). Также доступна система видеосвязи для удаленных участников."
     },
     {
       question: "Предоставляются ли площадки для компаний из других регионов?",
@@ -107,6 +108,22 @@ const EventsPage: React.FC = () => {
         description="Предоставление оборудованных площадок для бизнеса в центре Читы. Зал для семинаров, тренингов и презентаций. Переговорная комната для бизнес-встреч. Организация мероприятий в Забайкалье."
         keywords="конференц-зал чита, помещение для семинара чита, зал для тренинга, арендовать переговорную чита, площадка для презентаций, бизнес центр чита, ТПП мероприятия, Улан-Удэ, Иркутск"
       />
+
+      {/* JSON-LD Микроразметка */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "GovernmentService",
+          "name": "Предоставление площадок для бизнеса",
+          "provider": {
+            "@type": "GovernmentOrganization",
+            "name": "Забайкальская ТПП",
+            "address": "г. Чита, ул. Бутина, 111"
+          },
+          "areaServed": ["Чита", "Забайкальский край", "РФ"],
+          "audience": "Бизнес, организаторы мероприятий"
+        })}
+      </script>
       
       {/* 1. HERO SECTION */}
       <section className="relative bg-slate-900 text-white min-h-[65vh] flex items-center justify-center overflow-hidden">
@@ -115,6 +132,17 @@ const EventsPage: React.FC = () => {
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/90 to-slate-900"></div>
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center text-center">
+            
+            <div className="flex justify-center mb-6">
+              <Breadcrumbs 
+                isDark={true}
+                items={[
+                  { label: 'Услуги', path: '/services' },
+                  { label: 'Деловое пространство' }
+                ]} 
+              />
+            </div>
+
             <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
                Деловое пространство <br/>
                <span className="text-yellow-400 text-3xl md:text-5xl">Площадки и события для развития бизнеса</span>
@@ -307,12 +335,13 @@ const EventsPage: React.FC = () => {
                         </div>
                     </div>
                 </div>
-                <div className="md:w-1/2 bg-blue-600 rounded-2xl p-8 text-white relative overflow-hidden">
+                <div className="md:w-1/2 bg-blue-600 rounded-2xl p-8 text-white relative overflow-hidden h-80 flex flex-col justify-center">
                     <div className="relative z-10">
                         <p className="text-xl font-bold mb-2">Техническое сопровождение</p>
                         <p className="text-blue-100 text-sm">Мы обеспечиваем не только помещение, но и полное сопровождение вашего мероприятия: от настройки презентаций до организации телемостов с филиалами по всей стране.</p>
                     </div>
-                    <Globe size={150} className="absolute -bottom-10 -right-10 text-white/10" />
+                    <Building size={150} className="absolute -bottom-10 -right-10 text-white/10" />
+                    <Globe size={150} className="absolute -top-10 -left-10 text-white/5" />
                 </div>
             </div>
         </div>
