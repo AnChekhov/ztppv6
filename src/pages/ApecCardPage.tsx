@@ -4,7 +4,7 @@ import {
   ChevronDown, ChevronUp, Mail, Phone, MapPin, 
   Building, MessageCircle, CreditCard, 
   Zap, FileText, Landmark, UserCheck, Download, AlertCircle,
-  Briefcase, Microscope, HardHat, Sprout, TrendingUp, Timer
+  Briefcase, Microscope, HardHat, Sprout, Timer, Handshake
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
@@ -58,6 +58,29 @@ const ApecCardPage: React.FC = () => {
     { name: "Таиланд", days: "90 дней", spec: "Сотрудничество в сферах легкой промышленности, туризма и агробизнеса.", icon: Sprout }
   ];
 
+  const processSteps = [
+    { title: "Анализ деятельности", desc: "Проверяем соответствие заявителя критериям МИД РФ (ИП или сотрудник ООО, ВЭД-активность)." },
+    { title: "Пакет документов", desc: "Помогаем собрать справку об отсутствии судимости, ходатайство Палаты и анкеты." },
+    { title: "Согласование МИД", desc: "Направляем документы в Москву для первичной проверки и передачи данных странам АТЭС." },
+    { title: "Pre-clearance", desc: "Параллельная проверка кандидата миграционными службами 18 стран (от 2 до 6 месяцев)." },
+    { title: "Получение карты", desc: "Выдача физической карты. При необходимости - выпуск промежуточной карты для срочных поездок." }
+  ];
+
+  const faqs = [
+    {
+      question: "Какое время можно находиться в Китае по карте АТЭС?",
+      answer: "Карта позволяет находиться в КНР до 60 дней за один въезд. Количество въездов в течение 5 лет не ограничено."
+    },
+    {
+      question: "Можно ли оформить карту из Иркутска, Улан-Удэ или Москвы?",
+      answer: "Да, мы работаем дистанционно. Забайкальская ТПП как пограничный узел имеет огромный опыт работы с Китаем, поэтому к нам обращаются предприниматели со всей России."
+    },
+    {
+      question: "Что делать при смене загранпаспорта?",
+      answer: "Карта АТЭС привязана к номеру паспорта. При получении нового загранпаспорта карту необходимо перевыпускать. Рекомендуем оформлять ее на паспорт с большим сроком действия."
+    }
+  ];
+
   return (
     <div className="font-sans text-slate-900 bg-white">
       <SEO 
@@ -103,7 +126,7 @@ const ApecCardPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. СЦЕНАРИИ ИСПОЛЬЗОВАНИЯ (НОВАЯ СЕКЦИЯ ИЗ СКРИНШОТА) */}
+      {/* 2. СЦЕНАРИИ ИСПОЛЬЗОВАНИЯ */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="text-center mb-16">
@@ -113,7 +136,7 @@ const ApecCardPage: React.FC = () => {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {scenarios.map((item, idx) => (
-              <div key={idx} className="p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition-all group">
+              <div key={idx} className="p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition-all group text-left">
                 <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 bg-blue-600 text-white group-hover:scale-110 transition-transform">
                   <item.icon size={28} />
                 </div>
@@ -125,7 +148,7 @@ const ApecCardPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. ГЕОГРАФИЯ ВОЗМОЖНОСТЕЙ (ИЗ СКРИНШОТА) */}
+      {/* 3. ГЕОГРАФИЯ ВОЗМОЖНОСТЕЙ */}
       <section className="pt-0 pb-20 bg-slate-50 border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 py-14 text-center">География возможностей: 18 стран без виз</h2>
@@ -172,7 +195,7 @@ const ApecCardPage: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="font-bold text-lg mb-1">Официальный бизнес-статус</h4>
-                    <p className="text-slate-600 text-sm text-justify">Карта выдается собственникам бизнеса, индивидуальным предпринимателям или штатным сотрудникам компаний, ведущих внешнеэкономическую деятельность.</p>
+                    <p className="text-slate-600 text-sm text-justify">Карта выдается собственникам бизнеса, ИП или сотрудникам компаний, вовлеченных в ВЭД.</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
@@ -194,24 +217,18 @@ const ApecCardPage: React.FC = () => {
              
              <div className="lg:w-1/2 bg-slate-900 p-10 rounded-[2.5rem] text-white shadow-2xl relative overflow-hidden">
                 <div className="relative z-10">
-                    <h3 className="text-2xl font-bold mb-6">Список документов</h3>
-                    <div className="space-y-4 mb-8">
-                      {[
-                        "Заявление (формат МИД РФ)",
-                        "Копия всех страниц загранпаспорта",
-                        "Копия паспорта РФ (с пропиской)",
-                        "Справка об отсутствии судимости",
-                        "Учетная карточка предприятия",
-                        "Цветное матовое фото 4х6"
-                      ].map((item, i) => (
-                        <div key={i} className="flex items-center gap-3 text-slate-300 text-sm">
-                            <CheckCircle2 size={18} className="text-yellow-400" /> {item}
-                        </div>
-                      ))}
+                    <h3 className="text-2xl font-bold mb-6">Этапы оформления</h3>
+                    <div className="space-y-6">
+                        {processSteps.map((step, idx) => (
+                            <div key={idx} className="flex gap-4">
+                                <div className="text-yellow-400 font-black text-3xl leading-none">{idx + 1}</div>
+                                <div>
+                                    <h4 className="font-bold text-white mb-1">{step.title}</h4>
+                                    <p className="text-slate-400 text-xs leading-relaxed">{step.desc}</p>
+                                </div>
+                            </div>
+                        ))}
                     </div>
-                    <button className="w-full py-4 bg-yellow-400 text-slate-900 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-yellow-500 transition-all">
-                       <Download size={20} /> Скачать пакет бланков (ZIP)
-                    </button>
                 </div>
                 <Building size={200} className="absolute -bottom-20 -right-20 text-white/5" />
              </div>
@@ -226,7 +243,7 @@ const ApecCardPage: React.FC = () => {
             <div>
               <h2 className="text-3xl md:text-4xl font-extrabold mb-6">Начните оформление</h2>
               <p className="text-slate-300 text-lg mb-8 leading-relaxed">
-                Оставьте заявку, и мы проведем предварительный аудит вашей деятельности на соответствие критериям АТЭС. Работаем со всеми регионами РФ.
+                Оставьте заявку, и мы проведем предварительный аудит вашей деятельности на соответствие критериям АТЭС. Консультируем бизнес из <strong>Читы, Улан-Удэ, Иркутска, Москвы</strong> и всей РФ.
               </p>
               <div className="pt-8 border-t border-slate-700">
                 <p className="text-slate-300 text-base mb-4 font-medium">Контактная линия ВЭД:</p>
