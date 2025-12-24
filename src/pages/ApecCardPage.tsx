@@ -3,7 +3,8 @@ import {
   Globe, Plane, ShieldCheck, Clock, CheckCircle2, 
   ChevronDown, ChevronUp, Mail, Phone, MapPin, 
   Building, MessageCircle, CreditCard, 
-  Zap, FileText, Landmark, UserCheck, Download, AlertCircle
+  Zap, FileText, Landmark, UserCheck, Download, AlertCircle,
+  Briefcase, Microscope, HardHat, Sprout, TrendingUp, Timer
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
@@ -23,89 +24,52 @@ const ApecCardPage: React.FC = () => {
     }
   };
 
-  const benefits = [
+  const scenarios = [
     {
-      title: "18 стран без виз",
-      desc: "Свободный въезд в Китай, Вьетнам, Корею и еще 15 экономик АТР на 5 лет.",
-      icon: Globe
+      title: "Скорость",
+      desc: "Забудьте об ожидании виз неделями. Возникла проблема с грузом в Китае? Сели в машину или самолет и поехали решать её в тот же день.",
+      icon: Timer
     },
     {
-      title: "МАПП Забайкальск",
-      desc: "Приоритетный проход через дипломатические коридоры на сухопутной границе и в аэропортах.",
-      icon: MapPin
+      title: "Экономия",
+      desc: "Стоимость карты сопоставима с ценой всего 2-3 срочных виз, а действует она 5 лет. Выгода для активного бизнеса очевидна.",
+      icon: CreditCard
     },
     {
-      title: "Промежуточный выпуск",
-      desc: "Возможность получить карту сразу после одобрения КНР, не дожидаясь ответов от других стран.",
+      title: "Приоритет",
+      desc: "Проход границы через выделенные коридоры APEC Lane. Это критически важно в МАПП Забайкальск и крупных хабах, где обычные очереди занимают часы.",
       icon: Zap
     },
     {
-      title: "Статус участника ВЭД",
-      desc: "Карта подтверждает надежность вашего бизнеса на уровне МИД РФ и международных спецслужб.",
+      title: "Статус",
+      desc: "Карта АТЭС признается международным сообществом как подтверждение надежности партнера. Проверка ведется на уровне МИД и спецслужб.",
       icon: ShieldCheck
     }
   ];
 
-  const countries = [
-    "Австралия", "Бруней", "Вьетнам", "Гонконг", "Индонезия", "Китай", 
-    "Корея", "Малайзия", "Мексика", "Новая Зеландия", "Папуа-Новая Гвинея", 
-    "Перу", "Сингапур", "Тайвань", "Таиланд", "Филиппины", "Чили", "Япония"
-  ];
-
-  const processSteps = [
-    { title: "Анализ деятельности", desc: "Проверяем соответствие заявителя критериям МИД РФ (ИП или сотрудник ООО, ВЭД-активность)." },
-    { title: "Пакет документов", desc: "Помогаем собрать справку об отсутствии судимости, ходатайство Палаты и анкеты." },
-    { title: "Согласование МИД", desc: "Направляем документы в Москву для первичной проверки и передачи данных странам АТЭС." },
-    { title: "Pre-clearance", desc: "Параллельная проверка кандидата миграционными службами 18 стран (от 2 до 6 месяцев)." },
-    { title: "Получение карты", desc: "Выдача физической карты. При необходимости - выпуск промежуточной карты для срочных поездок." }
-  ];
-
-  const faqs = [
-    {
-      question: "Какое время можно находиться в Китае по карте АТЭС?",
-      answer: "Карта позволяет находиться в КНР до 60 дней за один въезд. Количество въездов в течение 5 лет не ограничено."
-    },
-    {
-      question: "Можно ли оформить карту из Иркутска, Улан-Удэ или Москвы?",
-      answer: "Да, мы работаем дистанционно. Забайкальская ТПП как пограничный узел имеет огромный опыт работы с Китаем, поэтому к нам обращаются предприниматели со всей России."
-    },
-    {
-      question: "Что делать при смене загранпаспорта?",
-      answer: "Карта АТЭС привязана к номеру паспорта. При получении нового загранпаспорта карту необходимо перевыпускать. Рекомендуем оформлять ее на паспорт с большим сроком действия."
-    }
+  const countryData = [
+    { name: "Китай (КНР)", days: "60 дней", spec: "Направление №1 для Забайкалья. Карта заменяет годовые бизнес-визы, экономя бюджет и время.", icon: Building },
+    { name: "Южная Корея", days: "90 дней", spec: "Импорт спецтехники, оборудования, автомобилей. Второй по значимости партнер региона.", icon: Briefcase },
+    { name: "Япония", days: "60 дней", spec: "Импорт технологий и оборудования. Карта снимает требование о наличии обязательного гаранта в Японии.", icon: Microscope },
+    { name: "Австралия", days: "90 дней", spec: "Высокий интерес со стороны горнодобывающего сектора. Получение визы без карты АТЭС крайне затруднено.", icon: HardHat },
+    { name: "Сингапур", days: "60 дней", spec: "Финансовый хаб. Карта дает приоритет Fast Track, что критично в аэропорту Чанги.", icon: Globe },
+    { name: "Вьетнам", days: "60 дней", spec: "Важный торговый партнер. Карта дает 2 месяца для полноценных переговоров и инспекций.", icon: Handshake },
+    { name: "Тайвань", days: "90 дней", spec: "Импорт микроэлектроники и высокотехнологичного оборудования.", icon: Zap },
+    { name: "Таиланд", days: "90 дней", spec: "Сотрудничество в сферах легкой промышленности, туризма и агробизнеса.", icon: Sprout }
   ];
 
   return (
     <div className="font-sans text-slate-900 bg-white">
       <SEO 
-        title="Карта АТЭС в Чите: безвизовый Китай на 5 лет | ТПП Забайкальского края"
-        description="Официальное оформление карт АТЭС для бизнеса. 18 стран без виз, дипломатический коридор в МАПП Забайкальск. Работаем с Бурятией, Иркутском и всей РФ."
-        keywords="карта атэс оформить чита, бизнес виза китай на 5 лет, карта апек цена, безвизовый въезд китай предприниматели, забайкальская тпп услуги вэд, мапп забайкальск fast track"
+        title="Карта АТЭС: безвизовый Китай на 5 лет, Fast Track | ТПП Забайкалье"
+        description="Официальное оформление карт АТЭС для бизнеса. Приоритетный проход МАПП Забайкальск. 18 стран без виз. Статус проверенного партнера МИД РФ."
+        keywords="карта атэс чита оформить, безвизовый въезд китай бизнес, дипломатический коридор мапп забайкальск, карта апек fast track, бизнес виза китай на 5 лет, ТПП услуги вэд"
       />
-
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "GovernmentService",
-          "name": "Содействие в получении карты АТЭС",
-          "provider": {
-            "@type": "GovernmentOrganization",
-            "name": "Забайкальская ТПП",
-            "address": "г. Чита, ул. Бутина, 111"
-          },
-          "areaServed": "Российская Федерация",
-          "offers": {
-            "@type": "AggregateOffer",
-            "lowPrice": "45000",
-            "priceCurrency": "RUB"
-          }
-        })}
-      </script>
 
       {/* 1. HERO SECTION */}
       <section className="relative bg-slate-900 text-white min-h-[65vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 opacity-30">
-             <img src="/ztppv6/images/hero-bg.jpg" alt="Бизнес-поездки в Китай" className="w-full h-full object-cover" />
+             <img src="/ztppv6/images/hero-bg.jpg" alt="Бизнес-мобильность в Азии" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/90 to-slate-900"></div>
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center text-center">
@@ -123,126 +87,32 @@ const ApecCardPage: React.FC = () => {
 
             <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
                Карта АТЭС в Забайкалье <br/>
-               <span className="text-yellow-400 text-3xl md:text-5xl">Ваш безвизовый пропуск в Азию на 5 лет</span>
+               <span className="text-yellow-400 text-3xl md:text-5xl">Ваш безвизовый Fast Track в 18 стран Азии</span>
             </h1>
             <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-4xl mx-auto">
-              Официальное оформление через ТПП Забайкальского края. Решайте вопросы в <strong>Китае, Вьетнаме и Корее</strong> без визовых барьеров и очередей на границе.
+              Оформление через официального оператора - ТПП Забайкальского края. Решайте вопросы в <strong>Китае, Вьетнаме и Корее</strong> без визовых барьеров и очередей на границе.
             </p>
             <div className="mt-8 flex justify-center">
               <button 
                 onClick={scrollToForm}
                 className="bg-yellow-400 text-slate-900 font-bold py-4 px-10 rounded-xl hover:bg-yellow-500 transition-colors shadow-lg hover:scale-105 transform duration-200"
               >
-                Оформить через ТПП
+                Начать оформление через ТПП
               </button>
             </div>
         </div>
       </section>
 
-      {/* 2. ТАРИФЫ */}
-      <section className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-6 md:px-8">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-10 text-center">Стоимость сопровождения</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-             <div className="bg-slate-50 p-8 rounded-3xl border-2 border-blue-600 relative overflow-hidden flex flex-col">
-                <div className="absolute top-0 right-0 bg-blue-600 text-white text-[10px] font-bold px-4 py-1 rounded-bl-xl uppercase tracking-widest">Выгодно</div>
-                <h3 className="text-xl font-bold mb-2">Для членов ТПП</h3>
-                <div className="text-4xl font-black text-blue-600 mb-4">45 000 ₽</div>
-                <p className="text-sm text-slate-500 mb-6 leading-relaxed flex-grow">Эксклюзивный тариф для компаний и ИП, состоящих в Союзе «ТПП Забайкальского края».</p>
-                <Link to="/membership" className="text-blue-600 font-bold text-sm hover:underline">Как вступить в Палату? -{'>'}</Link>
-             </div>
-             <div className="bg-white p-8 rounded-3xl border border-slate-200 flex flex-col">
-                <h3 className="text-xl font-bold mb-2">Базовый тариф</h3>
-                <div className="text-4xl font-black text-slate-900 mb-4">65 000 ₽</div>
-                <p className="text-sm text-slate-500 mb-6 leading-relaxed flex-grow">Рыночная стоимость для организаций, не являющихся членами системы ТПП РФ.</p>
-                <button onClick={scrollToForm} className="text-slate-900 font-bold text-sm hover:underline text-left">Заказать оформление -{'>'}</button>
-             </div>
-          </div>
-          <p className="mt-8 text-xs text-slate-400 text-center">
-            * В стоимость входит: аудит документов, подготовка ходатайства, отправка в МИД РФ и мониторинг статуса одобрения всеми 18 странами.
-          </p>
-        </div>
-      </section>
-
-      {/* 3. КРИТЕРИИ И ПРОЦЕСС */}
-      <section className="py-20 bg-slate-50 border-y border-slate-200">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <div className="flex flex-col lg:flex-row gap-16 items-start">
-             <div className="lg:w-1/2">
-                <h2 className="text-3xl font-extrabold text-slate-900 mb-8">Кому подходит карта?</h2>
-                <div className="space-y-6">
-                   <div className="flex gap-4">
-                      <div className="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center shrink-0 text-blue-600">
-                         <UserCheck size={24} />
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-lg mb-1">Руководители и ИП</h4>
-                        <p className="text-slate-600 text-sm">Карта выдается собственникам и сотрудникам, чьи поездки имеют деловой характер.</p>
-                      </div>
-                   </div>
-                   <div className="flex gap-4">
-                      <div className="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center shrink-0 text-blue-600">
-                         <FileText size={24} />
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-lg mb-1">Загранпаспорт РФ</h4>
-                        <p className="text-slate-600 text-sm">Срок действия паспорта должен быть не менее 3 лет для максимальной пользы от карты.</p>
-                      </div>
-                   </div>
-                   <div className="flex gap-4">
-                      <div className="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center shrink-0 text-blue-600">
-                         <ShieldCheck size={24} />
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-lg mb-1">Справка об отсутствии судимости</h4>
-                        <p className="text-slate-600 text-sm">Обязательное требование МИД РФ и принимающих стран Азиатско-Тихоокеанского региона.</p>
-                      </div>
-                   </div>
-                </div>
-                
-                <h3 className="text-2xl font-extrabold text-slate-900 mt-12 mb-6">Процесс оформления</h3>
-                <div className="space-y-6">
-                  {processSteps.map((step, idx) => (
-                    <div key={idx} className="flex gap-4">
-                      <div className="font-black text-blue-600/20 text-4xl leading-none">{idx + 1}</div>
-                      <div>
-                        <h4 className="font-bold text-slate-900">{step.title}</h4>
-                        <p className="text-slate-500 text-sm">{step.desc}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-             </div>
-             
-             <div className="lg:w-1/2 bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-100 lg:sticky lg:top-24">
-                <h3 className="text-2xl font-bold mb-6">Необходимые документы</h3>
-                <div className="space-y-4 mb-8">
-                   {[
-                     "Заявление (установленного образца)",
-                     "Копия всех страниц загранпаспорта",
-                     "Копия паспорта РФ (с пропиской)",
-                     "Справка об отсутствии судимости",
-                     "Учетная карточка предприятия",
-                     "Цветное матовое фото 4х6"
-                   ].map((item, i) => (
-                     <div key={i} className="flex items-center gap-3 text-slate-700 text-sm">
-                        <CheckCircle2 size={18} className="text-green-500" /> {item}
-                     </div>
-                   ))}
-                </div>
-                <button className="w-full py-4 bg-slate-900 text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-blue-600 transition-colors">
-                   <Download size={20} /> Скачать пакет бланков (ZIP)
-                </button>
-             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. ПРЕИМУЩЕСТВА */}
+      {/* 2. СЦЕНАРИИ ИСПОЛЬЗОВАНИЯ (НОВАЯ СЕКЦИЯ ИЗ СКРИНШОТА) */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">Зачем это нужно вашему бизнесу?</h2>
+            <p className="text-slate-500 max-w-2xl mx-auto text-lg">Конкретные преимущества, которые заменяют абстрактные обещания.</p>
+          </div>
+          
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {benefits.map((item, idx) => (
+            {scenarios.map((item, idx) => (
               <div key={idx} className="p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition-all group">
                 <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 bg-blue-600 text-white group-hover:scale-110 transition-transform">
                   <item.icon size={28} />
@@ -255,32 +125,108 @@ const ApecCardPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. СПИСОК СТРАН */}
-      <section className="py-20 bg-slate-50 border-y border-slate-200">
-        <div className="max-w-5xl mx-auto px-6 md:px-8 text-center">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-12">18 стран безвизового доступа</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 text-left">
-            {countries.map((country, idx) => (
-              <div key={idx} className="bg-white p-4 rounded-xl border border-slate-100 shadow-sm flex items-center gap-3">
-                <CheckCircle2 size={16} className="text-green-500 shrink-0" />
-                <span className="text-sm font-medium text-slate-700">{country}</span>
+      {/* 3. ГЕОГРАФИЯ ВОЗМОЖНОСТЕЙ (ИЗ СКРИНШОТА) */}
+      <section className="pt-0 pb-20 bg-slate-50 border-y border-slate-200">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+          <h2 className="text-3xl font-extrabold text-slate-900 py-14 text-center">География возможностей: 18 стран без виз</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            {countryData.map((item, idx) => (
+              <div key={idx} className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex gap-5 items-start hover:border-blue-200 transition-all">
+                <div className="p-3 bg-blue-50 text-blue-600 rounded-xl shrink-0">
+                  <item.icon size={24} />
+                </div>
+                <div>
+                  <div className="flex items-center gap-3 mb-1">
+                    <h4 className="font-bold text-slate-900 text-lg">{item.name}</h4>
+                    <span className="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">{item.days}</span>
+                  </div>
+                  <p className="text-sm text-slate-600 leading-relaxed">{item.spec}</p>
+                </div>
               </div>
             ))}
           </div>
-          <p className="mt-10 text-slate-400 text-xs italic">
-            * США и Канада участвуют в системе как переходные члены: карта дает право на приоритетный проход Fast Track, но требуется виза.
-          </p>
+          <div className="mt-12 p-8 bg-blue-600 rounded-3xl text-white relative overflow-hidden">
+             <div className="relative z-10">
+                <h3 className="text-xl font-bold mb-2">Промежуточный выпуск карты</h3>
+                <p className="text-blue-100 text-sm leading-relaxed max-w-3xl">
+                  Вам не нужно ждать одобрения всех 18 стран. Если вам срочно необходим выезд, например, в Китай - мы поможем выпустить промежуточную карту сразу после получения разрешения от КНР. Позже карта будет перевыпущена со всем списком стран бесплатно.
+                </p>
+             </div>
+             <Globe size={180} className="absolute -bottom-10 -right-10 text-white/10" />
+          </div>
         </div>
       </section>
 
-      {/* 6. CTA ФОРМА */}
+      {/* 4. ТРЕБОВАНИЯ И ДОКУМЕНТЫ */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">Условия оформления</h2>
+            <p className="text-slate-500">Минимальные требования МИД РФ для получения карты.</p>
+        </div>
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+          <div className="flex flex-col lg:flex-row gap-16 items-start">
+             <div className="lg:w-1/2 space-y-6">
+                <div className="flex gap-4">
+                  <div className="w-12 h-12 bg-slate-50 rounded-xl flex items-center justify-center shrink-0 text-blue-600">
+                      <UserCheck size={24} />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-lg mb-1">Официальный бизнес-статус</h4>
+                    <p className="text-slate-600 text-sm text-justify">Карта выдается собственникам бизнеса, индивидуальным предпринимателям или штатным сотрудникам компаний, ведущих внешнеэкономическую деятельность.</p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <div className="w-12 h-12 bg-slate-50 rounded-xl flex items-center justify-center shrink-0 text-blue-600">
+                      <FileText size={24} />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-lg mb-1">Загранпаспорт РФ</h4>
+                    <p className="text-slate-600 text-sm text-justify">Карта привязывается к номеру паспорта. Мы рекомендуем иметь документ со сроком действия не менее 3-5 лет для максимальной эффективности.</p>
+                  </div>
+                </div>
+                <div className="flex gap-4 border-l-4 border-yellow-400 pl-6 py-2">
+                  <div>
+                    <h4 className="font-bold text-lg mb-1">Отсутствие судимости</h4>
+                    <p className="text-slate-600 text-sm text-justify">Обязательное требование для согласования миграционными службами и спецслужбами всех 18 стран-участниц форума АТЭС.</p>
+                  </div>
+                </div>
+             </div>
+             
+             <div className="lg:w-1/2 bg-slate-900 p-10 rounded-[2.5rem] text-white shadow-2xl relative overflow-hidden">
+                <div className="relative z-10">
+                    <h3 className="text-2xl font-bold mb-6">Список документов</h3>
+                    <div className="space-y-4 mb-8">
+                      {[
+                        "Заявление (формат МИД РФ)",
+                        "Копия всех страниц загранпаспорта",
+                        "Копия паспорта РФ (с пропиской)",
+                        "Справка об отсутствии судимости",
+                        "Учетная карточка предприятия",
+                        "Цветное матовое фото 4х6"
+                      ].map((item, i) => (
+                        <div key={i} className="flex items-center gap-3 text-slate-300 text-sm">
+                            <CheckCircle2 size={18} className="text-yellow-400" /> {item}
+                        </div>
+                      ))}
+                    </div>
+                    <button className="w-full py-4 bg-yellow-400 text-slate-900 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-yellow-500 transition-all">
+                       <Download size={20} /> Скачать пакет бланков (ZIP)
+                    </button>
+                </div>
+                <Building size={200} className="absolute -bottom-20 -right-20 text-white/5" />
+             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. CTA ФОРМА */}
       <section id="order-form" className="py-20 bg-slate-900 text-white scroll-mt-[72px]">
         <div className="max-w-5xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-start">
             <div>
               <h2 className="text-3xl md:text-4xl font-extrabold mb-6">Начните оформление</h2>
               <p className="text-slate-300 text-lg mb-8 leading-relaxed">
-                Оставьте заявку, и мы проведем предварительный аудит вашей деятельности на соответствие критериям АТЭС. Консультируем бизнес из <strong>Читы, Улан-Удэ, Иркутска, Москвы</strong> и всей РФ.
+                Оставьте заявку, и мы проведем предварительный аудит вашей деятельности на соответствие критериям АТЭС. Работаем со всеми регионами РФ.
               </p>
               <div className="pt-8 border-t border-slate-700">
                 <p className="text-slate-300 text-base mb-4 font-medium">Контактная линия ВЭД:</p>
@@ -290,9 +236,9 @@ const ApecCardPage: React.FC = () => {
             </div>
             <div className="bg-white rounded-3xl p-8 text-slate-900 shadow-2xl">
               <form className="space-y-4">
-                <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl outline-none" placeholder="ФИО или Название организации" />
+                <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl outline-none" placeholder="Организация или ИНН" />
                 <div className="grid grid-cols-2 gap-4">
-                  <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl outline-none" placeholder="Должность" />
+                  <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl outline-none" placeholder="Имя" />
                   <input type="tel" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl outline-none" placeholder="+7 (___) ___-__-__" />
                 </div>
                 <button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg transition-all mt-4">Получить условия оформления</button>
@@ -303,7 +249,7 @@ const ApecCardPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 7. FAQ */}
+      {/* 6. FAQ */}
       <section className="pt-8 pb-20 bg-white">
         <div className="max-w-3xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">Вопросы и ответы</h2>
@@ -332,7 +278,7 @@ const ApecCardPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 8. ГЕОГРАФИЯ (SEO БЛОК) */}
+      {/* 7. ГЕОГРАФИЯ (SEO БЛОК) */}
       <section className="py-16 bg-slate-50 border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
             <div className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 flex flex-col md:flex-row gap-10 items-center">
@@ -358,7 +304,7 @@ const ApecCardPage: React.FC = () => {
                 </div>
                 <div className="md:w-1/2 bg-blue-600 rounded-3xl p-10 text-white relative overflow-hidden h-80 flex flex-col justify-center">
                     <div className="relative z-10 text-center">
-                        <h3 className="text-2xl font-bold mb-4 italic">«Карта АТЭС - это высшая степень свободы для международного бизнеса и самый быстрый путь к партнерам в АТР»</h3>
+                        <h3 className="text-2xl font-bold mb-4 italic">«Карта АТЭС - это высшая степень свободы для международного бизнеса и самый быстрый путь к партнерам в Азиатско-Тихоокеанском регионе»</h3>
                     </div>
                     <Building size={180} className="absolute -bottom-12 -right-12 text-white/10" />
                     <Globe size={180} className="absolute -top-12 -left-12 text-white/5" />
