@@ -231,7 +231,8 @@ export const CustomsPage: React.FC = () => {
                 Опишите вашу задачу или отправьте документы на предварительный аудит. Наши эксперты свяжутся с вами для расчета стоимости.
               </p>
               <div className="pt-8 border-t border-slate-700">
-                <p className="text-slate-300 text-base mb-4 font-medium">Контактная линия ВЭД:</p>
+                {/* ✅ ИЗМЕНЕНО: Стандартная надпись */}
+                <p className="text-slate-300 text-base mb-4 font-medium">Просто позвоните, и мы поможем решить Ваш вопрос:</p>
                 <a href="tel:+79243733330" className="block text-3xl md:text-4xl font-extrabold text-yellow-400 hover:text-white transition-colors mb-4">+7 (924) 373-33-30</a>
                 <a href="mailto:info@zabtpp.ru" className="inline-flex items-center gap-2 text-blue-400 hover:text-white transition-colors text-lg font-medium"><Mail size={20} /> info@zabtpp.ru</a>
               </div>
