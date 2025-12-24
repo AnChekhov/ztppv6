@@ -107,6 +107,22 @@ export const LegalServicesPage: React.FC = () => {
         keywords="юридические услуги чита, арбитраж ВЭД, форс-мажор, защита бизнеса, налоговые консультации"
       />
 
+      {/* JSON-LD Микроразметка */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "GovernmentService",
+          "name": "Юридическая поддержка бизнеса",
+          "provider": {
+            "@type": "GovernmentOrganization",
+            "name": "Забайкальская ТПП",
+            "address": "г. Чита"
+          },
+          "areaServed": ["Забайкальский край", "Республика Бурятия", "РФ"],
+          "audience": "Предприниматели, юридические лица"
+        })}
+      </script>
+
       {/* 1. HERO SECTION */}
       <section className="relative bg-slate-900 text-white min-h-[65vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 opacity-30">
@@ -267,7 +283,9 @@ export const LegalServicesPage: React.FC = () => {
                   <span className={`text-lg font-bold transition-colors ${openFaq === index ? 'text-blue-600' : 'text-slate-900 group-hover:text-blue-600'}`}>{faq.question}</span>
                   <ChevronDown className={`text-slate-400 transition-transform duration-300 ${openFaq === index ? 'rotate-180 text-blue-600' : ''}`} size={24} />
                 </button>
-                <div className={`overflow-hidden transition-all duration-300 ease-in-out ${openFaq === index ? 'max-h-96 opacity-100 pb-6' : 'max-h-0 opacity-0'}`}>
+                <div 
+                  className={`overflow-hidden transition-all duration-300 ease-in-out ${openFaq === index ? 'max-h-96 opacity-100 pb-6' : 'max-h-0 opacity-0'}`}
+                >
                   <p className="text-slate-600 leading-relaxed text-base">{faq.answer}</p>
                 </div>
               </div>
@@ -300,7 +318,7 @@ export const LegalServicesPage: React.FC = () => {
                         </div>
                     </div>
                 </div>
-                <div className="md:w-1/2 bg-blue-600 rounded-2xl p-10 text-white relative overflow-hidden h-80 flex flex-col justify-center">
+                <div className="md:w-1/2 bg-blue-600 rounded-3xl p-10 text-white relative overflow-hidden h-80 flex flex-col justify-center">
                     <div className="relative z-10 text-center">
                         <h3 className="text-2xl font-bold mb-4 italic">«Мы обеспечиваем надежный правовой фундамент для вашего бизнеса на границе с Китаем и во всей России»</h3>
                     </div>
