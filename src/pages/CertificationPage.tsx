@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { 
   Clock, Calendar, Banknote, Download, CheckCircle2, UploadCloud, 
   Phone, Mail, Globe, CheckCircle, ChevronDown, Check, 
-  FileCheck, MessageCircle, ChevronUp, LifeBuoy, MapPin, Shield, Building
+  FileCheck, MessageCircle, ChevronUp, LifeBuoy, MapPin, Shield, Building, Scale
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import Breadcrumbs from '../components/Breadcrumbs';
@@ -42,57 +42,57 @@ export const CertificationPage: React.FC = () => {
     {
       id: 'general',
       type: 'Общая форма',
-      countries: 'Китай, Монголия, ОАЭ (Весь мир)',
-      purpose: 'Подтверждение происхождения товара для таможни и банков КНР.',
-      longDesc: 'Сертификат общей формы - ключевой документ для ВЭД с Китаем. Подтверждает российское происхождение продукции, что необходимо для прохождения таможенного контроля в Маньчжурии, Тяньцзине и Шанхае. Мы работаем с экспортерами из Москвы, Санкт-Петербурга и Новосибирска, обеспечивая легитимность документов для иностранных банков.',
+      countries: 'Китай, ОАЭ, Индия, Турция',
+      purpose: 'Экспорт во все страны мира. Подтверждение страны производства согласно Закону РФ № 5340-1.',
+      longDesc: 'Сертификат общей формы подтверждает российское происхождение продукции для таможни в Маньчжурии, Пекине и других мировых хабах. Наши акты полностью соответствуют правилам нетарифного регулирования и принимаются иностранными банками для открытия аккредитивов.',
       icon: Globe
     },
     {
       id: 'st1',
-      type: 'СТ-1 (СНГ)',
+      type: 'СТ-1 (СНГ / Гособоронзаказ)',
       countries: 'Казахстан, Беларусь, Узбекистан',
-      purpose: 'Беспошлинный ввоз товаров в страны СНГ (преференции).',
-      longDesc: 'Сертификат формы СТ-1 дает право на полное освобождение от импортных пошлин. Это делает ваш экспорт конкурентоспособным в Казахстане, Узбекистане и Беларуси. Выдаем документ на основе официальной экспертизы ТПП в кратчайшие сроки для грузов из Иркутска, Улан-Удэ и Читы.',
+      purpose: 'Беспошлинная торговля в СНГ и подтверждение происхождения для закупок по 44-ФЗ и 223-ФЗ.',
+      longDesc: 'Обеспечивает освобождение от ввозных пошлин. С 1 сентября 2025 года форма СТ-1 остается ключевым документом для допуска товаров к государственным закупкам на территории РФ, подтверждая статус отечественного производителя.',
       icon: FileCheck
+    },
+    {
+      id: 'import-1341',
+      type: 'Импортный (Пост. № 1341)',
+      countries: 'Ввозимые товары в РФ',
+      purpose: 'Верификация продукции из «недружественных» стран и легализация параллельного импорта.',
+      longDesc: 'Новый вектор контроля импорта согласно Постановлению Правительства № 1341. Сертификат позволяет импортерам легализовать происхождение товара из «нейтральных» стран, избегая повышенных заградительных пошлин на электронику и оборудование (группа 84 ТН ВЭД).',
+      icon: Shield
+    },
+    {
+      id: 'st3',
+      type: 'СТ-3 (Иран)',
+      countries: 'Исламская Республика Иран',
+      purpose: 'Тарифные преференции в рамках соглашения о свободной торговле с Ираном.',
+      longDesc: 'Актуальная форма для бизнеса, использующего южный логистический коридор. Обеспечивает льготный режим налогообложения при поставках продукции на иранский рынок.',
+      icon: Ship
     },
     {
       id: 'eav',
       type: 'EAV (Вьетнам)',
-      countries: 'Социалистическая Республика Вьетнам',
-      purpose: 'Снижение ставок пошлин в рамках Зоны свободной торговли.',
-      longDesc: 'Специальный сертификат для рынка Вьетнама. Позволяет российским производителям из любого региона (от Владивостока до Екатеринбурга) пользоваться преференциями соглашения ЕАЭС-Вьетнам, обнуляя или снижая ввозные налоги.',
+      countries: 'Вьетнам',
+      purpose: 'Нулевые или сниженные пошлины в рамках Зоны свободной торговли ЕАЭС-Вьетнам.',
+      longDesc: 'Специальный сертификат для экспорта во Вьетнам. Позволяет обнулять ввозные налоги для производителей из Бурятии, Забайкалья и других регионов России.',
       icon: Shield
-    },
-    {
-      id: 'st2',
-      type: 'СТ-2 (Сербия)',
-      countries: 'Республика Сербия',
-      purpose: 'Льготный ввоз российской продукции на рынок Сербии.',
-      longDesc: 'Документ, необходимый для реализации режима свободной торговли между РФ и Сербией. Подтверждает статус товара как произведенного в России для получения тарифных льгот.',
-      icon: FileCheck
-    },
-    {
-      id: 'forma',
-      type: 'Форма "А"',
-      countries: 'Черногория',
-      purpose: 'Преференции в рамках Генеральной системы (GSP).',
-      longDesc: 'Сертификат для получения налоговых льгот при поставках в Черногорию. Оформляется на английском языке экспертами нашей Палаты с соблюдением всех международных стандартов GSP.',
-      icon: Globe
     },
   ];
 
   const faqs = [
     {
-      question: "Как заказать сертификат СТ-1 или Общей формы из другого города?",
-      answer: "Вам не нужно приезжать лично. Мы работаем дистанционно через ЭДО (Диадок) и электронную почту с компаниями из Москвы, Новосибирска, Иркутска и других городов РФ. Оригинал документа с «мокрой» печатью мы отправляем экспресс-почтой в день готовности."
+      question: "Как оформить сертификат по Постановлению № 1341 на импорт?",
+      answer: "Для получения сертификата на ввозимые товары необходимо пройти процедуру идентификации. ТПП выдает документ на основании иностранного сертификата или декларации производителя. Это позволяет избежать заградительных пошлин с 6 октября 2025 года."
     },
     {
-      question: "Сколько стоит оформление сертификата и от чего зависит цена?",
-      answer: "Стоимость оформления сертификата в Торгово-промышленной палате регламентирована тарифами ТПП РФ. Итоговая цена зависит от количества наименований продукции и сложности экспертизы по определению страны происхождения."
+      question: "Что такое критерий «достаточной переработки»?",
+      answer: "Это условие, при котором товар считается произведенным в РФ. Основные критерии: изменение кода ТН ВЭД на уровне первых 4 знаков или выполнение правила адвалорной доли (стоимость импортного сырья не превышает установленный % от цены)."
     },
     {
-      question: "Как быстро выдается сертификат для экспорта в Китай?",
-      answer: "При наличии полного пакета документов (инвойс, контракт, документы производителя) процедура занимает от 2 до 4 часов. Мы понимаем важность сроков для ВЭД и работаем максимально оперативно."
+      question: "Работаете ли вы с компаниями из Москвы или Новосибирска?",
+      answer: "Да, мы являемся уполномоченным органом системы ТПП РФ. Благодаря электронному документообороту (ЭДО) и статусу приграничной палаты, мы оформляем сертификаты для экспортеров и импортеров со всей России."
     }
   ];
 
@@ -100,35 +100,15 @@ export const CertificationPage: React.FC = () => {
     <div className="font-sans text-slate-900 bg-white">
       
       <SEO 
-        title="Оформить сертификат происхождения СТ-1, Общая форма: Чита, Иркутск, Москва | ТПП"
-        description="Официальная выдача сертификатов происхождения (СТ-1, EAV, Общая форма) для экспорта в Китай, СНГ и Вьетнам. Аккредитованный орган ТПП РФ. Работаем со всеми регионами России дистанционно."
-        keywords="сертификат происхождения товара цена, оформить ст-1 чита, сертификат происхождения москва, ст-1 иркутск, экспорт в китай документы, сертификат происхождения вьетнам, услуги тпп сертификация, таможенное оформление экспорт"
+        title="Сертификат происхождения СТ-1, СТ-3, Общая форма: Чита, Улан-Удэ, Москва | ТПП"
+        description="Официальная выдача сертификатов происхождения для экспорта (Китай, СНГ, Иран) и импорта (Постановление 1341). Работаем со всеми регионами РФ дистанционно. Выдача от 1 дня."
+        keywords="сертификат происхождения товара, постановление 1341 сертификат, ст-1 заказать, ст-3 иран оформить, сертификат происхождения москва, экспертиза тпп страна происхождения"
       />
-
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "GovernmentService",
-          "name": "Оформление сертификата происхождения товара",
-          "provider": {
-            "@type": "GovernmentOrganization",
-            "name": "Забайкальская ТПП",
-            "address": "г. Чита"
-          },
-          "areaServed": ["Забайкальский край", "Республика Бурятия", "Китай", "Монголия", "РФ"],
-          "audience": "Участники ВЭД, экспортеры",
-          "offers": {
-            "@type": "Offer",
-            "price": "2288",
-            "priceCurrency": "RUB"
-          }
-        })}
-      </script>
       
       {/* 1. HERO SECTION */}
       <section className="relative bg-slate-900 text-white min-h-[65vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 opacity-30">
-             <img src="/ztppv6/images/hero-bg.jpg" alt="Сертификация экспорта в Китай и СНГ" className="w-full h-full object-cover" />
+             <img src="/ztppv6/images/hero-bg.jpg" alt="Федеральная система сертификации ТПП" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/90 to-slate-900"></div>
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center text-center">
@@ -145,10 +125,10 @@ export const CertificationPage: React.FC = () => {
 
             <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
                Сертификаты происхождения <br/>
-               <span className="text-yellow-400 text-3xl md:text-5xl">Экспорт в Китай, СНГ и по всему миру</span>
+               <span className="text-yellow-400 text-3xl md:text-5xl">Экспертиза для экспорта и импорта по всей РФ</span>
             </h1>
-            <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-3xl mx-auto">
-              Официальное подтверждение страны происхождения от уполномоченного органа ТПП РФ. Работаем с экспортерами из <strong>Москвы, Новосибирска, Иркутска, Улан-Удэ</strong> и всей России. Дистанционное оформление.
+            <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-4xl mx-auto">
+              Официальный уполномоченный орган системы ТПП РФ. Подтверждение страны производства согласно <strong>Закону РФ № 5340-1</strong>. Легализация импорта по <strong>Постановлению № 1341</strong>.
             </p>
             <div className="mt-8 flex justify-center">
               <button 
@@ -164,7 +144,7 @@ export const CertificationPage: React.FC = () => {
       {/* 2. ТИПЫ СЕРТИФИКАТОВ */}
       <section className="pt-12 pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Выберите нужный тип сертификата</h2>
+          <h2 className="text-3xl font-extrabold text-slate-900 mb-12 text-center">Выберите нужную форму сертификата</h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {certTypes.map((item) => (
@@ -175,21 +155,21 @@ export const CertificationPage: React.FC = () => {
               >
                 <div className="flex justify-between items-start mb-3">
                   <span className="text-xl font-black text-blue-600 bg-blue-50 px-3 py-1 rounded-lg whitespace-nowrap group-hover:bg-blue-600 group-hover:text-white transition-colors">{item.type}</span>
-                  <item.icon className="text-slate-300" size={22} />
+                  <Globe className="text-slate-300" size={22} />
                 </div>
                 <div className="mb-3">
                   <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-1">Регион действия</div>
                   <div className="font-bold text-slate-800 text-sm">{item.countries}</div>
                 </div>
                 <div className="mb-3 flex-grow">
-                  <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-1">Для чего нужен</div>
+                  <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-1">Применение</div>
                   <div className="text-sm text-slate-600 leading-snug">{item.purpose}</div>
                 </div>
                 <div className="mt-auto pt-3 border-t border-slate-100">
                    <button 
                      className="text-xs font-bold text-blue-600 hover:text-blue-800 transition-colors flex items-center"
                    >
-                     Подробнее об экспертизе <ChevronDown size={14} className="ml-1" />
+                     Подробнее об условиях <ChevronDown size={14} className="ml-1" />
                    </button>
                 </div>
               </div>
@@ -199,21 +179,21 @@ export const CertificationPage: React.FC = () => {
               <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 bg-blue-500/10 text-blue-400">
                 <LifeBuoy size={28} strokeWidth={1.5} />
               </div>
-              <h3 className="text-white font-bold text-lg mb-2">Нужен совет?</h3>
-              <p className="text-slate-400 text-xs mb-4">Наши эксперты ВЭД помогут правильно выбрать форму документа под условия вашего контракта.</p>
+              <h3 className="text-white font-bold text-lg mb-2">Нужна консультация?</h3>
+              <p className="text-slate-400 text-xs mb-4">Наши эксперты помогут подобрать форму документа под ваше Постановление или Контракт.</p>
               <button onClick={scrollToForm} className="w-full py-3 bg-white text-slate-900 font-bold rounded-lg hover:bg-yellow-400 transition-colors text-sm">
-                Бесплатная помощь
+                Связаться с экспертом
               </button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 3. ИНФОРМАЦИЯ О СЕРТИФИКАТАХ */}
+      {/* 3. ДЕТАЛЬНОЕ ОПИСАНИЕ */}
       <section className="pt-0 pb-20 bg-slate-50 border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 py-14 text-center">
-            Детально о сертификации товаров
+            Функциональная специфика сертификатов
           </h2>
           <div className="space-y-4">
             {certTypes.map((item) => (
@@ -230,7 +210,7 @@ export const CertificationPage: React.FC = () => {
                     <div className={`p-2 rounded-lg ${expandedDetail === item.id ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-500'}`}>
                        <FileCheck size={24} />
                     </div>
-                    <span className="text-lg font-bold text-slate-900">{item.type} - {item.countries}</span>
+                    <span className="text-lg font-bold text-slate-900">{item.type}</span>
                   </div>
                   {expandedDetail === item.id ? <ChevronUp className="text-blue-600"/> : <ChevronDown className="text-slate-400"/>}
                 </button>
@@ -254,35 +234,41 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. ЦИФРЫ И СРОКИ */}
+      {/* 4. ЦИФРЫ И СРОКИ (ОБНОВЛЕНО ПО СКРИНШОТУ) */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-200">
             <div className="text-center px-4 pt-4 md:pt-0">
               <Banknote className="mx-auto text-blue-600 mb-4 h-10 w-10" />
               <div className="text-4xl font-extrabold text-slate-900 mb-2 relative inline-block">
-                от 2288 ₽ <span className="text-slate-400 text-xl absolute -top-1 -right-4">*</span>
+                1 950 ₽ <span className="text-slate-400 text-xl absolute -top-1 -right-4">*</span>
               </div>
-              <p className="text-slate-500 mt-2">Минимальная стоимость<br/><span className="text-sm">(согласно тарифам ТПП РФ)</span></p>
+              <p className="text-slate-500 mt-2">Удостоверение оригинала<br/><span className="text-sm">(базовый тариф ТПП РФ)</span></p>
             </div>
             
             <div className="text-center px-4 pt-4 md:pt-0">
               <Clock className="mx-auto text-blue-600 mb-4 h-10 w-10" />
               <div className="text-4xl font-extrabold text-slate-900 mb-2 relative inline-block">
-                за 2 часа <span className="text-slate-400 text-xl absolute -top-1 -right-4">*</span>
+                1-2 дня <span className="text-slate-400 text-xl absolute -top-1 -right-4">*</span>
               </div>
-              <p className="text-slate-500 mt-2">Срочное оформление<br/><span className="text-sm">(после подачи пакета документов)</span></p>
+              <p className="text-slate-500 mt-2">Срок оформления<br/><span className="text-sm">(включая экспертизу)</span></p>
             </div>
             
             <div className="text-center px-4 pt-4 md:pt-0">
-              <Calendar className="mx-auto text-blue-600 mb-4 h-10 w-10" />
+              <Scale className="mx-auto text-blue-600 mb-4 h-10 w-10" />
               <div className="text-4xl font-extrabold text-slate-900 mb-2 relative inline-block">
-                Дистанционно <span className="text-slate-400 text-xl absolute -top-1 -right-4">*</span>
+                930 ₽ <span className="text-slate-400 text-xl absolute -top-1 -right-4">*</span>
               </div>
-              <p className="text-slate-500 mt-2">По всей России<br/><span className="text-sm">(обмен оригиналами через ЭДО/курьеров)</span></p>
+              <p className="text-slate-500 mt-2">Час работы эксперта<br/><span className="text-sm">(согласно тарифам 2025 г.)</span></p>
             </div>
           </div>
-          <p className="text-xs text-center text-slate-400 mt-10">* Итоговые сроки и стоимость зависят от объема номенклатуры и страны назначения.</p>
+
+          <div className="mt-12 max-w-4xl mx-auto text-left">
+            <p className="text-sm text-slate-400 leading-relaxed">
+              <span className="text-lg align-middle mr-1">*</span> 
+              Стоимость и сроки регламентированы Приказами ТПП РФ. Итоговая цена зависит от количества позиций в партии и сложности определения критериев достаточной переработки. Работаем по всей России через ЭДО.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -290,19 +276,19 @@ export const CertificationPage: React.FC = () => {
       <section className="pt-0 pb-20 bg-slate-50 border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <div className="text-center py-14">
-            <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Документы для получения сертификата</h2>
-            <p className="text-slate-500">Базовый перечень для начала проведения экспертизы ТПП</p>
+            <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Документы для экспертизы ТПП</h2>
+            <p className="text-slate-500">Обязательные элементы заявления согласно Приказу № 67</p>
           </div>
 
           <div className="bg-white rounded-3xl shadow-sm overflow-hidden border border-slate-100">
             {[
-              { name: 'Заявление установленной формы', req: 'С подписью руководителя и печатью компании', link: true },
-              { name: 'Копия контракта на экспорт', req: 'Со спецификациями и приложениями', link: false },
-              { name: 'Инвойс (счет-фактура)', req: 'С указанием веса нетто/брутто и упаковки', link: false },
-              { name: 'Документы от производителя', req: 'Паспорта, ТУ, сертификаты качества для экспертизы', link: true },
-              { name: 'Уставные документы заявителя', req: 'ИНН, ОГРН (при первом обращении)', link: false },
+              { name: 'Сведения о поставке', req: 'Контракт, инвойс, транспортная накладная', link: false },
+              { name: 'Маршрут следования', req: 'Данные о транспортировке и перегрузках', link: false },
+              { name: 'Идентификация товара', req: 'Описание, количество, упаковка, коды ТН ВЭД', link: false },
+              { name: 'Доказательства происхождения', req: 'Иностранный сертификат или декларация завода', link: true },
+              { name: 'Гарантии неизменности', req: 'Подтверждение сохранности состояния товара', link: false },
             ].map((doc, idx) => (
-              <div key={idx} className="flex flex-col md:flex-row items-start md:items-center justify-between p-6 border-b border-slate-50 last:border-0 hover:bg-blue-50/30 transition-colors">
+              <div key={idx} className="flex flex-col md:flex-row items-start md:items-center justify-between p-6 border-b border-slate-100 last:border-0 hover:bg-blue-50/30 transition-colors">
                 <div className="flex items-start gap-4">
                   <div className="p-2 bg-blue-100 text-blue-600 rounded-lg mt-1 md:mt-0">
                     <Check size={20} strokeWidth={3} />
@@ -335,7 +321,7 @@ export const CertificationPage: React.FC = () => {
             <div>
               <h2 className="text-3xl md:text-4xl font-extrabold mb-6">Закажите сертификат онлайн</h2>
               <p className="text-slate-300 text-lg mb-8 text-justify">
-                Оставьте заявку, и мы подготовим все документы для получения таможенных преференций. Работаем с экспортерами из <strong>Москвы, Иркутска, Улан-Удэ, Новосибирска</strong> и других городов.
+                Оставьте заявку, и мы подготовим документы для экспорта в Китай, СНГ или легализуем ваш импорт согласно Постановлению № 1341. Работаем со всеми регионами РФ.
               </p>
               <div className="pt-8 border-t border-slate-700">
                 <p className="text-slate-300 text-base mb-4 font-medium">Просто позвоните, и мы поможем решить Ваш вопрос:</p>
@@ -357,7 +343,7 @@ export const CertificationPage: React.FC = () => {
                 </div>
 
                 <div>
-                   <label className="block text-sm font-bold mb-2">Тип необходимого сертификата</label>
+                   <label className="block text-sm font-bold mb-2">Форма сертификата</label>
                    <div className="relative">
                      <select 
                         value={selectedType}
@@ -396,7 +382,7 @@ export const CertificationPage: React.FC = () => {
       {/* 7. FAQ */}
       <section className="pt-8 pb-20 bg-white">
         <div className="max-w-3xl mx-auto px-6 md:px-8">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">Часто задаваемые вопросы</h2>
+          <h2 className="text-3xl font-extrabold text-slate-900 mb-6 text-center">Часто задаваемые вопросы</h2>
           
           <div className="space-y-4">
             {faqs.map((faq, index) => (
@@ -416,9 +402,7 @@ export const CertificationPage: React.FC = () => {
                 <div 
                   className={`overflow-hidden transition-all duration-300 ease-in-out ${openFaq === index ? 'max-h-96 opacity-100 pb-6' : 'max-h-0 opacity-0'}`}
                 >
-                  <p className="text-slate-600 leading-relaxed text-base">
-                    {faq.answer}
-                  </p>
+                  <p className="text-slate-600 leading-relaxed text-base">{faq.answer}</p>
                 </div>
               </div>
             ))}
@@ -446,7 +430,7 @@ export const CertificationPage: React.FC = () => {
                             <MapPin size={16} className="text-blue-600" /> Работа через ЭДО
                         </div>
                         <div className="flex items-center gap-2 text-sm text-slate-700 font-medium">
-                            <Globe size={16} className="text-blue-600" /> Экспресс-доставка
+                            <Globe size={16} className="text-blue-600" /> Экспорт и Импорт
                         </div>
                     </div>
                 </div>
