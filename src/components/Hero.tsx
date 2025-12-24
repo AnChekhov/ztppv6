@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, FileText, Scale, Shield } from 'lucide-react'; 
+import { ArrowRight, FileText, Scale, CreditCard } from 'lucide-react'; 
 import { Link } from 'react-router-dom';
 import { Button } from './ui/Button';
 
@@ -30,7 +30,6 @@ const ServiceCard: React.FC<{ icon: React.ReactNode, title: string, subtitle: st
 
 export const Hero: React.FC = () => {
   
-  // Функция скролла к "Другие услуги"
   const scrollToOtherServices = (e: React.MouseEvent) => {
     e.preventDefault();
     const element = document.getElementById('other-services');
@@ -39,7 +38,6 @@ export const Hero: React.FC = () => {
     }
   };
 
-  // Скролл к блоку контактов на текущей странице (для кнопки Станьте партнером)
   const scrollToContact = () => {
     const element = document.getElementById('contact-form');
     if (element) {
@@ -53,7 +51,7 @@ export const Hero: React.FC = () => {
       <div className="absolute inset-0 z-0">
           <img 
             src="/ztppv6/images/hero-bg.jpg" 
-            alt="Business Background" 
+            alt="Бизнес с Китаем и Азией" 
             className="w-full h-full object-cover opacity-40"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-900/80 to-slate-900"></div>
@@ -69,10 +67,9 @@ export const Hero: React.FC = () => {
                         Вашего бизнеса
                     </h1>
                     <p className="text-xl text-slate-300 mb-8 max-w-xl leading-relaxed">
-                        Помогаем предпринимателям выходить на рынок Китая, оформляем сертификаты происхождения и защищаем ваши интересы на государственном уровне.
+                        Помогаем предпринимателям Забайкалья и всей России выходить на рынки Китая и Азии. Оформляем сертификаты происхождения и карты АТЭС для безвизовых поездок.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-                        
                         <Link to="/services/cert#order-form" className="w-full sm:w-auto">
                             <Button 
                                 variant="lime" 
@@ -94,23 +91,24 @@ export const Hero: React.FC = () => {
                 
                 <div className="md:col-span-5 w-full mt-10 md:mt-0 pt-0 flex-shrink-0 self-center"> 
                     <div className="space-y-4">
+                        {/* Флагманская услуга №1 */}
+                        <ServiceCard 
+                            icon={<CreditCard size={24} />} 
+                            title="Карты АТЭС"
+                            subtitle="Безвизовый въезд в 18 стран на 5 лет."
+                            link="/services/apec"
+                        />
                         <ServiceCard 
                             icon={<FileText size={24} />} 
                             title="Сертификаты происхождения"
-                            subtitle="Для экспорта и импорта. Оформим за 2 часа."
+                            subtitle="Для экспорта в Китай и СНГ за 2 часа."
                             link="/services/cert"
                         />
                         <ServiceCard 
                             icon={<Scale size={24} />} 
                             title="Товарная экспертиза"
-                            subtitle="Оценка качества и ущерба."
+                            subtitle="Оценка качества и ущерба по всей РФ."
                             link="/services/expert"
-                        />
-                        <ServiceCard 
-                            icon={<Shield size={24} />} 
-                            title="Юридическая защита"
-                            subtitle="Форс-мажор, арбитраж, проверка контрагентов."
-                            link="/services/law"
                         />
                     </div>
                     
