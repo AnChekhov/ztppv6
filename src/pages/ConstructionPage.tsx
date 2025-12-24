@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { 
   Hammer, Ruler, Home, Building2, FileCheck, 
   Phone, Mail, CheckCircle2, ChevronDown, 
-  ChevronUp, UploadCloud, MessageCircle, MapPin, Globe
+  ChevronUp, UploadCloud, MessageCircle, MapPin, Globe, Building
 } from 'lucide-react';
 import SEO from '../components/SEO';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 export const ConstructionPage: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -99,13 +100,40 @@ export const ConstructionPage: React.FC = () => {
         keywords="строительная экспертиза чита, строительная экспертиза улан-удэ, строительная экспертиза иркутск, проверка сметы москва, судебная экспертиза строительство рф, независимая экспертиза зданий"
       />
 
+      {/* JSON-LD Микроразметка */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "GovernmentService",
+          "name": "Строительно-техническая экспертиза",
+          "provider": {
+            "@type": "GovernmentOrganization",
+            "name": "Забайкальская ТПП",
+            "address": "г. Чита"
+          },
+          "areaServed": ["Забайкальский край", "Республика Бурятия", "Иркутская область", "РФ"],
+          "audience": "Застройщики, владельцы недвижимости, суды"
+        })}
+      </script>
+
       {/* 1. HERO SECTION */}
       <section className="relative bg-slate-900 text-white min-h-[65vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 opacity-30">
-             <img src="/ztppv6/images/hero-bg.jpg" alt="Независимая строительная экспертиза" className="w-full h-full object-cover" />
+             <img src="/ztppv6/images/hero-bg.jpg" alt="Строительная экспертиза" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/90 to-slate-900"></div>
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full pt-32 pb-16 h-full flex flex-col justify-center text-center">
+            
+            <div className="flex justify-center mb-6">
+              <Breadcrumbs 
+                isDark={true}
+                items={[
+                  { label: 'Услуги', path: '/services' },
+                  { label: 'Строительная экспертиза' }
+                ]} 
+              />
+            </div>
+
             <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
                Строительная экспертиза <br/>
                <span className="text-yellow-400 text-3xl md:text-5xl">ТПП Забайкальского края</span>
@@ -179,7 +207,7 @@ export const ConstructionPage: React.FC = () => {
                     {item.longDesc}
                     <div className="mt-4">
                         <button onClick={() => handleOrderClick(item.title)} className="text-sm font-bold text-blue-600 hover:text-yellow-600 transition-colors">
-                            Заказать экспертизу →
+                            Заказать экспертизу -{'>'}
                         </button>
                     </div>
                   </div>
@@ -295,7 +323,7 @@ export const ConstructionPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 7. ГЕОГРАФИЯ (ПЕРЕНЕСЕНО ВНИЗ) */}
+      {/* 7. ГЕОГРАФИЯ */}
       <section className="py-16 bg-slate-50 border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
             <div className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 flex flex-col md:flex-row gap-10 items-center">
@@ -319,12 +347,13 @@ export const ConstructionPage: React.FC = () => {
                         </div>
                     </div>
                 </div>
-                <div className="md:w-1/2 bg-blue-600 rounded-2xl p-8 text-white relative overflow-hidden">
+                <div className="md:w-1/2 bg-blue-600 rounded-2xl p-8 text-white relative overflow-hidden h-80 flex flex-col justify-center">
                     <div className="relative z-10">
                         <p className="text-xl font-bold mb-2">Работаем с федеральными судами</p>
                         <p className="text-blue-100 text-sm">Наши эксперты включены в реестры рекомендуемых организаций для проведения судебных экспертиз в арбитражных судах крупнейших регионов России.</p>
                     </div>
-                    <Globe size={150} className="absolute -bottom-10 -right-10 text-white/10" />
+                    <Building size={150} className="absolute -bottom-10 -right-10 text-white/10" />
+                    <Globe size={150} className="absolute -top-10 -left-10 text-white/5" />
                 </div>
             </div>
         </div>
