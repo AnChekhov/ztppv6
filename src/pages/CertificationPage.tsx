@@ -7,7 +7,7 @@ import {
 import SEO from '../components/SEO';
 import Breadcrumbs from '../components/Breadcrumbs';
 
-export const CertificationPage: React.FC = () => {
+const CertificationPage: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [selectedType, setSelectedType] = useState<string>('Общая форма');
   const [expandedDetail, setExpandedDetail] = useState<string | null>(null);
@@ -57,7 +57,7 @@ export const CertificationPage: React.FC = () => {
     },
     {
       id: 'import-1341',
-      type: 'Импортный (Пост. № 1341)',
+      type: 'Импорт (Пост. № 1341)',
       countries: 'Ввозимые товары в РФ',
       purpose: 'Верификация продукции из «недружественных» стран и легализация параллельного импорта.',
       longDesc: 'Новый вектор контроля импорта согласно Постановлению Правительства № 1341. Сертификат позволяет импортерам легализовать происхождение товара из «нейтральных» стран, избегая повышенных заградительных пошлин на электронику и оборудование (группа 84 ТН ВЭД).',
@@ -66,7 +66,7 @@ export const CertificationPage: React.FC = () => {
     {
       id: 'st3',
       type: 'СТ-3 (Иран)',
-      countries: 'Исламская Республика Иран',
+      countries: 'Иран',
       purpose: 'Тарифные преференции в рамках соглашения о свободной торговле с Ираном.',
       longDesc: 'Актуальная форма для бизнеса, использующего южный логистический коридор. Обеспечивает льготный режим налогообложения при поставках продукции на иранский рынок.',
       icon: Ship
@@ -100,10 +100,30 @@ export const CertificationPage: React.FC = () => {
     <div className="font-sans text-slate-900 bg-white">
       
       <SEO 
-        title="Сертификат происхождения СТ-1, СТ-3, Общая форма: Чита, Улан-Удэ, Москва | ТПП"
-        description="Официальная выдача сертификатов происхождения для экспорта (Китай, СНГ, Иран) и импорта (Постановление 1341). Работаем со всеми регионами РФ дистанционно. Выдача от 1 дня."
+        title="Оформить сертификат происхождения СТ-1, СТ-3, Общая форма | ТПП РФ"
+        description="Официальная выдача сертификатов происхождения для экспорта (Китай, СНГ, Иран) и импорта (Постановление 1341). Работаем со всеми регионами РФ дистанционно. Выдача от 2 часов."
         keywords="сертификат происхождения товара, постановление 1341 сертификат, ст-1 заказать, ст-3 иран оформить, сертификат происхождения москва, экспертиза тпп страна происхождения"
       />
+
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "GovernmentService",
+          "name": "Оформление сертификата происхождения товара",
+          "provider": {
+            "@type": "GovernmentOrganization",
+            "name": "Забайкальская ТПП",
+            "address": "г. Чита"
+          },
+          "areaServed": ["Забайкальский край", "Республика Бурятия", "Китай", "Монголия", "РФ"],
+          "audience": "Участники ВЭД, экспортеры",
+          "offers": {
+            "@type": "Offer",
+            "price": "2288",
+            "priceCurrency": "RUB"
+          }
+        })}
+      </script>
       
       {/* 1. HERO SECTION */}
       <section className="relative bg-slate-900 text-white min-h-[65vh] flex items-center justify-center overflow-hidden">
@@ -241,32 +261,32 @@ export const CertificationPage: React.FC = () => {
             <div className="text-center px-4 pt-4 md:pt-0">
               <Banknote className="mx-auto text-blue-600 mb-4 h-10 w-10" />
               <div className="text-4xl font-extrabold text-slate-900 mb-2 relative inline-block">
-                1 950 ₽ <span className="text-slate-400 text-xl absolute -top-1 -right-4">*</span>
+                от 2288 ₽ <span className="text-slate-400 text-xl absolute -top-1 -right-4">*</span>
               </div>
-              <p className="text-slate-500 mt-2">Удостоверение оригинала<br/><span className="text-sm">(базовый тариф ТПП РФ)</span></p>
+              <p className="text-slate-500 mt-2">Стоимость услуги<br/><span className="text-sm">(согласно тарифам ТПП РФ)</span></p>
             </div>
             
             <div className="text-center px-4 pt-4 md:pt-0">
               <Clock className="mx-auto text-blue-600 mb-4 h-10 w-10" />
               <div className="text-4xl font-extrabold text-slate-900 mb-2 relative inline-block">
-                1-2 дня <span className="text-slate-400 text-xl absolute -top-1 -right-4">*</span>
+                за 2 часа <span className="text-slate-400 text-xl absolute -top-1 -right-4">*</span>
               </div>
-              <p className="text-slate-500 mt-2">Срок оформления<br/><span className="text-sm">(включая экспертизу)</span></p>
+              <p className="text-slate-500 mt-2">Срок оформления<br/><span className="text-sm">(после подачи документов)</span></p>
             </div>
             
             <div className="text-center px-4 pt-4 md:pt-0">
-              <Scale className="mx-auto text-blue-600 mb-4 h-10 w-10" />
+              <Calendar className="mx-auto text-blue-600 mb-4 h-10 w-10" />
               <div className="text-4xl font-extrabold text-slate-900 mb-2 relative inline-block">
-                930 ₽ <span className="text-slate-400 text-xl absolute -top-1 -right-4">*</span>
+                12 месяцев <span className="text-slate-400 text-xl absolute -top-1 -right-4">*</span>
               </div>
-              <p className="text-slate-500 mt-2">Час работы эксперта<br/><span className="text-sm">(согласно тарифам 2025 г.)</span></p>
+              <p className="text-slate-500 mt-2">Срок действия<br/><span className="text-sm">(с даты выдачи)</span></p>
             </div>
           </div>
 
           <div className="mt-12 max-w-4xl mx-auto text-left">
             <p className="text-sm text-slate-400 leading-relaxed">
               <span className="text-lg align-middle mr-1">*</span> 
-              Стоимость и сроки регламентированы Приказами ТПП РФ. Итоговая цена зависит от количества позиций в партии и сложности определения критериев достаточной переработки. Работаем по всей России через ЭДО.
+              Стоимость и сроки регламентированы Приказом ТПП РФ №14. Итоговая цена зависит от количества позиций в партии и сложности определения критериев достаточной переработки. Работаем по всей России.
             </p>
           </div>
         </div>
@@ -276,19 +296,19 @@ export const CertificationPage: React.FC = () => {
       <section className="pt-0 pb-20 bg-slate-50 border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <div className="text-center py-14">
-            <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Документы для экспертизы ТПП</h2>
-            <p className="text-slate-500">Обязательные элементы заявления согласно Приказу № 67</p>
+            <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Документы для получения сертификата</h2>
+            <p className="text-slate-500">Минимальный перечень документов для экспертизы ТПП</p>
           </div>
 
           <div className="bg-white rounded-3xl shadow-sm overflow-hidden border border-slate-100">
             {[
-              { name: 'Сведения о поставке', req: 'Контракт, инвойс, транспортная накладная', link: false },
-              { name: 'Маршрут следования', req: 'Данные о транспортировке и перегрузках', link: false },
-              { name: 'Идентификация товара', req: 'Описание, количество, упаковка, коды ТН ВЭД', link: false },
-              { name: 'Доказательства происхождения', req: 'Иностранный сертификат или декларация завода', link: true },
-              { name: 'Гарантии неизменности', req: 'Подтверждение сохранности состояния товара', link: false },
+              { name: 'Заявление на выдачу сертификата', req: 'По форме Палаты, с печатью организации', link: true },
+              { name: 'Копия экспортного контракта', req: 'Заверенная печатью и подписью', link: false },
+              { name: 'Копия счета-фактуры (инвойса)', req: 'С данными о весе и упаковке груза', link: false },
+              { name: 'Документы от производителя', req: 'Паспорта качества, ТУ или сертификаты', link: true },
+              { name: 'ИНН и ОГРН компании', req: 'Копии при первом обращении', link: false },
             ].map((doc, idx) => (
-              <div key={idx} className="flex flex-col md:flex-row items-start md:items-center justify-between p-6 border-b border-slate-100 last:border-0 hover:bg-blue-50/30 transition-colors">
+              <div key={idx} className="flex flex-col md:flex-row items-start md:items-center justify-between p-6 border-b border-white last:border-0 hover:bg-blue-50/30 transition-colors">
                 <div className="flex items-start gap-4">
                   <div className="p-2 bg-blue-100 text-blue-600 rounded-lg mt-1 md:mt-0">
                     <Check size={20} strokeWidth={3} />
@@ -382,7 +402,7 @@ export const CertificationPage: React.FC = () => {
       {/* 7. FAQ */}
       <section className="pt-8 pb-20 bg-white">
         <div className="max-w-3xl mx-auto px-6 md:px-8">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-6 text-center">Часто задаваемые вопросы</h2>
+          <h2 className="text-3xl font-extrabold text-slate-900 mb-8 text-center">Часто задаваемые вопросы</h2>
           
           <div className="space-y-4">
             {faqs.map((faq, index) => (
@@ -410,7 +430,7 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 8. ГЕОГРАФИЯ */}
+      {/* 8. ГЕОГРАФИЯ (В САМОМ НИЗУ) */}
       <section className="py-16 bg-slate-50 border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
             <div className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 flex flex-col md:flex-row gap-10 items-center">
