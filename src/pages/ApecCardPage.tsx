@@ -4,7 +4,7 @@ import {
   ChevronDown, ChevronUp, Mail, Phone, MapPin, 
   Building, MessageCircle, CreditCard, 
   Zap, FileText, Landmark, UserCheck, Download,
-  Briefcase, Microscope, HardHat, Sprout, Timer, Handshake
+  Briefcase, Microscope, HardHat, Sprout, Timer, Handshake, Container
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
@@ -24,25 +24,25 @@ const ApecCardPage: React.FC = () => {
     }
   };
 
-  const benefits = [
+  const scenarios = [
     {
-      title: "3 континента без виз",
-      desc: "Свободный въезд в 18 стран Азии, Океании, Северной и Южной Америки на 5 лет.",
-      icon: Globe
+      title: "Скорость",
+      desc: "Забудьте об ожидании виз неделями. Возникла проблема с грузом в Китае? Сели в машину или самолет и поехали решать её в тот же день.",
+      icon: Timer
     },
     {
-      title: "МАПП Забайкальск",
-      desc: "Приоритетный проход через дипломатические коридоры на сухопутной границе и в аэропортах мира.",
-      icon: MapPin
+      title: "Экономия",
+      desc: "Стоимость карты сопоставима с ценой всего 2-3 срочных виз, а действует она 5 лет. Выгода для активного бизнеса очевидна.",
+      icon: CreditCard
     },
     {
-      title: "Промежуточный выпуск",
-      desc: "Возможность получить карту сразу после одобрения ключевых стран, не дожидаясь остальных.",
+      title: "Приоритет",
+      desc: "Проход границы через выделенные коридоры APEC Lane. Это критически важно в МАПП Забайкальск и крупных хабах, где обычные очереди занимают часы.",
       icon: Zap
     },
     {
-      title: "Статус участника ВЭД",
-      desc: "Карта подтверждает надежность вашего бизнеса на уровне МИД РФ и международных спецслужб.",
+      title: "Статус",
+      desc: "Карта АТЭС признается международным сообществом как подтверждение надежности партнера. Проверка ведется на уровне МИД и спецслужб.",
       icon: ShieldCheck
     }
   ];
@@ -64,7 +64,7 @@ const ApecCardPage: React.FC = () => {
 
   const processSteps = [
     { title: "Анализ деятельности", desc: "Проверяем соответствие заявителя критериям МИД РФ (бизнес-статус, отсутствие судимости)." },
-    { title: "Подготовка документов", desc: "Формируем пакет документов и ходатайство от Палаты для направления в МИД России." },
+    { title: "Пакет документов", desc: "Формируем пакет документов и ходатайство от Палаты для направления в МИД России." },
     { title: "Pre-clearance", desc: "Параллельная проверка кандидата миграционными службами 18 стран (от 2 до 6 месяцев)." },
     { title: "Выдача карты", desc: "Получение физической карты. При необходимости - выпуск промежуточной карты для срочных поездок." }
   ];
@@ -76,7 +76,7 @@ const ApecCardPage: React.FC = () => {
     },
     {
       question: "Можно ли оформить карту из Иркутска, Улан-Удэ или Москвы?",
-      answer: "Да, мы работаем дистанционно. Забайкальская ТПП как ключевой узел на границе имеет огромный опыт взаимодействия с Азией, поэтому к нам обращаются предприниматели со всей России."
+      answer: "Да, мы работаем дистанционно. Забайкальская ТПП как пограничный узел имеет огромный опыт взаимодействия с Азией, поэтому к нам обращаются предприниматели со всей России."
     },
     {
       question: "Что делать при смене загранпаспорта?",
@@ -151,7 +151,7 @@ const ApecCardPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. ГЕОГРАФИЯ (ИЗ СКРИНШОТОВ) */}
+      {/* 3. ГЕОГРАФИЯ ВОЗМОЖНОСТЕЙ */}
       <section className="pt-0 pb-20 bg-slate-50 border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 py-14 text-center">География возможностей: 18 стран без виз</h2>
@@ -267,7 +267,7 @@ const ApecCardPage: React.FC = () => {
                   <input type="tel" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl outline-none" placeholder="+7 (___) ___-__-__" />
                 </div>
                 <button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 rounded-xl shadow-lg transition-all mt-4">Подать заявку</button>
-                <p className="text-xs text-center text-slate-400 mt-3 text-center">Нажимая кнопку, вы соглашаетесь с обработкой данных</p>
+                <p className="text-xs text-center text-slate-400 mt-3">Нажимая кнопку, вы соглашаетесь с обработкой данных</p>
               </form>
             </div>
           </div>
@@ -307,10 +307,10 @@ const ApecCardPage: React.FC = () => {
             <div className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 flex flex-col md:flex-row gap-10 items-center">
                 <div className="md:w-1/2">
                     <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-4 text-center md:text-left">Деловая мобильность по всей РФ</h2>
-                    <p className="text-slate-600 mb-6 leading-relaxed text-justify">
-                        Забайкальская ТПП является официальным проводником в получении карт АТЭС. Мы помогаем компаниям из <strong>Читы, Улан-Удэ, Иркутска, Москвы и Новосибирска</strong> получить доступ к глобальному рынку без барьеров. Нахождение на крупнейшем сухопутном погранпереходе (МАПП Забайкальск - Маньчжурия) позволяет нам максимально глубоко понимать специфику работы с азиатскими партнерами.
+                    <p className="text-slate-600 mb-6 leading-relaxed text-justify text-sm md:text-base">
+                        Забайкальская ТПП является официальным проводником в получении карт АТЭС. Мы помогаем компаниям из <strong>Читы, Улан-Удэ, Иркутска, Москвы и Новосибирска</strong> получить доступ к глобальному рынку без барьеров. Нахождение на крупнейшем сухопутном погранпереходе (МАПП Забайкальск - Маньчжурия) позволяет нам максимально глубоко понимать специфику работы с азиатскими и мировыми партнерами.
                     </p>
-                    <div className="grid grid-cols-2 gap-4 text-sm text-slate-700 font-medium">
+                    <div className="grid grid-cols-2 gap-4 text-sm text-slate-700 font-medium text-left">
                         <div className="flex items-center gap-2">
                             <MapPin size={16} className="text-blue-600" /> Официально через МИД РФ
                         </div>
