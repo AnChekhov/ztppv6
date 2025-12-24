@@ -57,7 +57,7 @@ const KnowledgePage: React.FC = () => {
         keywords="бизнес статьи чита, база знаний вэд, термины таможня, советы предпринимателям забайкалья, блог тпп"
       />
 
-      {/* JSON-LD для Блога/Справочника */}
+      {/* JSON-LD */}
       <script type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",
@@ -169,6 +169,8 @@ const KnowledgePage: React.FC = () => {
                 Если у вас есть специфический вопрос по ВЭД, праву или сертификации, напишите нам. Наши эксперты подготовят разъяснение.
               </p>
               <div className="pt-8 border-t border-slate-700">
+                {/* ✅ ИЗМЕНЕНО: Стандартная надпись */}
+                <p className="text-slate-300 text-base mb-4 font-medium">Просто позвоните, и мы поможем решить Ваш вопрос:</p>
                 <a href="tel:+79243733330" className="block text-3xl md:text-4xl font-extrabold text-yellow-400 hover:text-white transition-colors mb-4">+7 (924) 373-33-30</a>
                 <a href="mailto:info@zabtpp.ru" className="inline-flex items-center gap-2 text-blue-400 hover:text-white transition-colors text-lg font-medium"><Mail size={20} /> info@zabtpp.ru</a>
               </div>
