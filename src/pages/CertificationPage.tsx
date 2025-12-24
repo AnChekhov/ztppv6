@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { 
   Clock, Calendar, Banknote, Download, CheckCircle2, UploadCloud, 
   Phone, Mail, Globe, CheckCircle, ChevronDown, Check, 
-  FileCheck, MessageCircle, ChevronUp, LifeBuoy, MapPin, Shield, Building, Scale
+  FileCheck, MessageCircle, ChevronUp, LifeBuoy, MapPin, Shield, Building, Scale, Ship
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import Breadcrumbs from '../components/Breadcrumbs';
@@ -234,7 +234,7 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. ЦИФРЫ И СРОКИ (ОБНОВЛЕНО ПО СКРИНШОТУ) */}
+      {/* 4. ЦИФРЫ И СРОКИ */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-200">
@@ -410,7 +410,7 @@ export const CertificationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 8. ГЕОГРАФИЯ (В САМОМ НИЗУ) */}
+      {/* 8. ГЕОГРАФИЯ */}
       <section className="py-16 bg-slate-50 border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
             <div className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 flex flex-col md:flex-row gap-10 items-center">
